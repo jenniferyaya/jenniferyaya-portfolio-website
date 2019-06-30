@@ -232,6 +232,19 @@ a:hover {
   height: 100%;
   z-index: 100;
 }
+#index-items-second {
+  margin-left: auto;
+  margin-right: auto;
+
+  min-width: 320px;
+  letter-spacing: 0.025em;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  height: 100%;
+}
+
 .border-xleft {
   border-right-style: solid;
   border-bottom-style: solid;
