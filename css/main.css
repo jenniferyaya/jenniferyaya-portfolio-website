@@ -1,0 +1,317 @@
+/******************************** BASIC *******************/
+html, #main, .grid {
+  background-color: #f0f0f0;
+}
+
+body, p {
+  margin: 0;
+}
+
+#site {
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5em;
+  font-size: 1.04em;
+}
+
+div {
+  display: block;
+}
+
+
+.flex {
+  width: 100%;
+  display: block;
+}
+
+p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.3em;
+  color: #1c1c1c;
+}
+
+.mini {
+  font-size: .65rem;
+}
+
+.small-1 {
+  font-size: 1rem;
+}
+
+.small {
+  font-size: 1.3rem;
+}
+
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.serif-italic {
+  font-family: "petersburg-web",serif;
+  font-style: italic;
+}
+
+.serif {
+  font-family: "petersburg-web",serif;
+}
+
+.sans-reg {
+  font-family: 'Muli', sans-serif;
+  font-weight: 400;
+  color: #191919;
+}
+
+.sans-bold {
+  font-family: 'Muli', sans-serif;
+  font-weight: 700;
+  color: #191919;
+}
+
+
+
+/******************************** SPACING *******************/
+
+.margin0 {
+  margin: 0;
+}
+
+.pad0 {
+  padding: 0;
+}
+
+.space-after-1-2 {
+  margin-bottom: .65rem;
+}
+
+.space-after-small {
+  margin-bottom: .14rem;
+}
+
+.space-after {
+  margin-bottom: 1.3rem;
+}
+
+.space-after2x {
+  margin-bottom: 2.6rem;
+}
+
+.space-after3x {
+  margin-bottom: 3.9rem;
+}
+
+.space-after6x {
+  margin-bottom: 7.8rem;
+}
+
+.space-after9x {
+  margin-bottom: 11.7rem;
+}
+
+.pad-l-1-2 {
+  padding-left: 0.65rem;
+}
+
+.pad-l {
+  padding-left: 1.3rem;
+}
+
+.pad-l2x {
+  padding-left: 2.6rem;
+}
+
+.pad-r-1-2 {
+  padding-right: 0.65rem;
+}
+
+.pad-r {
+  padding-right: 1.3rem;
+}
+
+.pad-r2x {
+  padding-right: 2.6rem;
+}
+
+.space-top-1-2 {
+  margin-top: .65rem;
+}
+
+.space-top-small {
+  margin-top: .14rem;
+}
+
+.space-top {
+  margin-top: 1.3rem;
+}
+
+.space-top2x {
+  margin-top: 2.6rem;
+}
+
+.space-top3x {
+  margin-top: 3.9rem;
+}
+
+.space-top6x {
+  margin-top: 7.8rem;
+}
+
+.space-top9x {
+  margin-top: 11.7rem;
+}
+
+.island {
+  padding: 2.9rem;
+  width: 90%;
+}
+
+/******************************** HEADER *******************/
+#top-navigation {
+  position: fixed;
+  top: -60px;
+  width: 100vw;
+  padding-top: 5rem;
+  padding-bottom: 0px;
+  z-index: 100;
+  background-color: #f0f0f0;
+  vertical-align: baseline;
+
+  font-size: .9rem;
+  padding-bottom: 1.3rem;
+}
+#top-navigation h1 {
+  margin: 0;
+  font-size: .9rem;
+  float: left;
+  padding-left: 3.9rem;
+  padding-right: 3.9rem;
+}
+#top-navigation li {
+  display: inline-block;
+  margin-right: 3.9rem;
+}
+#top-navigation ul {
+  list-style-type: none;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  outline: none;
+  color: gray;
+  transition: color .5s ease-out;
+}
+.active-link {
+  color: #000;
+}
+.inactive-link {
+  color: #000;
+}
+
+
+#index-items, #info {
+  padding-top: 7.1rem;
+}
+#index-items {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -6vh;
+
+  min-width: 320px;
+  letter-spacing: 0.025em;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  height: 100%;
+  z-index: 100;
+}
+.border-xleft {
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: none;
+  border-width: 1px;
+  z-index: 99;
+}
+
+.border-xright {
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-width: 1px;
+  z-index: 99;
+}
+
+.border {
+  border-bottom-style: solid;
+  border-width: 1px;
+  z-index: 99;
+}
+
+
+#project {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 56vw;
+
+  min-width: 320px;
+  letter-spacing: 0.025em;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  height: 100%;
+  z-index: 10;
+}
+
+
+
+.unitfour {
+  height: 100%!important;
+  width: 100%!important;
+}
+#index-itemsone {
+  margin-left: auto;
+  margin-right: auto;
+
+  min-width: 320px;
+  letter-spacing: 0.025em;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  height: 100%;
+}
+
+
+
+
+
+/******************************** FOOTER *******************/
+#footer-navigation {
+  vertical-align: baseline;
+  font-size: .9rem;
+  padding-top: 1.3rem;
+  padding-bottom: 3.9rem;
+
+  padding-left: 3.9rem;
+  padding-right: 3.9rem;
+}
+
+#footer-navigation li {
+  display: inline-block;
+  float: left;
+  margin-right: 0.65rem;
+}
+
+#footer-navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
