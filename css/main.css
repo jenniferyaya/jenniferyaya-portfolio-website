@@ -4,7 +4,6 @@ body, p {
 }
 
 #site {
-  font-family: 'Sorts Mill Goudy', serif;
   font-style: normal;
   font-weight: 500;
   line-height: 1.5em;
@@ -28,13 +27,52 @@ div {
 p {
   margin: 0;
   font-size: 15px;
-  line-height: 1.70em;
-  color: #363838;
+  line-height: 1.3em;
+  color: #1c1c1c;
+}
+
+.mini {
+  font-size: .65rem;
+}
+
+.small-1 {
+  font-size: 1rem;
+}
+
+.small {
+  font-size: 1.3rem;
 }
 
 #main {
   background-color: #f8f8f8;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.serif-italic {
+  font-family: "petersburg-web",serif;
+  font-style: italic;
+}
+
+.serif {
+  font-family: "petersburg-web",serif;
+}
+
+.sans-reg {
+  font-family: 'Muli', sans-serif;
+  font-weight: 400;
+  color: #191919;
+}
+
+.sans-bold {
+  font-family: 'Muli', sans-serif;
+  font-weight: 700;
+  color: #191919;
+}
+
+
 
 /******************************** SPACING *******************/
 
@@ -98,8 +136,32 @@ p {
   padding-right: 2.6rem;
 }
 
+.space-top-1-2 {
+  margin-top: .65rem;
+}
+
+.space-top-small {
+  margin-top: .14rem;
+}
+
 .space-top {
-  margin-top: 3rem;
+  margin-top: 1.3rem;
+}
+
+.space-top2x {
+  margin-top: 2.6rem;
+}
+
+.space-top3x {
+  margin-top: 3.9rem;
+}
+
+.space-top6x {
+  margin-top: 7.8rem;
+}
+
+.space-top9x {
+  margin-top: 11.7rem;
 }
 
 
@@ -112,13 +174,13 @@ p {
   width: 100vw;
   padding-top: 5rem;
   padding-bottom: 0px;
-  border-bottom: 1px solid #363838;
+  border-bottom: 1px solid #1c1c1c;
   z-index: 5000;
   vertical-align: baseline;
 
   font-size: .9rem;
   padding-bottom: 1.3rem;
-  background-color: #f8f8f8;
+  background-color: #fff;
 }
 #top-navigation h1 {
   margin: 0;
@@ -140,7 +202,7 @@ p {
 
 a {
   text-decoration: none;
-  color: #363838;
+  color: #1c1c1c;
 }
 a:hover {
   outline: none;
@@ -159,12 +221,17 @@ a:hover {
   font-size: .9rem;
   padding-top: 1.3rem;
   padding-bottom: 3.9rem;
+
+  padding-left: 3.9rem;
+  padding-right: 3.9rem;
 }
+
 #footer-navigation li {
   display: inline-block;
   float: left;
   margin-right: 0.65rem;
 }
+
 #footer-navigation ul {
   list-style-type: none;
   margin: 0;
@@ -184,8 +251,7 @@ a:hover {
 #index-items {
   margin-left: auto;
   margin-right: auto;
-  max-width: 92vw;
-  margin-top: 1vh;
+  margin-top: -6vh;
 
   min-width: 320px;
   letter-spacing: 0.025em;
@@ -209,13 +275,9 @@ a:hover {
 
 /******************************** PROJECT *******************/
 #project {
-  padding-top: 7.1rem;
-}
-#project {
   margin-left: auto;
   margin-right: auto;
   max-width: 56vw;
-  margin-top: 6vh;
 
   min-width: 320px;
   letter-spacing: 0.025em;
@@ -228,7 +290,7 @@ a:hover {
 }
 
 .information {
-  text-align: center;
+  text-align: left;
 }
 
 
@@ -237,7 +299,7 @@ a:hover {
 
 /******************************** PHOTOGRAPHY *******************/
 
-#top-navigationp {
+#top-navigation {
   position: fixed;
   top: -60px;
   width: 100vw;
@@ -246,23 +308,22 @@ a:hover {
   z-index: 5000;
   vertical-align: baseline;
 
-  font-size: 0.9rem;
+  font-size: 0.80rem;
   padding-bottom: 1.3rem;
   text-align: center;
 }
-#top-navigationp h1 {
+#top-navigation h1 {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.80rem;
   padding-left: 3.9rem;
   padding-right: 3.9rem;
-  font-weight: normal;
 }
-#top-navigationp li {
+#top-navigation li {
   display: block;
   padding-left: 3.9rem;
   padding-right: 3.9rem;
 }
-#top-navigationp ul {
+#top-navigation ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -292,7 +353,11 @@ div img {
   width: 50%;
 }
 
-
+.fill {
+  background-color: #ccddd3;
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
 
 
 
