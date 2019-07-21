@@ -1,13 +1,10 @@
 /******************************** BASIC *******************/
-html, #main, .grid {
-  background-color: #f0f0f0;
-}
-
 body, p {
   margin: 0;
 }
 
 #site {
+  font-family: 'Sorts Mill Goudy', serif;
   font-style: normal;
   font-weight: 500;
   line-height: 1.5em;
@@ -23,53 +20,21 @@ div {
   width: 100%;
   display: block;
 }
+.flexi {
+  width: 91%;
+  display: block;
+}
 
 p {
   margin: 0;
   font-size: 15px;
-  line-height: 1.3em;
-  color: #1c1c1c;
+  line-height: 1.70em;
+  color: #363838;
 }
 
-.mini {
-  font-size: .65rem;
+#main {
+  background-color: #f8f8f8;
 }
-
-.small-1 {
-  font-size: 1rem;
-}
-
-.small {
-  font-size: 1.3rem;
-}
-
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.serif-italic {
-  font-family: "petersburg-web",serif;
-  font-style: italic;
-}
-
-.serif {
-  font-family: "petersburg-web",serif;
-}
-
-.sans-reg {
-  font-family: 'Muli', sans-serif;
-  font-weight: 400;
-  color: #191919;
-}
-
-.sans-bold {
-  font-family: 'Muli', sans-serif;
-  font-weight: 700;
-  color: #191919;
-}
-
-
 
 /******************************** SPACING *******************/
 
@@ -133,52 +98,27 @@ p {
   padding-right: 2.6rem;
 }
 
-.space-top-1-2 {
-  margin-top: .65rem;
-}
-
-.space-top-small {
-  margin-top: .14rem;
-}
-
 .space-top {
-  margin-top: 1.3rem;
+  margin-top: 3rem;
 }
 
-.space-top2x {
-  margin-top: 2.6rem;
-}
 
-.space-top3x {
-  margin-top: 3.9rem;
-}
 
-.space-top6x {
-  margin-top: 7.8rem;
-}
 
-.space-top9x {
-  margin-top: 11.7rem;
-}
-
-.island {
-  padding: 2.9rem;
-  width: 90%;
-}
-
-/******************************** HEADER *******************/
+/******************************** NAVIGATION *******************/
 #top-navigation {
   position: fixed;
   top: -60px;
   width: 100vw;
   padding-top: 5rem;
   padding-bottom: 0px;
-  z-index: 100;
-  background-color: #f0f0f0;
+  border-bottom: 1px solid #363838;
+  z-index: 5000;
   vertical-align: baseline;
 
   font-size: .9rem;
   padding-bottom: 1.3rem;
+  background-color: #f8f8f8;
 }
 #top-navigation h1 {
   margin: 0;
@@ -200,78 +140,52 @@ p {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: #363838;
 }
 a:hover {
   outline: none;
-  color: gray;
+  color: #C9B5B3;
   transition: color .5s ease-out;
 }
 .active-link {
-  color: #000;
+  color: #4a4242;
 }
 .inactive-link {
-  color: #000;
+  color: #ded0d2;
+}
+
+#footer-navigation {
+  vertical-align: baseline;
+  font-size: .9rem;
+  padding-top: 1.3rem;
+  padding-bottom: 3.9rem;
+}
+#footer-navigation li {
+  display: inline-block;
+  float: left;
+  margin-right: 0.65rem;
+}
+#footer-navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.centre {
+  text-align: center;
 }
 
 
+
+/******************************** INDEX PORTFOLIO *******************/
 #index-items, #info {
   padding-top: 7.1rem;
 }
 #index-items {
   margin-left: auto;
   margin-right: auto;
-  margin-top: -6vh;
-
-  min-width: 320px;
-  letter-spacing: 0.025em;
-  word-wrap: break-word;
-  overflow-y: scroll;
-  overflow-x: hidden;
-
-  height: 100%;
-  z-index: 100;
-}
-#index-items-second {
-  margin-left: auto;
-  margin-right: auto;
-
-  min-width: 320px;
-  letter-spacing: 0.025em;
-  word-wrap: break-word;
-  overflow-y: scroll;
-  overflow-x: hidden;
-
-  height: 100%;
-}
-
-.border-xleft {
-  border-right-style: solid;
-  border-bottom-style: solid;
-  border-left-style: none;
-  border-width: 1px;
-  z-index: 99;
-}
-
-.border-xright {
-  border-right-style: none;
-  border-bottom-style: solid;
-  border-left-style: solid;
-  border-width: 1px;
-  z-index: 99;
-}
-
-.border {
-  border-bottom-style: solid;
-  border-width: 1px;
-  z-index: 99;
-}
-
-
-#project {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 56vw;
+  max-width: 92vw;
+  margin-top: 1vh;
 
   min-width: 320px;
   letter-spacing: 0.025em;
@@ -283,15 +197,25 @@ a:hover {
   z-index: 10;
 }
 
-
-
-.unitfour {
-  height: 100%!important;
-  width: 100%!important;
-}
-#index-itemsone {
+#info {
   margin-left: auto;
   margin-right: auto;
+  max-width: 86vw;
+  margin-top: 6vh;
+}
+
+
+
+
+/******************************** PROJECT *******************/
+#project {
+  padding-top: 7.1rem;
+}
+#project {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 56vw;
+  margin-top: 6vh;
 
   min-width: 320px;
   letter-spacing: 0.025em;
@@ -300,31 +224,202 @@ a:hover {
   overflow-x: hidden;
 
   height: 100%;
+  z-index: 10;
+}
+
+.information {
+  text-align: center;
 }
 
 
 
 
 
-/******************************** FOOTER *******************/
-#footer-navigation {
-  vertical-align: baseline;
-  font-size: .9rem;
-  padding-top: 1.3rem;
-  padding-bottom: 3.9rem;
+/******************************** PHOTOGRAPHY *******************/
 
+#top-navigationp {
+  position: fixed;
+  top: -60px;
+  width: 100vw;
+  padding-top: 5.5rem;
+  padding-bottom: 0px;
+  z-index: 5000;
+  vertical-align: baseline;
+
+  font-size: 0.9rem;
+  padding-bottom: 1.3rem;
+  text-align: center;
+}
+#top-navigationp h1 {
+  margin: 0;
+  font-size: 0.9rem;
+  padding-left: 3.9rem;
+  padding-right: 3.9rem;
+  font-weight: normal;
+}
+#top-navigationp li {
+  display: block;
   padding-left: 3.9rem;
   padding-right: 3.9rem;
 }
-
-#footer-navigation li {
-  display: inline-block;
-  float: left;
-  margin-right: 0.65rem;
-}
-
-#footer-navigation ul {
+#top-navigationp ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.work-items {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 86vw;
+    margin-top: 12vh;
+    min-width: 320px;
+    letter-spacing: 0.025em;
+    word-wrap: break-word;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    z-index: 10;
+}
+
+div img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-work {
+  width: 50%;
+}
+
+
+
+
+
+/******************************** SLIDESHOW *******************/
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: rgba(225,255,255,.25);
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************** RESPONSIVE *******************/
+
+@media only screen and (min-width: 20em) {
+
+
+.hover-img {
+  display: none;
+  float: right;
+  width: 46vw;
+}
+
+.hover-text:hover ~ .hover-img {
+  display: none;
+}
+
+#body-blog {
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+}
+
+.right {
+  float: left;
+  padding-right: 3.9rem;
+  margin-bottom: 0.65rem;
+}
+
+}
+
+
+@media only screen and (min-width: 50em) {
+
+#work {
+    height: 88vh;
+    width: 100%;
+    max-width: 850vw;
+    max-height: 64vw;
+    position: relative;
+    overflow: hidden;
+    float: left;
+}
+
+.hover-img {
+  display: none;
+  float: right;
+  width: 46vw;
+}
+
+.hover-text:hover ~ .hover-img {
+  display: block;
+}
+
+#body-blog {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.right {
+  float: right;
+  padding-left: 3.9rem;
+  padding-right: 3.9rem;
+  margin-bottom: 0.65rem;
+}
+
 }
