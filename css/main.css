@@ -8,6 +8,10 @@ body, p {
   font-weight: 500;
   line-height: 1.5em;
   font-size: 1.04em;
+  background-color: #f6f6f4;
+
+  font-family: 'Work Sans', sans-serif;
+  color: #191919;
 }
 
 div {
@@ -18,11 +22,20 @@ div {
 .flex {
   width: 100%;
   display: block;
+  max-width: 900px;
 }
 .flexi {
   width: 91%;
   display: block;
 }
+.center-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
 
 p {
   margin: 0;
@@ -39,12 +52,12 @@ p {
   font-size: 1rem;
 }
 
-.small {
-  font-size: 1.3rem;
+.small-2 {
+  font-size: .75rem;
 }
 
-#main {
-  background-color: #f8f8f8;
+.small {
+  font-size: 1.3rem;
 }
 
 .uppercase {
@@ -60,17 +73,7 @@ p {
   font-family: "petersburg-web",serif;
 }
 
-.sans-reg {
-  font-family: 'Muli', sans-serif;
-  font-weight: 400;
-  color: #191919;
-}
 
-.sans-bold {
-  font-family: 'Muli', sans-serif;
-  font-weight: 700;
-  color: #191919;
-}
 
 
 
@@ -124,6 +127,10 @@ p {
   padding-left: 2.6rem;
 }
 
+.pad-l3x {
+  padding-left: 3.9rem;
+}
+
 .pad-r-1-2 {
   padding-right: 0.65rem;
 }
@@ -164,7 +171,25 @@ p {
   margin-top: 11.7rem;
 }
 
+.island {
+  margin: 1.3rem;
+}
 
+.island2x {
+  margin: 2.6rem;
+}
+
+.island3x {
+  margin: 3.9rem;
+}
+
+.island6x {
+  margin: 7.8rem;
+}
+
+.island9x {
+  margin: 11.7rem;
+}
 
 
 /******************************** NAVIGATION *******************/
@@ -174,17 +199,16 @@ p {
   width: 100vw;
   padding-top: 5rem;
   padding-bottom: 0px;
+  background-color: #f6f6f4;
   border-bottom: 1px solid #1c1c1c;
   z-index: 5000;
   vertical-align: baseline;
 
   font-size: .9rem;
   padding-bottom: 1.3rem;
-  background-color: #fff;
 }
 #top-navigation h1 {
   margin: 0;
-  font-size: .9rem;
   float: left;
   padding-left: 3.9rem;
   padding-right: 3.9rem;
@@ -206,7 +230,7 @@ a {
 }
 a:hover {
   outline: none;
-  color: #C9B5B3;
+  color: #3e5944;
   transition: color .5s ease-out;
 }
 .active-link {
@@ -242,6 +266,9 @@ a:hover {
   text-align: center;
 }
 
+.right {
+  text-align: right;
+}
 
 
 /******************************** INDEX PORTFOLIO *******************/
@@ -270,7 +297,11 @@ a:hover {
   margin-top: 6vh;
 }
 
-
+.work-rules {
+  width: 100vw;
+  padding-bottom: 0px;
+  border-bottom: 1px solid #1c1c1c;
+}
 
 
 /******************************** PROJECT *******************/
@@ -293,71 +324,16 @@ a:hover {
   text-align: left;
 }
 
-
-
-
-
-/******************************** PHOTOGRAPHY *******************/
-
-#top-navigation {
-  position: fixed;
-  top: -60px;
-  width: 100vw;
-  padding-top: 5.5rem;
-  padding-bottom: 0px;
-  z-index: 5000;
-  vertical-align: baseline;
-
-  font-size: 0.80rem;
-  padding-bottom: 1.3rem;
-  text-align: center;
-}
-#top-navigation h1 {
+.indexh2 {
   margin: 0;
-  font-size: 0.80rem;
+  font-size: .9rem;
+  float: left;
   padding-left: 3.9rem;
   padding-right: 3.9rem;
 }
-#top-navigation li {
-  display: block;
-  padding-left: 3.9rem;
-  padding-right: 3.9rem;
-}
-#top-navigation ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
 
-.work-items {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 86vw;
-    margin-top: 12vh;
-    min-width: 320px;
-    letter-spacing: 0.025em;
-    word-wrap: break-word;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 100%;
-    z-index: 10;
-}
 
-div img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.flex-work {
-  width: 50%;
-}
-
-.fill {
-  background-color: #ccddd3;
-  padding-top: 60px;
-  padding-bottom: 20px;
-}
 
 
 
