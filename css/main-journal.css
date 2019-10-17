@@ -2,8 +2,9 @@
 #site {
   line-height: 1.125em;
   font-size: 1em;
+  font-family: trade-gothic-next, sans-serif;
+  font-weight: 300;
 }
-
 
 div {
   display: block;
@@ -27,11 +28,10 @@ div {
 
 p {
   margin: 0;
-  font-size: .93rem;
+  font-size: .80rem;
   line-height: 1.70em;
-
   color: #191919;
-  font-family: 'Sorts Mill Goudy', serif;
+  font-weight: 300;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,25 +42,14 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: block;
 }
-
-.sans-light {
-  font-family: 'Muli', sans-serif;
-  font-weight: 300;
-  color: #191919;
-}
-
-.sans-reg {
-  font-family: 'Muli', sans-serif;
-  font-weight: 400;
-  color: #191919;
-}
-
 .sans-bold {
-  font-family: 'Muli', sans-serif;
-  font-weight: 600;
-  color: #191919;
+  font-weight: 700;
 }
 
+.sans-italic {
+  font-weight: 300;
+  font-style: italic;
+}
 
 a {
   text-decoration: none;
@@ -77,6 +66,25 @@ a:hover {
   text-transform: uppercase;
 }
 
+.mini {
+  font-size: .60rem;
+}
+
+.small-1 {
+  font-size: 1rem;
+}
+
+.small-2 {
+  font-size: .75rem;
+}
+
+.small {
+  font-size: 1.3rem;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
 
 
 
@@ -202,11 +210,9 @@ a:hover {
 /******************************** TOP NAVIGATION *******************/
 h1 {
   line-height: 1.4em;
-  font-size: 1.9rem;
-
 
   text-transform: uppercase;
-  letter-spacing: 0.04em
+  letter-spacing: 0.14em
 }
 
 h1 a:hover {
@@ -278,75 +284,6 @@ h1 a:hover {
 
 
 
-
-/******************************** FOLIO *******************/
-#site {
-  font-style: normal;
-  line-height: 1.5em;
-  font-size: 1.04em;
-}
-
-p {
-  margin: 0;
-}
-
-#body-folio {
-  margin: 0;
-}
-
-.flex-folio {
-  width: 98%;
-  display: block;
-}
-
-
-#header-folio {
-  position: fixed;
-  top: -60px;
-  width: 100vw;
-  padding-top: 5rem;
-  padding-bottom: 0px;
-  background-color: #fff;
-  border-bottom: 2px solid #000;
-  z-index: 5000;
-
-}
-
-.left {
-  float: left;
-  padding-left: 3.9rem;
-  padding-right: 3.9rem;
-  margin-bottom: 0.65rem;
-}
-
-.right {
-  float: right;
-  padding-left: 3.9rem;
-  padding-right: 3.9rem;
-  margin-bottom: 0.65rem;
-}
-
-#header-folio h1 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-#work-folio, #work-about {
-  padding-top: 5.2rem;
-}
-
-.marginb {
-  margin-bottom: 1.3rem;
-}
-
-#work-about {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 86vw;
-  margin-top: 6vh;
-}
-
-
 /******************************** EDITORIAL DESIGN *******************/
 #body-blog {
   margin-left: auto;
@@ -364,7 +301,7 @@ p {
 }
 
 .time {
-  font-size: .65rem;
+  font-size: .60rem;
   text-align: center;
   letter-spacing: .05rem;
 }
@@ -386,7 +323,7 @@ p {
 }
 
 .border {
-  border-top: dotted 1px rgba(29,29,29,.3);
+  border-top: solid 1px rgba(29,29,29,.3);
 }
 
 .lrg {
@@ -443,7 +380,6 @@ ol {
   margin-right: auto;
   text-align: center;
   letter-spacing: 0.04em;
-  font-size: 1.25rem;
 }
 
 .category {

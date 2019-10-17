@@ -45,7 +45,7 @@ p {
 }
 
 .mini {
-  font-size: .65rem;
+  font-size: .60rem;
 }
 
 .small-1 {
@@ -62,15 +62,6 @@ p {
 
 .uppercase {
   text-transform: uppercase;
-}
-
-.serif-italic {
-  font-family: "petersburg-web",serif;
-  font-style: italic;
-}
-
-.serif {
-  font-family: "petersburg-web",serif;
 }
 
 
