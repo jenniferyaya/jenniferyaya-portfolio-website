@@ -43,6 +43,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 .sans-bold {
+  font-family: trade-gothic-next-condensed, sans-serif;
   font-weight: 700;
 }
 
@@ -51,15 +52,20 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
 }
 
-a {
+.link {
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+}
+
+.link a:hover {
+  outline: none;
   text-decoration: none;
   color: #2c2d2d;
 }
 
-a:hover {
-  outline: none;
+a {
+  color: #191919;
   text-decoration: none;
-  color: #2c2d2d;
 }
 
 .uppercase {
@@ -391,6 +397,12 @@ ol {
 
 #menu h1 {
   line-height: 1.4em;
+  text-decoration: none;
+}
+
+#menu h1 a {
+  line-height: 1.4em;
+  text-decoration: none;
 }
 
 /*.sentence {
