@@ -303,6 +303,9 @@ h1 a:hover {
   overflow-y: scroll;
   overflow-x: hidden;
 
+  padding-left: 0;
+  padding: right: 0;
+
   height: 100%;
 }
 
@@ -498,16 +501,13 @@ color: #5b5b5b;
   display: none;
 }
 
-#body-blog {
-  padding-left: 1.3rem;
-  padding-right: 1.3rem;
-}
 
 .right {
   float: left;
   padding-right: 3.9rem;
   margin-bottom: 0.65rem;
 }
+
 
 }
 
@@ -535,8 +535,21 @@ color: #5b5b5b;
 }
 
 #body-blog {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 830px;
+  margin-top: 35px;
+
+  min-width: 320px;
+  letter-spacing: 0.025em;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
   padding-left: 0;
-  padding-right: 0;
+  padding: right: 0;
+
+  height: 100%;
 }
 
 .right {
