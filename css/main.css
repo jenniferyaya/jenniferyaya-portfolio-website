@@ -21,12 +21,8 @@ div {
 .flex {
   width: 100%;
   display: block;
-  max-width: 900px;
 }
-.flexi {
-  width: 91%;
-  display: block;
-}
+
 .center-img {
   display: block;
   margin-left: auto;
@@ -181,37 +177,39 @@ p {
 
 
 /******************************** NAVIGATION *******************/
-#top-navigation {
+#header-navigation {
   position: fixed;
-  top: -60px;
+  top: -40px;
   width: 100vw;
   padding-top: 5rem;
-  padding-bottom: 0px;
   background-color: #f6f6f4;
   border-bottom: 1px solid #1c1c1c;
   z-index: 5000;
   vertical-align: baseline;
 
   font-size: .9rem;
-  padding-bottom: 1.3rem;
+  padding-bottom: 1rem;
 }
-#top-navigation h1 {
+#header-navigation h1 {
   margin: 0;
   float: left;
-  padding-left: 3.9rem;
-  padding-right: 3.9rem;
+  padding-left: 3.65%;
+  padding-right: 3.65%;
 }
-#top-navigation li {
+#header-navigation li {
   display: inline-block;
   margin-right: 3.9rem;
 }
-#top-navigation ul {
+#header-navigation ul {
   list-style-type: none;
   float: right;
   margin: 0;
   padding: 0;
 }
 
+.border {
+  border-bottom: 1px solid #1c1c1c;
+}
 a {
   text-decoration: none;
   color: #1c1c1c;
@@ -261,11 +259,11 @@ a:hover {
 
 /******************************** INDEX PORTFOLIO *******************/
 #index-items, #info {
-  padding-top: 7.1rem;
+  padding-top: 9rem;
 }
 #index-items {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 3.25%;
+  margin-right: 3.25%;
   margin-top: -6vh;
 
   min-width: 320px;
@@ -279,7 +277,7 @@ a:hover {
 }
 
 #info {
-  margin-left: auto;
+  margin-left: 3.25%;
   margin-right: auto;
   max-width: 86vw;
   margin-top: 6vh;
@@ -312,107 +310,16 @@ a:hover {
   text-align: left;
 }
 
-.indexh2 {
-  margin: 0;
-  font-size: .9rem;
-  float: left;
-  padding-left: 3.9rem;
-  padding-right: 3.9rem;
-}
-
-
-
-
-
-
-/******************************** SLIDESHOW *******************/
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-    display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: rgba(225,255,255,.25);
-  font-weight: bold;
-  font-size: 18px;
-  border-radius: 0 3px 3px 0;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /******************************** RESPONSIVE *******************/
 
 @media only screen and (min-width: 20em) {
-
-
-.hover-img {
-  display: none;
-  float: right;
-  width: 46vw;
-}
-
-.hover-text:hover ~ .hover-img {
-  display: none;
-}
 
 #body-blog {
   padding-left: 1.3rem;
   padding-right: 1.3rem;
 }
 
-.right {
-  float: left;
-  padding-right: 3.9rem;
-  margin-bottom: 0.65rem;
-}
 
 }
 
