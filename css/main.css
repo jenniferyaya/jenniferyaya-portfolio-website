@@ -225,6 +225,9 @@ a:hover {
 .inactive-link {
   color: #ded0d2;
 }
+.underline {
+  border-bottom: 1px solid #1c1c1c;
+}
 
 #footer-navigation {
   vertical-align: baseline;
