@@ -38,7 +38,10 @@ div {
   width: 99%;
   display: block;
 }
-
+.flex-3 {
+  width: 99.5%;
+  display: block;
+}
 .thumbnail-1 {
   width: 300px;
   display: block;
