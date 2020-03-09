@@ -5,13 +5,24 @@ body, p {
 
 #site {
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.5em;
-  font-size: 1.04em;
-  background-color: #f6f6f4;
+  font-size: 1rem;
+  background-color: #e9e8df;
 
   font-family: 'Work Sans', sans-serif;
-  color: #191919;
+  color: #323232;
+}
+
+#site-info {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5em;
+  font-size: 1rem;
+  background-color: #505a4d;
+
+  font-family: 'Work Sans', sans-serif;
+  color: #10190e;
 }
 
 div {
@@ -23,6 +34,21 @@ div {
   display: block;
 }
 
+.flex-2 {
+  width: 99%;
+  display: block;
+}
+
+.thumbnail-1 {
+  width: 300px;
+  display: block;
+  vertical-align: middle;
+}
+.valign {
+  vertical-align: middle;
+}
+
+
 .center-img {
   display: block;
   margin-left: auto;
@@ -32,9 +58,8 @@ div {
 
 p {
   margin: 0;
-  font-size: 15px;
   line-height: 1.3em;
-  color: #1c1c1c;
+  color: #323232;
 }
 
 .mini {
@@ -57,8 +82,13 @@ p {
   text-transform: uppercase;
 }
 
+.colour-two {
+  color: #484848;
+}
 
-
+.colour-three {
+  color: #10190e;
+}
 
 
 /******************************** SPACING *******************/
@@ -89,6 +119,14 @@ p {
 
 .space-after3x {
   margin-bottom: 3.9rem;
+}
+
+.space-after4x {
+  margin-bottom: 5.2rem;
+}
+
+.space-after5x {
+  margin-bottom: 6.5rem;
 }
 
 .space-after6x {
@@ -182,12 +220,12 @@ p {
   top: -40px;
   width: 100vw;
   padding-top: 5rem;
-  background-color: #f6f6f4;
+  background-color: #e9e8df;
   border-bottom: 1px solid #1c1c1c;
   z-index: 5000;
   vertical-align: baseline;
 
-  font-size: .9rem;
+  font-size: 0.8rem;
   padding-bottom: 1rem;
 }
 #header-navigation h1 {
@@ -212,22 +250,28 @@ p {
 }
 a {
   text-decoration: none;
-  color: #1c1c1c;
+  color: #323232;
 }
 a:hover {
   outline: none;
-  color: #3e5944;
+  color: #323232;
   transition: color .5s ease-out;
 }
 .active-link {
-  color: #4a4242;
+  color: #323232;
 }
 .inactive-link {
-  color: #ded0d2;
+  color: #323232;
 }
 .underline {
   border-bottom: 1px solid #1c1c1c;
 }
+.underline-three {
+  border-bottom: 1px solid #1c1c1c;
+  color: #10190e;
+}
+
+
 
 #footer-navigation {
   vertical-align: baseline;
@@ -260,6 +304,61 @@ a:hover {
 }
 
 
+
+#header-navigation-info {
+  position: fixed;
+  top: -40px;
+  width: 100vw;
+  padding-top: 5rem;
+  background-color: ##505a4d;
+  border-bottom: 1px solid #1c1c1c;
+  z-index: 5000;
+  vertical-align: baseline;
+
+  font-size: 0.8rem;
+  padding-bottom: 1rem;
+}
+#header-navigation-info h1 {
+  margin: 0;
+  float: left;
+  padding-left: 3.65%;
+  padding-right: 3.65%;
+  color: #10190e;
+}
+#header-navigation-info li {
+  display: inline-block;
+  margin-right: 3.9rem;
+}
+#header-navigation-info ul {
+  list-style-type: none;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+#header-navigation-info h1 a {
+  text-decoration: none;
+  color: #10190e;
+}
+
+
+
+
+#footer li {
+  display: inline-block;
+  margin-right: 3.9rem;
+}
+#footer ul {
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
 /******************************** INDEX PORTFOLIO *******************/
 #index-items, #info {
   padding-top: 9rem;
@@ -283,7 +382,8 @@ a:hover {
   margin-left: 3.25%;
   margin-right: auto;
   max-width: 86vw;
-  margin-top: 6vh;
+  margin-top: 0vh;
+  background-color: #505a4d;
 }
 
 .work-rules {
@@ -322,7 +422,10 @@ a:hover {
   padding-left: 1.3rem;
   padding-right: 1.3rem;
 }
-
+.flex-2 {
+  width: 100%;
+  display: block;
+}
 
 }
 
@@ -360,5 +463,20 @@ a:hover {
   padding-right: 3.9rem;
   margin-bottom: 0.65rem;
 }
+
+.flex-2 {
+  width: 99%;
+  display: block;
+}
+
+}
+
+@media only screen and (min-width: 70em) {
+
+.flex-2 {
+  width: 99%;
+  display: block;
+}
+
 
 }
