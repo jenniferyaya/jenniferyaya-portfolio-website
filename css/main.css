@@ -380,7 +380,16 @@ a:hover {
   height: 100%;
   z-index: 10;
 }
+#blog-items {
+  min-width: 320px;
+  letter-spacing: 0.025em;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
+  height: 100%;
+  z-index: 10;
+}
 #info {
   margin-left: 3.25%;
   margin-right: auto;
