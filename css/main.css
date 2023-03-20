@@ -19,7 +19,7 @@ body, p {
   font-weight: 400;
   line-height: 1.5em;
   font-size: 1rem;
-  background-color: #505a4d;
+  background-color: #F7F6F1;
 
   font-family: 'Work Sans', sans-serif;
   color: #10190e;
@@ -313,7 +313,7 @@ a:hover {
   top: -40px;
   width: 100vw;
   padding-top: 5rem;
-  background-color: ##505a4d;
+  background-color: #F7F6F1;
   border-bottom: 1px solid #1c1c1c;
   z-index: 5000;
   vertical-align: baseline;
@@ -406,7 +406,7 @@ a:hover {
   margin-right: auto;
   max-width: 86vw;
   margin-top: 0vh;
-  background-color: #505a4d;
+  background-color: #F7F6F1;
 }
 
 .work-rules {
