@@ -19,10 +19,10 @@ body, p {
   font-weight: 400;
   line-height: 1.5em;
   font-size: 1rem;
-  background-color: #F7F6F1;
+  background-color: #8a8a8a;
 
   font-family: 'Work Sans', sans-serif;
-  color: #10190e;
+  color: #000000;
 }
 
 div {
@@ -77,6 +77,10 @@ p {
   font-size: .75rem;
 }
 
+.small-3 {
+  font-size: .65rem;
+}
+
 .small {
   font-size: 1.3rem;
 }
@@ -92,6 +96,7 @@ p {
 .colour-three {
   color: #10190e;
 }
+
 
 
 /******************************** SPACING *******************/
@@ -168,8 +173,12 @@ p {
   padding-right: 2.6rem;
 }
 
-.space-top-1-2 {
-  margin-top: .65rem;
+.space-top-small {
+  margin-top: .14rem;
+}
+
+.space-top-small2 {
+  margin-top: .34rem;
 }
 
 .space-top-small {
@@ -224,14 +233,13 @@ p {
   width: 100vw;
   padding-top: 5rem;
   background-color: #e9e8df;
-  border-bottom: 1px solid #1c1c1c;
+  border-bottom: 1px solid #10190e;
   z-index: 5000;
   vertical-align: baseline;
-
   font-size: 0.8rem;
   padding-bottom: 1rem;
 }
-#header-navigation h1 {
+#header-navigation h1, h2 {
   margin: 0;
   float: left;
   padding-left: 3.65%;
@@ -249,28 +257,30 @@ p {
 }
 
 .border {
-  border-bottom: 1px solid #1c1c1c;
+  border-bottom: 1px solid #10190e;
 }
-a {
+a:link {
   text-decoration: none;
-  color: #323232;
+  color: #10190e;
+}
+a:visited {
+  color: #10190e;
+  font-weight: 900;
 }
 a:hover {
   outline: none;
-  color: #323232;
+  color: #8a8a8a;
+  font-weight: 900;
   transition: color .5s ease-out;
 }
-.active-link {
-  color: #323232;
-}
-.inactive-link {
-  color: #323232;
+a:active {
+  color: #8a8a8a;
 }
 .underline {
-  border-bottom: 1px solid #1c1c1c;
+  border-bottom: 1px solid #10190e;
 }
 .underline-three {
-  border-bottom: 1px solid #1c1c1c;
+  border-bottom: 1px solid #10190e;
   color: #10190e;
 }
 
@@ -313,15 +323,15 @@ a:hover {
   top: -40px;
   width: 100vw;
   padding-top: 5rem;
-  background-color: #F7F6F1;
-  border-bottom: 1px solid #1c1c1c;
+  background-color: #8a8a8a;
+  border-bottom: 1px solid #10190e;
   z-index: 5000;
   vertical-align: baseline;
 
   font-size: 0.8rem;
   padding-bottom: 1rem;
 }
-#header-navigation-info h1 {
+#header-navigation-info h1, h2 {
   margin: 0;
   float: left;
   padding-left: 3.65%;
@@ -367,8 +377,8 @@ a:hover {
   padding-top: 9rem;
 }
 #index-items {
-  margin-left: 3.25%;
-  margin-right: 3.25%;
+  margin-left: 2%;
+  margin-right: 2%;
   margin-top: -6vh;
 
   min-width: 320px;
@@ -402,11 +412,11 @@ a:hover {
   z-index: 10;
 }
 #info {
-  margin-left: 3.25%;
+  margin-left: 2%;
   margin-right: auto;
   max-width: 86vw;
   margin-top: 0vh;
-  background-color: #F7F6F1;
+  background-color: #8a8a8a;
 }
 
 .work-rules {
@@ -415,6 +425,14 @@ a:hover {
   border-bottom: 1px solid #1c1c1c;
 }
 
+.left-panel {
+  position: fixed;
+  z-index: 0;
+}
+
+.right-panel {
+  position: absolute;
+}
 
 /******************************** PROJECT *******************/
 #project {
