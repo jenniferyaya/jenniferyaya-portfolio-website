@@ -11,7 +11,7 @@ body, p {
   background-color: #e9e8df;
 
   font-family: 'Work Sans', sans-serif;
-  color: #323232;
+  color: #1D1814;
 }
 
 #site-info {
@@ -22,7 +22,7 @@ body, p {
   background-color: #b0b0b0;
 
   font-family: 'Work Sans', sans-serif;
-  color: #000000;
+  color: #1D1814;
 }
 
 div {
@@ -62,39 +62,25 @@ div {
 p {
   margin: 0;
   line-height: 1.3em;
-  color: #323232;
+  color: #1D1814;
 }
-
 .mini {
   font-size: .60rem;
 }
-
 .small-1 {
-  font-size: 1rem;
+  font-size: .85rem;
 }
-
 .small-2 {
   font-size: .75rem;
 }
-
 .small-3 {
-  font-size: .65rem;
+  font-size: .72rem;
 }
-
 .small {
   font-size: 1.3rem;
 }
-
 .uppercase {
   text-transform: uppercase;
-}
-
-.colour-two {
-  color: #484848;
-}
-
-.colour-three {
-  color: #10190e;
 }
 
 
@@ -233,7 +219,7 @@ p {
   width: 100vw;
   padding-top: 5rem;
   background-color: #e9e8df;
-  border-bottom: 1px solid #10190e;
+  border-bottom: 1px solid #1D1814;
   z-index: 5000;
   vertical-align: baseline;
   font-size: 0.8rem;
@@ -257,14 +243,14 @@ p {
 }
 
 .border {
-  border-bottom: 1px solid #10190e;
+  border-bottom: 1px solid #1D1814;
 }
 a:link {
   text-decoration: none;
-  color: #10190e;
+  color: #1D1814;
 }
 a:visited {
-  color: #10190e;
+  color: #1D1814;
   font-weight: 900;
 }
 a:hover {
@@ -274,13 +260,13 @@ a:hover {
   transition: color .5s ease-out;
 }
 a:active {
-  color: #8a8a8a;
+  color: #1D1814;
 }
 .underline {
-  border-bottom: 1px solid #10190e;
+  border-bottom: 1px solid #1D1814;
 }
 .underline-three {
-  border-bottom: 1px solid #10190e;
+  border-bottom: 1px solid #1D1814;
   color: #10190e;
 }
 
@@ -324,7 +310,7 @@ a:active {
   width: 100vw;
   padding-top: 5rem;
   background-color: #b0b0b0;
-  border-bottom: 1px solid #10190e;
+  border-bottom: 1px solid #1D1814;
   z-index: 5000;
   vertical-align: baseline;
 
@@ -351,7 +337,7 @@ a:active {
 
 #header-navigation-info h1 a {
   text-decoration: none;
-  color: #10190e;
+  color: #1D1814;
 }
 
 
@@ -422,7 +408,7 @@ a:active {
 .work-rules {
   width: 100vw;
   padding-bottom: 0px;
-  border-bottom: 1px solid #1c1c1c;
+  border-bottom: 1px solid #1D1814;
 }
 
 .left-panel {
