@@ -1,6 +1,8 @@
 /******************************** BASIC *******************/
 body, p {
   margin: 0;
+    color: #1D1814;
+
 }
 
 #site {
@@ -10,10 +12,10 @@ body, p {
   font-size: 1rem;
   background-color: #e9e8df;
 
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Fira Sans", serif;
+  font-weight: 400;
   color: #1D1814;
 }
-
 #site-info {
   font-style: normal;
   font-weight: 400;
@@ -21,7 +23,8 @@ body, p {
   font-size: 1rem;
   background-color: #b0b0b0;
 
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Fira Sans", serif;
+  font-weight: 400;
   color: #1D1814;
 }
 
@@ -29,11 +32,16 @@ div {
   display: block;
 }
 
+
+.bold {
+  font-family: "Fira Sans", serif;
+  font-weight: 600;
+  font-style: normal;
+}
 .flex {
   width: 100%;
   display: block;
 }
-
 .flex-2 {
   width: 99%;
   display: block;
@@ -168,10 +176,6 @@ p {
   margin-top: .34rem;
 }
 
-.space-top-small {
-  margin-top: .14rem;
-}
-
 .space-top {
   margin-top: 1.3rem;
 }
@@ -225,6 +229,9 @@ p {
   vertical-align: baseline;
   font-size: 0.8rem;
   padding-bottom: 1rem;
+    font-family: "Fira Sans", serif;
+  font-weight: 400;
+  color: #1D1814;
 }
 #header-navigation h1, h2 {
   margin: 0;
@@ -365,7 +372,7 @@ a:active {
 }
 #index-items {
   margin-left: 2%;
-  margin-right: 2%;
+  margin-right: 1%;
   margin-top: -6vh;
 
   min-width: 320px;
