@@ -317,7 +317,6 @@ a:active {
   top: -40px;
   width: 100vw;
   padding-top: 5rem;
-  background-color: #b0b0b0;
   border-bottom: 1px solid #1D1814;
   z-index: 5000;
   vertical-align: baseline;
@@ -330,7 +329,6 @@ a:active {
   float: left;
   padding-left: 3.65%;
   padding-right: 3.65%;
-  color: #10190e;
 }
 #header-navigation-info li {
   display: inline-block;
@@ -410,7 +408,6 @@ a:active {
   margin-right: auto;
   max-width: 86vw;
   margin-top: 0vh;
-  background-color: #b0b0b0;
 }
 
 .work-rules {
