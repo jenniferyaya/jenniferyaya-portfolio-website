@@ -310,8 +310,6 @@ a:active {
   text-align: right;
 }
 
-
-
 #header-navigation-info {
   position: fixed;
   top: -40px;
@@ -340,13 +338,14 @@ a:active {
   margin: 0;
   padding: 0;
 }
-
 #header-navigation-info h1 a {
   text-decoration: none;
   color: #1D1814;
 }
-
-
+.left-panel {
+  position: fixed;
+  z-index: 0;
+}
 
 
 #footer li {
@@ -359,8 +358,6 @@ a:active {
   margin: 0;
   padding: 0;
 }
-
-
 
 
 
@@ -416,39 +413,10 @@ a:active {
   border-bottom: 1px solid #1D1814;
 }
 
-.left-panel {
-  position: fixed;
-  z-index: 0;
-}
-
-.right-panel {
-  position: absolute;
-}
-
-/******************************** PROJECT *******************/
-#project {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 56vw;
-
-  min-width: 320px;
-  letter-spacing: 0.025em;
-  word-wrap: break-word;
-  overflow-y: scroll;
-  overflow-x: hidden;
-
-  height: 100%;
-  z-index: 10;
-}
-
-.information {
-  text-align: left;
-}
-
 
 /******************************** RESPONSIVE *******************/
 
-@media only screen and (min-width: 20em) {
+@media only screen and (min-width: 15em) {
 
 #body-blog {
   padding-left: 1.3rem;
@@ -458,44 +426,21 @@ a:active {
   width: 100%;
   display: block;
 }
+.left-panel {
+  position: static;
+  z-index: 0;
+}
+
 
 }
 
 
 @media only screen and (min-width: 50em) {
 
-#work {
-    height: 88vh;
-    width: 100%;
-    max-width: 850vw;
-    max-height: 64vw;
-    position: relative;
-    overflow: hidden;
-    float: left;
+.left-panel {
+  position: fixed;
+  z-index: 0;
 }
-
-.hover-img {
-  display: none;
-  float: right;
-  width: 46vw;
-}
-
-.hover-text:hover ~ .hover-img {
-  display: block;
-}
-
-#body-blog {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.right {
-  float: right;
-  padding-left: 3.9rem;
-  padding-right: 3.9rem;
-  margin-bottom: 0.65rem;
-}
-
 .flex-2 {
   width: 99%;
   display: block;
@@ -509,7 +454,10 @@ a:active {
   width: 99%;
   display: block;
 }
-
+.left-panel {
+  position: fixed;
+  z-index: 0;
+}
 
 }
 
