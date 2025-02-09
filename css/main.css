@@ -263,9 +263,9 @@ a:visited {
 }
 a:hover {
   outline: none;
-  color: #8a8a8a;
+  color: #d58900;
   font-weight: 900;
-  transition: color .5s ease-out;
+  transition: color .4s ease-out;
 }
 a:active {
   color: #1D1814;
