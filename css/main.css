@@ -416,9 +416,9 @@ a:active {
 
 
 /******************************** RESPONSIVE *******************/
-@media only screen and (min-width: 10em) {
+@media only screen and (min-width: 8em) {
 #index-items {
-  margin-top: -6vh;
+  margin-top: -8vh;
 }
 .left-panel {
   position: static;
@@ -427,9 +427,7 @@ a:active {
 
 }
 
-
 @media only screen and (min-width: 15em) {
-
 #body-blog {
   padding-left: 1.3rem;
   padding-right: 1.3rem;
@@ -445,6 +443,11 @@ a:active {
 
 }
 
+@media only screen and (min-width: 20em) {
+#index-items {
+  margin-top: -10vh;
+}
+}
 
 @media only screen and (min-width: 50em) {
 #index-items {
