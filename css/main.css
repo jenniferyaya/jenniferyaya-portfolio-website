@@ -434,16 +434,18 @@ a:active {
 
 }
 
-@media only screen and (min-width: 20em) {
+@media only screen and (min-width: 10em) {
 #index-items {
-  margin-top: -9vh;
-
+  margin-top: -6vh;
 }
+
 }
 
 
 @media only screen and (min-width: 50em) {
-
+#index-items {
+  margin-top: -9vh;
+}
 .left-panel {
   position: fixed;
   z-index: 0;
