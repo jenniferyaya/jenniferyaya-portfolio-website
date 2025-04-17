@@ -1,7 +1,7 @@
 /******************************** BASIC *******************/
 body, p {
   margin: 0;
-    color: #1D1814;
+    color: #191102;
 
 }
 
@@ -14,7 +14,7 @@ body, p {
 
   font-family: "Fira Sans", serif;
   font-weight: 400;
-  color: #080500;
+  color: #191102;
 }
 #site-info {
   font-style: normal;
@@ -25,7 +25,7 @@ body, p {
 
   font-family: "Fira Sans", serif;
   font-weight: 400;
-  color: #080500;
+  color: #191102;
 }
 
 div {
@@ -70,7 +70,7 @@ div {
 p {
   margin: 0;
   line-height: 1.3em;
-  color: #1D1814;
+  color: #191102;
 }
 .mini {
   font-size: .60rem;
@@ -224,14 +224,14 @@ p {
   width: 100vw;
   padding-top: 5rem;
   background-color: #e9e8df;
-  border-bottom: 1px solid #1D1814;
+  border-bottom: 1px solid #191102;
   z-index: 5000;
   vertical-align: baseline;
   font-size: 0.8rem;
   padding-bottom: 1rem;
     font-family: "Fira Sans", serif;
   font-weight: 400;
-  color: #1D1814;
+  color: #191102;
 }
 #header-navigation h1, h2 {
   margin: 0;
@@ -251,14 +251,14 @@ p {
 }
 
 .border {
-  border-bottom: 1px solid #1D1814;
+  border-bottom: 1px solid #191102;
 }
 a:link {
   text-decoration: none;
-  color: #1D1814;
+  color: #191102;
 }
 a:visited {
-  color: #1D1814;
+  color: #191102;
   font-weight: 900;
 }
 a:hover {
@@ -268,13 +268,13 @@ a:hover {
   transition: color .4s ease-out;
 }
 a:active {
-  color: #1D1814;
+  color: #191102;
 }
 .underline {
-  border-bottom: 1px solid #1D1814;
+  border-bottom: 1px solid #191102;
 }
 .underline-three {
-  border-bottom: 1px solid #1D1814;
+  border-bottom: 1px solid #191102;
   color: #10190e;
 }
 
@@ -315,7 +315,7 @@ a:active {
   top: -40px;
   width: 100vw;
   padding-top: 5rem;
-  border-bottom: 1px solid #1D1814;
+  border-bottom: 1px solid #191102;
   z-index: 5000;
   vertical-align: baseline;
 
@@ -341,7 +341,7 @@ a:active {
 }
 #header-navigation-info h1 a {
   text-decoration: none;
-  color: #1D1814;
+  color: #191102;
 }
 .left-panel {
   position: fixed;
@@ -412,7 +412,7 @@ a:active {
 .work-rules {
   width: 100vw;
   padding-bottom: 0px;
-  border-bottom: 1px solid #1D1814;
+  border-bottom: 1px solid #191102;
 }
 
 
