@@ -12,19 +12,19 @@ body, p {
   font-size: 1rem;
   background-color: #e9e8df;
 
-  font-family: "Fira Sans", serif;
-  font-weight: 400;
+font-family: "area-normal", sans-serif;
+font-weight: 400;
+font-style: normal;
   color: #191102;
 }
 #site-info {
-  font-style: normal;
-  font-weight: 400;
   line-height: 1.5em;
   font-size: 1rem;
   background-color: #ffac16;
 
-  font-family: "Fira Sans", serif;
-  font-weight: 400;
+font-family: "area-normal", sans-serif;
+font-weight: 400;
+font-style: normal;
   color: #191102;
 }
 
@@ -32,10 +32,16 @@ div {
   display: block;
 }
 
+.bold-ext {
+  font-family: "area-extended", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
 
 .bold {
-  font-family: "Fira Sans", serif;
-  font-weight: 600;
+font-family: "area-normal", sans-serif;
+font-weight: 700;
+font-style: normal;
   font-style: normal;
 }
 .flex {
@@ -91,8 +97,16 @@ p {
 .uppercase {
   text-transform: uppercase;
 }
-
-
+.bold-ext {
+font-family: "area-extended", sans-serif;
+font-weight: 700;
+font-style: normal;
+}
+.extended {
+font-family: "area-extended", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
 
 /******************************** SPACING *******************/
 
@@ -229,8 +243,8 @@ p {
   vertical-align: baseline;
   font-size: 0.8rem;
   padding-bottom: 1rem;
-    font-family: "Fira Sans", serif;
-  font-weight: 400;
+  font-family: "area-extended", sans-serif;
+  font-style: normal;
   color: #191102;
 }
 #header-navigation h1, h2 {
@@ -371,27 +385,6 @@ a:active {
   margin-right: 1%;
   margin-top: -9vh;
 
-  min-width: 320px;
-  letter-spacing: 0.025em;
-  word-wrap: break-word;
-  overflow-y: scroll;
-  overflow-x: hidden;
-
-  height: 100%;
-  z-index: 10;
-}
-#blog-items {
-  min-width: 320px;
-  letter-spacing: 0.025em;
-  word-wrap: break-word;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  margin-top: 8vh;
-
-  height: 100%;
-  z-index: 10;
-}
-#blog-items-2nd {
   min-width: 320px;
   letter-spacing: 0.025em;
   word-wrap: break-word;
