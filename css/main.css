@@ -1,78 +1,33 @@
-/******************************** BASIC *******************/
+/***** BASIC *****/
 body, p {
   margin: 0;
     color: #191102;
-
 }
 
 #site {
-  font-style: normal;
-  font-weight: 400;
   line-height: 1.5em;
   font-size: 1rem;
   background-color: #e9e8df;
 
-font-family: "area-normal", sans-serif;
-font-weight: 400;
-font-style: normal;
   color: #191102;
 }
 #site-info {
   line-height: 1.5em;
   font-size: 1rem;
   background-color: #ffac16;
-
-font-family: "area-normal", sans-serif;
-font-weight: 400;
-font-style: normal;
-  color: #191102;
 }
-
 div {
   display: block;
 }
+#site-project {
+  line-height: 1.5em;
+  font-size: 1rem;
+  background-color: #e9e8df;
 
-.bold-ext {
-  font-family: "area-extended", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.bold {
-font-family: "area-normal", sans-serif;
-font-weight: 700;
-font-style: normal;
-  font-style: normal;
-}
-.flex {
-  width: 100%;
-  display: block;
-}
-.flex-2 {
-  width: 99%;
-  display: block;
-}
-.flex-3 {
-  width: 99.5%;
-  display: block;
-}
-.thumbnail-1 {
-  width: 300px;
-  display: block;
-  vertical-align: middle;
-}
-.valign {
-  vertical-align: middle;
+  color: #191102;
 }
 
-
-.center-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
+/***** TYPOGRAPHY *****/
 p {
   margin: 0;
   line-height: 1.3em;
@@ -107,9 +62,13 @@ font-family: "area-extended", sans-serif;
 font-weight: 400;
 font-style: normal;
 }
+.serif p {
+	font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
-/******************************** SPACING *******************/
-
+/***** SPACING *****/
 .margin0 {
   margin: 0;
 }
@@ -152,6 +111,10 @@ font-style: normal;
 
 .space-after9x {
   margin-bottom: 11.7rem;
+}
+
+.space-after10x {
+  margin-bottom: 12.7rem;
 }
 
 .pad-l-1-2 {
@@ -230,249 +193,279 @@ font-style: normal;
   margin: 11.7rem;
 }
 
-
-/******************************** NAVIGATION *******************/
-#header-navigation {
-  position: fixed;
-  top: -40px;
-  width: 100vw;
-  padding-top: 5rem;
-  background-color: #e9e8df;
-  border-bottom: 1px solid #191102;
-  z-index: 5000;
-  vertical-align: baseline;
-  font-size: 0.8rem;
-  padding-bottom: 1rem;
-  font-family: "area-extended", sans-serif;
-  font-style: normal;
-  color: #191102;
+/***** NAVIGATION *****/
+.colourbg {
+	background-color: #ded0d2;
 }
-#header-navigation h1, h2 {
-  margin: 0;
-  float: left;
-  padding-left: 3.65%;
-  padding-right: 3.65%;
+/* H1 left, nav right */
+#header-navigation .header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* pushes UL to the right edge */
 }
-#header-navigation li {
-  display: inline-block;
-  margin-right: 3.9rem;
-}
+/* Make the nav horizontal */
 #header-navigation ul {
-  list-style-type: none;
-  float: right;
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
-
-.border {
-  border-bottom: 1px solid #191102;
-}
-a:link {
+#header-navigation li a {
   text-decoration: none;
-  color: #191102;
+  color: inherit;
 }
-a:visited {
-  color: #191102;
-  font-weight: 900;
+#header-navigation h1 a {
+  text-decoration: none;
+  color: inherit;
 }
-a:hover {
-  outline: none;
-  color: #d58900;
-  font-weight: 900;
-  transition: color .4s ease-out;
+#main {
+	  padding: 80px 80px 0;
 }
-a:active {
-  color: #191102;
-}
-.underline {
-  border-bottom: 1px solid #191102;
-}
-.underline-three {
-  border-bottom: 1px solid #191102;
-  color: #10190e;
+#site {
+    background-color: #ffac16;
 }
 
-
-
-#footer-navigation {
-  vertical-align: baseline;
-  font-size: .9rem;
-  padding-top: 1.3rem;
-  padding-bottom: 3.9rem;
-
-  padding-left: 3.9rem;
-  padding-right: 3.9rem;
+/***** HERO PROJECT *****/
+/* left column */
+.hero-text {
+  max-width: 26rem;
 }
 
-#footer-navigation li {
-  display: inline-block;
-  float: left;
-  margin-right: 0.65rem;
+.hero-title {
+	font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
+  line-height: 1.05;
+  margin: 0 0 1.5rem;
 }
 
-#footer-navigation ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+/* “Read more” link */
+.hero-link {
+  font-size: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  color: inherit;
+  font-family: "area-extended", sans-serif;
+font-weight: 400;
+font-style: normal;
 }
 
-.centre {
-  text-align: center;
-}
-
-.right {
+/* right column */
+.hero-media {
   text-align: right;
 }
 
-#header-navigation-info {
-  position: fixed;
-  top: -40px;
-  width: 100vw;
-  padding-top: 5rem;
-  border-bottom: 1px solid #191102;
-  z-index: 5000;
-  vertical-align: baseline;
-
-  font-size: 0.8rem;
-  padding-bottom: 1rem;
-  background-color: #ffac16;
-}
-#header-navigation-info h1, h2 {
-  margin: 0;
-  float: left;
-  padding-left: 3.65%;
-  padding-right: 3.65%;
-}
-#header-navigation-info li {
+.hero-media img {
+  max-width: 100%;
+  height: auto;
   display: inline-block;
-  margin-right: 3.9rem;
-}
-#header-navigation-info ul {
-  list-style-type: none;
-  float: right;
-  margin: 0;
-  padding: 0;
-}
-#header-navigation-info h1 a {
-  text-decoration: none;
-  color: #191102;
-}
-.left-panel {
-  position: fixed;
-  z-index: 0;
 }
 
+/* a bit tighter on small screens */
+@media (max-width: 768px) {
+  .project-hero {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-media {
+    margin-top: 2.5rem;
+    text-align: left;
+  }
+}
+
+
+/***** MAIN PORTFOLIO *****/
+.preview {
+	font-size: 3rem;
+}
+#portfolio img {
+  width: 99%;
+  height: auto;
+  display: block;
+}
+.read-more {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+text-decoration: underline;
+  font-family: "area-extended", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+/* subtle hover animation */
+.read-more:hover::after {
+  transform: translateX(4px);
+}
+
+#portfolio h3 {
+	font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 5%;
+  margin-bottom: 1%;
+  font-size: 2rem;
+}
+
+
+/***** FOOTER *****/
+#footer h3 {
+	font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+#footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
 #footer li {
-  display: inline-block;
-  margin-right: 3.9rem;
-}
-#footer ul {
-  list-style-type: none;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-
-
-/******************************** INDEX PORTFOLIO *******************/
-#index-items, #info {
-  padding-top: 9rem;
-}
-#index-items {
-  margin-left: 2%;
-  margin-right: 1%;
-  margin-top: -9vh;
-
-  min-width: 320px;
-  letter-spacing: 0.025em;
-  word-wrap: break-word;
-  overflow-y: scroll;
-  overflow-x: hidden;
-
-  height: 100%;
-  z-index: 10;
-}
-#info {
-  margin-left: 2%;
-  margin-right: auto;
-  max-width: 86vw;
-  margin-top: 0vh;
-  background-color: #ffac16;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 0.4rem;
+  font-family: "area-extended", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: .79rem;
+  line-height: 1.2rem;
 }
 
-.work-rules {
-  width: 100vw;
-  padding-bottom: 0px;
-  border-bottom: 1px solid #191102;
+#footer a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
 }
 
-
-/******************************** RESPONSIVE *******************/
-@media only screen and (min-width: 8em) {
-#index-items {
-  margin-top: -8vh;
+#footer a:hover {
+  opacity: 0.7;
 }
-.left-panel {
-  position: static;
-  z-index: 0;
-}
-
-}
-
-@media only screen and (min-width: 15em) {
-#body-blog {
-  padding-left: 1.3rem;
-  padding-right: 1.3rem;
-}
-.flex-2 {
+.footer-divider {
+  border: none;
+  height: 1px;
+  background-color: #161616;
   width: 100%;
+  margin: 4rem 0 3rem 0;
+}
+
+.copyright {
+  margin-top: 2rem;
+  opacity: 0.7;
+  font-family: "area-extended", sans-serif;
+  font-weight: 400;
+}
+
+
+/***** CASE STUDY HERO *****/
+
+#case-hero {
+  padding: 0rem 4rem 4rem;     /* works with your #main padding */
+  margin-left: -80px;          /* optional: align with edges if #main has 80px padding */
+  margin-right: -80px;
+}
+
+/* Title */
+.case-title {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 1.05;
+  margin: 0 0 2rem;
+}
+
+/* Intro text */
+.case-intro {
+  max-width: 40rem;
+  line-height: 1.6;
+}
+
+/* Meta row */
+.case-meta-label {
+  opacity: 0.6;
+  margin-bottom: 0.3rem;
+    font-family: "area-extended", sans-serif;
+  font-weight: 600;
+}
+
+
+.case-meta-value {
+  opacity: 0.95;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  #case-hero {
+    padding: 3rem 1.5rem;
+    margin-left: -24px;   /* match your smaller #main padding if you change it */
+    margin-right: -24px;
+  }
+
+  .case-title {
+    font-size: 2.6rem;
+  }
+
+  .case-intro {
+    max-width: 100%;
+  }
+
+  .case-meta-label,
+  .case-meta-value {
+    margin-bottom: 0.6rem;
+  }
+}
+
+/***** CASE STUDY IMAGE BLOCK *****/
+
+.case-image-block img.case-image {
+  width: 100%;
+  height: auto;
   display: block;
-}
-.left-panel {
-  position: static;
-  z-index: 0;
+  border-radius: 4px; /* optional, remove if you want sharp corners */
 }
 
-}
+/***** CASE STUDY SECTION: TEXT + IMAGE GRID *****/
 
-@media only screen and (min-width: 20em) {
-#index-items {
-  margin-top: -10vh;
-}
-}
-
-@media only screen and (min-width: 50em) {
-#index-items {
-  margin-top: -9vh;
-}
-.left-panel {
-  position: fixed;
-  z-index: 0;
-}
-.flex-2 {
-  width: 99%;
+.case-section img.case-image {
+  width: 98%;
+  height: auto;
   display: block;
+  border-radius: 4px; /* optional */
 }
 
+.case-subtitle {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin: 0;
+  margin-bottom: 0.6rem;
 }
 
-@media only screen and (min-width: 70em) {
-
-.flex-2 {
-  width: 99%;
-  display: block;
-}
-.left-panel {
-  position: fixed;
-  z-index: 0;
-}
-#index-items {
-  margin-top: -9vh;
+/* Make spacing feel balanced */
+.case-section .pad-r {
+  padding-right: 2.6rem;
 }
 
-
+.sans {
+    font-family: "area-extended", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: .79rem;
+  line-height: 1.2rem;
 }
 
-
+/* Mobile handling */
+@media (max-width: 768px) {
+  .case-section .pad-r {
+    padding-right: 0;
+  }
+}
