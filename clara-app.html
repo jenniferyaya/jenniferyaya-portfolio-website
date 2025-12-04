@@ -43,10 +43,9 @@
       <h1 class="case-title serif">Clara</h1>
 
       <p class="case-intro small sans space-after-1-2">
-        Group travel often begins with enthusiasm but quickly becomes chaotic. People bounce between group chats, spreadsheets, booking sites, and screenshots.
-        Ideas get buried, decisions are unclear, and one person, usually the organized friend ends up carrying the entire mental load.</p>
-        <p class="case-intro small sans">This case study explores Clara, a mobile app designed to make group trip planning feel collaborative, organized, and enjoyable.
-      </p>
+        Planning trips with friends often sounds fun at the start, but the reality quickly becomes messy: scattered conversations, uneven workloads, lost decisions, and a single person carrying most of the burden.</p>
+        <p class="case-intro small sans space-after-1-2">Clara named from the Latin word for <i>bright</i> and <i>transparent</i> is an iOS mobile app that aims to reduce that cognitive load and create a planning experience that feels calm, organized, and genuinely collaborative.</p>
+        <p class="case-intro small sans">This project followed a full human-centered design process, from foundational research through low and mid-fidelity prototyping and usability testing. Clara’s mission is simple: make planning together feel just as enjoyable as the trip itself..</p>
     </div>
 
   </div>
@@ -61,7 +60,7 @@
 
     <div class="unit xs-1 s-1 m-1-4 l-1-4">
       <p class="case-meta-label small-3 uppercase">Timeline</p>
-      <p class="case-meta-value small sans">4 weeks</p>
+      <p class="case-meta-value small sans">5 weeks</p>
     </div>
 
     <div class="unit xs-1 s-1 m-1-4 l-1-4">
@@ -95,284 +94,211 @@
     <!-- Left text column - wider -->
     <div class="unit xs-1 s-1 m-1-2 l-1-2">
       <h2 class="case-subtitle serif space-after">Problem</h2>
-      <p class="small sans">
-        Through surveys and interviews (ages 25–38, all recent group travelers), three issues came up repeatedly:</p>
-        <ul class="sans small">
-          <li>People rely on too many disconnected tools: chats, spreadsheets, Maps, Pinterest, Splitwise, email.</li>
-          <li>One person almost always becomes the planner, leading to uneven effort and burnout.</li>
-          <li>Planning feels exciting at first, but quickly shifts into decision fatigue and confusion.</li></ul>
-        <p class="small sans space-after2x">Existing tools solve individual tasks, but not the experience of planning together.
-          This gap became the core design opportunity.</p></div>
+      <p class="small sans space-after-1-2 pad-r">
+        Group trips often fall apart not because people don’t care, but because planning is chaotic. Conversations happen across multiple apps. Tasks are forgotten. One person ends up being the unofficial <i>planner</i>. Decisions get buried in threads. Money and responsibility feel awkward to navigate.</p>
+        <p class="small sans space-after-1-2 pad-r">My research surfaced a core insight: <b>People want group trips to feel shared, fair, and connected, but the existing planning tools make collaboration harder, not easier.</b></p>
+        <p class="small sans">Clara is designed to solve this by giving groups a single, clear place to plan together.</p></div>
 
       <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Research Approach</h2>
-      <p class="small sans">
-        I combined a short Google Forms survey with follow-up interviews and synthesized the findings through affinity mapping.
-        <br>I focused on understanding:</br></p>
+      <h2 class="case-subtitle serif space-after">Research & Insights</h2>
+      <p class="small sans pad-r">
+        I conducted surveys and interviews with six participants who frequently plan trips with friends or partners. Patterns quickly emerged:</p>
         <ul class="sans small">
-          <li>How groups make decisions</li>
-          <li>How they organize details</li>
-          <li>Where communication breaks down</li>
-          <li>Emotional highs and lows of planning</li>
-          <li>What an ideal collaboration tool would look like</li>
+          <li>Uneven workload: One person inevitably becomes the planner.</li>
+          <li>Decision fatigue: Too many back-and-forth messages.</li>
+          <li>Unclear ownership: Tasks slip through cracks because responsibility isn’t visible.</li>
+          <li>Fragmented tools: People bounce between chats, notes, spreadsheets, and booking apps.</li>
+          <li>Stress and anxiety: Group trips should be joyful, but planning often causes friction.</li>
         </ul>
       <p class="small sans">
-        This helped build a clear picture of the end-to-end planning journey.</p>
+        Key insight: <b>Group travelers need a clear, shared way to assign responsibilities and see progress so that planning feels fair and balanced.</b> This insight shaped all decisions that followed.</p>
     </div>
 
-
-  </div>
-
-  <!-- IMAGE ROW -->
-  <div class="grid">
-
-    <!-- Left image (wide) -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <img src="img/JF_WEB_ClaraGoogleForm.png" alt="Research synthesis" class="case-image">
-    </div>
-
-    <!-- Right image (narrow) -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <img src="img/JF_WEB_Synthesis.png" alt="User flow notes" class="case-image">
-    </div>
 
   </div>
 
 </section>
 
-
- <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Key Insights</h2>
-      <p class="small sans">
-        Three patterns directly shaped Clara’s direction:</p>
-        <ol class="sans small">
-          <li><b>Too Many Tools, Not Enough Clarity:</b> People switch between multiple apps that don’t connect, making it easy to lose decisions and momentum.</li>
-          <li><b>One Person Does Most of the Work:</b> Groups want shared planning, but behaviour rarely matches the intention.</li>
-          <li><b>People Want Planning to Feel Fun and Social:</b> Despite the stress, planning together still brings excitement, inspiration, and connection.</li></ol>
-        <p class="small sans space-after2x">These insights grounded every design decision.</p></div>
-
-      <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Persona: Maya, The Social Organizer</h2>
-      <p class="small sans">
-        Maya loves discovering new places and curating experiences. She naturally steps into the planner role,
-        but ends up juggling scattered links, mixed opinions, and group indecision.</p>
-        <h3 class="small-2 sans"><b>Goals:</b></h3>
-        <ul class="sans small">
-          <li>Make decisions together</li>
-          <li>Keep details organized</li>
-          <li>Share responsibilities fairly</li>
-        </ul>
-
-        <h3 class="small-2 sans"><b>Pain Points:</b></h3>
-        <ul class="sans small">
-          <li>Information everywhere</li>
-          <li>Repeating the same questions</li>
-          <li>Feeling like the only one driving the trip</li>
-        </ul>
-      <p class="small sans">
-        Maya became the anchor for Clara’s first version.</p>
-    </div>
-
-  </div>
-
-<!-- CASE STUDY IMAGE -->
-<section class="case-image-block space-after2x">
-  <div class="grid">
-    <div class="unit xs-1 s-1 m-1 l-1">
-      <img src="img/JF_WEB_MayaPersona.png" alt="Clara app mockup" class="case-image">
-    </div>
-  </div>
-</section>
-
-
- <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Experience Map</h2>
-      <p class="small sans">
-        Mapping Maya’s actions, thoughts, and emotions across the planning journey highlighted a clear curve:</p>
-        <ul class="sans small">
-          <li>Excitement during early idea-sharing</li>
-          <li>Overwhelm once logistics pile up</li>
-          <li>Responsibility overload,</b> especially around decisions and follow-ups</li>
-          <li>Relief once everything is booked</li>
-          <li>Joy on the trip itself</li>
-        </ul>
-        <p class="small sans space-after2x">The opportunity: <b>Keep planning as enjoyable and collaborative as the trip itself.</b></p></div>
-
-      <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Design Challenge</h2>
-      <p class="small sans space-after-1-2"><b>
-        How might we help travel groups share planning responsibilities so that organizing a trip feels fair,
-        collaborative, and stress-free for everyone?</b></p>
-        <p class="small sans">This question guided the product structure.</p>
-    </div>
-
-  </div>
-
-<!-- CASE STUDY IMAGE -->
-<section class="case-image-block space-after2x">
-  <div class="grid">
-    <div class="unit xs-1 s-1 m-1 l-1">
-      <img src="img/JF_WEB_ClaraExperienceMap.png" alt="Clara app mockup" class="case-image">
-    </div>
-  </div>
-</section>
-
- <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Ideation</h2>
-      <p class="small sans">
-        My goal in ideation was to transform emotional pain points into clear, functional concepts. I explored five opportunity areas:</p>
-        <h3 class="small-2 sans"><b>Shared Responsibilities</b></h3>
-        <ul class="sans small">
-          <li>Assign tasks to any group member</li>
-          <li>Break big tasks into micro-tasks</li>
-          <li>Visualize contributions and workload</li>
-        </ul>
-
-        <h3 class="small-2 sans"><b>Decision-Making Tools</b></h3>
-        <ul class="sans small">
-          <li>Polls and votes in one place</li>
-          <li>Clear summaries of finalized decisions</li>
-        </ul>
-
-        <h3 class="small-2 sans"><b>Budget Transparency</b></h3>
-        <ul class="sans small">
-          <li>Shared budget with expense tagging</li>
-        </ul>
-
-        <h3 class="small-2 sans"><b>Centralized Planning Hub</b></h3>
-        <ul class="sans small">
-          <li>One trip space with tasks, decisions, and budget</li>
-          <li>Calendar and timeline views</li>
-          <li>Smart summaries of group updates</li>
-        </ul>
-
-        <h3 class="small-2 sans"><b>Emotional Engagement</b></h3>
-        <ul class="sans small">
-          <li>Milestone celebrations</li>
-          <li>Trip countdown</li>
-          <li>Post-trip memory capsule</li>
-        </ul>
-        <p class="small sans space-after2x">The outcome was a focused value proposition: <b>Clara brings clarity by centralizing tasks, decisions, and budgets.</b></p></div>
-
-      <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">User Stories & Epics</h2>
-      <p class="small sans">
-        I translated ideas into user stories and grouped them into four epics to structure the MVP:</p>
-        <h3 class="small-2 sans"><b>Epic 1: Shared Planning & Decisions</b></h3>
-        <p class="small sans">Seeing all ideas in one place, voting, assigning tasks, and visualizing progress.</p>
-
-        <h3 class="small-2 sans"><b>Epic 2: Communication & Collaboration</b></h3>
-        <p class="small sans">Tagging people, thread summaries, message recaps, lightweight nudges.</p>
-
-        <h3 class="small-2 sans"><b>Epic 3: Budgeting & Transparency</b></h3>
-        <p class="small sans">Shared budgets, transparent expenses, smooth reimbursements.</p>
-
-        <h3 class="small-2 sans"><b>Epic 4: Emotional Engagement</b></h3>
-        <p class="small sans space-after">Celebrate milestones, track planning progress, reflect afterward.</p>
-        <p class="small sans">This gave the product a solid foundation and scope.</p>
-
-
-    </div>
-
-  </div>
 
 <!-- TEXT + IMAGE SECTION -->
 <section class="case-section space-after2x">
 
+  <!-- TEXT ROW -->
+  <div class="grid space-after2x">
+
+    <!-- Left text column - wider -->
+    <div class="unit xs-1 s-1 m-1-2 l-1-2">
+      <h2 class="case-subtitle serif space-after">How Might We…</h2>
+      <p class="small sans space-after-1-2 pad-r">
+        <b>How might we help travel groups share planning responsibilities so that organizing a trip feels fair, collaborative, and stress-free?</b></p>
+        <p class="small sans">This HMW anchored every design choice.</p></div>
+
+      <div class="unit xs-1 s-1 m-1-2 l-1-2">
+      <h2 class="case-subtitle serif space-after">Turning Insight Into Functionality</h2>
+      <p class="small sans pad-r">
+        I created 25 user stories, then grouped them into epics related to shared planning, communication, budgeting, and emotional engagement. The epic with the highest user value and strongest link to the problem space was:</p>
+        <h3 class="small-2 sans"><b>Shared Planning & Decision-Making</b></h3>
+        <p class="sans small">This became the focus of my prototype.
+
+From there, I built a detailed task flow showing how a user (Maya Chen, my persona) creates, assigns, and completes trip-planning tasks.</p>
+    </div>
+
+
+  </div>
+
   <!-- IMAGE ROW -->
   <div class="grid">
 
     <!-- Left image (wide) -->
     <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <img src="img/JF_WEB_ClaraSketches.png" alt="Research synthesis" class="case-image">
+      <img src="img/JF_WEB_MayaPersona.png" alt="Research synthesis" class="case-image">
     </div>
 
     <!-- Right image (narrow) -->
     <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <img src="img/JF_WEB_ClaraTaskFlow.png" alt="User flow notes" class="case-image">
+      <img src="img/JF_WEB_ClaraExperienceMap.png" alt="User flow notes" class="case-image">
     </div>
 
   </div>
 
 </section>
 
- <!-- TEXT ROW -->
+
+
+<!-- TEXT + IMAGE SECTION -->
+<section class="case-section space-after2x">
+
+  <!-- TEXT ROW -->
   <div class="grid space-after2x">
 
     <!-- Left text column - wider -->
     <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Task Flow</h2>
-      <p class="small sans">
-        I focused on a core scenario: Maya assigning tasks within her group. The flow ensures:</p>
-        <ul class="sans small">
-          <li>Clear task owners</li>
-          <li>Simple creation and tracking</li>
-          <li>Equal contribution visibility</li>
-          <li>A shared trip dashboard for accountability</li>
-        </ul>
-        <p class="small sans space-after2x">This task flow became the basis for wireframing.</p></div>
+      <h2 class="case-subtitle serif space-after">Exploring the Interface</h2>
+      <p class="small sans space-after-1-2">I gathered UI inspiration focused on:</p>
+      <ul class="space-after-1-2">
+        <li class="sans small">clean task management patterns,</li>
+        <li class="sans small">calm visual hierarchy.</li>
+      </ul>
+        <p class="small sans pad-r">Through exploratory sketches, I tested different ways to visualize responsibilities, progress, and group contribution. The strongest ideas were refined into solution sketches and grayscale wireframes.</p></div>
 
       <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Lo-Fi iOS Wireframes</h2>
+      <h2 class="case-subtitle serif space-after">Prototype (V1)</h2>
       <p class="small sans">
-        I sketched concepts and translated them into grayscale iOS wireframes to focus on structure.
-        Key screens explored:</p>
-        <h3 class="small-2 sans"><b>Goals:</b></h3>
-        <ul class="sans small">
-          <li>A clean trip dashboard</li>
-          <li>A shared task board with categories</li>
-          <li>Share responsibilities fairly</li>
+        The first interactive prototype focused on the core task flow:</p>
+        <ul>
+          <li class="sans small">viewing the trip dashboard</li>
+          <li class="sans small">creating a new task.</li>
         </ul>
-
-        <h3 class="small-2 sans"><b>Pain Points:</b></h3>
-        <ul class="sans small">
-          <li>Information everywhere</li>
-          <li>Repeating the same questions</li>
-          <li>Decision polls with clear results</li>
-          <li>DSimple affordances to show who is doing what</li>
-        </ul>
-      <p class="small sans">
-        The grayscale helped keep attention on hierarchy and flow before moving into UI decisions.</p>
+        <p class="sans small pad-r">The design leaned into clarity,simple patterns, clear labels, and enough space around content so users wouldn’t feel overwhelmed.</p>
     </div>
+
 
   </div>
 
-<!-- CASE STUDY IMAGE -->
-<section class="case-image-block space-after2x">
-  <div class="grid">
-    <div class="unit xs-1 s-1 m-1 l-1">
-      <img src="img/JF_WEB_ClaraWireframes.png" alt="Clara app mockup" class="case-image">
-    </div>
-  </div>
 </section>
 
+
+<!-- TEXT + IMAGE SECTION -->
+<section class="case-section space-after2x">
+
+  <!-- TEXT ROW -->
   <div class="grid space-after2x">
 
     <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-2-3 l-2-3 pad-r">
-      <h2 class="case-subtitle serif space-after">Next Steps</h2>
-      <p class="small sans">
-        With research, insights, structure, and flows in place, the next steps are:</p>
-        <ul class="sans small">
-          <li>Mid-fidelity iOS UI</li>
-          <li>Brand direction for Clara</li>
-        </ul>
+    <div class="unit xs-1 s-1 m-1-2 l-1-2">
+      <h2 class="case-subtitle serif space-after">Usability Testing</h2>
+      <p class="small sans space-after-1-2 pad-r">I tested the V1 prototype with five users who had experience planning trips with others.
+What worked:</p>
+      <ul class="space-after-1-2">
+        <li class="sans small">clear structure and navigation,</li>
+        <li class="sans small">smooth task-creation flow.</li>
+      </ul>
+        <p class="small sans">Where users hesitated:</p>
+        <ul class="space-after-1-2">
+        <li class="sans small pad-r-1-2">uncertainty around the copy, uncertainity about the differences between terms.</li>
+      </ul>
+      </div>
 
+      <div class="unit xs-1 s-1 m-1-2 l-1-2">
+      <h2 class="case-subtitle serif space-after">Prioritization & Iteration</h2>
+      <p class="small sans">
+        Using a design prioritization matrix, I focused on high-impact improvements:</p>
+        <ul>
+          <li class="sans small">...</li>
+          <li class="sans small">...</li>
+        </ul>
+        <p class="sans small">These refinements informed Prototype V2.</p>
     </div>
 
+
   </div>
+
+  </div>
+
+  <!-- IMAGE ROW -->
+  <div class="grid">
+
+    <!-- Left image (wide) -->
+    <div class="unit xs-1 s-1 m-1-2 l-1-2"> 
+      <img src="img/JF_WEB_ClaraSketch.png" alt="Sketches" class="case-image">
+    </div>
+
+    <!-- Right image (wide) -->
+    <div class="unit xs-1 s-1 m-1-2 l-1-2" style="border-radius: 8px; overflow: hidden; width: 650px; height: 650px;">
+      <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="650" height="650" class="case-image" src="https://embed.figma.com/proto/uioFI6Nc8eI4erJjSbesAN/YayaFalanga-Unit-2-Part-3?node-id=267-198&p=f&scaling=scale-down&content-scaling=fixed&page-id=267%3A197&starting-point-node-id=267%3A198&embed-host=share" allowfullscreen></iframe>
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- TEXT + IMAGE SECTION -->
+<section class="case-section space-after2x">
+
+  <!-- TEXT ROW -->
+  <div class="grid space-after2x">
+
+    <!-- Left text column - wider -->
+    <div class="unit xs-1 s-1 m-1-2 l-1-2">
+      <h2 class="case-subtitle serif space-after">Key Learnings</h2>
+      <p class="small sans space-after-1-2 pad-r">Working through this project taught me how much clarity and intention matter in UX design. Each stage revealed something new about how people think, decide, and interact with digital tools.</p>
+      <p class="small sans space-after-1-2 pad-r"><b>Research is not about volume, it’s about clarity:</b>
+
+I learned that good research is not measured by how many responses you collect, but by how well you can see the patterns within them. Speaking with six participants was enough to uncover the core issue in group travel planning: one person often carries most of the work, and the tools we use make that imbalance worse.</p>
+
+      <p class="small sans space-after-1-2 pad-r"><b>One strong insight will guide the entire project:</b>
+
+The main insight that shaped this work was simple but powerful: people want a fair and balanced way to plan trips together, but current tools do not support shared responsibility. This insight influenced every step of the design process and kept the solution grounded in real user needs.</p>
+
+      <p class="small sans space-after-1-2 pad-r"><b>Words matter just as much as visuals:</b>
+
+During usability testing, many points of confusion came from unclear labels and instructions. This showed me that microcopy is a design tool. If the words are unclear, the experience is unclear.</p>
+
+      <p class="small sans space-after-1-2 pad-r">This project helped me grow as a designer by showing me the value of focusing on people, simplifying ideas, and communicating clearly. It confirmed that thoughtful UX design relies on both research and language, and that even small improvements can make the experience feel easier and more balanced.</p>
+
+      </div>
+
+      <div class="unit xs-1 s-1 m-1-2 l-1-2">
+      <h2 class="case-subtitle serif space-after">Next Steps</h2>
+      <p class="small sans">
+        With research, insights, structure, and flows in place, the next steps involve:</p>
+        <ul>
+          <li class="sans small">integrating decision-making features (polls, votes), budgeting tools,</li>
+          <li class="sans small">creating progress summaries,</li>
+          <li class="sans small">iterating a high-fidelity iOS UI alongside the brand direction.</li>
+
+        </ul>
+    </div>
+
+
+  </div>
+
+  </div>
+
+</section>
 
 
 
@@ -381,6 +307,7 @@
 
 
 <hr class="footer-divider">
+
 <!-- FOOTER -->
 <section id="footer" class="space-after3x">
   <div class="grid">
@@ -389,15 +316,13 @@
     <div class="unit xs-1 s-1 m-1-3 l-1-3">
       <h3 >Skills & Methods</h3>
       <ul>
-        <li>Interaction design</li>
+        <li>UX, UI, and interaction design</li>
+        <li>Wireframing & prototyping</li>
         <li>User flows</li>
-        <li>Wireframing</li>
-        <li>Prototyping</li>
-        <li>Visual design</li>
-        <li>Brand identity</li>
+        <li>Visual & brand design</li>
         <li>User research</li>
-        <li>Accessibility awareness</li>
-        <li>Responsive layout</li>
+        <li>Accessibility & responsive design</li>
+        <li>HTML & CSS</li>
       </ul>
     </div>
 
@@ -405,12 +330,9 @@
     <div class="unit xs-1 s-1 m-1-3 l-1-3">
       <h3 >Services</h3>
       <ul>
-        <li>UX design</li>
-        <li>Interface design</li>
+        <li>UX/UI design</li>
         <li>Interaction design</li>
         <li>Visual design</li>
-        <li>Prototyping</li>
-        <li>User research</li>
         <li>Product strategy</li>
         <li>Design systems</li>
       </ul>
@@ -421,7 +343,6 @@
       <h3>Contact</h3>
       <ul>
         <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank">Linkedin</a></li>
-        <li><a href="#">Dribbble</a></li>
         <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
       </ul>
     </div>
@@ -431,6 +352,7 @@
 
   <p class="small-1 copyright space-after3x">
     &copy; 2025 Jennifer Yaya Falanga.
+  </p>
   </p>
 
 
