@@ -28,6 +28,7 @@ div {
 
 
 
+
 /***** TYPOGRAPHY *****/
 p {
   margin: 0;
@@ -242,6 +243,16 @@ font-style: normal;
   margin: 0 0 1.5rem;
 }
 
+  .hero-title-2 {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.05;
+  margin: 0 0 1.5rem;
+  }
+
+
 /* “Read more” link */
 .hero-link {
   font-size: 1rem;
@@ -264,6 +275,14 @@ font-style: normal;
   height: auto;
   display: inline-block;
 }
+.hero-media-left {
+  text-align: left;
+}
+.hero-media-left img {
+  max-width: 95%;
+  height: auto;
+  display: inline-block;
+}
 
 /* a bit tighter on small screens */
 @media (max-width: 768px) {
@@ -274,7 +293,6 @@ font-style: normal;
   .hero-title {
     font-size: 2.6rem;
   }
-
   .hero-media {
     margin-top: 2.5rem;
     text-align: left;
