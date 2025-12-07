@@ -274,14 +274,17 @@ font-style: normal;
   max-width: 100%;
   height: auto;
   display: inline-block;
+  border-radius: 4px;
 }
 .hero-media-left {
   text-align: left;
+
 }
 .hero-media-left img {
   max-width: 95%;
   height: auto;
   display: inline-block;
+  border-radius: 4px;
 }
 
 /* a bit tighter on small screens */
