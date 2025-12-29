@@ -1,11 +1,11 @@
 /***** BASIC *****/
 body, p {
   margin: 0;
-    color: #191102;
+  color: #191102;
 }
 
 #site {
-  line-height: 1.5em;
+  line-height: 1.6em;
   font-size: 1rem;
   background-color: #f9f9f6;
 
@@ -23,10 +23,11 @@ div {
   line-height: 1.5em;
   font-size: 1rem;
   background-color: #f9f9f6;
-  color: #191102;
+  color: #201c12;
 }
-
-
+html {
+  scroll-behavior: smooth;
+}
 
 
 /***** TYPOGRAPHY *****/
@@ -154,6 +155,9 @@ font-style: normal;
 .space-top-small2 {
   margin-top: .34rem;
 }
+.space-top0 {
+  margin-top: 0rem;
+}
 
 .space-top {
   margin-top: 1.3rem;
@@ -253,6 +257,10 @@ font-style: normal;
   }
 
 
+
+
+
+
 /* “Read more” link */
 .hero-link {
   font-size: 1rem;
@@ -336,6 +344,24 @@ font-style: normal;
   font-size: 2rem;
 }
 
+.stats {
+  font-family: "Instrument Serif", serif;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  padding: 6%;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.underline {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.link {
+  color: #191102;
+  opacity: 0.7;
+}
 
 /***** FOOTER *****/
 #footer h3 {
@@ -392,9 +418,26 @@ font-style: normal;
 
 #case-hero {
   padding: 0rem 4rem 4rem;     /* works with your #main padding */
-  margin-left: -80px;          /* optional: align with edges if #main has 80px padding */
-  margin-right: -80px;
+  /*margin-left: -60px;           optional: align with edges if #main has 80px padding 
+  margin-right: -80px;*/
 }
+/* Match #case-hero horizontal spacing across the whole case study */
+#site-project .case-section,
+#site-project .case-image-block {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+/* Mobile: match hero’s tighter padding */
+@media (max-width: 768px) {
+  #site-project .case-section,
+  #site-project .case-image-block {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+
 
 /* Title */
 .case-title {
@@ -407,7 +450,7 @@ font-style: normal;
 
 /* Intro text */
 .case-intro {
-  max-width: 40rem;
+  max-width: 70rem;
   line-height: 1.6;
 }
 
@@ -454,6 +497,21 @@ font-style: normal;
   display: block;
   border-radius: 4px; /* optional, remove if you want sharp corners */
 }
+/* Match case study content margins to #case-hero */
+.case-section {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 768px) {
+  .case-section,
+  .case-image-block {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+
 
 /***** CASE STUDY SECTION: TEXT + IMAGE GRID *****/
 
@@ -465,25 +523,66 @@ font-style: normal;
 }
 
 .case-subtitle {
-  font-family: "Instrument Serif", serif;
-  font-weight: 400;
-  font-size: 1.8rem;
+  font-family: "area-extended", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
   margin: 0;
   margin-bottom: 0.6rem;
 }
 
-/* Make spacing feel balanced */
-.case-section .pad-r {
-  padding-right: 2.6rem;
-}
+/* Make spacing feel balanced 
+.case-section {
+  padding-right: 3.6rem;
+}*/
 
 .sans {
     font-family: "area-extended", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: .79rem;
-  line-height: 1.2rem;
+  font-size: .84rem;
+  line-height: 1.35rem;
 }
+.sans-caption {
+  font-family: "area-extended", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.75rem;
+  line-height: 1.3rem;
+  opacity: 0.7;
+}
+.button {
+  font-family: "area-extended", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 0.83rem;
+  line-height: 1.35rem;
+
+  background-color: #ffac16;
+  color: #201c12; /* ensure contrast */
+  border-radius: 4px;
+
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  display: inline-block;
+
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.button:hover {
+  background-color: #ffbc44;
+  transform: translateY(-1px);
+}
+
+.button:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+ul li::marker {
+  font-size: 0.85em; /* Makes the bullet 50% larger than the list item's font size */
+}
+
+
 
 /* Mobile handling */
 @media (max-width: 768px) {
@@ -491,3 +590,4 @@ font-style: normal;
     padding-right: 0;
   }
 }
+

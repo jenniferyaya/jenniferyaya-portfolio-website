@@ -42,11 +42,9 @@
     <div class="unit xs-1 s-1 m-1 l-1">
       <h1 class="case-title serif">Clara</h1>
 
-      <p class="case-intro small sans space-after-1-2">
-        Planning a trip with friends usually starts with excitement, but that energy fades fast once the logistics begin. Details scatter across group chats, decisions get buried, budgets feel unclear, and one person,often the most organized friend quietly becomes the planner. What should feel fun starts to feel heavy.</p>
-        <p class="sans case-intro small space-after-1-2">Clara was designed to ease that weight.</p>
-        <p class="case-intro small sans space-after-1-2">Named after the Latin word for bright and clear, Clara is an iOS app that helps groups plan trips in a way that feels organized, fair, and genuinely collaborative. Instead of relying on separate chats, documents, spreadsheets, and reminders, Clara brings everything together so responsibilities are shared and progress is visible.</p>
-        <p class="case-intro small sans space-after-1-2">This case study walks through the full design process, from early research to iterative prototyping. The goal: create a calmer, more balanced experience for group travelers.</p>
+      <p class="case-intro small sans space-after-1-2">Group trip planning often breaks down not because people are unwilling to help, but because responsibility becomes unclear. Decisions are scattered across group chats, notes, and spreadsheets, making it difficult to see who owns which tasks or how planning is progressing. Over time, coordination work concentrates with one person, while others disengage unintentionally.</p>
+        <p class="sans case-intro small space-after">Clara is an iOS app concept designed to make task ownership and progress visible in one shared space. Rather than automating planning, the goal is to reduce ambiguity. By centralizing responsibilities and surfacing progress at a glance, Clara supports more balanced collaboration during group trip planning.</p>
+        <a class="button" href="#final-design">Jump to final design</a>
         
     
     </div>
@@ -72,284 +70,171 @@
       <p class="case-meta-label small-3 uppercase">Tools</p>
       <p class="case-meta-value small sans">Figma, Google Forms, Adobe Suite</p>
     </div>
-
-    <div class="unit xs-1 s-1 m-1-4 l-1-4">
-      <p class="case-meta-label small-3 uppercase">Deliverables</p>
-      <p class="case-meta-value small sans">Research Plan, Affinity Map, Persona, Experience Map, User Stories & Epics, Task Flow, Wireframes, Mid-Fi Prototype</p>
-    </div>
-
   </div>
 </section>
+
+
 
 <!-- CASE STUDY MAIN IMAGE -->
 <section class="case-image-block space-after3x">
   <div class="grid">
     <div class="unit xs-1 s-1 m-1 l-1">
       <img src="img/JF_WEB_ClaraMockup.png" alt="Clara app mockup" class="case-image space-after-1-2">
-      <p class="small-2 sans pad-r-1-2">The <i>Create a New Trip</i> screen gives users a simple way to set details, invite friends, and start planning with clarity.</p>
+      <p class="small-3 sans-caption pad-r-1-2">The <i>Create a New Trip</i> screen gives users a simple way to set details, invite friends, and start planning with clarity.</p>
     </div>
   </div>
 </section>
 
-<!-- TEXT + IMAGE SECTION -->
-<section class="case-section space-after2x">
+
+<!-- TEXT SECTION -->
+<section class="case-section">
 
   <!-- TEXT ROW -->
   <div class="grid space-after2x">
 
     <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Problem</h2>
-      <p class="small sans space-after-1-2 pad-r">
-        Groups don’t struggle because they don’t care, they struggle because planning is messy. Conversations happen across multiple apps. Tasks get forgotten. Budgets feel unclear. And one person inevitably becomes the unofficial planner, shouldering most of the effort.</p>
-        <p class="small sans space-after-1-2 pad-r">Through research, I found a deeper issue:
-<b>People want group trips to feel shared, fair, and connected, but the tools they use actually make collaboration harder.</b></p>
-        <p class="small sans">Participants described:</p>
-          <ul class="space-after-1-2">
-          <li class="sans small">jumping between chats, notes, and spreadsheets</li>
-          <li class="sans small">losing track of decisions</li>
-          <li class="sans small">waiting on others to respond</li>
-          <li class="sans small">feeling frustrated by uneven workload</li>
-          <li class="sans small">becoming anxious when plans shifted</li>
-        </ul>
-      <p class="small sans space-after-1-2 pad-r">Clara aims to solve this by giving groups a single, shared space to plan—reducing cognitive load and making collaboration feel natural.</p>
-
+    <div class="unit xs-1 s-1 m-2-3 l-2-3">
+      <h2 class="case-subtitle">The Problem</h2>
+      <p class="small sans space-after-1-2 pad-r2x">When planning responsibilities are discussed across multiple tools without a shared source of truth, ownership becomes ambiguous and progress difficult to assess. Tasks are acknowledged in chats, tracked informally elsewhere, and rarely revisited in one place.</p>
+      <p class="small sans space-after-1-2 pad-r2x">As a result, groups rely on assumptions. One person compensates by tracking details and following up, while others unintentionally disengage. Over time, this imbalance creates frustration and planning fatigue.</p>
+      <p class="small sans space-after-1-2 pad-r2x">The challenge was to make ownership and progress explicit, so collaboration could feel shared rather than burdensome.</p>
+      </div>
+   <!-- Right text column - wider -->
+    <div class="unit xs-1 s-1 m-1-3 l-1-3">
+      <h3 class="stats"><span class="underline">83%</span> of travelers begin researching trips on their phones, with <span class="underline">60%</span> of hotel bookings completed on mobile as well.</h3>
+        <p class="small sans-caption space-after-1-2">Sources: <a href="https://hotelagio.com/travel-booking-statistics/" target="_blank" class="link">https://hotelagio.com/travel-booking-statistics/</a></p>
       </div>
 
-      <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Research & Insights</h2>
-      <p class="small sans pad-r">
-        To understand group travel behaviours, I surveyed and interviewed six people who frequently plan trips with partners or friends. Patterns quickly emerged:</p>
-        <ul class="sans small">
-          <li><b>One person takes the lead.</b> Every participant described becoming <i>the planner</i> without meaning to.</li>
-          <li><b>Decisions are scattered.</b> Important details get buried in threads or forgotten.</li>
-          <li><b>Ownership is unclear.</b> People assume someone else will handle tasks.</li>
-          <li><b>Tools are fragmented.</b> Users bounce between chats, notes, spreadsheets, and booking sites.</li>
-          <li><b>Planning causes stress.</b> What should be exciting becomes a source of tension.</li>
-        </ul>
-      <p class="small sans">
-        One insight guided everything that followed: <b>Group travelers need a clear, shared way to assign responsibilities and see progress so that planning feels fair and balanced.</b> This insight became the foundation of Clara’s feature direction.</p>
-    </div>
+
 
 
   </div>
-
 </section>
 
 
-<!-- TEXT + IMAGE SECTION -->
-<section class="case-section space-after2x">
-
+<!-- TEXT SECTION -->
+<section class="case-section">
   <!-- TEXT ROW -->
   <div class="grid space-after2x">
 
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">How Might We…</h2>
-      <p class="small sans space-after-1-2 pad-r">
-        <b>How might we help travel groups share planning responsibilities so that organizing a trip feels fair, collaborative, and stress-free?</b></p>
-        <p class="small sans">This guiding question shaped every design decision.</p></div>
+   <!-- Left text column - wider -->
+    <div class="unit xs-1 s-1 m-2-3 l-2-3">
+      <h2 class="case-subtitle serif">Research Insights</h2>
+      <p class="small sans space-after-1-2 pad-r2x">Research with frequent group trip planners showed that coordination issues rarely stem from a lack of willingness to contribute. Instead, responsibility becomes invisible once planning moves primarily into chat-based tools.</p>
+        <p class="small sans space-after-1-2 pad-r2x">Participants described discussing tasks without clearly assigning them, assuming others would take action, and struggling to understand progress without asking for updates. When ownership and progress weren’t visible, one person often stepped in to keep planning moving.</p>
+        <p class="small sans space-after pad-r2x">This clarified the design direction: shared planning works best when ownership is continuously visible, rather than relying on memory, follow-ups, or additional discussion.</p>
+        <a class="button space-after" href="https://www.figma.com/design/lXe8xVPIq1DKITdWiT7qWA/Thematic-Analysis?node-id=1-32&t=UAIXerIyEBrNjJi7-1" target="_blank">View research insights</a>
+      </div>
 
-      <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Turning Insight Into Functionality</h2>
-      <p class="small sans pad-r">
-        I translated research into 25 user stories, grouped into themes like shared planning, communication, budgeting, and emotional engagement. The epic with the highest value for both clarity and fairness was:</p>
-        <h3 class="small-2 sans"><b>Shared Planning & Decision-Making</b></h3>
-        <p class="sans small">This epic centered on:</p>
-           <ul class="sans small space-after-1-2">
-          <li>assigning tasks to specific people</li>
-          <li>seeing progress at a glance</li>
-          <li>keeping responsibilities visible</li>
-          <li>making collaboration simple rather than stressful</li>
-        </ul>
-        <p class="sans small">From here, I built a detailed task flow showing how a user like Maya (my persona) creates, assigns, and completes trip-planning tasks.</p>
-    </div>
+
+   <!-- Right text column - wider -->
+    <div class="unit xs-1 s-1 m-1-3 l-1-3">
+      <img src="img/Synthesis.png" alt="Research synthesis" class="case-image space-after-1-2">
+      </div>
 
 
   </div>
+</section>
 
-  <!-- IMAGE ROW -->
+
+<!-- IMAGE SECTION -->
+<section class="case-section space-after2x">
+ <!-- IMAGE ROW -->
   <div class="grid">
 
     <!-- Left image (wide) -->
     <div class="unit xs-1 s-1 m-1-2 l-1-2">
       <img src="img/JF_WEB_MayaPersona.png" alt="Research synthesis" class="case-image space-after-1-2">
-      <p class="small-2 sans pad-r-1-2">Meet Maya, a social and organized planner created from interviews to represent the friend who often becomes the default trip planner.</p>
+      <p class="small-2 sans-caption pad-r2x space-after">Meet Maya, a social and organized planner created from interviews to represent the friend who often becomes the default trip planner.</p>
     </div>
 
     <!-- Right image (narrow) -->
     <div class="unit xs-1 s-1 m-1-2 l-1-2">
       <img src="img/JF_WEB_ClaraExperienceMap.png" alt="User flow notes" class="case-image space-after-1-2">
-      <p class="small-2 sans pad-r-1-2">Maya’s experience map reveals the highs and lows of planning with others, from initial excitement to decision fatigue. These moments showed where Clara could offer clarity and balance.</p>
+      <p class="small-2 sans-caption pad-r2x space-after">Maya’s experience map reveals the highs and lows of planning with others, from initial excitement to decision fatigue. These moments showed where Clara could offer clarity and balance.</p>
     </div>
 
   </div>
-
 </section>
 
 
 
-<!-- TEXT + IMAGE SECTION -->
-<section class="case-section space-after2x">
+
+<!-- TEXT SECTION -->
+<section class="case-section">
 
   <!-- TEXT ROW -->
   <div class="grid space-after2x">
 
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Exploring the Interface</h2>
-      <p class="small sans space-after-1-2">I gathered mobile UI inspiration focused on:</p>
-      <ul class="space-after-1-2">
-        <li class="sans small">clean task management patterns</li>
-        <li class="sans small">calm visual hierarchy</li>
-        <li class="sans small">clear ownership indicators</li>
-        <li class="sans small">lightweight interaction flows</li>
-      </ul>
-        <p class="small sans pad-r">Exploratory sketches tested different structures for task lists, ownership tags, progress indicators, and creation flows. I aimed to design a workspace that felt light and easy to navigate, especially during busy planning moments.</p>
-      <p class="small sans pad-r">The strongest sketches were refined into solution wireframes.</p></div>
-
-      <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Prototype (V1)</h2>
-      <p class="small sans">
-        The first interactive prototype focused on the core user flow:</p>
-        <ul>
-          <li class="sans small">viewing the group’s trip dashboard</li>
-          <li class="sans small">creating a new task</li>
-        </ul>
-        <p class="sans small pad-r">The design leaned into:</p>
-                <ul>
-          <li class="sans small">simple patterns</li>
-          <li class="sans small">clear labels</li>
-          <li class="sans small">open space around content</li>
-          <li class="sans small">predictable navigation</li>
-        </ul>
-        <p class="sans small pad-r">This helped reduce cognitive load and set a calm foundation.</p>
+   <!-- Left text column - wider -->
+    <div class="unit xs-1 s-1 m-2-3 l-2-3">
+      <h2 class="case-subtitle serif">Design Focus</h2>
+      <p class="small sans space-after-1-2 pad-r2x">The work narrowed to one core problem: <b>making task ownership</b> visible within the coordination flow, where breakdowns had the highest impact.</p>
+       <p class="small sans space-after-1-2 pad-r2x">Tasks became the primary unit of coordination. A single trip dashboard surfaces what needs to be done, who owns it, and its current status, making ownership immediately visible and progress easy to assess. Task creation and assignment are intentionally lightweight, clarifying responsibility without adding planning overhead.</p>
+       <a class="button space-after" href="https://www.figma.com/design/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=16-2&t=UAIXerIyEBrNjJi7-1" target="_blank">View exploratory sketches</a>
     </div>
 
-
-  </div>
-
-</section>
-
-
-<!-- TEXT + IMAGE SECTION -->
-<section class="case-section space-after2x">
-
-  <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Usability Testing</h2>
-      <p class="small sans pad-r space-after-1-2">I tested the V1 prototype with five users who had planned trips with others.</p>
-<p class="small sans pad-r">What worked well:</p>
-      <ul class="space-after-1-2">
-        <li class="sans small">The structure felt clean and easy to scan</li>
-        <li class="sans small">The task-creation flow felt intuitive</li>
-        <li class="sans small">Users appreciated how responsibilities were clearly assigned</li>
-      </ul>
-        <p class="small sans">Where users hesitated:</p>
-        <ul class="space-after-1-2">
-        <li class="sans small pad-r-1-2">Unclear distinctions between categories (<i>Drafts</i> vs. <i>Planning</i>)</li>
-        <li class="sans small pad-r-1-2">Confusion around icons (what the suitcase icon meant).</li>
-        <li class="sans small pad-r-1-2">Missing cues for how to add tasks at the category level</li>
-        <li class="sans small pad-r-1-2">Lack of a clear <i>home</i> state</li>
-      </ul>
-      <p class="small sans">These insights helped me refine the hierarchy and language.</p>
+       <!-- Right text column - wider -->
+    <div class="unit xs-1 s-1 m-1-3 l-1-3">
+      <img src="img/JF_WEB_ClaraSketch.png" alt="Research synthesis" class="case-image space-after-1-2">
+      <p class="small-2 sans-caption pad-r-1-2 space-after">Early sketches explored different ways users could manage tasks.</p>
       </div>
 
-      <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Prioritization & Iteration</h2>
-      <p class="small sans">
-        Using a design prioritization matrix, I focused on improvements with the highest user impact:</p>
-        <ul>
-          <li class="sans small"><b>Clarifying category labels</b> to reduce confusion</li>
-          <li class="sans small"><b>Strengthening the dashboard hierarchy</b> to show where users are</li>
-          <li class="sans small"><b>Improving the CTA hierarchy</b>, so key actions are easier to spot</li>
-          <li class="sans small"><b>Adjusting iconography</b> to better match user expectations</li>
-          <li class="sans small"><b>Making task actions more visible</b> so users know where to begin</li>
-        </ul>
-        <p class="sans small">These refinements shaped Prototype V2, which now feels more intuitive and aligned with the user’s mental model.</p>
-    </div>
+</section>
 
 
-  </div>
 
-  </div>
 
-  <!-- IMAGE ROW -->
-  <div class="grid">
+<!-- TEXT SECTION -->
+<section class="case-section">
+  <!-- TEXT ROW -->
+  <div class="grid space-after2x">
 
-    <!-- Left image (wide) -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2"> 
-      <img src="img/JF_WEB_ClaraSketch.png" alt="Sketches" class="case-image space-after-1-2">
-      <p class="small-2 sans pad-r-1-2">Early sketches explored different ways users could manage tasks, followed by a live prototype that brings Clara to life.</p>
-    </div>
+    <!-- Left text column - wider -->
+    <div class="unit xs-1 s-1 m-2-3 l-2-3">
+      <h2 class="case-subtitle serif">Prototyping and Testing</h2>
+      <p class="small sans space-after-1-2 pad-r2x">Usability testing used short, task-based walkthroughs to observe how participants interpreted ownership and progress without guidance. Testing focused on viewing the trip overview, assigning tasks, and checking progress.</p>
+      <p class="small sans space-after-1-2 pad-r2x">Participants consistently understood who was responsible for what. Moments of hesitation revealed where clarity broke down, particularly when labels or icons required interpretation rather than recognition.</p>
+      <p class="small sans space-after-1-2 pad-r2x">These findings informed a focused round of refinement, including clearer labels, stronger visual hierarchy, and simplified icon usage. After iteration, key actions required less explanation and hesitation during coordination moments was reduced.</p>
+      <a class="button space-after2x" href="https://www.figma.com/design/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=16-2&t=UAIXerIyEBrNjJi7-1" target="_blank">View mid-fidelity wireframes</a>
 
-    <!-- Right image (wide) -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2" style="border-radius: 8px; overflow: hidden; width: 650px; height: 650px;">
+      <h2 class="case-subtitle serif">Outcome and Learnings</h2>
+      <p class="small sans space-after-1-2 pad-r2x">By centering the experience on explicit task ownership and visible progress, Clara reduces ambiguity during group trip planning. Responsibilities are clear, progress is easy to assess, and coordination no longer depends on recalling past conversations or inferring ownership.</p>
+      <p class="small sans">Key learnings from this project:</p>
+      <ul class="space-top0 sans space-after2x">
+        <li>One strong insight can guide an entire product</li>
+        <li>Microcopy is a critical UX tool</li>
+        <li>Clarity often matters more than feature depth</li>
+      </ul>
+      
+      <h2 class="case-subtitle serif">Next Steps</h2>
+       <p class="small sans">With the core coordination flow established, future iterations could explore:</p>
+      <ul class="space-top0 sans">
+        <li>shared decision-making tools (polls, voting)</li>
+        <li>collaborative budgeting features</li>
+        <li>high-level progress summaries</li>
+        <li>high-fidelity visual design aligned with Clara’s brand direction</li>
+      </ul>
+
+      </div>
+
+
+   <!-- Right image (wide) -->
+    <div class="unit xs-1 s-1 m-1-3 l-1-3" style="border-radius: 8px; overflow: hidden; height: 600px;">
       <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="650" height="650" class="case-image space-after" src="https://embed.figma.com/proto/uioFI6Nc8eI4erJjSbesAN/YayaFalanga-Unit-2-Part-3?node-id=267-198&p=f&scaling=scale-down&content-scaling=fixed&page-id=267%3A197&starting-point-node-id=267%3A198&embed-host=share" allowfullscreen></iframe>
     </div>
 
-
-  </div>
-
-</section>
-
-
-
-<!-- TEXT + IMAGE SECTION -->
-<section class="case-section space-after2x">
-
-  <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Key Learnings</h2>
-      <p class="small sans space-after-1-2 pad-r">Working through this project taught me how much clarity and intention matter in UX design. Each stage revealed something new about how people think, decide, and interact with digital tools.</p>
-      <p class="small sans space-after-1-2 pad-r"><b>Research is not about volume, it’s about clarity:</b>
-
-I learned that good research is not measured by how many responses you collect, but by how well you can see the patterns within them. Speaking with six participants was enough to uncover the core issue in group travel planning: one person often carries most of the work, and the tools we use make that imbalance worse.</p>
-
-      <p class="small sans space-after-1-2 pad-r"><b>One strong insight will guide the entire project:</b>
-
-The main insight that shaped this work was simple but powerful: people want a fair and balanced way to plan trips together, but current tools do not support shared responsibility. This insight influenced every step of the design process and kept the solution grounded in real user needs.</p>
-
-      <p class="small sans space-after-1-2 pad-r"><b>Words matter just as much as visuals:</b>
-
-During usability testing, many points of confusion came from unclear labels and instructions. This showed me that microcopy is a design tool. If the words are unclear, the experience is unclear.</p>
-
-      <p class="small sans space-after-1-2 pad-r">This project helped me grow as a designer by showing me the value of focusing on people, simplifying ideas, and communicating clearly. It confirmed that thoughtful UX design relies on both research and language, and that even small improvements can make the experience feel easier and more balanced.</p>
-
-      </div>
-
-      <div class="unit xs-1 s-1 m-1-2 l-1-2">
-      <h2 class="case-subtitle serif space-after">Next Steps</h2>
-      <p class="small sans">
-        With the core structure in place, the natural next steps are:</p>
-        <ul>
-          <li class="sans small">adding decision-making tools (polls, voting)</li>
-          <li class="sans small">building shared budget features</li>
-          <li class="sans small">designing progress summaries</li>
-          <li class="sans small">developing high-fidelity UI aligned with Clara’s brand direction</li>
-
-        </ul>
     </div>
-
-
-  </div>
-
-  </div>
-
 </section>
+
+
 
 <!-- CASE STUDY MAIN IMAGE -->
-<section class="case-image-block space-after3x">
+<section class="case-image-block space-after3x" id="final-design">
   <div class="grid">
     <div class="unit xs-1 s-1 m-1 l-1">
       <img src="img/JF_WEB_ClaraFrames.png" alt="Clara app mockup" class="case-image space-after-1-2">
-      <p class="small-2 sans pad-r-1-2">Mid-fidelity wireframes translating user needs into a clean, structured task-planning experience.</p>
+      <p class="small-2 sans-caption pad-r-1-2">Mid-fidelity wireframes translating user needs into a clean, structured task-planning experience.</p>
     </div>
   </div>
 </section>
