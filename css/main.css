@@ -23,7 +23,6 @@ div {
   line-height: 1.5em;
   font-size: 1rem;
   background-color: #f9f9f6;
-  color: #201c12;
 }
 html {
   scroll-behavior: smooth;
@@ -529,12 +528,16 @@ font-style: normal;
   margin: 0;
   margin-bottom: 0.6rem;
 }
-
+.h3 {
+  font-weight: bold;
+}
 /* Make spacing feel balanced 
 .case-section {
   padding-right: 3.6rem;
 }*/
-
+h3.sans {
+  margin-bottom: 0;
+}
 .sans {
     font-family: "area-extended", sans-serif;
   font-weight: 400;
@@ -548,7 +551,7 @@ font-style: normal;
   font-style: normal;
   font-size: 0.75rem;
   line-height: 1.3rem;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .button {
   font-family: "area-extended", sans-serif;
