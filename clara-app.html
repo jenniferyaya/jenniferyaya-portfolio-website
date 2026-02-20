@@ -258,6 +258,49 @@
       flex-shrink: 0;
     }
 
+
+  /* ─── Next steps — two-column grid ───────────────────────────────────── */
+    .next-steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    .next-step {
+      background: var(--bg-case);
+      padding: 1.2rem 1.4rem;
+    }
+    .next-step p {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0 !important;
+    }
+
+ /* Learnings list */
+    .learnings {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .learnings li {
+      font-family: var(--sans);
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.93rem;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .learnings li::before {
+      content: '→';
+      color: var(--text);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
     /* ─── Next Project ───────────────────────────────────── */
     .next-project {
       border-top: 1px solid var(--border);
@@ -325,7 +368,7 @@
       An iOS app concept that makes task ownership and progress visible in one shared space —
       so group trip planning feels balanced, not burdensome.
     </p>
-    <a class="jump-link" href="https://www.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&t=xO9peq6C65Y57fmj-1&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394" target="_blank">Explore interactive prototype</a>
+    <a class="figma-link" href="https://www.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&t=xO9peq6C65Y57fmj-1&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394" target="_blank">Explore interactive prototype</a>
     <div class="case-meta">
       <div class="meta-item">
         <p class="meta-label">Role</p>
@@ -349,8 +392,8 @@
   <!-- ─── Hero Image ───────────────────────────────────── -->
   <div class="case-hero-image">
     <img
-      src="img/JF_WEB_ConservaHero.jpg"
-      alt="Conserva UI — hero screen showing the gourmet food experience"
+      src="img/JF_WEB_ClaraIndex.png"
+      alt="Clara iOS app — trip planning dashboard showing task ownership and progress"
       width="1160" height="580"
       loading="eager"
     />
@@ -402,12 +445,12 @@
 
     <figure class="case-image">
       <img
-        src="img/JF_WEB_ConservaMoodboard.png"
-        alt="Conserva brand and UI design moodboards"
+        src="img/JF_WEB_ClaraFrames.png"
+        alt="Select Clara screens"
         
         loading="lazy"
       />
-      <figcaption>Conserva's brand and UI design moodboards</figcaption>
+      <figcaption>Final low-fidelity screens.</figcaption>
     </figure>
 
     <section class="case-section">
@@ -435,8 +478,8 @@
 
       <figure class="case-image">
       <img
-        src="img/JF_WEB_ConservaAccessibility.png"
-        alt="Conserva accessibility standards"
+        src="img/JF_WEB_ClaraSynthesis.png"
+        alt="Research synthesis — thematic analysis of group trip planning interviews"
         
         loading="lazy"
       />
@@ -445,8 +488,8 @@
 
       <figure class="case-image">
       <img
-        src="img/JF_WEB_ConservaAccessibility.png"
-        alt="Conserva accessibility standards"
+        src="img/JF_WEB_ClaraPersona.png"
+        alt="Maya persona — the default trip planner, social and organized"
         
         loading="lazy"
       />
@@ -474,13 +517,14 @@
       <a class="figma-link" href="https://www.figma.com/design/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=16-2&t=UAIXerIyEBrNjJi7-1" target="_blank" rel="noopener">View exploratory sketches</a>
       
       <figure class="case-image">
-    <img
-      src="img/JF_WEB_ClaraSketch.png"
-      alt="Early Clara sketches exploring different ways users could manage tasks"
-      loading="lazy"
-    />
-    <figcaption>Early sketches explored different ways users could manage tasks.</figcaption>
-  </figure>
+      <img
+        src="img/JF_WEB_ClaraSketch.png"
+        alt="Early Clara sketches exploring different ways users could manage tasks"
+        
+        loading="lazy"
+      />
+      <figcaption>Early sketches explored different ways users could manage tasks.</figcaption>
+    </figure>
 
     </section>
 
@@ -506,6 +550,60 @@
       </p>
 
       <a class="figma-link" href="https://www.figma.com/proto/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=267-198&p=f&t=39DUSiPngQU3mi4m-1&scaling=scale-down&content-scaling=fixed&page-id=267%3A197&starting-point-node-id=267%3A198" target="_blank" rel="noopener">View low-fidelity prototype</a>
+    </section>
+
+<hr class="divider" />
+
+    <section class="case-section" id="final-design">
+      <span class="section-number">06 — Final Design</span>
+      <h2>Ownership, <em>made visible</em></h2>
+      <p>
+        The <em>Create a New Trip</em> screen gives users a simple way to set details,
+        invite friends, and start planning with clarity. From there, the trip dashboard
+        keeps the whole group aligned — surfacing who owns what, and where things stand,
+        at a glance.
+      </p>
+    </section>
+
+      <figure class="case-image">
+        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="642" height="700" src="https://embed.figma.com/proto/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=267-198&p=f&scaling=scale-down&content-scaling=fixed&page-id=267%3A197&starting-point-node-id=267%3A198&embed-host=share" allowfullscreen></iframe>
+    <figcaption>Final high-fidelity screens: trip creation, the shared dashboard, and task assignment.</figcaption>
+  </figure>
+
+<hr class="divider" />
+
+
+<section class="case-section">
+      <span class="section-number">07 — Outcome & Learnings</span>
+      <h2>What <em>Clara</em> taught me</h2>
+      <p>
+        By centering the experience on explicit task ownership and visible progress,
+        Clara reduces ambiguity during group trip planning. Responsibilities are clear,
+        progress is easy to assess, and coordination no longer depends on recalling past
+        conversations or inferring ownership.
+      </p>
+
+      <ul class="learnings">
+        <li>One strong insight can guide an entire product</li>
+        <li>Microcopy is a critical UX tool</li>
+        <li>Clarity often matters more than feature depth</li>
+      </ul>
+    </section>
+
+<hr class="divider" />
+
+    <section class="case-section">
+      <span class="section-number">08 — Next Steps</span>
+      <h2>Where <em>Clara</em> goes next</h2>
+      <p>
+        With the core coordination flow established, future iterations could explore:
+      </p>
+      <div class="next-steps-grid">
+        <div class="next-step"><p>Shared decision-making tools — polls and group voting</p></div>
+        <div class="next-step"><p>Collaborative budgeting features</p></div>
+        <div class="next-step"><p>High-level progress summaries for the group</p></div>
+        <div class="next-step"><p>High-fidelity visual design aligned with Clara's brand direction</p></div>
+      </div>
     </section>
 
 
