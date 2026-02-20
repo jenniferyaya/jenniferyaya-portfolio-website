@@ -1,164 +1,431 @@
 <!DOCTYPE html>
-<html lang="en-ca" id="site">
-  <head>
-    <meta charset="utf-8">
-    <title>Jennifer Falanga</title>
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,minimal-ui">
-    <meta name="handheldfriendly" content="true">
-    <meta name="mobileoptimized" content="240">
-    <meta name="description" content="JENNIFER YAYA FALANGA UI/UX Design">
-    <meta name="keywords" content="UI/UX Designer">
-    <meta name="google-site-verification" content="i30pI25___Lf9BtgWv8fxU-3lF-wxq7snu89mXpFymA" />
-    <link href="css/grid.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-<link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jennifer Yaya Falanga — UI/UX Designer</title>
+  <meta name="description" content="Jennifer Yaya Falanga is a UI/UX designer based in Ottawa, Canada, creating digital experiences across education, marketing, and product." />
 
-  <body>
-  <main id="main">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jennifer Yaya Falanga — UI/UX Designer" />
+  <meta property="og:description" content="UI/UX designer based in Ottawa, Canada." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.jenniferyaya.ca/" />
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css" />
 
-<!-- HEADER / NAVIGATION -->
-<div id="header-navigation">
-  <div class="grid space-after9x">
-    <div class="unit xs-1 s-1 m-1 l-1 header-bar">
-      <h1 class="left small-1 uppercase bold-ext"><a href="index.html">Jennifer Yaya Falanga</a></h1>
-      <ul class="small-2 extended">
-        <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href="https://drive.google.com/file/d/1uqhb4TT4YDPo9gIRXqZZDHCr57-FyzcC/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css" />
 
-<!-- PREVIEW ABOUT -->
-<div class="grid">
-  <div class="unit xs-1 s-1 m-1 l-2-3 serif">
-    <p class="space-after10x preview">
-      I’m Jennifer Yaya, a UI/UX designer based in Ottawa, Canada. I’m currently completing my UX Design diploma
-      at BrainStation and designing digital experiences across education and marketing.
+  <style>
+    /* ─── Homepage background ────────────────────────────── */
+    body { background: var(--bg-home); }
+
+    /* ─── Page layout ────────────────────────────────────── */
+    section { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+
+    /* ─── Hero ───────────────────────────────────────────── */
+    .hero {
+      min-height: 70svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 2.5rem 5rem;
+      max-width: var(--max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-alt);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3.4rem, 7.5vw, 7.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 16ch;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.9s 0.35s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      /* Italic contrast: slightly lighter weight on amber */
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      max-width: 44ch;
+      color: var(--accent-alt);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.8s 0.55s forwards;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      right: 2.5rem;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-alt);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+    .hero-scroll::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent-alt);
+    }
+
+    /* ─── Work Grid ──────────────────────────────────────── */
+    #work { padding-bottom: 6rem; }
+
+    /* Work section sits on a near-white card to contrast the amber */
+    .work-inner {
+      background: #F9F9F7;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      background: #F9F9F7;
+      cursor: pointer;
+      display: block;
+    }
+    .project-card:nth-child(1) { grid-column: 1 / -1; }
+
+    .project-card .img-wrap {
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: #ede9e2;
+    }
+    .project-card:nth-child(1) .img-wrap { aspect-ratio: 21/9; }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1), filter 0.5s ease;
+      filter: brightness(0.95);
+    }
+    .project-card:hover img {
+      transform: scale(1.04);
+      filter: brightness(1);
+    }
+
+    .project-info {
+      padding: 1.5rem 1.8rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .project-meta { flex: 1; }
+
+    .project-tag {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    .project-card:nth-child(1) .project-title { font-size: 1.7rem; }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      font-family: var(--sans);
+    }
+
+    .project-arrow {
+      font-size: 1.2rem;
+      color: var(--muted);
+      transition: transform var(--transition), color var(--transition);
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+    .project-card:hover .project-arrow {
+      transform: translate(4px, -4px);
+      color: var(--text);
+    }
+
+    /* Section label on amber bg */
+    #work .section-label { color: var(--accent-alt); border-top-color: rgba(0,0,0,0.2); }
+
+    /* ─── About ──────────────────────────────────────────── */
+    #about { padding-bottom: 6rem; display: block; }
+    #about .section-label { color: var(--accent-alt); border-top-color: rgba(0,0,0,0.2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    .about-text h2 em { font-style: italic; }
+    .about-text p {
+      color: var(--accent-alt);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      font-family: var(--sans);
+    }
+    .about-text a { color: var(--text); border-bottom: 1px solid rgba(0,0,0,0.3); }
+
+    .skills-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .skills-col h3 {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-alt);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .skills-col ul { list-style: none; }
+
+    .skills-col li {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--accent-alt);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      transition: color var(--transition), padding-left var(--transition);
+    }
+    .skills-col li:hover { color: var(--text); padding-left: 0.4rem; }
+
+    /* ─── Footer on amber ────────────────────────────────── */
+    footer { border-top-color: rgba(0,0,0,0.2); }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero { padding: 0 1.4rem 4rem; }
+      section { padding: 0 1.4rem; }
+      .work-grid { grid-template-columns: 1fr; }
+      .project-card:nth-child(1) { grid-column: auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .skills-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────── -->
+  <nav id="nav" class="nav-home">
+    <a href="index.html" class="nav-logo">Jennifer Yaya Falanga</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="mailto:jennifalangastudio@gmail.com">Contact</a></li>
+      <li><a class="cta" href="https://drive.google.com/file/d/1uqhb4TT4YDPo9gIRXqZZDHCr57-FyzcC/view?usp=sharing" target="_blank" rel="noopener">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ────────────────────────────────────────── -->
+  <div class="hero" aria-label="Introduction">
+    <p class="hero-eyebrow">UI/UX Designer · Ottawa, Canada</p>
+    <h1 class="hero-title">Designing <em>experiences</em> that feel right.</h1>
+    <p class="hero-sub">
+      I'm Jennifer Yaya — a UI/UX designer completing my UX diploma at BrainStation,
+      creating purposeful digital experiences across education, marketing, and product.
     </p>
+    <span class="hero-scroll" aria-hidden="true">Scroll to explore</span>
   </div>
-</div>
 
+  <!-- ─── Work ─────────────────────────────────────────── -->
+  <section id="work" aria-label="Selected work">
+    <p class="section-label">Selected Work</p>
+    <div class="work-inner">
+      <div class="work-grid">
 
+        <a class="project-card" href="conserva.html">
+          <div class="img-wrap">
+            <img src="img/JF_WEB_ConservaIndex.jpg" alt="Conserva app — bold, system-driven gourmet experience UI" width="1200" height="514" loading="eager" />
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <p class="project-tag">UI/UX · Case Study</p>
+              <h2 class="project-title">Conserva</h2>
+              <p class="project-desc">A bold, system-driven gourmet experience.</p>
+            </div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+        </a>
 
-<!-- HERO PROJECT -->
-<section class="space-after6x">
-  <div class="grid grid-middle">
+        <a class="project-card" href="clara-app.html">
+          <div class="img-wrap">
+            <img src="img/JF_WEB_ClaraIndex.png" alt="Clara app — clarity and collaboration interface mockup" width="600" height="338" loading="lazy" />
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <p class="project-tag">UI/UX · Case Study</p>
+              <h2 class="project-title">Clara</h2>
+              <p class="project-desc">Clarity and collaboration for every journey.</p>
+            </div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+        </a>
 
-    <!-- Left column: text -->
-    <div class="unit xs-1 s-1 m-1 l-1-3 hero-text">
-      <h2 class="hero-title">
-        Conserva: A Bold, System-Driven Gourmet Experience
-      </h2>
-      <a href="conserva.html" class="hero-link">View UI/UX case study</a>
+        <a class="project-card" href="fides-website.html">
+          <div class="img-wrap">
+            <img src="img/JF_WEB_FidesIndex.png" alt="FIDES sports agency website — player-first design" width="600" height="338" loading="lazy" />
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <p class="project-tag">Web Design · Case Study</p>
+              <h2 class="project-title">FIDES</h2>
+              <p class="project-desc">A player-first sports agency.</p>
+            </div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="uottawa.html">
+          <div class="img-wrap">
+            <img src="img/JF_WEB_uOttawa_11.png" alt="uOttawa project — bringing academic content to life" width="600" height="338" loading="lazy" />
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <p class="project-tag">Content Design</p>
+              <h2 class="project-title">uOttawa</h2>
+              <p class="project-desc">Bringing academic content to life.</p>
+            </div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="asuquomo.html">
+          <div class="img-wrap">
+            <img src="img/JF_WEB_ASUQUOMO_5.jpg" alt="Asuquomo visual campaign — brand and identity work" width="600" height="338" loading="lazy" />
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <p class="project-tag">Visual Design · Campaign</p>
+              <h2 class="project-title">Asuquomo</h2>
+              <p class="project-desc">Visual campaign design.</p>
+            </div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+        </a>
+
+      </div>
     </div>
+  </section>
 
-    <!-- Right column: image / mockup -->
-    <div class="unit xs-1 s-1 m-1 l-2-3 hero-media space-after6x space-top2x">
-      <!-- replace src with your mockup -->
-      <a href="conserva.html" class="hero-link"><img src="img/JF_WEB_ConservaIndex.jpg" alt="Feed redesign mockup"></a>
-    </div
-
-
-
-
-<!-- PROJECTS, three columns -->
-    <!-- Right column: image / mockup -->
-    <div class="unit xs-1 s-1 m-1 l-1-3 hero-media-left space-after6x">
-      <!-- replace src with your mockup -->
-      <a href="clara-app.html" class="hero-link"><img src="img/JF_WEB_ClaraMockup.png" alt="Feed redesign mockup" class="space-after-1-2"></a>
-      <h2 class="hero-title-2">Clara: Clarity and Collaboration for Every Journey</h2>
-      <a href="clara-app.html" class="hero-link">Explore case study</a>
+  <!-- ─── About ────────────────────────────────────────── -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Design with <em>intention</em>, built with care.</h2>
+        <p>I'm Jennifer Yaya — a UI/UX designer completing my diploma at BrainStation in Ottawa. I care about the intersection of clarity, function, and beauty in digital products.</p>
+        <p>My work spans education platforms, marketing experiences, and product design. I approach every project with research-first thinking and a keen eye for the details that make an experience feel effortless.</p>
+        <p>Currently available for freelance and full-time opportunities. Let's build something together — <a href="mailto:jennifalangastudio@gmail.com">jennifalangastudio@gmail.com</a></p>
+      </div>
+      <div class="skills-cols">
+        <div class="skills-col">
+          <h3>Skills</h3>
+          <ul>
+            <li>UX & UI Design</li>
+            <li>Interaction Design</li>
+            <li>Wireframing & Prototyping</li>
+            <li>User Flows</li>
+            <li>Visual & Brand Design</li>
+            <li>User Research</li>
+            <li>Accessibility</li>
+            <li>HTML & CSS</li>
+          </ul>
+        </div>
+        <div class="skills-col">
+          <h3>Services</h3>
+          <ul>
+            <li>UX/UI Design</li>
+            <li>Product Strategy</li>
+            <li>Design Systems</li>
+            <li>Responsive Design</li>
+            <li>Visual Design</li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Right column: image / mockup -->
-    <div class="unit xs-1 s-1 m-1 l-1-3 hero-media-left space-after6x">
-      <!-- replace src with your mockup -->
-      <a href="fides-website.html" class="hero-link"><img src="img/JF_WEB_FidesMockup.png" alt="Feed redesign mockup" class="space-after-1-2"></a>
-      <h2 class="hero-title-2">FIDES: A Player-First Sports Agency</h2>
-      <a href="fides-website.html" class="hero-link">Explore case study</a>
-    </div>
+  <!-- ─── Footer ────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-name">Jennifer Yaya Falanga</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
+      <li><a href="https://drive.google.com/file/d/1uqhb4TT4YDPo9gIRXqZZDHCr57-FyzcC/view?usp=sharing" target="_blank" rel="noopener">Résumé ↗</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Jennifer Yaya Falanga</span>
+  </footer>
 
-    <!-- Centre column: image / mockup -->
-    <div class="unit xs-1 s-1 m-1 l-1-3 hero-media-left space-after6x">
-      <!-- replace src with your mockup -->
-      <a href="uottawa.html" class="hero-link"><img src="img/JF_WEB_uOttawa_11.png" alt="Feed redesign mockup" class="space-after-1-2"></a>
-      <h2 class="hero-title-2">uOttawa: Bringing Academic Content to Life</h2>
-      <a href="uottawa.html" class="hero-link">Explore work</a>
-    </div>
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
 
-    <!-- Left column: image / mockup -->
-    <div class="unit xs-1 s-1 m-1 l-1-3 hero-media-left space-after6x">
-      <!-- replace src with your mockup -->
-      <a href="asuquomo.html" class="hero-link"><img src="img/JF_WEB_ASUQUOMO_5.jpg" alt="Feed redesign mockup" class="space-after-1-2"></a>
-      <h2 class="hero-title-2">Asuquomo: Visual Campaign</h2>
-      <a href="asuquomo.html" class="hero-link">Explore work</a>
-    </div>
-
-
-  </div>
-</section>
-
-
-
-
-
-<hr class="footer-divider">
-
-<!-- FOOTER -->
-<section id="footer" class="space-after3x">
-  <div class="grid">
-
-    <!-- Column 1: Skills & Methods -->
-    <div class="unit xs-1 s-1 m-1-3 l-1-3">
-      <h3 >Skills & Methods</h3>
-      <ul>
-        <li>UX, UI, and interaction design</li>
-        <li>Wireframing & prototyping</li>
-        <li>User flows</li>
-        <li>Visual & brand design</li>
-        <li>User research</li>
-        <li>Accessibility & responsive design</li>
-        <li>HTML & CSS</li>
-      </ul>
-    </div>
-
-    <!-- Column 2: Services -->
-    <div class="unit xs-1 s-1 m-1-3 l-1-3">
-      <h3 >Services</h3>
-      <ul>
-        <li>UX/UI design</li>
-        <li>Interaction design</li>
-        <li>Visual design</li>
-        <li>Product strategy</li>
-        <li>Design systems</li>
-      </ul>
-    </div>
-
-    <!-- Column 3: Contact -->
-    <div class="unit xs-1 s-1 m-1-3 l-1-3">
-      <h3>Contact</h3>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank">Linkedin</a></li>
-        <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-  <p class="small-1 copyright space-after3x">
-    &copy; 2025 Jennifer Yaya Falanga.
-  </p>
-
-
-
-</main>
-  </body>
-  </html>
+</body>
+</html>

@@ -1,0 +1,206 @@
+/* ============================================================
+   Jennifer Yaya Falanga — Portfolio Stylesheet
+   Shared across all pages. Page-specific styles live in
+   a <style> block inside each HTML file.
+   ============================================================ */
+
+/* ─── Fonts ──────────────────────────────────────────────── */
+/*
+  area-extended is loaded via Adobe Fonts / Typekit.
+  The <link> to https://use.typekit.net/rwl3qku.css is added
+  in each HTML <head> alongside Instrument Serif.
+  Instrument Serif is loaded from Google Fonts in each HTML <head>.
+*/
+
+/* ─── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Design Tokens ──────────────────────────────────────── */
+:root {
+  /* Backgrounds (page-specific, overridden per file) */
+  --bg-home:    #ffac16;   /* Homepage amber */
+  --bg-case:    #F9F9F7;   /* Case study warm white */
+
+  /* Surfaces & borders */
+  --surface:    rgba(0,0,0,0.06);
+  --border:     rgba(0,0,0,0.15);
+
+  /* Text — dark on light backgrounds */
+  --text:       #141413;
+  --muted:      #484540;
+  --text-inv:   #F9F9F7;   /* Light text when used over dark/amber */
+
+  /* Accent — a deeper amber for detail on white; near-black on amber */
+  --accent:     #141413;
+  --accent-alt: #553A00;   /* Used for labels/eyebrows on amber bg */
+
+  /* Typography */
+  --serif:      'Instrument Serif', Georgia, serif;
+  --sans:       'area-extended', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Layout */
+  --max:        1160px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.space-after-1-2 {
+  margin-bottom: 0.6rem;
+}
+.space-after {
+  margin-bottom: 1.2rem;
+}
+
+/* ─── Base ───────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ─── Navigation ─────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 2.5rem;
+  transition: background var(--transition), border-color var(--transition);
+  border-bottom: 1px solid transparent;
+}
+
+/* Homepage nav: amber bg, dark text */
+nav.nav-home {
+  background: rgba(255,172,22,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+nav.nav-home.scrolled { border-bottom-color: rgba(0,0,0,0.18); }
+
+/* Case study nav: warm white bg, dark text */
+nav.nav-case {
+  background: rgba(249,249,247,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--border);
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+/* Homepage nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links .cta {
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.45rem 1.1rem;
+  border-radius: 2px;
+  transition: background var(--transition), color var(--transition);
+}
+.nav-links .cta:hover { background: var(--text); color: var(--bg-home); }
+
+/* Case study nav — back link */
+.nav-back {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color var(--transition), gap var(--transition);
+}
+.nav-back:hover { color: var(--text); gap: 0.8rem; }
+.nav-back::before { content: '←'; }
+
+/* ─── Footer ─────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color var(--transition);
+}
+.footer-links a:hover { color: var(--text); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ─── Shared Utility ─────────────────────────────────────── */
+.section-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3rem;
+  padding-top: 6rem;
+  border-top: 1px solid var(--border);
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  nav { padding: 1.2rem 1.4rem; }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem 1.4rem;
+  }
+}

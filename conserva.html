@@ -1,190 +1,438 @@
 <!DOCTYPE html>
-<html lang="en-ca" id="site-project">
-  <head>
-    <meta charset="utf-8">
-    <title>Jennifer Falanga</title>
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,minimal-ui">
-    <meta name="handheldfriendly" content="true">
-    <meta name="mobileoptimized" content="240">
-    <meta name="description" content="JENNIFER YAYA FALANGA UI/UX Design">
-    <meta name="keywords" content="UI/UX Designer">
-    <meta name="google-site-verification" content="i30pI25___Lf9BtgWv8fxU-3lF-wxq7snu89mXpFymA" />
-    <link href="css/grid.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-<link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conserva — Jennifer Yaya Falanga</title>
+  <meta name="description" content="Conserva: A Bold, System-Driven Gourmet Experience — UX/UI case study by Jennifer Yaya Falanga." />
 
-  <body>
-  <main id="main">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Conserva — Jennifer Yaya Falanga" />
+  <meta property="og:description" content="UI/UX case study: A bold, system-driven gourmet experience." />
+  <meta property="og:type" content="article" />
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css" />
 
-<!-- HEADER / NAVIGATION -->
-<div id="header-navigation">
-  <div class="grid space-after9x">
-    <div class="unit xs-1 s-1 m-1 l-1 header-bar">
-      <h1 class="left small-1 uppercase bold-ext"><a href="index.html">Jennifer Yaya Falanga</a></h1>
-      <ul class="small-2 extended">
-        <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href="https://drive.google.com/file/d/1uqhb4TT4YDPo9gIRXqZZDHCr57-FyzcC/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
-      </ul>
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ─── Case study background ──────────────────────────── */
+    body { background: var(--bg-case); line-height: 1.8; }
+
+    /* ─── Case Hero ──────────────────────────────────────── */
+    .case-hero {
+      padding: 8rem 2.5rem 5rem;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .case-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .case-title {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 20ch;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .case-title em { font-style: italic; }
+
+    .case-tagline {
+      color: var(--muted);
+      max-width: 52ch;
+      font-size: 0.97rem;
+      font-family: var(--sans);
+      margin-bottom: 1.2rem;
+    }
+
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .meta-value {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    /* ─── Hero Image ─────────────────────────────────────── */
+    .case-hero-image {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2.5rem 5rem;
+    }
+    .case-hero-image img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+   /* ─── Jump link ──────────────────────────────────────── */
+    .jump-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 2px;
+      margin-top: 1.5rem;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .jump-link:hover { color: var(--text); border-color: var(--text); }
+    .jump-link::after { content: '↓'; }
+
+    /* ─── Body ───────────────────────────────────────────── */
+    .case-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2.5rem 8rem;
+    }
+
+    .case-section { margin-bottom: 4.5rem; }
+
+    .section-number {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .case-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+    .case-section h2 em { font-style: italic; }
+
+    .case-section h3 {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin: 2rem 0 0.6rem;
+    }
+
+    .case-section p {
+      font-family: var(--sans);
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .case-section p strong { color: var(--text); font-weight: 400; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 4rem 0;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 2px solid var(--text);
+      padding: 0.4rem 0 0.4rem 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .pull-quote p {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--text) !important;
+      line-height: 1.45;
+    }
+
+    /* Tag list */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .tag {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      color: var(--muted);
+      border-radius: 2px;
+    }
+
+    /* Wide image */
+    .case-image {
+      max-width: var(--max);
+      margin: 2.5rem auto;
+      padding: 0;
+    }
+    .case-image img {
+      width: 100%;
+      border: 1px solid var(--border);
+    }
+    .case-image figcaption {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.6rem;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    /* Outcomes */
+    .outcomes { list-style: none; margin-top: 1rem; }
+    .outcomes li {
+      font-family: var(--sans);
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.93rem;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .outcomes li::before {
+      content: '→';
+      color: var(--text);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── Next Project ───────────────────────────────────── */
+    .next-project {
+      border-top: 1px solid var(--border);
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4rem 2.5rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      transition: background var(--transition);
+    }
+    .next-project:hover { background: rgba(0,0,0,0.03); }
+
+    .next-label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .next-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .next-arrow {
+      font-size: 2rem;
+      color: var(--muted);
+      transition: transform var(--transition), color var(--transition);
+      flex-shrink: 0;
+    }
+    .next-project:hover .next-arrow {
+      transform: translate(8px, -8px);
+      color: var(--text);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .case-hero { padding: 7rem 1.4rem 3.5rem; }
+      .case-hero-image { padding: 0 1.4rem 3rem; }
+      .case-body { padding: 0 1.4rem 5rem; }
+      .case-image { padding: 0 1.4rem; }
+      .next-project { padding: 3rem 1.4rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────── -->
+  <nav class="nav-case">
+    <a href="index.html" class="nav-logo">Jennifer Yaya Falanga</a>
+    <a href="index.html#work" class="nav-back">All Work</a>
+  </nav>
+
+  <!-- ─── Case Study Hero ──────────────────────────────── -->
+  <header class="case-hero">
+    <p class="case-eyebrow">UI/UX Design · Case Study · 2026</p>
+    <h1 class="case-title">Conserva: A Bold, <em>System-Driven</em> Gourmet Experience</h1>
+    <p class="case-tagline">
+      Designing a premium food discovery platform that balances editorial richness
+      with a scalable, component-driven system.
+    </p>
+    <a class="jump-link" href="https://www.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&t=xO9peq6C65Y57fmj-1&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394" target="_blank">Explore interactive prototype</a>
+    <div class="case-meta">
+      <div class="meta-item">
+        <p class="meta-label">Role</p>
+        <p class="meta-value">UI & Design System Lead</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Duration</p>
+        <p class="meta-value">8 weeks</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Tools</p>
+        <p class="meta-value">Figma, Sora, Adobe Photoshop</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Deliverables</p>
+        <p class="meta-value">Research, Wireframes, Prototype</p>
+      </div>
     </div>
+  </header>
+
+  <!-- ─── Hero Image ───────────────────────────────────── -->
+  <div class="case-hero-image">
+    <img
+      src="img/JF_WEB_ConservaHero.jpg"
+      alt="Conserva UI — hero screen showing the gourmet food experience"
+      width="1160" height="580"
+      loading="eager"
+    />
   </div>
-</div>
 
-<!-- CASE STUDY HERO -->
-<section id="case-hero" class="space-after6x">
-  <div class="grid">
+  <!-- ─── Case Study Body ──────────────────────────────── -->
+  <article class="case-body">
 
-    <!-- Title + intro -->
-    <div class="unit xs-1 s-1 m-1 l-1">
-      <h1 class="case-title serif">Conserva</h1>
+    <section class="case-section">
+      <span class="section-number">01 — Overview</span>
+      <h2>What is <em>Conserva?</em></h2>
+      <p>Online shopping rarely feels like browsing anymore. It feels directed. Algorithms sort and suggest before we’ve decided what we want. When that guidance is thoughtful, it works. When it isn’t, it feels pushy.</p>
+      <p>Conserva explores that tension. I designed a bold, opinionated conceptual gourmet food discovery brand that stays expressive without becoming chaotic. The result is a high-fidelity e-commerce experience supported by a structured design system that is scalable, consistent with character.</p>
+      <p><strong>The problem:</strong> Existing food apps either feel clinical and utilitarian or overwhelming with content. Neither serves the discerning home cook who wants inspiration with a distinct voice.</p>
+    </section>
 
-      <p class="case-intro small sans space-after-1-2">Online shopping rarely feels like browsing anymore. It feels directed. Algorithms sort and suggest before we’ve decided what we want. When that guidance is thoughtful, it works. When it isn’t, it feels pushy.</p>
-      <p class="small sans-caption space-after-1-2">Source: <a href="https://www.akeneo.com/blog/2026-ecommerce-trends/" target="_blank" class="link">https://www.akeneo.com/blog/2026-ecommerce-trends/</a></p>
+    <hr class="divider" />
 
-      <p class="sans case-intro small space-after">Conserva explores that tension. I designed a bold, opinionated gourmet brand that stays expressive without becoming chaotic. The result is a high-fidelity e-commerce experience supported by a structured design system that protects clarity, consistency, and character.</p>
-      <a class="button" href="https://www.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&t=yjJeWGiW8MGAQ5n9-1&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394" target="_blank">Explore interactive prototype</a>
+    <section class="case-section">
+      <span class="section-number">02 — Brand Direction</span>
+      <h2>Defining the Brand System</h2>
+      <p><b>Bold · Graphic · Expressive · Confident · Opinionated</b></p>
+      <p>Conserva’s visual language is built on contrast and structure. Inspired by Prince’s stage presence, imposing brutalist architecture, and digital realism, the brand doesn’t whisper.</p>
+      <h3>Design Decisions</h3>
+      <p><strong>Assertive Colour.</strong>Colour appears in saturated, deliberate blocks — never decorative, always structural.</p>
+      <p><strong>Photography as UI.</strong> Full-bleed imagery is not decoration — it serves as the primary navigation signal, reducing cognitive load while maintaining richness.</p>
+      <a class="jump-link" href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=8008-104&t=6RXNufCwGPRbihoB-1" target="_blank">View the brand and UI moodboards</a>
+
+      <div class="pull-quote">
+        <p>It feels contemporary, but controlled. Expressive, without losing discipline.</p>
+      </div>
+
+    </section>
+
+    <figure class="case-image">
+      <img
+        src="img/JF_WEB_ConservaMoodboard.png"
+        alt="Conserva brand and UI design moodboards"
         
-    
-    </div>
+        loading="lazy"
+      />
+      <figcaption>Conserva's brand and UI design moodboards</figcaption>
+    </figure>
 
+    <section class="case-section">
+      <span class="section-number">03 — Design</span>
+      <h2>Design System & UI Library</h2>
+      <p>I built the system from the ground up using <b><a href="https://atomicdesign.bradfrost.com/chapter-2/" target="_blank">Atomic Design</a></b> methodology, defining colour, type, spacing, and components first so the work could scale without losing its point of view.</p>
+      <p>This structure scales across iOS, Android, and web while maintaining a clear point of view.</p>
+      <a class="jump-link" href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=7134-257&t=6RXNufCwGPRbihoB-1" target="_blank">Explore the Conserva Design System</a>
+    </section>
 
+        <figure class="case-image">
+      <img
+        src="img/JF_WEB_ConservaAccessibility.png"
+        alt="Conserva accessibility standards"
+        
+        loading="lazy"
+      />
+      <figcaption>Conserva's accessibility contrast standards</figcaption>
+    </figure>
 
-  </div>
+    <hr class="divider" />
 
-  <!-- Meta row -->
-  <div class="grid space-top3x">
-
-    <div class="unit xs-1 s-1 m-1-4 l-1-4">
-      <p class="case-meta-label small-3 uppercase">Role</p>
-      <p class="case-meta-value small sans">UI & Design System Lead</p>
-    </div>
-
-    <div class="unit xs-1 s-1 m-1-4 l-1-4">
-      <p class="case-meta-label small-3 uppercase">Focus</p>
-      <p class="case-meta-value small sans">Product Strategy, Brand Voice, Interface Copy, AI Image Prompting</p>
-    </div>
-
-    <div class="unit xs-1 s-1 m-1-4 l-1-4">
-      <p class="case-meta-label small-3 uppercase">Tools</p>
-      <p class="case-meta-value small sans">Figma, Sora, Adobe Photoshop</p>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- CASE STUDY MAIN IMAGE -->
-<section class="case-image-block space-after3x">
-  <div class="grid">
-    <div class="unit xs-1 s-1 m-1 l-1">
-      <img src="img/JF_WEB_ConservaHero.jpg" alt="Clara app mockup" class="case-image space-after-1-2">
-      <p class="small-3 sans-caption pad-r-1-2">Editorial still-life art direction created to explore Conserva’s visual language. Images were generated in Sora and guided by defined brand and system constraints.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- TEXT SECTION -->
-<section class="case-section">
-
-  <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
-      <h2 class="case-subtitle">Defining the Brand System</h2>
-      <p class="small sans space-after-1-2 pad-r2x"><b>Bold · Graphic · Expressive · Confident · Opinionated</b></p>
-      <p class="small sans pad-r2x space-after-1-2">Conserva’s visual language is built on contrast and structure. IInspired by Prince’s stage presence, imposing brutalist architecture, and digital realism, the brand doesn’t whisper.</p>
-      <p class="small sans pad-r2x space-after-1-2">Type is large and assertive. Colour appears in saturated blocks. Subtle texture adds tactility without distraction. Hierarchy comes from scale and spacing, not decoration.</p>
-      <p class="small sans pad-r2x space-after">It feels contemporary, but controlled. Expressive, without losing discipline.</p>
-
-      <a class="button space-after2x" href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=8008-104&t=6RXNufCwGPRbihoB-1" target="_blank">View the brand and UI moodboards</a>
-      </div>
-   
-
-   <!-- Right text column - wider -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
-      <a href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=8008-104&t=cv1AIThwPkMMclEk-1" target="_blank"><img src="img/JF_WEB_ConservaMoodboard.png" alt="Brand curation moodboard" class="case-image space-after-1-2"></a>
-      </div>
-
-  </div>
-</section>
-
-
-<!-- TEXT SECTION -->
-<section class="case-section">
-
-  <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-   <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
-      <h2 class="case-subtitle serif">Design System & UI Library</h2>
-      <p class="small sans space-after-1-2 pad-r2x">I built the system from the ground up using <a href="https://atomicdesign.bradfrost.com/chapter-2/" target="_blank" class="link">Atomic Design</a> methodology, defining colour, type, spacing, and components first so decisions wouldn’t drift as the interface expanded.</p>
-       <p class="small sans pad-r2x">The system defined:</p>
-       <ul class="space-top0 sans space-after-1-2">
-        <li>Semantic and brand colour usage</li>
-        <li>WCAG-compliant contrast standards</li>
-        <li>Component behaviour and interaction states</li>
-        <li>Token-based spacing and typography rules</li>
-      </ul>
-      <p class="small sans space-after pad-r2x">This structure scales across iOS, Android, and web while maintaining a clear point of view.</p>
-
-       <a class="button space-after2x" href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=7134-257&t=6RXNufCwGPRbihoB-1" target="_blank">Explore the Conserva Design System</a>
-    </div>
-
-       <!-- Right text column - wider -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
-      <a href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=8008-104&t=cv1AIThwPkMMclEk-1" target="_blank"><img src="img/JF_WEB_ConservaAccessibility.png" alt="Research synthesis" class="case-image space-after-1-2"></a>
-      <p class="small-2 sans-caption pad-r-1-2 space-after">Accessibility matrix defining semantic colour usage and WCAG 2.1 AA–compliant contrast pairings across text, surfaces, and graphic elements.</p>
-      </div>
-
-</section>
-
-<!-- IMAGE SECTION -->
-<section class="case-section space-after2x">
- <!-- IMAGE ROW -->
-  <div class="grid">
-
-    <!-- Left image (wide) -->
-    <div class="unit xs-1 s-1 m-1 l-1">
-      <h2 class="case-subtitle">Key Screens</h2>
-      <img src="img/JF_WEB_ConservaKeyScreens.jpg" alt="Research synthesis" class="case-image space-after">
-      <p class="small sans pad-r2x space-after-1-2"><b>Hero Section:</b> The entry point is unapologetically brand-first: high-contrast imagery, oversized type, deliberate hierarchy. It signals immediately that this isn’t a neutral marketplace. It’s a perspective.</p>
-      <p class="small sans pad-r2x space-after-1-2"><b>Categories:</b> Modular groupings translate the system into something practical and scannable. Bold colour guides attention without competing with product content.</p>
-      <p class="small sans pad-r2x space-after2x"><b>Events:</b> Community lives inside the shop experience rather than beside it. Event highlights integrate seamlessly without disrupting structure or accessibility.</p>
-    </div>
-
-    <!-- Right image (narrow) -->
-    <div class="unit xs-1 s-1 m-1 l-1">
-      <img src="img/JF_WEB_ConservaShop.jpg" alt="User flow notes" class="case-image space-after">
-      <p class="small sans pad-r2x space-after-1-2"><b>Shop Page:</b> Browsing is structured, not chaotic. Modular layouts make comparison easy. Hierarchy and controlled contrast guide discovery without overwhelming it.</p>
-      <p class="small sans pad-r2x space-after-1-2"><b>Item Detail Page:</b> Information is layered deliberately with clear typographic hierarchy and accessible contrast. Brand accents frame the content instead of competing with it.</p>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- TEXT SECTION -->
-<section class="case-section">
-  <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
+    <section class="case-section">
+      <span class="section-number">04 — Key Screens</span>
+      <h2>Home: Where Exploration Begins</em></h2>
       
-      <h2 class="case-subtitle serif">AI as a Creative Collaborator</h2>
-       <p class="small sans pad-r2x space-after-1-2">I used AI as a controlled exploration tool, not a shortcut.</p>
-       <p class="small sans pad-r2x space-after-1-2">Rather than relying on stock imagery, I was excited to treat image generation as part of the visual system. Prompts were written to reflect Conserva’s language: high contrast, saturated colour, tactile texture, and graphic architectural composition.</p>
-       <h3 class="sans"><b>Prompting as Structured Thinking</b></h3>
-       <p class="small pad-r2x sans">Before writing a prompt, I worked through a set of questions as I studied other images:</p>
-       <ul class="space-top0 sans space-after-1-2">
+      <figure class="case-image">
+      <img
+        src="img/JF_WEB_ConservaKeyScreenHome.jpg"
+        alt="Conserva brand and UI design moodboards"
+        
+        loading="lazy"
+      />
+      <figcaption class="space-after-1-2">This isn’t a neutral marketplace. It’s a perspective.</figcaption>
+      <p>The home experience opens with an editorial statement — bold typography, full-bleed photography, and a city tag that grounds the brand in place. Beneath it, category browsing is structured into a clean modular grid: scannable, fast, and visually consistent.</p>
+      <p>The community event module integrates directly into the feed, framed in saturated yellow, so it reads as part of the brand rather than an interruption.</p>
+    </figure>
+
+      <h2>Shop: Product in Depth</em></h2>
+      <figure class="case-image">
+      <img
+        src="img/JF_WEB_ConservaKeyScreenShop.jpg"
+        alt="Conserva brand and UI design moodboards"
+        
+        loading="lazy"
+      />
+      <figcaption class="space-after-1-2">Browsing is structured, not chaotic.</figcaption>
+      <p>The category page leads with a brand statement <i>Made to Last. Meant to Be Shared.</i> before giving way to the product grid. Filtering and sorting sit quietly at the top without competing for attention.</p>
+      <p>The product detail view layers information deliberately: a sensory description first (Bright. Softened. Gently saline.), then provenance, then specs. The Add to Cart button anchors each screen in red.</p>
+    </figure>
+
+
+
+    </section>
+
+    <section class="case-section">
+      <span class="section-number">05 — Images</span>
+      <h2>AI as a Creative Collaborator</h2>
+      <p>Rather than relying on stock imagery, I treat image generation as part of the visual system. Prompts were written to reflect Conserva’s language: high contrast, saturated colour, tactile texture, and graphic architectural composition.</p>
+      <h3>Prompting as Structured Thinking</h3>
+      <p>As I studied other photographs and my image prompt results, I worked through this set of questions constantly:</p>
+      <ul class="outcomes space-after">
         <li>What kind of image is this? (editorial still-life, product macro, lifestyle scene)?</li>
         <li>What are we looking at, and how is it placed in the scene?</li>
         <li>What textures or physical qualities must be visible?</li>
@@ -193,133 +441,50 @@
         <li>How is the image composed?</li>
         <li>What should the image ultimately communicate?</li>
       </ul>
+      <p>This turned prompting into structured thinking, and so, the outputs stayed visually coherent and repeatable.</p>
+      <h3>Sample Prompt</h3>
+      <p><i>Editorial colour close-up of chopped lemons arranged directly on a dark stone surface. Lemon wedges and pieces are irregularly cut, showing textured rind and translucent pulp. Bright natural light creates sharp highlights and crisp shadows, emphasizing colour and form. Saturated yellow contrasts strongly against deep charcoal stone. Composition is tight and graphic, cropped for thumbnail use. Subtle filmic grain adds texture without softness. Modern, tactile, and design-led.</i></p>
 
-       <h3 class="sans"><b>A Successful Image Prompt</b></h3>
-       <p class="small sans pad-r2x space-after-1-2"><i>Editorial colour close-up of chopped lemons arranged directly on a dark stone surface. Lemon wedges and pieces are irregularly cut, showing textured rind and translucent pulp. Bright natural light creates sharp highlights and crisp shadows, emphasizing colour and form. Saturated yellow contrasts strongly against deep charcoal stone. Composition is tight and graphic, cropped for thumbnail use. Subtle filmic grain adds texture without softness. Modern, tactile, and design-led.</i></p>
-       <p class="small sans pad-r2x space-after-1-2">This turned prompting into structured thinking, and so, the outputs stayed visually coherent and repeatable.</p>
+     <figure class="case-image">
+      <img
+        src="img/JF_WEB_ConservaAI.jpg"
+        alt="Conserva brand and UI design moodboards"
+        
+        loading="lazy"
+      />
+      <figcaption>By defining lighting, texture, composition, and colour relationships upfront, the AI didn’t wander, it stayed aligned with the brand.</figcaption>
+    </figure>
 
-      </div>
+    </section>
 
-    <!-- Right image (narrow) -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
-      <img src="img/JF_WEB_ConservaAI.jpg" alt="User flow notes" class="case-image space-after-1-2">
-      <p class="small-2 sans-caption pad-r2x space-after-1-2">These images are the result of constraint-led prompting. By defining lighting, texture, composition, and colour relationships upfront, the AI didn’t wander, it stayed aligned with the brand. The outputs reinforce the system instead of flattening it.</p>
+    <section class="case-section">
+      <span class="section-number">06 — Reflection</span>
+      <h2>Structure and Creativity</h2>
+      <p>Working on Conserva reinforced something I’ve felt in other projects but hadn’t articulated as clearly: structure doesn’t limit creativity, which became clearest in the moodboarding and system-building phases. These structures protects the brand and makes the work move faster, with intention.
+
+</p>
+    </section>
+
+  </article>
+
+  <!-- ─── Next Project ──────────────────────────────────── -->
+  <a class="next-project" href="clara-app.html">
+    <div>
+      <p class="next-label">Next Project</p>
+      <p class="next-title">Clara — Clarity and Collaboration for Every Journey</p>
     </div>
+    <span class="next-arrow" aria-hidden="true">↗</span>
+  </a>
 
-    </div>
-</section>
+  <!-- ─── Footer ────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-name">Jennifer Yaya Falanga</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Jennifer Yaya Falanga</span>
+  </footer>
 
-
-
-
-<!-- TEXT SECTION -->
-<section class="case-section">
-  <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
-      
-      <h2 class="case-subtitle">Prototyping</h2>
-       <p class="small sans pad-r2x space-after-1-2">Interactions were defined at the component level. Carousel motion, button states, and transitions were standardized to maintain energy without visual noise.</p>
-       <p class="small sans pad-r2x space-after">Carousel behaviour, button states, and transition patterns were standardized across the system. The energy stays high. The experience stays controlled.</p>
-       <a class="button" href="https://www.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&t=yjJeWGiW8MGAQ5n9-1&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394" target="_blank">Explore interactive prototype</a>
-
-      </div>
-
-
-    <!-- Right image (narrow) -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
-      <img src="img/JF_WEB_ConservaMotionCurves.png" alt="User flow notes" class="case-image space-after-1-2">
-      <p class="small-2 sans-caption pad-r2x space-after-1-2">A motion foundation that defines animation curves by interaction intent. Timing and easing are tied to component behaviour, creating consistent pacing, reinforcing hierarchy, and keeping the brand’s expression intact.</p>
-    </div>
-
-    </div>
-</section>
-
-
-
-<!-- TEXT SECTION -->
-<section class="case-section">
-  <!-- TEXT ROW -->
-  <div class="grid space-after2x">
-
-    <!-- Left text column - wider -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
-      
-      <h2 class="case-subtitle">Outcomes & Reflections</h2>
-       <p class="small sans space-after-1-2 pad-r2x">Working on Conserva reinforced something I’ve felt in other projects but hadn’t articulated as clearly: structure doesn’t limit creativity. It protects it.</p>
-        <p class="small sans space-after-1-2 pad-r2x">When the system is clear, aesthetic drift disappears. Decisions feel grounded instead of arbitrary. Accessibility stops being a compliance exercise and starts sharpening the brand. Constraints like spacing tokens or AI prompts reduce hesitation. The work moves faster, but with more intention.</p>
-       <p class="small sans space-after-1-2 pad-r2x">One tension became especially clear: expressive interfaces don’t have to be chaotic to feel bold. Impact comes from control. Contrast, texture, and hierarchy can carry intensity without noise.</p>
-       <p class="small sans space-after pad-r2x">Conserva reinforced that clarity isn’t the opposite of personality. It’s what allows personality to land.</p>
-
-
-      </div>
-          <!-- Right image (narrow) -->
-    <div class="unit xs-1 s-1 m-1 l-1-2">
-      <img src="img/JF_WEB_ConservaEnd.jpg" alt="User flow notes" class="case-image space-after-1-2">
-    </div>
-
-    </div>
-</section>
-
-
-
-
-
-
-
-<hr class="footer-divider">
-
-<!-- FOOTER -->
-<section id="footer" class="space-after3x">
-  <div class="grid">
-
-    <!-- Column 1: Skills & Methods -->
-    <div class="unit xs-1 s-1 m-1-3 l-1-3">
-      <h3 >Skills & Methods</h3>
-      <ul>
-        <li>UX, UI, and interaction design</li>
-        <li>Wireframing & prototyping</li>
-        <li>User flows</li>
-        <li>Visual & brand design</li>
-        <li>User research</li>
-        <li>Accessibility & responsive design</li>
-        <li>HTML & CSS</li>
-      </ul>
-    </div>
-
-    <!-- Column 2: Services -->
-    <div class="unit xs-1 s-1 m-1-3 l-1-3">
-      <h3 >Services</h3>
-      <ul>
-        <li>UX/UI design</li>
-        <li>Interaction design</li>
-        <li>Visual design</li>
-        <li>Product strategy</li>
-        <li>Design systems</li>
-      </ul>
-    </div>
-
-    <!-- Column 3: Contact -->
-    <div class="unit xs-1 s-1 m-1-3 l-1-3">
-      <h3>Contact</h3>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank">Linkedin</a></li>
-        <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-  <p class="small-1 copyright space-after3x">
-    &copy; 2025 Jennifer Yaya Falanga.
-  </p>
-  </p>
-
-
-
-</main>
-  </body>
-  </html>
+</body>
+</html>
