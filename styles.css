@@ -19,7 +19,7 @@
 :root {
   /* Backgrounds (page-specific, overridden per file) */
   --bg-home:    #ffac16;   /* Homepage amber */
-  --bg-case:    #F9F9F7;   /* Case study warm white */
+  --bg-case:    #F6F4EF;   /* Case study warm white */
 
   /* Surfaces & borders */
   --surface:    rgba(0,0,0,0.06);
@@ -87,7 +87,7 @@ nav.nav-home.scrolled { border-bottom-color: rgba(0,0,0,0.18); }
 
 /* Case study nav: warm white bg, dark text */
 nav.nav-case {
-  background: rgba(249,249,247,0.92);
+  background: rgba(246,244,239,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom-color: var(--border);
@@ -139,6 +139,27 @@ nav.nav-case {
 }
 .nav-back:hover { color: var(--text); gap: 0.8rem; }
 .nav-back::before { content: '←'; }
+
+
+/* ─── Figma Link ─────────────────────────────────────────────── */
+    /* Prototype / Figma CTA button */
+    .figma-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      border: 1px solid var(--text);
+      padding: 0.6rem 1.2rem;
+      border-radius: 2px;
+      margin-top: 1.2rem;
+      transition: background var(--transition), color var(--transition);
+    }
+    .figma-link:hover { background: var(--text); color: var(--bg-case); }
+    .figma-link::after { content: '↗'; }
 
 /* ─── Footer ─────────────────────────────────────────────── */
 footer {
