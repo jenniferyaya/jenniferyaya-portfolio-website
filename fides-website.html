@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conserva — Jennifer Yaya Falanga</title>
+  <meta name="description" content="FIDES Sports Management — Web design case study by Jennifer Yaya Falanga." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FIDES — Jennifer Yaya Falanga" />
+  <meta property="og:description" content="Web design case study: A player-first sports management agency." />
+  <meta property="og:type" content="article" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css" />
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ─── Case study background ──────────────────────────── */
+    body { background: var(--bg-case); line-height: 1.8; }
+
+    /* ─── Case Hero ──────────────────────────────────────── */
+    .case-hero {
+      padding: 8rem 2.5rem 5rem;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .case-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .case-title {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 20ch;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .case-title em { font-style: italic; }
+
+    .case-tagline {
+      color: var(--muted);
+      max-width: 52ch;
+      font-size: 0.97rem;
+      font-family: var(--sans);
+      margin-bottom: 1.2rem;
+    }
+
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .meta-value {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    /* ─── Hero Image ─────────────────────────────────────── */
+    .case-hero-image {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2.5rem 5rem;
+    }
+    .case-hero-image img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+   /* ─── Jump link ──────────────────────────────────────── */
+    .jump-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 2px;
+      margin-top: 1.5rem;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .jump-link:hover { color: var(--text); border-color: var(--text); }
+    .jump-link::after { content: '↓'; }
+
+    /* ─── Body ───────────────────────────────────────────── */
+    .case-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2.5rem 8rem;
+    }
+
+    .case-section { margin-bottom: 4.5rem; }
+
+    .section-number {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .case-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+    .case-section h2 em { font-style: italic; }
+
+    .case-section h3 {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin: 2rem 0 0.6rem;
+    }
+
+    .case-section p {
+      font-family: var(--sans);
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .case-section p strong { color: var(--text); font-weight: 400; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 4rem 0;
+    }
+
+ /* Stat callout — used for the 83% insight */
+    .stat-callout {
+      border-left: 2px solid var(--text);
+      padding: 0.6rem 0 0.6rem 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .stat-callout p {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      line-height: 1.4;
+      color: var(--text) !important;
+    }
+    .stat-callout cite {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-style: normal;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 2px solid var(--text);
+      padding: 0.4rem 0 0.4rem 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .pull-quote p {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--text) !important;
+      line-height: 1.45;
+    }
+
+    /* Tag list */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .tag {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      color: var(--muted);
+      border-radius: 2px;
+    }
+
+    /* Wide image */
+    .case-image {
+      max-width: var(--max);
+      margin: 2.5rem auto;
+      padding: 0;
+    }
+    .case-image img {
+      width: 100%;
+      border: 1px solid var(--border);
+    }
+    .case-image figcaption {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.6rem;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    /* Outcomes */
+    .outcomes { list-style: none; margin-top: 1rem; }
+    .outcomes li {
+      font-family: var(--sans);
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.93rem;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .outcomes li::before {
+      content: '→';
+      color: var(--text);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+
+  /* ─── Next steps — two-column grid ───────────────────────────────────── */
+    .next-steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    .next-step {
+      background: var(--bg-case);
+      padding: 1.2rem 1.4rem;
+    }
+    .next-step p {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0 !important;
+    }
+
+ /* Learnings list */
+    .learnings {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .learnings li {
+      font-family: var(--sans);
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.93rem;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .learnings li::before {
+      content: '→';
+      color: var(--text);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── IA pillars — 2×2 grid ───────────────────────────────────── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 1.2rem;
+    }
+    .pillar {
+      background: var(--bg-case);
+      padding: 1.2rem 1.4rem;
+    }
+    .pillar-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .pillar p {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0 !important;
+    }
+
+    /* ─── Next Project ───────────────────────────────────── */
+    .next-project {
+      border-top: 1px solid var(--border);
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4rem 2.5rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      transition: background var(--transition);
+    }
+    .next-project:hover { background: rgba(0,0,0,0.03); }
+
+    .next-label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .next-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .next-arrow {
+      font-size: 2rem;
+      color: var(--muted);
+      transition: transform var(--transition), color var(--transition);
+      flex-shrink: 0;
+    }
+    .next-project:hover .next-arrow {
+      transform: translate(8px, -8px);
+      color: var(--text);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .case-hero { padding: 7rem 1.4rem 3.5rem; }
+      .case-hero-image { padding: 0 1.4rem 3rem; }
+      .case-body { padding: 0 1.4rem 5rem; }
+      .case-image { padding: 0 1.4rem; }
+      .next-project { padding: 3rem 1.4rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────── -->
+  <nav class="nav-case">
+    <a href="index.html" class="nav-logo">Jennifer Yaya Falanga</a>
+    <a href="index.html#work" class="nav-back">All Work</a>
+  </nav>
+
+  <!-- ─── Case Study Hero ──────────────────────────────── -->
+  <header class="case-hero">
+    <p class="case-eyebrow">UI/UX · Web Designy · 2023</p>
+    <h1 class="case-title">FIDES — A <em>Player-First</em> Sports Agency</h1>
+    <p class="case-tagline">
+      Transforming a loose collection of early ideas into a cohesive, premium digital
+      presence for a sports management agency built on integrity.
+    </p>
+
+    <div class="case-meta">
+      <div class="meta-item">
+        <p class="meta-label">Role</p>
+        <p class="meta-value">UI/UX Design</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Duration</p>
+        <p class="meta-value">2 weeks</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Tools</p>
+        <p class="meta-value">Figma, Google Forms, Adobe Suite</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Hero Image ───────────────────────────────────── -->
+  <div class="case-hero-image">
+    <img
+      src="img/JF_WEB_FidesMockup.png"
+      alt="FIDES homepage mockup — hero section with headline and primary CTAs"
+      width="1160" height="580"
+      loading="eager"
+    />
+  </div>
+
+  <!-- ─── Case Study Body ──────────────────────────────── -->
+  <article class="case-body">
+
+    <section class="case-section">
+      <span class="section-number">01 — Overview</span>
+      <h2>What is <em>FIDES?</em></h2>
+      <p>
+        FIDES is a new sports management agency built on trust, long-term partnership,
+        and a commitment to supporting modern footballers. When the founders approached
+        me, they needed a digital presence that reflected these values — one that felt
+        professional, honest, and aligned with the level of care they bring to their athletes.
+      </p>
+      <p>
+        My role was to redesign the website from the ground up. This included the
+        information architecture, visual system, core content, and the UI for every page.
+        The goal was to create a calm, structured interface that communicates credibility
+        while making information easy to understand.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="case-section">
+      <span class="section-number">02 — The Problem</span>
+      <h2>Building credibility <em>from scratch</em></h2>
+      <p>
+        When I began the project, FIDES had no formal website and only a loose idea of
+        how they wanted to communicate. The founders knew their values — trust, clarity,
+        and long-term development — but struggled to express them in a way that felt
+        modern and structured.
+      </p>
+      <p>
+        In a competitive industry, credibility is currency. The website needed to
+        immediately project professionalism, reliability, and transparency.
+      </p>
+      <p>
+        My goal was to create a site that answered this need through thoughtful UX design,
+        simple and intentional layouts, and purposeful content.
+      </p>   
+    </section>
+
+<hr class="divider" />
+
+    <section class="case-section">
+      <span class="section-number">03 — Design Strategy</span>
+      <h2>Simplicity as <em>a strength</em></h2>
+
+      <h3>Start with Clarity</h3>
+      <p>
+        The first priority was establishing a clean narrative: what the agency does →
+        why it matters → proof → action. Each page follows a predictable, intuitive
+        structure that reduces cognitive load and builds trust.
+      </p>
+
+      <h3>Use Simplicity as a Strength</h3>
+      <p>
+        Rather than using heavy imagery or complex layouts, I leaned into minimalism.
+        This communicates maturity and focuses attention on the content that matters.
+      </p>
+
+      <h3>Align the IA With Real User Needs</h3>
+      <p>
+        I reorganized the website into four core pillars, structured to mirror how
+        real users evaluate agencies:
+      </p>
+
+      <div class="pillars-grid">
+        <div class="pillar">
+          <p class="pillar-label">Home</p>
+          <p>Clear positioning and immediate pathways.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar-label">About</p>
+          <p>Story, mission, approach, and values.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar-label">Players</p>
+          <p>A structured roster designed for fast scanning.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar-label">Services</p>
+          <p>Transparent details on what the agency offers.</p>
+        </div>
+      </div>
+    </section>
+
+      <figure class="case-image">
+      <img
+        src="img/JF_WEB_FidesHome.png"
+        alt="FIDES homepage — clean, scannable layout communicating agency identity and services"
+        
+        loading="lazy"
+      />
+      <figcaption>The homepage introduces FIDES through a clean, scannable layout that quickly communicates who the agency is, what they offer, and how users can take action.</figcaption>
+    </figure>
+
+      <figure class="case-image">
+      <img
+        src="img/JF_WEB_FidesAbout.png"
+        alt="FIDES About page — two-column layout with approach descriptions and player testimonial"
+        
+        loading="lazy"
+      />
+      <figcaption>The About page highlights FIDES' core approach using a structured two-column layout that improves scannability and supports user understanding.</figcaption>
+    </figure>
+
+      <figure class="case-image">
+      <img
+        src="img/JF_WEB_FidesPlayers.png"
+        alt="FIDES Players page — position-based grouping with name, nationality, and birth year"
+        
+        loading="lazy"
+      />
+      <figcaption>The Players page uses position-based grouping and a simple three-column grid to support scouts and clubs in making quick, informed decisions.</figcaption>
+    </figure>
+
+    <hr class="divider" />
+
+    <section class="case-section">
+      <span class="section-number">04 — Impact</span>
+      <h2>What the redesign <em>delivered</em></h2>
+
+      <ul class="outcomes">
+        <li>
+          <strong>A trustworthy presence.</strong> The tone, structure, and visual
+          language now align with the professionalism the founders bring to their work.
+        </li>
+        <li>
+          <strong>Faster decision-making for users.</strong> Whether reviewing services or
+          evaluating the roster, users can find information quickly through clean layouts,
+          strong hierarchy, and scannable patterns.
+        </li>
+        <li>
+          <strong>A scalable, flexible system.</strong> The site is built on a grid and
+          typography system that will support expansion as FIDES adds new players,
+          services, and content.
+        </li>
+        <li>
+          <strong>A foundation for future brand work.</strong> The design language now acts
+          as a baseline for social media, marketing collateral, and future digital materials —
+          giving the agency a cohesive, credible presence.
+        </li>
+      </ul>
+    </section>
+
+<hr class="divider" />
+
+    <section class="case-section">
+      <span class="section-number">05 — Reflection</span>
+      <h2>The power of <em>clear storytelling</em></h2>
+      <p>
+        This project reinforced the power of clear storytelling and intentional UX.
+        Working directly with the founders gave me insight into the values that anchor
+        the agency, and my goal was to translate that authenticity into a calm,
+        thoughtful digital presence.
+      </p>
+      <p>
+        By focusing on hierarchy, content clarity, and restrained visual design, I was
+        able to build a site that not only informs but instills confidence.
+      </p>
+
+      <div class="pull-quote">
+        <p>FIDES now has a digital presence that reflects who they truly are — trustworthy, strategic, and fully invested in their players.</p>
+      </div>
+    </section>
+
+  </article>
+
+  <!-- ─── Next Project ──────────────────────────────────── -->
+  <a class="next-project" href="clara-app.html">
+    <div>
+      <p class="next-label">Next Project</p>
+      <p class="next-title">Clara — Clarity and Collaboration for Every Journey</p>
+    </div>
+    <span class="next-arrow" aria-hidden="true">↗</span>
+  </a>
+
+  <!-- ─── Footer ────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-name">Jennifer Yaya Falanga</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Jennifer Yaya Falanga</span>
+  </footer>
+
+</body>
+</html>
