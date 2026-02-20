@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>uOttawa — Jennifer Yaya Falanga</title>
+  <meta name="description" content="uOttawa Teaching and Learning Support Service — Motion design and multimedia case study by Jennifer Yaya Falanga." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="uOttawa — Jennifer Yaya Falanga" />
+  <meta property="og:description" content="Motion graphics and multimedia design across the University of Ottawa." />
+  <meta property="og:type" content="article" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css" />
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ─── Case study background ──────────────────────────── */
+    body { background: var(--bg-case); line-height: 1.8; }
+
+    /* ─── Case Hero ──────────────────────────────────────── */
+    .case-hero {
+      padding: 8rem 2.5rem 5rem;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .case-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .case-title {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 20ch;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .case-title em { font-style: italic; }
+
+    .case-tagline {
+      color: var(--muted);
+      max-width: 52ch;
+      font-size: 0.97rem;
+      font-family: var(--sans);
+    }
+
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .meta-value {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    /* ─── Hero Image ─────────────────────────────────────── */
+    .case-hero-image {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2.5rem 5rem;
+    }
+    .case-hero-image img {
+      width: 100%;
+      aspect-ratio: 16/8;
+      object-fit: cover;
+      object-position: top;
+      border: 1px solid var(--border);
+    }
+
+    /* ─── Body ───────────────────────────────────────────── */
+    .case-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2.5rem 4rem;
+    }
+
+    .case-section { margin-bottom: 4.5rem; }
+
+    .section-number {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .case-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+    .case-section h2 em { font-style: italic; }
+
+    .case-section p {
+      font-family: var(--sans);
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 4rem 0;
+    }
+
+    /* ─── Work item — full width ─────────────────────────── */
+    .work-item {
+      max-width: var(--max);
+      margin: 0 auto 5rem;
+      padding: 0 2.5rem;
+    }
+
+    .work-item img {
+      width: 100%;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    .work-caption {
+      margin-top: 1.2rem;
+      max-width: 720px;
+    }
+
+    .work-caption h3 {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .work-caption p {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── Work item — two up ─────────────────────────────── */
+    .work-pair {
+      max-width: var(--max);
+      margin: 0 auto 5rem;
+      padding: 0 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .work-pair-item img {
+      width: 100%;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    .work-pair-item .work-caption {
+      margin-top: 1rem;
+    }
+
+    /* ─── Next Project ───────────────────────────────────── */
+    .next-project {
+      border-top: 1px solid var(--border);
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4rem 2.5rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      transition: background var(--transition);
+    }
+    .next-project:hover { background: rgba(0,0,0,0.03); }
+
+    .next-label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .next-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .next-arrow {
+      font-size: 2rem;
+      color: var(--muted);
+      transition: transform var(--transition), color var(--transition);
+      flex-shrink: 0;
+    }
+    .next-project:hover .next-arrow {
+      transform: translate(8px, -8px);
+      color: var(--text);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .case-hero { padding: 7rem 1.4rem 3.5rem; }
+      .case-hero-image { padding: 0 1.4rem 3rem; }
+      .case-body { padding: 0 1.4rem 3rem; }
+      .work-item { padding: 0 1.4rem; }
+      .work-pair { padding: 0 1.4rem; grid-template-columns: 1fr; gap: 3rem; }
+      .next-project { padding: 3rem 1.4rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────── -->
+  <nav class="nav-case">
+    <a href="index.html" class="nav-logo">Jennifer Yaya Falanga</a>
+    <a href="index.html#work" class="nav-back">All Work</a>
+  </nav>
+
+  <!-- ─── Case Study Hero ──────────────────────────────── -->
+  <header class="case-hero">
+    <p class="case-eyebrow">Motion Design · Multimedia · 2025</p>
+    <h1 class="case-title">uOttawa — Bringing <em>Academic Content</em> to Life</h1>
+    <p class="case-tagline">
+      Motion graphics, logo animation, and instructional video production for
+      the University of Ottawa's Teaching and Learning Support Service —
+      designed for clarity, accessibility, and thousands of learners.
+    </p>
+    <div class="case-meta">
+      <div class="meta-item">
+        <p class="meta-label">Role</p>
+        <p class="meta-value">Multimedia Designer, Motion Designer</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Context</p>
+        <p class="meta-value">University of Ottawa — TLSS</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Hero Image ───────────────────────────────────── -->
+  <div class="case-hero-image">
+    <img
+      src="img/JF_WEB_uOttawa_10.jpg"
+      alt="uOttawa motion graphics work — collection of multimedia design projects"
+      width="1160" height="580"
+      loading="eager"
+    />
+  </div>
+
+  <!-- ─── Overview ─────────────────────────────────────── -->
+  <article class="case-body">
+    <section class="case-section">
+      <span class="section-number">01 — Overview</span>
+      <h2>Designing for <em>learners at scale</em></h2>
+      <p>
+        During my time at the University of Ottawa, I worked across a wide spectrum of
+        motion graphics and video production needs, from promotional campaigns to
+        instructional modules viewed by thousands of learners. The role required
+        balancing creative exploration with clear brand, accessibility, and pedagogical
+        standards.
+      </p>
+      <p>
+        I collaborated closely with subject-matter experts, developers, and faculty leads
+        to translate complex information into engaging, purposeful visuals. Across
+        departments, I produced animated explainers, logo animations, and long-form
+        instructional videos that emphasized clarity, pacing, and strong visual hierarchy.
+      </p>
+      <p>
+        These projects strengthened my ability to design for accessibility, work
+        efficiently under tight timelines, and contribute meaningfully within
+        collaborative, multidisciplinary teams — all while creating work that resonated
+        with both academic and public audiences.
+      </p>
+    </section>
+  </article>
+
+  <!-- ─── 01 SILC Logo ──────────────────────────────────── -->
+  <div class="work-item">
+    <img
+      src="img/JF_WEB_uOttawa_2.jpg"
+      alt="SILC bilingual logo design — mark combining structure and collaboration"
+      
+      loading="lazy"
+    />
+    <div class="work-caption">
+      <h3>SILC — Bilingual Logo Design</h3>
+      <p>
+        I designed the bilingual visual identity for the Supra-Institutional Learning
+        Communities (SILC) initiative, creating a logo system that functions clearly in
+        both French and English contexts. The mark combines structure and collaboration,
+        reflecting how the program connects learners across faculties and institutions.
+        The final identity is adaptable, accessible, and ready for use across digital
+        and print communications.
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── 02 + 03 Motion pair ───────────────────────────── -->
+  <div class="work-pair">
+    <div class="work-pair-item">
+      <img
+        src="img/JF_WEB_uOttawa_1.gif"
+        alt="Executive MHA program — brand-aligned slide transition animations"
+        width="580"
+        loading="lazy"
+      />
+      <div class="work-caption">
+        <h3>Executive MHA — Motion Graphics Transitions</h3>
+        <p>
+          I created a series of smooth, brand-aligned slide transitions to support the
+          Executive MHA program's video and presentation materials. Working within a
+          visual identity designed by Gisèle Richard, the animations were designed to
+          feel professional, modern, and seamless. This project strengthened the
+          program's visual consistency and elevated the pacing of long-form instructional
+          content.
+        </p>
+      </div>
+    </div>
+    <div class="work-pair-item">
+      <img
+        src="img/JF_WEB_uOttawa_3.gif"
+        alt="Telfer School of Management — bilingual text and lower third animations"
+        width="580"
+        loading="lazy"
+      />
+      <div class="work-caption">
+        <h3>Telfer School of Management — Text & Lower Third Animations</h3>
+        <p>
+          For the French MBA program, I developed a set of clean, bilingual text and
+          lower-third animations aligned to the visual identity designed by Gisèle
+          Richard. The motion system emphasizes precision, clarity, and rhythm —
+          supporting interviews and promotional content across the faculty, and providing
+          a visual language that scales across future communications.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 04 Styleframes ───────────────────────────────── -->
+  <div class="work-item">
+    <img
+      src="img/JF_WEB_uOttawa_8.jpg"
+      alt="Telfer School of Management — video styleframes for the MAA program"
+      loading="lazy"
+    />
+    <div class="work-caption">
+      <h3>Telfer School of Management — Video Styleframes</h3>
+      <p>
+        I developed a suite of video styleframes for the Maîtrise en administration des
+        affaires program, establishing the visual direction for a series of academic and
+        promotional videos. The styleframes explored composition, colour, and motion cues
+        that balanced faculty branding with a more contemporary, human-centred feel —
+        guiding the animation approach and ensuring visual consistency across all program
+        video assets.
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── 05 + 06 Lettres françaises pair ──────────────── -->
+  <div class="work-pair">
+    <div class="work-pair-item">
+      <img
+        src="img/JF_WEB_uOttawa_6.gif"
+        alt="Lettres françaises — typography-driven end title animation"
+        width="580"
+        loading="lazy"
+      />
+      <div class="work-caption">
+        <h3>Lettres françaises — Motion Graphics End Title</h3>
+        <p>
+          I created a refined end-title animation for the Maîtrise ès arts en lettres
+          françaises program, working within the brand identity designed by Gisèle
+          Richard. The motion is clean, understated, and typography-driven — designed
+          to close videos with clarity and professionalism, and to unify the program's
+          video assets with a consistent visual signature.
+        </p>
+      </div>
+    </div>
+    <div class="work-pair-item">
+      <img
+        src="img/JF_WEB_uOttawa_7.gif"
+        alt="Lettres françaises — full motion graphics branding suite"
+        width="580"
+        loading="lazy"
+      />
+      <div class="work-caption">
+        <h3>Lettres françaises — Motion Graphics Branding Suite</h3>
+        <p>
+          For the Lettres françaises program, I created a cohesive motion graphics suite
+          including animated titles, lower thirds, and visual transitions. Working within
+          the brand identity designed by Gisèle Richard, the animations were crafted to
+          feel elegant, academic, and distinctly bilingual — providing a visual language
+          that scales across interviews, promotional videos, and instructional content.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 07 Bruyère ───────────────────────────────────── -->
+  <div class="work-item">
+    <img
+      src="img/JF_WEB_uOttawa_10.jpg"
+      alt="Ontario CLRI at Bruyère — accessible PowerPoint presentation template"
+      width="1160" height="700"
+      loading="lazy"
+    />
+    <div class="work-caption">
+      <h3>Ontario CLRI at Bruyère — Presentation Template Deck</h3>
+      <p>
+        I designed a comprehensive, brand-aligned PowerPoint template for Ontario CLRI
+        at Bruyère Health to support teaching, outreach, and long-term care training
+        initiatives. The deck brings together accessible layouts, cohesive typography,
+        and flexible content structures that accommodate both clinical information and
+        storytelling — standardizing presentations across the organization and ensuring
+        a polished, consistent visual experience for diverse audiences.
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── Next Project ──────────────────────────────────── -->
+  <a class="next-project" href="asuquomo.html">
+    <div>
+      <p class="next-label">Next Project</p>
+      <p class="next-title">Asuquomo — Visual Campaign</p>
+    </div>
+    <span class="next-arrow" aria-hidden="true">↗</span>
+  </a>
+
+  <!-- ─── Footer ────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-name">Jennifer Yaya Falanga</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Jennifer Yaya Falanga</span>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asuquomo — Jennifer Yaya Falanga</title>
+  <meta name="description" content="Asuquomo: Visual Campaign — Photography and graphic design for the Wide Awake concept album by Jennifer Yaya Falanga." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Asuquomo — Jennifer Yaya Falanga" />
+  <meta property="og:description" content="Creative direction and visual development for multidisciplinary artist Asuquomo's Wide Awake concept album." />
+  <meta property="og:type" content="article" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css" />
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ─── Case study background ──────────────────────────── */
+    body { background: var(--bg-case); line-height: 1.8; }
+
+    /* ─── Case Hero ──────────────────────────────────────── */
+    .case-hero {
+      padding: 8rem 2.5rem 5rem;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .case-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .case-title {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 20ch;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .case-title em { font-style: italic; }
+
+    .case-tagline {
+      color: var(--muted);
+      max-width: 52ch;
+      font-size: 0.97rem;
+      font-family: var(--sans);
+    }
+
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .meta-value {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    /* ─── Hero Image ─────────────────────────────────────── */
+    .case-hero-image {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2.5rem 5rem;
+    }
+    .case-hero-image img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    /* ─── Overview body ──────────────────────────────────── */
+    .case-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2.5rem 4rem;
+    }
+
+    .case-section { margin-bottom: 4.5rem; }
+
+    .section-number {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .case-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+    .case-section h2 em { font-style: italic; }
+
+    .case-section p {
+      font-family: var(--sans);
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 4rem 0;
+    }
+
+    /* ─── Work item — full width ─────────────────────────── */
+    .work-item {
+      max-width: var(--max);
+      margin: 0 auto 5rem;
+      padding: 0 2.5rem;
+    }
+
+    .work-item img {
+      width: 100%;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    .work-caption {
+      margin-top: 1.2rem;
+      max-width: 720px;
+    }
+
+    .work-caption p {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── Work item — two up ─────────────────────────────── */
+    .work-pair {
+      max-width: var(--max);
+      margin: 0 auto 5rem;
+      padding: 0 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .work-pair-item img {
+      width: 100%;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    .work-pair-item .work-caption {
+      margin-top: 1rem;
+    }
+
+    /* ─── Next Project ───────────────────────────────────── */
+    .next-project {
+      border-top: 1px solid var(--border);
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4rem 2.5rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      transition: background var(--transition);
+    }
+    .next-project:hover { background: rgba(0,0,0,0.03); }
+
+    .next-label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .next-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .next-arrow {
+      font-size: 2rem;
+      color: var(--muted);
+      transition: transform var(--transition), color var(--transition);
+      flex-shrink: 0;
+    }
+    .next-project:hover .next-arrow {
+      transform: translate(8px, -8px);
+      color: var(--text);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .case-hero { padding: 7rem 1.4rem 3.5rem; }
+      .case-hero-image { padding: 0 1.4rem 3rem; }
+      .case-body { padding: 0 1.4rem 3rem; }
+      .work-item { padding: 0 1.4rem; }
+      .work-pair { padding: 0 1.4rem; grid-template-columns: 1fr; gap: 3rem; }
+      .next-project { padding: 3rem 1.4rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────── -->
+  <nav class="nav-case">
+    <a href="index.html" class="nav-logo">Jennifer Yaya Falanga</a>
+    <a href="index.html#work" class="nav-back">All Work</a>
+  </nav>
+
+  <!-- ─── Case Study Hero ──────────────────────────────── -->
+  <header class="case-hero">
+    <p class="case-eyebrow">Visual Campaign · Photography · Graphic Design</p>
+    <h1 class="case-title">Asuquomo — <em>Wide Awake</em></h1>
+    <p class="case-tagline">
+      Creative direction and visual development for multidisciplinary artist Asuquomo's
+      concept album — bold, rhythmic, and deeply expressive.
+    </p>
+    <div class="case-meta">
+      <div class="meta-item">
+        <p class="meta-label">Role</p>
+        <p class="meta-value">Graphic Designer, Photographer</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Deliverables</p>
+        <p class="meta-value">Posters, EPK, CD Design, Editorial</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Hero Image ───────────────────────────────────── -->
+  <div class="case-hero-image">
+    <img
+      src="img/JF_WEB_ASUQUOMO_5.jpg"
+      alt="Asuquomo Wide Awake campaign — large format poster with shadow and repetition"
+      width="1160" height="653"
+      loading="eager"
+    />
+  </div>
+
+  <!-- ─── Overview ─────────────────────────────────────── -->
+  <article class="case-body">
+    <section class="case-section">
+      <span class="section-number">01 — Overview</span>
+      <h2>A visual language for <em>Wide Awake</em></h2>
+      <p>
+        In collaboration with multidisciplinary artist Asuquomo, I led the creative
+        direction and visual development for promotional materials supporting the release
+        of his concept album <em>Wide Awake</em>.
+      </p>
+      <p>
+        The project required building a cohesive visual language that aligned with the
+        album's tone: bold, rhythmic, and deeply expressive. Through photography, layout
+        design, and large-format poster work, I crafted visuals that amplified the
+        project's artistic narrative and supported the rollout of the music video premiere.
+      </p>
+    </section>
+  </article>
+
+  <!-- ─── Premiere Posters — full width ────────────────── -->
+  <div class="work-item">
+    <img
+      src="img/JF_WEB_ASUQUOMO_1.jpg"
+      alt="Asuquomo video premiere posters — shadow, repetition, and minimal typography"
+      width="1160" height="800"
+      loading="lazy"
+    />
+    <div class="work-caption">
+      <p>
+        These large-format posters were created to announce the premiere of Asuquomo's
+        video release, using shadow, repetition, and minimal typography to echo the
+        project's moody, kinetic energy. The imagery captures the artist's presence while
+        building anticipation for the broader <em>Wide Awake</em> campaign. Displayed in
+        an urban setting, the visual treatment feels both intimate and confrontational.
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── EPK + CD — two up ────────────────────────────── -->
+  <div class="work-pair">
+    <div class="work-pair-item">
+      <img
+        src="img/JF_WEB_ASUQUOMO_2.jpg"
+        alt="Asuquomo EPK editorial spread — dramatic portrait photography with sparse typography"
+        width="580" height="500"
+        loading="lazy"
+      />
+      <div class="work-caption">
+        <p>
+          This editorial spread was created for Asuquomo's Electronic Press Kit, combining
+          dramatic portrait photography with sparse, rhythmic typography. The layout mirrors
+          the raw, spiritual energy of his sound, drawing from West African influences and
+          non-verbal performance. The result is a visually immersive introduction to the
+          artist's creative world.
+        </p>
+      </div>
+    </div>
+    <div class="work-pair-item">
+      <img
+        src="img/JF_WEB_ASUQUOMO_3.jpg"
+        alt="Asuquomo limited CD release design — bold portraiture with stark modern typography"
+        width="580" height="500"
+        loading="lazy"
+      />
+      <div class="work-caption">
+        <p>
+          For the album's limited-run CD release, I created a bold visual layout that pairs
+          unguarded portraiture with stark, modern typography. The design echoes the project's
+          exploration of lineage and belonging, grounding the music in a tangible, emotional
+          context. As a physical artifact, the CD became a meaningful extension of the album's
+          visual world.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EPK Lyric Spread — full width ────────────────── -->
+  <div class="work-item">
+    <img
+      src="img/JF_WEB_ASUQUOMO_4.jpg"
+      alt="Asuquomo EPK lyric spread — documentary photography with stark lyric display"
+      width="1160" height="800"
+      loading="lazy"
+    />
+    <div class="work-caption">
+      <p>
+        This layout blends documentary-style photography with a stark lyric display,
+        capturing both the vulnerability and discipline behind Asuquomo's work. The
+        textured black-and-white treatment echoes the raw emotional tone of the song
+        and the physicality of the shoot. The spread adds a poetic pause within the EPK,
+        grounding the viewer in the artist's world.
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── Next Project ──────────────────────────────────── -->
+  <a class="next-project" href="conserva.html">
+    <div>
+      <p class="next-label">Back to the beginning</p>
+      <p class="next-title">Conserva — A Bold, System-Driven Gourmet Experience</p>
+    </div>
+    <span class="next-arrow" aria-hidden="true">↗</span>
+  </a>
+
+  <!-- ─── Footer ────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-name">Jennifer Yaya Falanga</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Jennifer Yaya Falanga</span>
+  </footer>
+
+</body>
+</html>
