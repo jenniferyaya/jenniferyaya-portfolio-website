@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conserva — Jennifer Yaya Falanga</title>
-  <meta name="description" content="Conserva: A Bold, System-Driven Gourmet Experience — UX/UI case study by Jennifer Yaya Falanga." />
+  <meta name="description" content="Clara: Clarity and Collaboration for Every Journey — UX case study by Jennifer Yaya Falanga." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Conserva — Jennifer Yaya Falanga" />
-  <meta property="og:description" content="UI/UX case study: A bold, system-driven gourmet experience." />
+  <meta property="og:title" content="Clara — Jennifer Yaya Falanga" />
+  <meta property="og:description" content="UX case study: An iOS app concept designed to make task ownership and progress visible in one shared space." />
   <meta property="og:type" content="article" />
 
   <!-- Fonts -->
@@ -166,6 +166,28 @@
       margin: 4rem 0;
     }
 
+ /* Stat callout — used for the 83% insight */
+    .stat-callout {
+      border-left: 2px solid var(--text);
+      padding: 0.6rem 0 0.6rem 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .stat-callout p {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      line-height: 1.4;
+      color: var(--text) !important;
+    }
+    .stat-callout cite {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-style: normal;
+    }
+
     /* Pull quote */
     .pull-quote {
       border-left: 2px solid var(--text);
@@ -298,16 +320,16 @@
   <!-- ─── Case Study Hero ──────────────────────────────── -->
   <header class="case-hero">
     <p class="case-eyebrow">UI/UX Design · Case Study · 2026</p>
-    <h1 class="case-title">Conserva: A Bold, <em>System-Driven</em> Gourmet Experience</h1>
+    <h1 class="case-title">Clara — <em>Clarity and Collaboration</em> for Every Journey</h1>
     <p class="case-tagline">
-      Designing a premium food discovery platform that balances editorial richness
-      with a scalable, component-driven system.
+      An iOS app concept that makes task ownership and progress visible in one shared space —
+      so group trip planning feels balanced, not burdensome.
     </p>
     <a class="jump-link" href="https://www.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&t=xO9peq6C65Y57fmj-1&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394" target="_blank">Explore interactive prototype</a>
     <div class="case-meta">
       <div class="meta-item">
         <p class="meta-label">Role</p>
-        <p class="meta-value">UI & Design System Lead</p>
+        <p class="meta-value">UX Researcher & Designer</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Duration</p>
@@ -315,11 +337,11 @@
       </div>
       <div class="meta-item">
         <p class="meta-label">Tools</p>
-        <p class="meta-value">Figma, Sora, Adobe Photoshop</p>
+        <p class="meta-value">Figma, Google Forms, Adobe Suite</p>
       </div>
       <div class="meta-item">
-        <p class="meta-label">Deliverables</p>
-        <p class="meta-value">Research, Wireframes, Prototype</p>
+        <p class="meta-label">Platform</p>
+        <p class="meta-value">iOS</p>
       </div>
     </div>
   </header>
@@ -339,28 +361,41 @@
 
     <section class="case-section">
       <span class="section-number">01 — Overview</span>
-      <h2>What is <em>Conserva?</em></h2>
-      <p>Online shopping rarely feels like browsing anymore. It feels directed. Algorithms sort and suggest before we’ve decided what we want. When that guidance is thoughtful, it works. When it isn’t, it feels pushy.</p>
-      <p>Conserva explores that tension. I designed a bold, opinionated conceptual gourmet food discovery brand that stays expressive without becoming chaotic. The result is a high-fidelity e-commerce experience supported by a structured design system that is scalable, consistent with character.</p>
-      <p><strong>The problem:</strong> Existing food apps either feel clinical and utilitarian or overwhelming with content. Neither serves the discerning home cook who wants inspiration with a distinct voice.</p>
+      <h2>What is <em>Clara?</em></h2>
+      <p>Group trip planning often breaks down not because people are unwilling to help,
+        but because responsibility becomes unclear. Decisions are scattered across group
+        chats, notes, and spreadsheets, making it difficult to see who owns which tasks
+        or how planning is progressing. Over time, coordination work concentrates with
+        one person, while others disengage unintentionally.</p>
+
+      <p>Clara is an iOS app concept designed to make task ownership and progress visible
+        in one shared space. Rather than automating planning, the goal is to reduce
+        ambiguity. By centralizing responsibilities and surfacing progress at a glance,
+        Clara supports more balanced collaboration during group trip planning.</p>
     </section>
 
     <hr class="divider" />
 
     <section class="case-section">
-      <span class="section-number">02 — Brand Direction</span>
-      <h2>Defining the Brand System</h2>
-      <p><b>Bold · Graphic · Expressive · Confident · Opinionated</b></p>
-      <p>Conserva’s visual language is built on contrast and structure. Inspired by Prince’s stage presence, imposing brutalist architecture, and digital realism, the brand doesn’t whisper.</p>
-      <h3>Design Decisions</h3>
-      <p><strong>Assertive Colour.</strong>Colour appears in saturated, deliberate blocks — never decorative, always structural.</p>
-      <p><strong>Photography as UI.</strong> Full-bleed imagery is not decoration — it serves as the primary navigation signal, reducing cognitive load while maintaining richness.</p>
-      <a class="jump-link" href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=8008-104&t=6RXNufCwGPRbihoB-1" target="_blank">View the brand and UI moodboards</a>
+      <span class="section-number">02 — The Problem</span>
+      <h2>When ownership goes <em>invisible</em></h2>
+      <p>When planning responsibilities are discussed across multiple tools without a
+        shared source of truth, ownership becomes ambiguous and progress difficult to
+        assess. Tasks are acknowledged in chats, tracked informally elsewhere, and
+        rarely revisited in one place.</p>
+      
+      <p>As a result, groups rely on assumptions. One person compensates by tracking
+        details and following up, while others unintentionally disengage. Over time,
+        this imbalance creates frustration and planning fatigue.</p>
 
-      <div class="pull-quote">
-        <p>It feels contemporary, but controlled. Expressive, without losing discipline.</p>
+      <p>The challenge was to make ownership and progress explicit, so collaboration
+        could feel shared rather than burdensome.</p>
+
+      <div class="stat-callout">
+        <p>83% of travelers begin researching trips on their phones, with 60% of hotel bookings completed on mobile.</p>
+        <cite>Source: hotelagio.com/travel-booking-statistics</cite>
       </div>
-
+      
     </section>
 
     <figure class="case-image">
@@ -374,11 +409,26 @@
     </figure>
 
     <section class="case-section">
-      <span class="section-number">03 — Design</span>
-      <h2>Design System & UI Library</h2>
-      <p>I built the system from the ground up using <b><a href="https://atomicdesign.bradfrost.com/chapter-2/" target="_blank">Atomic Design</a></b> methodology, defining colour, type, spacing, and components first so the work could scale without losing its point of view.</p>
-      <p>This structure scales across iOS, Android, and web while maintaining a clear point of view.</p>
-      <a class="jump-link" href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=7134-257&t=6RXNufCwGPRbihoB-1" target="_blank">Explore the Conserva Design System</a>
+      <span class="section-number">03 — Research</span>
+      <h2>What the research <em>revealed</em></h2>
+      <p>
+        Research with frequent group trip planners showed that coordination issues
+        rarely stem from a lack of willingness to contribute. Instead, responsibility
+        becomes invisible once planning moves primarily into chat-based tools.
+      </p>
+      <p>
+        Participants described discussing tasks without clearly assigning them, assuming
+        others would take action, and struggling to understand progress without asking
+        for updates. When ownership and progress weren't visible, one person often
+        stepped in to keep planning moving.
+      </p>
+      <p>
+        This clarified the design direction: shared planning works best when ownership
+        is <strong>continuously visible</strong>, rather than relying on memory,
+        follow-ups, or additional discussion.
+      </p>
+
+      <a class="figma-link" href="https://www.figma.com/design/lXe8xVPIq1DKITdWiT7qWA/Thematic-Analysis?node-id=1-32&t=UAIXerIyEBrNjJi7-1" target="_blank" rel="noopener">View research insights</a>
     </section>
 
         <figure class="case-image">
