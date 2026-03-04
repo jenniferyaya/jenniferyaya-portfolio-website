@@ -102,99 +102,127 @@
       background: var(--accent-alt);
     }
 
-    /* ─── Work Grid ──────────────────────────────────────── */
-    #work { padding-bottom: 6rem; }
+    /* ─── Work List ──────────────────────────────────────── */
+    #work { padding-bottom: 8rem; }
 
-    /* Work section sits on a near-white card to contrast the amber */
-    .work-inner {
-      background: #F9F9F7;
-      border-radius: 4px;
-      overflow: hidden;
+    /* Section label on amber bg */
+    #work .section-label { color: var(--accent-alt); border-top-color: rgba(0,0,0,0.2); }
+
+    .work-list {
+      display: flex;
+      flex-direction: column;
     }
 
-    .work-grid {
+    /* ── All cards share these base styles ── */
+    .project-card {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: var(--border);
-    }
-
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      background: #F9F9F7;
+      gap: 4rem;
+      align-items: center;
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      text-decoration: none;
       cursor: pointer;
-      display: block;
     }
-    .project-card:nth-child(1) { grid-column: 1 / -1; }
+    .project-card:first-child { border-top: 1px solid rgba(0,0,0,0.12); }
 
     .project-card .img-wrap {
       overflow: hidden;
-      aspect-ratio: 16/9;
-      background: #ede9e2;
+      aspect-ratio: 4/3;
+      background: rgba(0,0,0,0.06);
     }
-    .project-card:nth-child(1) .img-wrap { aspect-ratio: 21/9; }
 
     .project-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
       transition: transform 0.7s cubic-bezier(0.4,0,0.2,1), filter 0.5s ease;
       filter: brightness(0.95);
     }
     .project-card:hover img {
-      transform: scale(1.04);
+      transform: scale(1.03);
       filter: brightness(1);
     }
 
     .project-info {
-      padding: 1.5rem 1.8rem 2rem;
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .project-meta { flex: 1; }
+    .project-index {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-alt);
+      opacity: 0.6;
+      margin-bottom: 1.2rem;
+    }
 
     .project-tag {
       font-family: var(--sans);
       font-size: 0.68rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.35rem;
+      color: var(--accent-alt);
+      margin-bottom: 0.6rem;
     }
 
     .project-title {
       font-family: var(--serif);
-      font-size: 1.35rem;
-      line-height: 1.2;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.15;
       color: var(--text);
+      margin-bottom: 0.8rem;
     }
-    .project-card:nth-child(1) .project-title { font-size: 1.7rem; }
 
     .project-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 0.35rem;
       font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--accent-alt);
+      line-height: 1.6;
+      max-width: 36ch;
+      margin-bottom: 1.5rem;
     }
 
     .project-arrow {
-      font-size: 1.2rem;
-      color: var(--muted);
-      transition: transform var(--transition), color var(--transition);
-      margin-top: 0.15rem;
-      flex-shrink: 0;
-    }
-    .project-card:hover .project-arrow {
-      transform: translate(4px, -4px);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.25);
+      padding-bottom: 0.15rem;
+      width: fit-content;
+      transition: gap var(--transition), border-color var(--transition);
+    }
+    .project-arrow::after { content: '↗'; }
+    .project-card:hover .project-arrow {
+      gap: 0.9rem;
+      border-color: rgba(0,0,0,0.6);
     }
 
-    /* Section label on amber bg */
-    #work .section-label { color: var(--accent-alt); border-top-color: rgba(0,0,0,0.2); }
+    /* ── Featured first card ── */
+    .project-card:first-child {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 5rem 0;
+    }
+    .project-card:first-child .img-wrap {
+      aspect-ratio: 16/8;
+    }
+    .project-card:first-child .project-title {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+    }
+    .project-card:first-child .project-desc {
+      font-size: 0.95rem;
+      max-width: 52ch;
+    }
 
     /* ─── About ──────────────────────────────────────────── */
     #about { padding-bottom: 6rem; display: block; }
@@ -260,8 +288,8 @@
     @media (max-width: 768px) {
       .hero { padding: 0 1.4rem 4rem; }
       section { padding: 0 1.4rem; }
-      .work-grid { grid-template-columns: 1fr; }
-      .project-card:nth-child(1) { grid-column: auto; }
+      .project-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 0; }
+      .project-card:first-child { padding: 3rem 0; gap: 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .skills-cols { grid-template-columns: 1fr; gap: 1.5rem; }
     }
@@ -275,7 +303,7 @@
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="mailto:jennifalangastudio@gmail.com">Contact</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#771d1219191e11161b16191016040302131e1837101a161e1b5914181a">Contact</a></li>
       <li><a class="cta" href="https://drive.google.com/file/d/1uqhb4TT4YDPo9gIRXqZZDHCr57-FyzcC/view?usp=sharing" target="_blank" rel="noopener">Résumé ↗</a></li>
     </ul>
   </nav>
@@ -294,94 +322,75 @@
   <!-- ─── Work ─────────────────────────────────────────── -->
   <section id="work" aria-label="Selected work">
     <p class="section-label">Selected Work</p>
-    <div class="work-inner">
-      <div class="work-grid">
+    <div class="work-list">
 
-        <a class="project-card" href="conserva.html">
-          <div class="img-wrap">
-            <img src="img/JF_WEB_ConservaIndex.jpg" alt="Conserva app — bold, system-driven gourmet experience UI" width="1200" height="514" loading="eager" />
-          </div>
-          <div class="project-info">
-            <div class="project-meta">
-              <p class="project-tag">UI/UX · Case Study</p>
-              <h2 class="project-title">Conserva</h2>
-              <p class="project-desc">A bold, system-driven gourmet experience.</p>
-            </div>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
+      <a class="project-card" href="conserva.html">
+        <div class="img-wrap">
+          <img src="img/JF_WEB_ConservaIndex.png" alt="Conserva app — bold, system-driven gourmet experience UI" width="1200" height="900" loading="eager" />
+        </div>
+        <div class="project-info">
+          <p class="project-tag">UI/UX · Case Study</p>
+          <h2 class="project-title">Conserva: A bold, system-driven gourmet experience</h2>
+          <span class="project-arrow">View case study</span>
+        </div>
+      </a>
 
-        <a class="project-card" href="clara-app.html">
-          <div class="img-wrap">
-            <img src="img/JF_WEB_CANSIMPLANProposalDetail.jpg" alt="Clara app — clarity and collaboration interface mockup" width="600" height="338" loading="lazy" />
-          </div>
-          <div class="project-info">
-            <div class="project-meta">
-              <p class="project-tag">UI/UX · Case Study</p>
-              <h2 class="project-title">CAN-SIMPLAN</h2>
-              <p class="project-desc">Designing accountability into AI.</p>
-            </div>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
+      <a class="project-card" href="can-simplan.html">
+        <div class="img-wrap">
+          <img src="img/JF_WEB_CANSIMPLANIndex.png" alt="CAN-SIMPLAN — designing accountability into AI" width="600" height="450" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <p class="project-tag">UI/UX · Case Study</p>
+          <h2 class="project-title">CAN-SIMPLAN: Designing accountability into AI</h2>
+          <span class="project-arrow">View case study</span>
+        </div>
+      </a>
 
-        <a class="project-card" href="can-simplan.html">
-          <div class="img-wrap">
-            <img src="img/JF_WEB_ClaraIndex.png" alt="CAN-SIMPLAN — Designing accountability into AI" width="600" height="338" loading="lazy" />
-          </div>
-          <div class="project-info">
-            <div class="project-meta">
-              <p class="project-tag">UI/UX · Case Study</p>
-              <h2 class="project-title">Clara</h2>
-              <p class="project-desc">Clarity and collaboration for every journey.</p>
-            </div>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
+      <a class="project-card" href="clara-app.html">
+        <div class="img-wrap">
+          <img src="img/JF_WEB_ClaraIndex.png" alt="Clara app — clarity and collaboration interface mockup" width="600" height="450" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <p class="project-tag">UI/UX · Case Study</p>
+          <h2 class="project-title">Clara: Clarity and collaboration for every journey</h2>
+          <span class="project-arrow">View case study</span>
+        </div>
+      </a>
 
-        <a class="project-card" href="fides-website.html">
-          <div class="img-wrap">
-            <img src="img/JF_WEB_FidesIndex.png" alt="FIDES sports agency website — player-first design" width="600" height="338" loading="lazy" />
-          </div>
-          <div class="project-info">
-            <div class="project-meta">
-              <p class="project-tag">Web Design · Case Study</p>
-              <h2 class="project-title">FIDES</h2>
-              <p class="project-desc">A player-first sports agency.</p>
-            </div>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
+      <a class="project-card" href="fides-website.html">
+        <div class="img-wrap">
+          <img src="img/JF_WEB_FidesIndex.png" alt="FIDES sports agency website — player-first design" width="600" height="450" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <p class="project-tag">Web Design · Case Study</p>
+          <h2 class="project-title">FIDES: A player-first sports agency</h2>
+          <span class="project-arrow">View case study</span>
+        </div>
+      </a>
 
-        <a class="project-card" href="uottawa.html">
-          <div class="img-wrap">
-            <img src="img/JF_WEB_uOttawa_11.png" alt="uOttawa project — bringing academic content to life" width="600" height="338" loading="lazy" />
-          </div>
-          <div class="project-info">
-            <div class="project-meta">
-              <p class="project-tag">Content Design</p>
-              <h2 class="project-title">uOttawa</h2>
-              <p class="project-desc">Bringing academic content to life.</p>
-            </div>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
+      <a class="project-card" href="uottawa.html">
+        <div class="img-wrap">
+          <img src="img/JF_WEB_uOttawa_11.png" alt="uOttawa project — bringing academic content to life" width="600" height="450" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <p class="project-index">05</p>
+          <p class="project-tag">Content Design</p>
+          <h2 class="project-title">uOttawa: Bringing academic content to life</h2>
+          <span class="project-arrow">View work</span>
+        </div>
+      </a>
 
-        <a class="project-card" href="asuquomo.html">
-          <div class="img-wrap">
-            <img src="img/JF_WEB_ASUQUOMO_5.jpg" alt="Asuquomo visual campaign — brand and identity work" width="600" height="338" loading="lazy" />
-          </div>
-          <div class="project-info">
-            <div class="project-meta">
-              <p class="project-tag">Visual Design · Campaign</p>
-              <h2 class="project-title">Asuquomo</h2>
-              <p class="project-desc">Visual campaign design.</p>
-            </div>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
+      <a class="project-card" href="asuquomo.html">
+        <div class="img-wrap">
+          <img src="img/JF_WEB_ASUQUOMO_5.jpg" alt="Asuquomo visual campaign — brand and identity work" width="600" height="450" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <p class="project-tag">Visual Design · Campaign</p>
+          <h2 class="project-title">Asuquomo: <i>Wide Awake</i> visual campaign</h2>
+          <span class="project-arrow">View work</span>
+        </div>
+      </a>
 
-      </div>
     </div>
   </section>
 
@@ -390,9 +399,9 @@
     <p class="section-label">About</p>
     <div class="about-grid">
       <div class="about-text">
-        <h2>Design with <em>intention</em>, built with care.</h2>
-        <p>I'm Jennifer Yaya — a UI/UX designer completing my diploma at BrainStation in Ottawa. I care about the intersection of clarity, function, and beauty in digital products.</p>
-        <p>My work spans education platforms, marketing experiences, and product design. I approach every project with research-first thinking and a keen eye for the details that make an experience feel effortless.</p>
+        <p>I'm Jennifer Yaya — a UI/UX designer completing my diploma at BrainStation, creating purposeful digital experiences across education, marketing, and product.</p>
+        <p>Based in Ottawa, dreaming about Marseille every day. When I'm not designing, I'm hosting elaborate dinner parties, biking anywhere the road allows, getting lost in bookshops, and drinking far too much sparkling water.</p>
+        <p>I approach every project with research-first thinking and a quiet obsession with the details that make an experience feel effortless.</p>
         <p>Currently available for freelance and full-time opportunities. Let's build something together — <a href="mailto:jennifalangastudio@gmail.com">jennifalangastudio@gmail.com</a></p>
       </div>
       <div class="skills-cols">
@@ -428,18 +437,7 @@
     <span class="footer-name">Jennifer Yaya Falanga</span>
     <ul class="footer-links">
       <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-      <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#3a505f5454535c5b565b545d5b494e4f5e53557a5d575b535614595557">Email</a></li>
       <li><a href="https://drive.google.com/file/d/1uqhb4TT4YDPo9gIRXqZZDHCr57-FyzcC/view?usp=sharing" target="_blank" rel="noopener">Résumé ↗</a></li>
     </ul>
-    <span class="footer-copy">© 2025 Jennifer Yaya Falanga</span>
-  </footer>
-
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-  </script>
-
-</body>
-</html>
+    <span class="footer-copy">© 2025 Jennifer 
