@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Mirror — Jennifer Yaya Falanga</title>
+  <meta name="description" content="On AI and authorship — a point of view by Jennifer Yaya Falanga, UI/UX Designer." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="A Mirror — Jennifer Yaya Falanga" />
+  <meta property="og:description" content="When friction disappears, judgment becomes the work." />
+  <meta property="og:type" content="article" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css" />
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ─── Page background ────────────────────────────────── */
+    body { background: var(--bg-case); line-height: 1.8; }
+
+    /* ─── Hero ───────────────────────────────────────────── */
+    .ai-hero {
+      min-height: 80svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 2.5rem 6rem;
+      max-width: var(--max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .ai-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .ai-title {
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 7vw, 7rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 18ch;
+      font-style: italic;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.9s 0.35s forwards;
+    }
+
+    .ai-hero-sub {
+      margin-top: 2rem;
+      max-width: 48ch;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.8s 0.55s forwards;
+    }
+
+    .ai-hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      right: 2.5rem;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+    .ai-hero-scroll::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    /* ─── Essay body ─────────────────────────────────────── */
+    .ai-essay {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2.5rem 10rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 8rem;
+      align-items: start;
+    }
+
+    /* Sticky sidebar */
+    .ai-sidebar {
+      position: sticky;
+      top: 8rem;
+      padding-top: 6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .ai-sidebar-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Table of contents */
+    .ai-toc {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .ai-toc a {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      transition: color var(--transition), padding-left var(--transition);
+      display: block;
+      padding-left: 0;
+    }
+    .ai-toc a:hover { color: var(--text); padding-left: 0.4rem; }
+
+    /* Main essay column */
+    .ai-content {
+      padding-top: 6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Pull quote — large opener */
+    .ai-pull {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 28ch;
+    }
+
+    /* Essay sections */
+    .essay-section {
+      margin-bottom: 4rem;
+    }
+
+    .essay-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      scroll-margin-top: 7rem;
+    }
+    .essay-section h2 em { font-style: italic; }
+
+    .essay-section p {
+      font-family: var(--sans);
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+    .essay-section p:last-child { margin-bottom: 0; }
+
+    .essay-section strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* Inset quote — Murdoch */
+    .inset-quote {
+      border-left: 2px solid var(--text);
+      padding: 0.4rem 0 0.4rem 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .inset-quote p {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text) !important;
+      line-height: 1.5;
+      margin: 0 !important;
+    }
+    .inset-quote cite {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.7rem;
+      font-style: normal;
+    }
+
+    /* Closing line */
+    .essay-close {
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .essay-close p {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.45;
+      max-width: 40ch;
+    }
+
+    /* ─── Related work callout ───────────────────────────── */
+    .ai-related {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2.5rem 8rem;
+    }
+
+    .ai-related-label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      padding-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .ai-related-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .ai-related-card:hover { background: rgba(0,0,0,0.02); }
+
+    .ai-related-card .img-wrap {
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: rgba(0,0,0,0.05);
+    }
+    .ai-related-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .ai-related-card:hover img { transform: scale(1.03); }
+
+    .ai-related-info {}
+    .ai-related-tag {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .ai-related-title {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .ai-related-desc {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+      max-width: 40ch;
+    }
+    .ai-related-link {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      border-bottom: 1px solid rgba(0,0,0,0.25);
+      padding-bottom: 0.15rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap var(--transition);
+    }
+    .ai-related-link::after { content: '↗'; }
+    .ai-related-card:hover .ai-related-link { gap: 0.9rem; }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .ai-essay { grid-template-columns: 1fr; gap: 0; }
+      .ai-sidebar { position: static; padding-top: 3rem; border-top: none; border-bottom: 1px solid var(--border); padding-bottom: 2.5rem; margin-bottom: 3rem; }
+      .ai-toc { flex-direction: row; flex-wrap: wrap; gap: 1rem 2rem; }
+      .ai-content { padding-top: 0; border-top: none; }
+    }
+
+    @media (max-width: 768px) {
+      .ai-hero { padding: 0 1.4rem 5rem; }
+      .ai-essay { padding: 0 1.4rem 6rem; }
+      .ai-related { padding: 0 1.4rem 5rem; }
+      .ai-related-card { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────── -->
+  <nav class="nav-case">
+    <a href="index.html" class="nav-logo">Jennifer Yaya Falanga</a>
+    <a href="index.html" class="nav-back">Home</a>
+  </nav>
+
+  <!-- ─── Hero ────────────────────────────────────────── -->
+  <div class="ai-hero">
+    <p class="ai-eyebrow">On AI & Authorship</p>
+    <h1 class="ai-title">A Mirror</h1>
+    <p class="ai-hero-sub">
+      The future of design includes tools that generate faster than we can imagine.
+      But speed doesn't replace authorship. If anything, it demands more of it.
+    </p>
+    <span class="ai-hero-scroll" aria-hidden="true">Read on</span>
+  </div>
+
+  <!-- ─── Essay ────────────────────────────────────────── -->
+  <div class="ai-essay">
+
+    <!-- Sidebar -->
+    <aside class="ai-sidebar">
+      <p class="ai-sidebar-label">In this essay</p>
+      <ul class="ai-toc">
+        <li><a href="#the-mirror">The Mirror</a></li>
+        <li><a href="#judgment">Judgment as Work</a></li>
+        <li><a href="#seeing">The Capacity to See</a></li>
+        <li><a href="#question">The Real Question</a></li>
+      </ul>
+    </aside>
+
+    <!-- Essay content -->
+    <div class="ai-content">
+
+      <p class="ai-pull">
+        "When friction disappears,<br>judgment becomes the work."
+      </p>
+
+      <div class="essay-section" id="the-mirror">
+        <h2>The <em>Mirror</em></h2>
+        <p>
+          AI felt less like a shortcut and more like a mirror — one that exposes the
+          difference between liking something and standing behind it.
+        </p>
+        <p>
+          Working with AI on a project like Conserva, where image generation became
+          part of the visual system, made that distinction sharp and immediate. The tool
+          could produce something that looked good instantly. Whether it was right —
+          whether it was <em>mine</em> — was a different question entirely. One that
+          required slowing down, not speeding up.
+        </p>
+      </div>
+
+      <div class="essay-section" id="judgment">
+        <h2>Judgment as <em>Work</em></h2>
+        <p>
+          The future of design will include tools that generate faster than we can
+          imagine. But <strong>speed doesn't replace authorship.</strong> If anything,
+          it demands more of it.
+        </p>
+        <p>
+          When friction disappears, judgment becomes the work. And judgment is a quiet,
+          patient thing. I've come to think of it as almost a physical act. Small turns.
+          Subtle corrections. The slow narrowing of focus until the image sharpens into
+          something that feels not chosen but inevitable — like a word you searched for
+          all day that arrives, finally, in the dark just before sleep.
+        </p>
+      </div>
+
+      <div class="essay-section" id="seeing">
+        <h2>The Capacity to <em>See</em></h2>
+
+        <div class="inset-quote">
+          <p>
+            "The foundation of morality is the ability to really see — to attend to
+            what is actually there rather than what we wish were there."
+          </p>
+          <cite>— Iris Murdoch</cite>
+        </div>
+
+        <p>
+          I read that years ago and felt it land somewhere specific, the way true things
+          do. I think it's also the foundation of craft. <strong>The capacity to see
+          clearly, choose honestly, and resist what merely looks good.</strong>
+        </p>
+        <p>
+          AI doesn't threaten that capacity. But it does nothing to cultivate it, either.
+          That work remains stubbornly, beautifully human.
+        </p>
+      </div>
+
+      <div class="essay-section" id="question">
+        <h2>The Real <em>Question</em></h2>
+        <p>
+          So the real question isn't whether AI will replace designers. It's quieter
+          than that — almost intimate. The kind of question you sit with rather
+          than answer.
+        </p>
+        <p>
+          What does it mean to make something, when making becomes effortless?
+          What do we owe the work, when the work no longer costs us anything?
+          I don't have answers. But I think the asking matters — and I think designers
+          are better placed than most to do it honestly.
+        </p>
+      </div>
+
+      <div class="essay-close">
+        <p>
+          Structure doesn't limit creativity.<br>
+          And authorship doesn't disappear when the tools get easier.<br>
+          <em>It just gets harder to fake.</em>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── Related work ──────────────────────────────────── -->
+  <div class="ai-related">
+    <p class="ai-related-label">See it in practice</p>
+    <a class="ai-related-card" href="conserva.html">
+      <div class="img-wrap">
+        <img
+          src="img/JF_WEB_ConservaIndex.jpg"
+          alt="Conserva — AI-assisted image generation as part of the visual system"
+          width="800" height="450"
+          loading="lazy"
+        />
+      </div>
+      <div class="ai-related-info">
+        <p class="ai-related-tag">UI/UX · Case Study</p>
+        <p class="ai-related-title">Conserva</p>
+        <p class="ai-related-desc">
+          Where these ideas met practice — using AI image generation as a structured
+          creative tool, not a shortcut.
+        </p>
+        <span class="ai-related-link">Read the case study</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ─── Footer ────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-name">Jennifer Yaya Falanga</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="mailto:jennifalangastudio@gmail.com">Email</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Jennifer Yaya Falanga</span>
+  </footer>
+
+</body>
+</html>

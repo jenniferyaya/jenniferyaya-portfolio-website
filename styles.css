@@ -26,7 +26,7 @@
   --border:     rgba(0,0,0,0.15);
 
   /* Text — dark on light backgrounds */
-  --text:       #141413;
+  --text:       #0e0e0d;
   --muted:      #484540;
   --text-inv:   #F9F9F7;   /* Light text when used over dark/amber */
 
