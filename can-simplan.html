@@ -319,29 +319,10 @@
   <article class="case-body">
 
     <section class="case-section">
-      <span class="section-number">01 — The Problem</span>
-      <h2>Planners are Accountable. The AI isn't.</h2>
-      <p>Municipal planners make consequential decisions (zoning approvals, housing density, displacement risk) increasingly informed by AI outputs they can't fully interrogate. When those decisions fail politically or legally, the model doesn't answer for it. The planner does.</p>
-      <p>Most tools are designed for speed. None were designed for defensibility.</p>
+      <span class="section-number">The Reframe</span>
+      <h2>Planners don't need faster AI. They need AI they can defend.</h2>
+      <p>Municipal planners must evaluate complex development proposals under intense political scrutiny. Current tools summarize data but fail to provide transparent reasoning behind recommendations.</p>
       <div class="pull-quote"><p>"The model might be accurate, but accuracy isn't enough. I need transparency."</p></div>
-      <h3>The Design Challenge</h3>
-      <p>How might we structure AI outputs so planners can defend every decision under legal, political, and public scrutiny?</p>
-    </section>
-
-    <hr class="divider" />
-
-    <section class="case-section">
-      <span class="section-number">02 — My Role</span>
-      <h2>Sole UX designer on a cross-functional team.</h2>
-      <p>I worked closely with three software engineers and a data scientist to translate simulation model logic into interfaces planners could read, interrogate, and act on.</p>
-      <ul class="outcomes space-after">
-        <li>Persona development and problem framing</li>
-        <li>Information architecture and interaction design</li>
-        <li>Transparency, flagging, and audit trail patterns</li>
-        <li>High-fidelity interface design (Figma)</li>
-        <li>Stakeholder presentation design and content</li>
-      </ul>
-      <a class="figma-link" href="https://www.figma.com/design/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=0-1&t=bj60QhFHEndpqrT4-1" target="_blank">View Figma designs</a>
     </section>
 
     <figure class="case-image">
@@ -353,12 +334,20 @@
       <figcaption>The proposal dashboard: surfacing what needs attention before the planner opens a single case.</figcaption>
     </figure>
 
-<hr class="divider" />
+    <hr class="divider" />
 
     <section class="case-section">
-      <span class="section-number">03 — Key Insight</span>
-      <h2>Planners don't need faster models. They need outputs they can defend.</h2>
-      <p>This reframed the entire project. The design question was no longer about efficiency — it was about accountability. Every interface decision followed from that shift.</p>
+      <span class="section-number">The Solution</span>
+      <h2>CAN-SIMPLAN is not a decision-maker. It's a structured oversight layer.</h2>
+      <p>I worked as the sole UX designer on a team with three engineers and one data scientist, designing the end-to-end interface, from login to audit trail, so planners could understand and defend every AI output.</p>
+      <ul class="outcomes space-after">
+        <li>Multi-domain simulation scoring with visible confidence levels</li>
+        <li>Blocking flags that require written rationale before the workflow proceeds</li>
+        <li>Plain-language translation of every technical output</li>
+        <li>An embedded, immutable audit trail inside the primary workflow not buried in an admin panel</li>
+      </ul>
+      <p>The result is a decision-support interface that keeps planners in control while making the model’s reasoning transparent.</p>
+      <a class="figma-link" href="https://www.figma.com/design/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=0-1&t=bj60QhFHEndpqrT4-1" target="_blank">View Figma designs</a>
     </section>
 
     <figure class="case-image">
@@ -373,92 +362,58 @@
     <hr class="divider" />
 
     <section class="case-section">
-      <span class="section-number">04 — The Solution</span>
-      <h2>CAN-SIMPLAN is not a decision-maker. It's a structured oversight layer.</h2>
-      <ul class="outcomes space-after">
-        <li>Runs multi-domain simulation scoring</li>
-        <li>Surfaces confidence levels and flagged risks</li>
-        <li>Requires planner engagement before approval</li>
-        <li>Generates council-ready, audit-backed outputs</li>
-      </ul>
-      <h3>Core principle: <b>Defensible over fast.</b></h3>
+      <span class="section-number">Key Design Decisions</span>
+      <h2>Four patterns that make accountability tangible.</h2>
 
-      <figure class="case-image">
-        <img
-          src="img/JF_WEB_CANSIMPLANProposalDetail.jpg"
-          alt="CAN-SIMPLAN proposal detail view: domain scorecards, simulation flags, and planner action panel"
-          loading="lazy"
-        />
-        <figcaption>Proposal Detail: domain scores, simulation flags, and planner actions in a single scrollable workspace.</figcaption>
-      </figure>
+      <h3>01: Blocking flags enforce engagement</h3>
+      <p>In governance contexts, engagement cannot be optional. Blocking flags require written rationale before the workflow proceeds. Friction here isn’t bad UX, it’s the right UX.</p>
 
-      <figure class="case-image">
-        <img
-          src="img/JF_WEB_CANSIMPLANTransparency.jpg"
-          alt="CAN-SIMPLAN transparency panel: scoring assumptions and data source attribution"
-          loading="lazy"
-        />
-        <figcaption>Transparency Panel: every scoring assumption and data source made explicit.</figcaption>
-      </figure>
+      <h3>02: Confidence lives in the header, not a technical panel</h3>
+      <p>Model confidence, version, and last-run timestamp surface at the top of every proposal. Planners need to calibrate trust before engaging with outputs. Surfacing uncertainty isn’t a weakness, it’s honesty.</p>
 
+      <h3>03: Plain language over technical accuracy</h3>
+      <p>Every flag includes a plain-language explanation written for planners, not data scientists. The planner’s job is judgment. The interface’s job is translation.</p>
+
+      <h3>04: The audit trail belongs in the primary workflow</h3>
+      <p>All overrides are logged, timestamped, and immutable inside the proposal view, not hidden in a secondary panel. When accountability is buried, it becomes optional.</p>
     </section>
 
-<hr class="divider" />
+    <figure class="case-image">
+      <img
+        src="img/JF_WEB_CANSIMPLANProposalDetail.jpg"
+        alt="CAN-SIMPLAN proposal detail view: domain scorecards, simulation flags, and planner action panel"
+        loading="lazy"
+      />
+      <figcaption>Proposal Detail: domain scores, simulation flags, and planner actions in a single scrollable workspace.</figcaption>
+    </figure>
+
+    <figure class="case-image">
+      <img
+        src="img/JF_WEB_CANSIMPLANTransparency.jpg"
+        alt="CAN-SIMPLAN transparency panel: scoring assumptions and data source attribution"
+        loading="lazy"
+      />
+      <figcaption>Transparency Panel: every scoring assumption and data source is visible and traceable.</figcaption>
+    </figure>
+
+    <figure class="case-image">
+      <img
+        src="img/JF_WEB_CANSIMPLANAuditTrail.jpg"
+        alt="CAN-SIMPLAN audit trail and planner decision panel"
+        loading="lazy"
+      />
+      <figcaption>Audit Trail: a sequential, immutable log of every planner action, alongside a decision panel requiring written rationale before submission.</figcaption>
+    </figure>
+
+    <hr class="divider" />
 
     <section class="case-section">
-      <span class="section-number">05 — Design Decisions</span>
-      <h2>01 — Blocking Flags</h2>
-      <p>Flags require written rationale before the workflow proceeds. In a governance context, the interface has to enforce engagement, not rely on professional diligence.</p>
-
-      <h2>02 — Visible Confidence</h2>
-      <p>Model confidence, version, and last-run timestamp surface in the proposal header, not buried in a technical panel. Planners need to know how much to trust an output before they engage with it. Surfacing uncertainty is not a weakness, it's honesty.</p>
-
-      <h2>03 — Plain-Language Translation</h2>
-      <p>Every technical flag includes a plain-language explanation written for planners, not data scientists. The planner's job is judgment. The interface's job is translation. The flag descriptions do the interpretation work so cognitive load stays where it belongs.</p>
-
-      <h2>04 — Embedded Audit Trail</h2>
-      <p>All overrides are logged, timestamped, and immutable within the proposal view, not in a separate admin panel. Placing the audit trail inside the primary workflow signals that documentation is part of the job, not a bureaucratic add-on. If it's buried, accountability is secondary.</p>
-
-     <figure class="case-image">
-        <img
-          src="img/JF_WEB_CANSIMPLANAuditTrail.jpg"
-          alt="CAN-SIMPLAN audit trail and planner decision panel"
-          loading="lazy"
-        />
-        <figcaption>Audit Trail: a sequential, immutable log of every action, alongside a decision panel requiring written rationale before submission.</figcaption>
-      </figure>
-
+      <span class="section-number">Reflection</span>
+      <h2>Designing for governance changed how I think about friction.</h2>
+      <p>This project pushed me to move beyond the default instinct to remove all friction. In high-accountability contexts, some friction is protective.</p>
+      <p>Working at the boundary between simulation logic and human decision workflows also sharpened an unexpected skill: translating in both directions, from technical constraints into interface clarity, and from planner needs back into system requirements.</p>
+      <p>With more time, I would prioritize usability testing on the flag-override flows, conduct a full accessibility audit (civic tools must be universally accessible), and design the post-approval feedback loop where real outcomes recalibrate the model over time.</p>
     </section>
-
-<hr class="divider" />
-
-    <section class="case-section">
-      <span class="section-number">06 — Lessons & Reflections</span>
-      <h2>Designing for governance changes the constraints entirely.</h2>
-      <p>Usability is not the primary constraint, accountability is. That distinction reshaped how I thought about friction, structure, and trust.</p>
-
-      <ul class="outcomes space-after">
-        <li>Friction can be protective. Blocking flags aren't bad UX, they're the right UX for a governance context.</li>
-        <li>Structure builds trust. When a system enforces documentation, it signals to every stakeholder that the process is serious.</li>
-        <li>Auditability is a UX problem. If the audit trail is buried or hard to read, it doesn't function as accountability, it's just data.</li>
-      </ul>
-
-      <p>Working cross-functionally also pushed me to get comfortable at the boundary between technical model logic and human decision workflows, translating in both directions.</p>
-    </section>
-
-    <section class="case-section">
-      <span class="section-number">07 — Next Steps</span>
-      <p>Given more time and access to users, I'd prioritise:</p>
-
-      <ul class="outcomes space-after">
-        <li>Usability testing with senior planners on the flag engagement and override flows</li>
-        <li>WCAG 2.1 AA accessibility audit — high-stakes civic tools must be universally accessible</li>
-        <li>Mobile workflow for field visits and on-site proposal review</li>
-        <li>Design of the post-approval feedback loop, where real outcomes recalibrate the model over time</li>
-      </ul>
-    </section>
-
-
 
   </article>
 
@@ -478,4 +433,4 @@
       <li><a href="https://www.linkedin.com/in/jennifer-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
       <li><a href="mailto:jennifalanga@gmail.com">Email</a></li>
     </ul>
-    <span class="footer-copy">© 2025 Yaya Falanga</span>
+    <span cl
