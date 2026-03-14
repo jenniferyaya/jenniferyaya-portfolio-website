@@ -3,442 +3,984 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAN-SIMPLAN — Jennifer Yaya Falanga</title>
+  <title>CAN-SIMPLAN — Yaya Falanga</title>
   <meta name="description" content="CAN-SIMPLAN: Designing accountability into AI for municipal planners — UX case study by Jennifer Yaya Falanga." />
-
-  <!-- Open Graph -->
   <meta property="og:title" content="CAN-SIMPLAN — Jennifer Yaya Falanga" />
-  <meta property="og:description" content="UX case study: Designing accountability into AI for municipal planners." />
+  <meta property="og:description" content="UX case study: An AI-assisted planning tool that keeps municipal planners in control of every decision they make." />
   <meta property="og:type" content="article" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css" />
-
-  <!-- Shared styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Adobe Fonts (Typekit) — Area Normal -->
+  <link rel="stylesheet" href="https://use.typekit.net/kbm3omb.css">
 
   <style>
-    /* ─── Case study background ──────────────────────────── */
-    body { background: var(--bg-case); line-height: 1.8; }
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS — copied verbatim from Clara (source of truth)
+       8px grid, named type scale
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      /* Colour */
+      --ink:        #1a1a18;
+      --ink-2:      #3d3d3a;
+      --muted:      #393937;
+      --muted-2:    #696962;
+      --border:     #e4e4de;
+      --border-2:   #f0f0ea;
+      --bg:         #faf9f7;
+      --bg-raised:  #f3f2ef;
+      --accent:     #1a1a18;
 
-    /* ─── Case Hero ──────────────────────────────────────── */
-    .case-hero {
-      padding: 8rem 2.5rem 5rem;
-      max-width: var(--max);
-      margin: 0 auto;
+      /* Type — all in rem, 1rem = 16px */
+      --t-11: 0.7075rem;
+      --t-13: 0.7525rem;
+      --t-15: 0.9775rem;
+      --t-17: 1.0825rem;
+      --t-20: 1.25rem;
+      --t-24: 1.5rem;
+      --t-32: 2rem;
+      --t-40: 2.5rem;
+      --t-56: 3.5rem;
+      --t-72: 4.5rem;
+
+      /* Spacing — 8px base */
+      --s1:  0.5rem;
+      --s2:  1rem;
+      --s3:  1.5rem;
+      --s4:  2rem;
+      --s5:  2.5rem;
+      --s6:  3rem;
+      --s8:  4rem;
+      --s10: 5rem;
+      --s12: 6rem;
+      --s16: 8rem;
+      --s20: 10rem;
+
+      /* Layout */
+      --col-text: 900px;
+      --col-wide: 1100px;
+      --col-full: 1360px;
+
+      /* Type families */
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans:  'area-normal', sans-serif;
     }
 
-    .case-eyebrow {
+    /* ═══════════════════════════════════════════════════════════
+       RESET + BASE
+    ═══════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
       font-family: var(--sans);
-      font-size: 0.72rem;
+      font-size: var(--t-15);
+      line-height: 1.75;
+      color: var(--ink-2);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ═══════════════════════════════════════════════════════════
+       LAYOUT UTILITIES
+    ═══════════════════════════════════════════════════════════ */
+    .wrap-text { max-width: var(--col-text); margin-inline: auto; padding-inline: var(--s5); }
+    .wrap-wide { max-width: var(--col-wide); margin-inline: auto; padding-inline: var(--s5); }
+    .wrap-full { max-width: var(--col-full); margin-inline: auto; padding-inline: var(--s4); }
+
+    /* ═══════════════════════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s2) var(--s5);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav__logo {
+      font-family: var(--serif);
+      font-size: var(--t-17);
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .nav__back {
+      font-family: var(--sans);
+      font-size: var(--t-11);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      transition: color 0.18s;
+    }
+    .nav__back::before { content: '←'; font-size: 0.9em; }
+    .nav__back:hover   { color: var(--ink); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ① HERO
+    ═══════════════════════════════════════════════════════════ */
+    .hero {
+      padding-top: calc(var(--s16) + 3rem);
+      padding-bottom: var(--s10);
+    }
+    .hero__eyebrow {
+      display: block;
+      font-family: var(--sans);
+      font-size: var(--t-11);
+      font-weight: 400;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 1.4rem;
+      margin-bottom: var(--s3);
     }
-
-    .case-title {
+    .hero__title {
       font-family: var(--serif);
-      font-size: clamp(2.6rem, 5.5vw, 5rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      max-width: 20ch;
-      color: var(--text);
-      margin-bottom: 1.5rem;
+      font-size: clamp(var(--t-40), 6.5vw, var(--t-72));
+      line-height: 1.02;
+      letter-spacing: 0.012em;
+      color: var(--ink);
+      max-width: 24ch;
+      margin-bottom: var(--s4);
     }
-    .case-title em { font-style: italic; }
-
-    .case-tagline {
+    .hero__tagline {
+      font-family: var(--serif);
+      font-size: clamp(var(--t-20), 2vw, var(--t-24));
+      line-height: 1.45;
       color: var(--muted);
-      max-width: 52ch;
-      font-size: 0.97rem;
-      font-family: var(--sans);
-      margin-bottom: 1.2rem;
+      max-width: 60ch;
+      margin-bottom: var(--s5);
     }
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s1);
+      font-family: var(--sans);
+      font-size: var(--t-13);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 2px;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .hero__cta::after { content: ' ↗'; opacity: 0.5; }
+    .hero__cta:hover  { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
-    .case-meta {
+    .hero__meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 2.5rem;
-      margin-top: 3rem;
-      padding-top: 2rem;
+      gap: var(--s5);
+      margin-top: var(--s8);
+      padding-top: var(--s4);
       border-top: 1px solid var(--border);
     }
-
     .meta-label {
       font-family: var(--sans);
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
+      font-size: var(--t-11);
+      font-weight: 400;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
+      color: var(--muted-2);
+      margin-bottom: 0.25rem;
     }
     .meta-value {
       font-family: var(--sans);
-      font-size: 0.88rem;
-      color: var(--text);
+      font-size: var(--t-15);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+      max-width: 28ch;
     }
-
-    /* ─── Hero Image ─────────────────────────────────────── */
-    .case-hero-image {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 2.5rem 5rem;
+    .hero__visual {
+      max-width: var(--col-full);
+      margin-inline: auto;
+      padding-inline: var(--s4);
+      margin-top: var(--s10);
     }
-    .case-hero-image img {
+    .hero__visual img {
       width: 100%;
-      aspect-ratio: 16/7;
+      aspect-ratio: 16 / 7;
       object-fit: cover;
       border: 1px solid var(--border);
     }
 
+    /* ═══════════════════════════════════════════════════════════
+       SECTION SHARED ATOMS
+    ═══════════════════════════════════════════════════════════ */
+    .rule { max-width: var(--col-full); margin-inline: auto; padding-inline: var(--s4); }
+    .rule hr { border: none; border-top: 1px solid var(--border); }
 
-    /* ─── Body ───────────────────────────────────────────── */
-    .case-body {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 2.5rem 8rem;
+    .cs-section {
+      padding-top: var(--s16);
+      padding-bottom: var(--s8);
     }
-
-    .case-section { margin-bottom: 4.5rem; }
-
-    .section-number {
+    .cs-eyebrow {
       display: block;
       font-family: var(--sans);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .case-section h2 {
-      font-family: var(--serif);
-      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      color: var(--text);
-    }
-    .case-section h2 em { font-style: italic; }
-
-    .case-section h3 {
-      font-family: var(--sans);
-      font-size: 0.78rem;
+      font-size: var(--t-13);
       font-weight: 400;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text);
-      margin: 2rem 0 0.6rem;
-    }
-
-    .case-section p {
-      font-family: var(--sans);
       color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
+      margin-bottom: var(--s2);
     }
-    .case-section p strong { color: var(--text); font-weight: 400; }
-
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 4rem 0;
-    }
-
-    /* Pull quote */
-    .pull-quote {
-      border-left: 2px solid var(--text);
-      padding: 0.4rem 0 0.4rem 1.8rem;
-      margin: 2.5rem 0;
-    }
-    .pull-quote p {
+    .cs-h2 {
       font-family: var(--serif);
-      font-size: 1.25rem;
-      font-style: italic;
-      color: var(--text) !important;
-      line-height: 1.45;
+      font-size: clamp(var(--t-24), 3.5vw, var(--t-40));
+      line-height: 1.14;
+      letter-spacing: 0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s4);
     }
-
-    /* Tag list */
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
+    .cs-h3 {
+      font-family: var(--serif);
+      font-size: clamp(var(--t-20), 2.5vw, var(--t-24));
+      line-height: 1.15;
+      letter-spacing: .02em;
+      color: var(--ink);
+      margin-bottom: var(--s2);
     }
-    .tag {
+    .cs-h3 em { font-style: italic; }
+    .cs-p {
       font-family: var(--sans);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid var(--border);
-      padding: 0.35rem 0.9rem;
-      color: var(--muted);
-      border-radius: 2px;
+      font-size: var(--t-15);
+      font-weight: 400;
+      line-height: 1.53;
+      color: var(--ink-2);
+      margin-bottom: var(--s3);
     }
+    .cs-p:last-child { margin-bottom: 0; }
+    .cs-p strong { color: var(--ink); font-weight: 700; }
 
-    /* Wide image */
-    .case-image {
-      max-width: var(--max);
-      margin: 2.5rem auto;
-      padding: 0;
+    .cs-quote { margin: var(--s8) 0; }
+    .cs-quote__text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(var(--t-20), 2vw, var(--t-24));
+      line-height: 1.55;
+      color: var(--ink);
     }
-    .case-image img {
+    .cs-quote__cite {
+      display: block;
+      font-family: var(--sans);
+      font-size: var(--t-13);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-top: var(--s2);
+      font-style: normal;
+    }
+    .cs-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+      font-family: var(--sans);
+      font-size: var(--t-11);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      transition: color 0.18s, border-color 0.18s;
+      margin-top: var(--s4);
+      margin-bottom: var(--s2);
+    }
+    .cs-link::after { content: ' ↗'; }
+    .cs-link:hover  { color: var(--ink); border-color: var(--ink); }
+
+    .cs-figure {
+      max-width: var(--col-full);
+      margin-inline: auto;
+      padding-inline: var(--s4);
+      margin-top: var(--s10);
+      margin-bottom: var(--s4);
+    }
+    .cs-figure img,
+    .cs-figure iframe {
       width: 100%;
       border: 1px solid var(--border);
+      display: block;
     }
-    .case-image figcaption {
+    .cs-figure figcaption {
       font-family: var(--sans);
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 0.6rem;
+      font-size: var(--t-15);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--muted-2);
+      margin-top: var(--s2);
       text-align: center;
-      letter-spacing: 0.04em;
     }
 
-    /* Outcomes */
-    .outcomes { list-style: none; margin-top: 1rem; }
-    .outcomes li {
-      font-family: var(--sans);
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.93rem;
-      display: flex;
-      gap: 1rem;
-      align-items: baseline;
+    /* ═══════════════════════════════════════════════════════════
+       INSIGHT — Before/After pivot
+    ═══════════════════════════════════════════════════════════ */
+    .insight__pivot {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border);
+      margin-top: var(--s8);
     }
-    .outcomes li::before {
+    .pivot__cell { padding: var(--s5) var(--s5); }
+    .pivot__cell--dark { background: var(--ink); }
+    .pivot__cell-label {
+      font-family: var(--sans);
+      font-size: var(--t-11);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin-bottom: var(--s2);
+    }
+    .pivot__cell--dark .pivot__cell-label { color: #f5f5f5; }
+    .pivot__cell-text {
+      font-family: var(--sans);
+      font-size: var(--t-15);
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+    .pivot__cell--dark .pivot__cell-text { color: var(--bg); }
+
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN DECISIONS
+    ═══════════════════════════════════════════════════════════ */
+    .decisions__list { margin-top: var(--s6); }
+
+    .decision {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: var(--s5);
+      align-items: start;
+      padding: var(--s4) 0;
+    }
+    .decision__num {
+      font-family: var(--serif);
+      font-size: var(--t-24);
+      padding-top: 0.1rem;
+      line-height: 1;
+    }
+    .decision__title {
+      font-family: var(--serif);
+      font-size: clamp(var(--t-17), 2vw, var(--t-20));
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s2);
+      letter-spacing: 0.021em;
+    }
+    .decision__body {
+      font-family: var(--sans);
+      font-size: var(--t-15);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink-2);
+    }
+    .decision__tradeoff {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s2);
+      align-items: baseline;
+      padding-top: var(--s2);
+    }
+    .decision__tradeoff-label {
+      font-family: var(--sans);
+      font-size: var(--t-13);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      white-space: nowrap;
+    }
+    .decision__tradeoff-text {
+      font-family: var(--sans);
+      font-size: var(--t-15);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--muted-2);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       OUTCOME
+    ═══════════════════════════════════════════════════════════ */
+    .outcome__lead {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(var(--t-20), 2.5vw, var(--t-32));
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s6);
+      max-width: 40ch;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       REFLECTION
+    ═══════════════════════════════════════════════════════════ */
+    .reflection__list { list-style: none; margin-top: var(--s5); }
+    .reflection__list li {
+      font-family: var(--sans);
+      font-size: var(--t-15);
+      font-weight: 400;
+      color: var(--ink-2);
+      padding: var(--s1) 0;
+      display: flex;
+      gap: var(--s2);
+      align-items: baseline;
+      line-height: 1.65;
+    }
+    .reflection__list li::before {
       content: '→';
-      color: var(--text);
-      font-size: 0.85rem;
+      font-size: var(--t-13);
+      color: var(--muted-2);
       flex-shrink: 0;
     }
 
-    /* ─── Next Project ───────────────────────────────────── */
+    /* ═══════════════════════════════════════════════════════════
+       NEXT PROJECT
+    ═══════════════════════════════════════════════════════════ */
     .next-project {
-      border-top: 1px solid var(--border);
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 4rem 2.5rem 6rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 2rem;
-      transition: background var(--transition);
+      gap: var(--s4);
+      max-width: var(--col-full);
+      margin-inline: auto;
+      padding: var(--s8) var(--s4) var(--s12);
+      border-top: 1px solid var(--border);
+      transition: background 0.2s;
     }
-    .next-project:hover { background: rgba(0,0,0,0.03); }
-
-    .next-label {
+    .next-project:hover { background: var(--bg-raised); }
+    .next-project__label {
       font-family: var(--sans);
-      font-size: 0.68rem;
+      font-size: var(--t-11);
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
+      color: var(--muted-2);
+      margin-bottom: var(--s1);
     }
-
-    .next-title {
+    .next-project__title {
       font-family: var(--serif);
-      font-size: 1.7rem;
-      color: var(--text);
+      font-size: clamp(var(--t-24), 3vw, var(--t-32));
+      color: var(--ink);
       line-height: 1.2;
     }
-
-    .next-arrow {
-      font-size: 2rem;
-      color: var(--muted);
-      transition: transform var(--transition), color var(--transition);
+    .next-project__arrow {
+      font-size: var(--t-32);
+      color: var(--muted-2);
       flex-shrink: 0;
+      transition: transform 0.22s, color 0.18s;
     }
-    .next-project:hover .next-arrow {
-      transform: translate(8px, -8px);
-      color: var(--text);
+    .next-project:hover .next-project__arrow {
+      transform: translate(6px, -6px);
+      color: var(--ink);
     }
 
-    /* ─── Responsive ─────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .case-hero { padding: 7rem 1.4rem 3.5rem; }
-      .case-hero-image { padding: 0 1.4rem 3rem; }
-      .case-body { padding: 0 1.4rem 5rem; }
-      .case-image { padding: 0 1.4rem; }
-      .next-project { padding: 3rem 1.4rem 4rem; }
+    /* ═══════════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════════ */
+    .footer {
+      max-width: var(--col-full);
+      margin-inline: auto;
+      padding: var(--s4) var(--s4) var(--s6);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s4);
+      flex-wrap: wrap;
+    }
+    .footer__name { font-family: var(--serif); font-size: var(--t-15); color: var(--ink); }
+    .footer__links { list-style: none; display: flex; gap: var(--s4); }
+    .footer__links a {
+      font-family: var(--sans);
+      font-size: var(--t-11);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.18s;
+    }
+    .footer__links a:hover { color: var(--ink); }
+    .footer__copy { font-family: var(--sans); font-size: var(--t-11); color: var(--muted-2); letter-spacing: 0.04em; }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE — mobile first, two breakpoints
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      :root {
+        --s5: 1.5rem;
+        --s8: 3rem;
+        --s10: 4rem;
+        --s16: 6rem;
+      }
+      .nav { padding: var(--s2) var(--s2); }
+      .hero { padding-top: calc(var(--s12) + 1rem); padding-bottom: var(--s8); }
+      .hero__visual, .cs-figure, .rule, .next-project, .footer { padding-inline: var(--s2); }
+      .wrap-text, .wrap-wide { padding-inline: var(--s2); }
+      .hero__visual img { aspect-ratio: 4 / 3; }
+      .hero__meta { gap: var(--s4); }
+      .hero__meta-item { flex: 0 0 calc(50% - var(--s2)); }
+      .insight__pivot { grid-template-columns: 1fr; }
+      .pivot__cell--dark { border-top: 1px solid var(--border); }
+      .decision { grid-template-columns: 2rem 1fr; gap: var(--s2); padding: var(--s4) 0; }
+      .decision__tradeoff { grid-template-columns: 1fr; gap: var(--s1); }
+      .footer { flex-direction: column; align-items: flex-start; gap: var(--s2); }
+      .next-project__title { font-size: var(--t-20); }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .hero { padding-top: calc(var(--s12) + 2rem); }
+      .hero__visual, .cs-figure, .rule, .next-project, .footer { padding-inline: var(--s3); }
+      .wrap-text, .wrap-wide { padding-inline: var(--s3); }
+      .insight__pivot { grid-template-columns: 1fr; }
+      .pivot__cell--dark { border-top: 1px solid var(--border); }
+      .decision { grid-template-columns: 2.5rem 1fr; gap: var(--s3); }
+      .decision__tradeoff { grid-template-columns: 1fr; gap: var(--s1); }
+      .next-project__title { font-size: var(--t-24); }
     }
   </style>
 </head>
 <body>
 
-  <!-- ─── Navigation ──────────────────────────────────── -->
-  <nav class="nav-case">
-    <a href="index.html" class="nav-logo">Yaya Falanga</a>
-    <a href="index.html#work" class="nav-back">All Work</a>
+  <!-- ─── NAV ─────────────────────────────────────────── -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Yaya Falanga</a>
+    <a href="index.html#work" class="nav__back">All Work</a>
   </nav>
 
-  <!-- ─── Case Study Hero ──────────────────────────────── -->
-  <header class="case-hero">
-    <p class="case-eyebrow">UI/UX Design · Sprint · 2026</p>
-    <h1 class="case-title">CAN-SIMPLAN: Designing accountability into AI</h1>
-    <p class="case-tagline">
-      CAN-SIMPLAN is an AI-assisted planning tool designed to help municipal planners evaluate development proposals with transparent, defensible reasoning.</p>
-    <a class="figma-link" href="https://www.figma.com/proto/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=1-2&starting-point-node-id=1%3A2&t=zJe3LDu5HQo78ESO-1" target="_blank">Explore interactive prototype</a>
-    <div class="case-meta">
-      <div class="meta-item">
-        <p class="meta-label">Role</p>
-        <p class="meta-value">UX Designer</p>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ① HERO
+  ═══════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="wrap-text">
+
+      <span class="hero__eyebrow">UX Design · AI Tool · Design Sprint · 2026</span>
+
+      <h1 class="hero__title">
+        CAN-SIMPLAN: Designing accountability into AI
+      </h1>
+
+      <p class="hero__tagline">
+        An AI-assisted zoning pre-screen tool that helps municipal planners evaluate
+        development proposals faster while keeping every decision traceable,
+        defensible, and human.
+      </p>
+
+      <a class="hero__cta"
+         href="https://www.figma.com/proto/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=1-2&starting-point-node-id=1%3A2&t=zJe3LDu5HQo78ESO-1"
+         target="_blank" rel="noopener">
+        Explore interactive prototype
+      </a>
+
+      <div class="hero__meta">
+        <div class="hero__meta-item">
+          <p class="meta-label">Role</p>
+          <p class="meta-value">Sole UX Designer</p>
+        </div>
+        <div class="hero__meta-item">
+          <p class="meta-label">Team</p>
+          <p class="meta-value">Cross-disciplinary sprint team</p>
+        </div>
+        <div class="hero__meta-item">
+          <p class="meta-label">Duration</p>
+          <p class="meta-value">4-day design sprint</p>
+        </div>
+        <div class="hero__meta-item">
+          <p class="meta-label">Outcome</p>
+          <p class="meta-value">Prototype selected for stakeholder presentation to the City of Mississauga</p>
+        </div>
       </div>
-      <div class="meta-item">
-        <p class="meta-label">Duration</p>
-        <p class="meta-value">4 days</p>
-      </div>
-      <div class="meta-item">
-        <p class="meta-label">Tools</p>
-        <p class="meta-value">Figma, Google Slides, Claude AI</p>
-      </div>
-      <div class="meta-item">
-        <p class="meta-label">Deliverables</p>
-        <p class="meta-value">Research, Wireframes, Stakeholder Presentation</p>
-      </div>
+
     </div>
-  </header>
 
-  <!-- ─── Hero Image ───────────────────────────────────── -->
-  <div class="case-hero-image">
-    <img
-      src="img/JF_WEB_CANSIMPLANHero.jpg"
-      alt="CAN-SIMPLAN UI — proposal detail view showing domain scores, simulation flags, and planner actions"
-      width="1160" height="580"
-      loading="eager"
-    />
-  </div>
-
-  <!-- ─── Case Study Body ──────────────────────────────── -->
-  <article class="case-body">
-
-    <section class="case-section">
-      <span class="section-number">The Reframe</span>
-      <h2>Planners don't need faster AI. They need AI they can defend.</h2>
-      <p>Municipal planners must evaluate complex development proposals under intense political scrutiny. Current tools summarize data but fail to provide transparent reasoning behind recommendations.</p>
-      <div class="pull-quote"><p>"The model might be accurate, but accuracy isn't enough. I need transparency."</p></div>
-    </section>
-
-    <hr class="divider" />
-
-    <section class="case-section">
-    <span class="section-number">How the System Works</span>
-    <h2>Four transparent steps. One accountable output.</h2>
-    <p>CAN-SIMPLAN structures proposal evaluation into four transparent stages, ensuring AI analysis always passes through a human review checkpoint.</p>
-    </section>
-
-    <figure class="case-image">
-    <img
-        src="img/JF_WEB_CANSIMPLANSystemOverview.jpg"
-        alt="CAN-SIMPLAN dashboard showing proposal queue, model confidence trend, and review velocity"
-        loading="lazy"
+    <div class="hero__visual">
+      <img
+        src="img/JF_WEB_CANSIMPLANHero.jpg"
+        alt="CAN-SIMPLAN UI — proposal detail view showing domain scores, simulation flags, and planner actions"
+        width="1360" height="595"
+        loading="eager"
       />
-    <figcaption>System overview in four transparent steps.</figcaption>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       ② THE PROBLEM
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section problem">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">The Problem</span>
+      <h2 class="cs-h2">Planners don't need faster AI. They need AI they can defend.</h2>
+
+      <p class="cs-p">
+        Municipal planners evaluate complex development proposals under intense
+        political and public scrutiny. A rejected proposal or an approved one
+        that later fails — both carry professional and civic consequences.
+        The planner's name is on the decision.
+      </p>
+
+      <p class="cs-p">
+        Existing tools can summarize data and flag anomalies. What they can't do
+        is explain themselves. When AI produces a recommendation without showing
+        its work, it puts the planner in an impossible position: responsible for
+        a decision they can't fully trace.
+      </p>
+
+      <div class="cs-quote">
+        <p class="cs-quote__text">The model might be accurate but accuracy isn't enough. I need to be able to stand up in a council meeting and explain why.</p>
+        <cite class="cs-quote__cite">— Municipal planner, research insight</cite>
+      </div>
+
+      <p class="cs-p">
+        <strong>Design challenge:</strong> How might we design an AI planning tool
+        that accelerates proposal review while ensuring every output a planner acts
+        on is something they can explain, trace, and stand behind?
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       ③ KEY INSIGHT
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section insight">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Key Insight</span>
+      <h2 class="cs-h2">The AI isn't the problem. The opacity is.</h2>
+
+      <p class="cs-p">
+        Early research conversations with planners revealed a consistent pattern:
+        the barrier to AI adoption wasn't skepticism about the model's accuracy.
+        It was the inability to explain any individual output to a colleague,
+        a councillor, or a community member asking hard questions.
+      </p>
+
+      <p class="cs-p">
+        This reframed the design problem entirely. The goal wasn't to make AI
+        smarter or faster. It was to make it legible — to surface the reasoning
+        behind every score, flag every assumption the model made, and keep a
+        human hand visible at every step of the workflow.
+      </p>
+
+      <!-- Before / After pivot -->
+      <div class="insight__pivot">
+        <div class="pivot__cell">
+          <p class="pivot__cell-label">The original framing</p>
+          <p class="pivot__cell-text">How do we speed up the proposal review process with AI?</p>
+        </div>
+        <div class="pivot__cell pivot__cell--dark">
+          <p class="pivot__cell-label">The reframe</p>
+          <p class="pivot__cell-text">How do we make AI-assisted decisions something a planner can defend?</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_CANSIMPLANSystemOverview.jpg"
+      alt="CAN-SIMPLAN system overview: four transparent stages from intake to decision"
+      loading="lazy"
+    />
+    <figcaption>System overview: four transparent stages, each passing through a human checkpoint before the workflow can advance.</figcaption>
   </figure>
 
-    <hr class="divider" />
+
+  <!-- ═══════════════════════════════════════════════════════
+       ④ PRODUCT STRATEGY
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section product">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Product Strategy</span>
+      <h2 class="cs-h2">Not a decision-maker. A structured oversight layer.</h2>
+
+      <p class="cs-p">
+        CAN-SIMPLAN is designed around one principle: the AI surfaces analysis,
+        the planner makes the call. Every design decision was tested against
+        that constraint. If it gave the AI more authority than the planner,
+        it was cut.
+      </p>
+
+      <p class="cs-p">
+        I designed the end-to-end interface, from login to audit trail, 
+        so that every output the planner sees is something they can explain,
+        trace, and act on with confidence.
+      </p>
+
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_CANSIMPLANDashboard.png"
+      alt="CAN-SIMPLAN proposal dashboard — queue, model confidence trend, and review velocity"
+      loading="lazy"
+    />
+    <figcaption>The Proposal Dashboard: what needs attention before the planner opens a single case.</figcaption>
+  </figure>
+
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_CANSIMPLANProposalDetail.jpg"
+      alt="CAN-SIMPLAN proposal detail — domain scorecards, simulation flags, planner action panel"
+      loading="lazy"
+    />
+    <figcaption>Proposal Detail: domain scores, simulation flags, and planner actions in one scrollable workspace.</figcaption>
+  </figure>
 
 
-    <section class="case-section">
-      <span class="section-number">The Solution</span>
-      <h2>CAN-SIMPLAN is not a decision-maker. It's a structured oversight layer.</h2>
-      <p>I designed the end-to-end interface, login to audit trail, so that every output a planner sees is something they can explain, trace, and stand behind.</p>
-      <ul class="outcomes space-after">
-        <li>Multi-domain simulation scoring with visible confidence levels</li>
-        <li>Blocking flags that require written rationale before the workflow proceeds</li>
-        <li>Plain-language translation of every technical output</li>
-        <li>An embedded, immutable audit trail inside the primary workflow not buried in an admin panel</li>
+  <!-- ═══════════════════════════════════════════════════════
+       ⑤ DESIGN DECISIONS
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section decisions">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Design Decisions</span>
+      <h2 class="cs-h2">Four patterns that make accountability tangible</h2>
+
+      <div class="decisions__list">
+
+        <div class="decision">
+          <span class="decision__num">01</span>
+          <div>
+            <h3 class="decision__title">Blocking flags enforce engagement</h3>
+            <p class="decision__body">
+              When the simulation raises a concern, the planner cannot move forward
+              without writing a rationale. The workflow literally stops.
+              Engagement cannot be optional in a governance context.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Tradeoff</span>
+              <span class="decision__tradeoff-text">
+                This adds friction to every flagged case. That friction is the point —
+                it's what transforms a checkbox into a considered judgment.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">02</span>
+          <div>
+            <h3 class="decision__title">Confidence lives in the header, not a technical panel</h3>
+            <p class="decision__body">
+              Model confidence score, version, and last-run timestamp surface at the
+              top of every proposal view. Planners need to calibrate their trust in
+              the output before engaging with it — not after.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Tradeoff</span>
+              <span class="decision__tradeoff-text">
+                Surfacing uncertainty feels counterintuitive for an AI product.
+                It's also the only honest approach — and what distinguishes
+                a governance tool from a consumer product.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">03</span>
+          <div>
+            <h3 class="decision__title">Plain language over technical accuracy</h3>
+            <p class="decision__body">
+              Every simulation flag includes a plain-language explanation written
+              for planners, not data scientists. The planner's job is judgment.
+              The interface's job is translation.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Tradeoff</span>
+              <span class="decision__tradeoff-text">
+                Simplifying technical output risks losing precision.
+                The decision was to prioritize usability for the person
+                responsible — and let the full technical detail live one
+                level deeper for those who need it.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">04</span>
+          <div>
+            <h3 class="decision__title">The audit trail belongs in the primary workflow</h3>
+            <p class="decision__body">
+              Every override is logged, timestamped, and immutable — inside the
+              proposal view, not buried in an admin panel. When accountability
+              is hidden, it becomes optional.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Tradeoff</span>
+              <span class="decision__tradeoff-text">
+                Embedding the audit trail in the main view adds visual weight
+                to an already dense workspace. The alternative — a secondary
+                panel no one opens — would defeat the purpose entirely.
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="cs-link"
+         href="https://www.figma.com/design/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=0-1&t=bj60QhFHEndpqrT4-1"
+         target="_blank" rel="noopener">
+        View Figma designs
+      </a>
+
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_CANSIMPLANTransparency.jpg"
+      alt="CAN-SIMPLAN transparency panel — scoring assumptions and data source attribution"
+      loading="lazy"
+    />
+    <figcaption>Transparency Panel: every scoring assumption and data source — visible, attributed, traceable.</figcaption>
+  </figure>
+
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_CANSIMPLANAuditTrail.jpg"
+      alt="CAN-SIMPLAN audit trail and planner decision panel"
+      loading="lazy"
+    />
+    <figcaption>Audit Trail: a sequential, immutable log of every planner action alongside a decision panel requiring written rationale before submission.</figcaption>
+  </figure>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       ⑥ OUTCOME
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section outcome">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Outcome</span>
+
+      <p class="outcome__lead">
+        A decision-support tool designed not to replace planners, but to make every decision they make easier to explain.
+      </p>
+
+      <p class="cs-p">
+        The prototype was completed in four days as part of a cross-disciplinary
+        sprint team and selected for presentation to the City of Mississauga.
+        The end-to-end interface covers login through audit trail, with every
+        screen designed around the constraint that AI analysis must pass through
+        a human review checkpoint before the workflow can advance.
+      </p>
+
+      <p class="cs-p">
+        The core insight, that the barrier to AI adoption in civic contexts
+        isn't accuracy, it's legibility, shaped every design decision from
+        the proposal dashboard to the flag override flow.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Prototype embed -->
+  <figure class="cs-figure" id="prototype">
+    <iframe
+      style="border: 1px solid var(--border); display: block; min-height: 640px;"
+      width="100%" height="700"
+      src="https://embed.figma.com/proto/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=1-2&starting-point-node-id=1%3A2&embed-host=share"
+      allowfullscreen
+      title="CAN-SIMPLAN — interactive prototype"
+    ></iframe>
+    <figcaption>Interactive prototype: proposal queue, detail view, flag override, and audit trail flows.</figcaption>
+  </figure>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       ⑦ REFLECTION
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section reflection">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Reflection</span>
+      <h2 class="cs-h2">Designing for governance changed how I think about friction</h2>
+
+      <p class="cs-p">
+        The default instinct in UX is to remove friction. This project pushed me
+        to question that. In high-accountability contexts, some friction is
+        protective, it's the mechanism by which a workflow enforces engagement
+        rather than just recording it.
+      </p>
+
+      <p class="cs-p">
+        Working at the boundary between simulation logic and human decision-making
+        also sharpened a skill I hadn't expected to develop: translating in both
+        directions, from technical constraints into interface clarity, and from
+        planner needs back into system requirements.
+      </p>
+
+      <ul class="reflection__list">
+        <li>Usability testing on the flag-override flows: does mandatory rationale actually change planner behaviour, or create workarounds?</li>
+        <li>A full accessibility audit: civic tools must meet the highest accessibility standards without exception</li>
+        <li>The post-approval feedback loop: how real outcomes recalibrate the model over time, and how that recalibration is communicated to planners</li>
+        <li>Research into how different municipalities weight domain scores differently, and whether the interface can adapt to those preferences</li>
       </ul>
-      <p>The result is a decision-support interface that keeps planners in control while making the model’s reasoning transparent.</p>
-      <a class="figma-link" href="https://www.figma.com/design/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=0-1&t=bj60QhFHEndpqrT4-1" target="_blank">View Figma designs</a>
-    </section>
 
-    <figure class="case-image">
-      <img
-        src="img/JF_WEB_CANSIMPLANDashboard.png"
-        alt="CAN-SIMPLAN dashboard showing proposal queue, model confidence trend, and review velocity"
-        loading="lazy"
-      />
-      <figcaption>The Proposal Dashboard: surfacing what needs attention before the planner opens a single case.</figcaption>
-    </figure>
+      <div class="cs-quote" style="margin-top: var(--s10);">
+        <p class="cs-quote__text">The most interesting design question CAN-SIMPLAN raises isn't 'how do we make AI faster?', it's 'how do we make accountability a feature, not a constraint?'</p>
+      </div>
 
-    <hr class="divider" />
+    </div>
+  </section>
 
-    <section class="case-section">
-      <span class="section-number">Key Design Decisions</span>
-      <h2>Four patterns that make accountability tangible.</h2>
 
-      <h3>01: Blocking flags enforce engagement</h3>
-      <p>In governance contexts, engagement cannot be optional. Blocking flags require written rationale before the workflow proceeds. Friction here isn’t bad UX, it’s the right UX.</p>
-
-      <h3>02: Confidence lives in the header, not a technical panel</h3>
-      <p>Model confidence, version, and last-run timestamp surface at the top of every proposal. Planners need to calibrate trust before engaging with outputs. Surfacing uncertainty isn’t a weakness, it’s honesty.</p>
-
-      <h3>03: Plain language over technical accuracy</h3>
-      <p>Every flag includes a plain-language explanation written for planners, not data scientists. The planner’s job is judgment. The interface’s job is translation.</p>
-
-      <h3>04: The audit trail belongs in the primary workflow</h3>
-      <p>All overrides are logged, timestamped, and immutable inside the proposal view, not hidden in a secondary panel. When accountability is buried, it becomes optional.</p>
-    </section>
-
-    <figure class="case-image">
-      <img
-        src="img/JF_WEB_CANSIMPLANProposalDetail.jpg"
-        alt="CAN-SIMPLAN proposal detail view: domain scorecards, simulation flags, and planner action panel"
-        loading="lazy"
-      />
-      <figcaption>Proposal Detail: domain scores, simulation flags, and planner actions in a single scrollable workspace.</figcaption>
-    </figure>
-
-    <figure class="case-image">
-      <img
-        src="img/JF_WEB_CANSIMPLANTransparency.jpg"
-        alt="CAN-SIMPLAN transparency panel: scoring assumptions and data source attribution"
-        loading="lazy"
-      />
-      <figcaption>Transparency Panel: every scoring assumption and data source is visible and traceable.</figcaption>
-    </figure>
-
-    <figure class="case-image">
-      <img
-        src="img/JF_WEB_CANSIMPLANAuditTrail.jpg"
-        alt="CAN-SIMPLAN audit trail and planner decision panel"
-        loading="lazy"
-      />
-      <figcaption>Audit Trail: a sequential, immutable log of every planner action, alongside a decision panel requiring written rationale before submission.</figcaption>
-    </figure>
-
-    <hr class="divider" />
-
-    <section class="case-section">
-      <span class="section-number">Reflection</span>
-      <h2>Designing for governance changed how I think about friction.</h2>
-      <p>This project pushed me to move beyond the default instinct to remove all friction. In high-accountability contexts, some friction is protective.</p>
-      <p>Working at the boundary between simulation logic and human decision workflows also sharpened an unexpected skill: translating in both directions, from technical constraints into interface clarity, and from planner needs back into system requirements.</p>
-      <p>With more time, I would prioritize usability testing on the flag-override flows, conduct a full accessibility audit (civic tools must be universally accessible), and design the post-approval feedback loop where real outcomes recalibrate the model over time.</p>
-    </section>
-
-  </article>
-
-  <!-- ─── Next Project ──────────────────────────────────── -->
+  <!-- ─── NEXT PROJECT ──────────────────────────────── -->
   <a class="next-project" href="clara-app.html">
     <div>
-      <p class="next-label">Next Project</p>
-      <p class="next-title">Clara: Clarity and collaboration for every journey</p>
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">Clara: Clarity and collaboration for every journey</p>
     </div>
-    <span class="next-arrow" aria-hidden="true">↗</span>
+    <span class="next-project__arrow" aria-hidden="true">↗</span>
   </a>
 
-  <!-- ─── Footer ────────────────────────────────────────── -->
-  <footer>
-    <span class="footer-name">Yaya Falanga</span>
-    <ul class="footer-links">
+
+  <!-- ─── FOOTER ────────────────────────────────────── -->
+  <footer class="footer">
+    <span class="footer__name">Yaya Falanga</span>
+    <ul class="footer__links">
       <li><a href="https://www.linkedin.com/in/yaya-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-      <li><a href="mailto:yayafalanga@gmail.com">Email</a></li>
+      <li><a href="mailto:hello@jenniferyaya.ca">Email</a></li>
     </ul>
-    <span cl
+    <span class="footer__copy">© 2026 Yaya Falanga</span>
+  </footer>
+
+</body>
+</html>
