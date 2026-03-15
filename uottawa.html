@@ -9,10 +9,8 @@
   <meta property="og:description" content="Motion graphics, logo animation, and instructional video production for the University of Ottawa." />
   <meta property="og:type" content="article" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.typekit.net/kbm3omb.css">
+  <!-- Adobe Fonts — Area Normal -->
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
   <style>
     /* ═══════════════════════════════════════════════════════════
@@ -55,8 +53,8 @@
       --col-wide: 1100px;
       --col-full: 1360px;
 
-      --serif: 'Instrument Serif', Georgia, serif;
       --sans:  'area-normal', sans-serif;
+      --sans-extended: area-extended, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -95,16 +93,20 @@
       color: var(--muted); margin-bottom: var(--s3);
     }
     .hero__title {
-      font-family: var(--serif);
-      font-size: clamp(var(--t-40), 6.5vw, var(--t-72));
-      line-height: 1.02; letter-spacing: 0.012em;
-      color: var(--ink); max-width: 24ch; margin-bottom: var(--s4);
+      font-family: var(--sans);
+      font-size: clamp(var(--t-32), 5.5vw, var(--t-56));
+      line-height: 1.2;
+      color: var(--ink);
+      max-width: 18ch;
+      margin-bottom: var(--s5);
     }
-    .hero__title em { font-style: italic; }
     .hero__tagline {
-      font-family: var(--serif); font-style: italic;
-      font-size: clamp(var(--t-20), 2vw, var(--t-24));
-      line-height: 1.45; color: var(--muted); max-width: 60ch; margin-bottom: var(--s5);
+      font-family: var(--sans);
+      font-size: clamp(var(--t-20), 2vw, var(--t-17));
+      line-height: 1.45;
+      color: var(--muted);
+      max-width: 60ch;
+      margin-bottom: var(--s5);
     }
     .hero__meta {
       display: flex; flex-wrap: wrap; gap: var(--s5);
@@ -136,9 +138,12 @@
       color: var(--muted); margin-bottom: var(--s2);
     }
     .cs-h2 {
-      font-family: var(--serif);
-      font-size: clamp(var(--t-24), 3.5vw, var(--t-40));
-      line-height: 1.14; letter-spacing: 0.015em; color: var(--ink); margin-bottom: var(--s4);
+      font-family: var(--sans);
+      font-size: clamp(var(--t-24), 3.5vw, var(--t-24));
+      line-height: 1.14;
+      letter-spacing: 0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s4);
     }
     .cs-h2 em { font-style: italic; }
     .cs-p {
@@ -220,7 +225,7 @@
       text-transform: uppercase; color: var(--muted-2); margin-bottom: var(--s1);
     }
     .next-project__title {
-      font-family: var(--serif); font-size: clamp(var(--t-24), 3vw, var(--t-32));
+      font-family: var(--sans); font-size: clamp(var(--t-24), 3vw, var(--t-32));
       color: var(--ink); line-height: 1.2;
     }
     .next-project__arrow {
@@ -279,7 +284,7 @@
   <section class="hero">
     <div class="wrap-text">
       <span class="hero__eyebrow">Motion Design · Multimedia · University of Ottawa · 2025</span>
-      <h1 class="hero__title">uOttawa: Designing for <em>learners at scale</em></h1>
+      <h1 class="hero__title">uOttawa</h1>
       <p class="hero__tagline">
         Motion graphics, logo animation, and instructional video production
         for the University of Ottawa's Teaching and Learning Support Service —

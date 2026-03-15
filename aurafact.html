@@ -9,11 +9,8 @@
   <meta property="og:description" content="A spatial archive for environmental audio — designed and built in collaboration with Claude, Cursor, and ChatGPT." />
   <meta property="og:type" content="article" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <!-- Adobe Fonts — Area Normal -->
-  <link rel="stylesheet" href="https://use.typekit.net/kbm3omb.css">
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
   <style>
     /* ═══════════════════════════════════════════════════════════
@@ -58,8 +55,8 @@
       --col-wide: 1100px;
       --col-full: 1360px;
 
-      --serif: 'Instrument Serif', Georgia, serif;
       --sans:  'area-normal', sans-serif;
+      --sans-extended: area-extended, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -86,7 +83,11 @@
       padding: var(--s2) var(--s5);
       background: var(--bg); border-bottom: 1px solid var(--border);
     }
-    .nav__logo { font-family: var(--serif); font-size: var(--t-17); color: var(--ink); letter-spacing: -0.01em; }
+    .nav__logo { 
+      font-family: var(--sans-extended);
+      font-size: var(--t-15);
+      color: var(--ink);
+      letter-spacing: -0.01em; }
     .nav__back {
       font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--muted);
@@ -103,10 +104,12 @@
       color: var(--muted); margin-bottom: var(--s3);
     }
     .hero__title {
-      font-family: var(--serif);
-      font-size: clamp(var(--t-40), 6.5vw, var(--t-72));
-      line-height: 1.02; letter-spacing: 0.012em;
-      color: var(--ink); max-width: 24ch; margin-bottom: var(--s4);
+      font-family: var(--sans);
+      font-size: clamp(var(--t-32), 5.5vw, var(--t-56));
+      line-height: 1.2;
+      color: var(--ink);
+      max-width: 18ch;
+      margin-bottom: var(--s5);
     }
     .hero__title em { font-style: italic; }
     .hero__tagline {
@@ -154,10 +157,12 @@
     }
     .cs-h2 {
       font-family: var(--sans);
-      font-size: clamp(var(--t-24), 3.5vw, var(--t-40));
-      line-height: 1.14; letter-spacing: 0.015em; color: var(--ink); margin-bottom: var(--s4);
+      font-size: clamp(var(--t-24), 3.5vw, var(--t-24));
+      line-height: 1.14;
+      letter-spacing: 0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s4);
     }
-    .cs-h2 em { font-style: italic; }
     .cs-p {
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
       line-height: 1.53; color: var(--ink-2); margin-bottom: var(--s3);
@@ -166,9 +171,11 @@
     .cs-p strong { color: var(--ink); font-weight: 700; }
     .cs-quote { margin: var(--s8) 0; }
     .cs-quote__text {
-      font-family: var(--serif); font-style: italic;
-      font-size: clamp(var(--t-20), 2vw, var(--t-24));
-      line-height: 1.55; color: var(--ink);
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: clamp(var(--t-20), 2vw, var(--t-17));
+      line-height: 1.55;
+      color: var(--ink);
     }
     .cs-quote__cite {
       display: block; font-family: var(--sans); font-size: var(--t-13);
@@ -177,7 +184,7 @@
     }
     .cs-link {
       display: inline-flex; align-items: center; gap: 0.3em;
-      font-family: var(--sans); font-size: var(--t-11); font-weight: 500;
+      font-family: var(--sans); font-size: var(--t-11); font-weight: 400;
       letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
       border-bottom: 1px solid var(--border); padding-bottom: 1px;
       transition: color 0.18s, border-color 0.18s;
@@ -196,7 +203,17 @@
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
       letter-spacing: 0.06em; color: var(--muted-2); margin-top: var(--s2); text-align: center;
     }
-
+      .text-link {
+      display: inline-flex; 
+      align-items: center; 
+      gap: 0.3em;
+      font-weight: 400;
+      color: var(--muted-2);
+      border-bottom: 1px solid var(--border); padding-bottom: 1px;
+      transition: color 0.18s, border-color 0.18s;
+      margin-top: var(--s4);
+    }
+    .text-link:hover  { color: var(--ink); border-color: var(--ink); }
     /* ── INSIGHT PIVOT ───────────────────────────────────── */
     .insight__pivot {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -249,13 +266,18 @@
     }
     .decision:last-child { border-bottom: 1px solid var(--border); }
     .decision__num {
-      font-family: var(--serif); font-size: var(--t-24); color: var(--border);
-      padding-top: 0.1rem; line-height: 1;
+      font-family: var(--sans);
+      font-size: var(--t-17);
+      padding-top: 0.1rem;
+      line-height: 1;
     }
     .decision__title {
-      font-family: var(--serif);
-      font-size: clamp(var(--t-17), 2vw, var(--t-20));
-      line-height: 1.3; color: var(--ink); margin-bottom: var(--s2); letter-spacing: 0.021em;
+      font-family: var(--sans);
+      font-size: clamp(var(--t-17), 2vw, var(--t-17));
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s2);
+      letter-spacing: 0.021em;
     }
     .decision__body {
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
@@ -276,10 +298,14 @@
 
     /* ── OUTCOME LEAD ────────────────────────────────────── */
     .outcome__lead {
-      font-family: var(--serif); font-style: italic;
-      font-size: clamp(var(--t-20), 2.5vw, var(--t-32));
-      line-height: 1.35; letter-spacing: -0.015em;
-      color: var(--ink); margin-bottom: var(--s6); max-width: 40ch;
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: clamp(var(--t-20), 2.5vw, var(--t-20));
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s6);
+      max-width: 40ch;
     }
 
     /* ── REFLECTION LIST ─────────────────────────────────── */
@@ -305,7 +331,7 @@
       text-transform: uppercase; color: var(--muted-2); margin-bottom: var(--s1);
     }
     .next-project__title {
-      font-family: var(--serif); font-size: clamp(var(--t-24), 3vw, var(--t-32));
+      font-family: var(--sans); font-size: clamp(var(--t-24), 3vw, var(--t-32));
       color: var(--ink); line-height: 1.2;
     }
     .next-project__arrow {
@@ -319,7 +345,7 @@
       border-top: 1px solid var(--border); display: flex; align-items: center;
       justify-content: space-between; gap: var(--s4); flex-wrap: wrap;
     }
-    .footer__name { font-family: var(--serif); font-size: var(--t-15); color: var(--ink); }
+    .footer__name { font-family: var(--sans-extended); font-size: var(--t-15); color: var(--ink); }
     .footer__links { list-style: none; display: flex; gap: var(--s4); }
     .footer__links a {
       font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.12em;
@@ -378,7 +404,7 @@
 
       <span class="hero__eyebrow">Speculative Product · Information Architecture · AI-Assisted Build · 2026</span>
 
-      <h1 class="hero__title">Aurafact: Archiving the acoustic memory of place</h1>
+      <h1 class="hero__title">Aurafact</h1>
 
       <p class="hero__tagline">
         A spatial archive for environmental audio designed from a cultural
@@ -740,7 +766,7 @@
       </p>
 
       <p class="cs-p">
-        Aurafact is hosted on GitHub and live at aurafact.ca. The product
+        <i>Aurafact</i> is hosted on GitHub and live at <a class="text-link" href="https://jenniferyaya.github.io/aura-fact/index.html">jenniferyaya.github.io/aura-fact</a>. The product
         comprises four pages — Homepage, Archive, Field Guide, and Glossary —
         with a design system built on a strict 8pt grid, dual-register
         typography, and a consistent token set. The archive currently holds

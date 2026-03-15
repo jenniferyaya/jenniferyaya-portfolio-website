@@ -9,11 +9,8 @@
   <meta property="og:description" content="UI/UX case study: Building an opinionated gourmet food brand with a scalable, component-driven design system." />
   <meta property="og:type" content="article" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-  <!-- Adobe Fonts (Typekit) — Area Normal -->
-  <link rel="stylesheet" href="https://use.typekit.net/kbm3omb.css">
+  <!-- Adobe Fonts — Area Normal -->
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
   <style>
     /* ═══════════════════════════════════════════════════════════
@@ -60,6 +57,7 @@
 
       --serif: 'Instrument Serif', Georgia, serif;
       --sans:  'area-normal', sans-serif;
+      --sans-extended: area-extended, sans-serif;
     }
 
     /* ═══════════════════════════════════════════════════════════
@@ -101,8 +99,8 @@
       border-bottom: 1px solid var(--border);
     }
     .nav__logo {
-      font-family: var(--serif);
-      font-size: var(--t-17);
+      font-family: var(--sans-extended);
+      font-size: var(--t-15);
       color: var(--ink);
       letter-spacing: -0.01em;
     }
@@ -450,15 +448,11 @@
     }
     .next-project:hover { background: var(--bg-raised); }
     .next-project__label {
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-      margin-bottom: var(--s1);
+      font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted-2); margin-bottom: var(--s1);
     }
     .next-project__title {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: clamp(var(--t-24), 3vw, var(--t-32));
       color: var(--ink);
       line-height: 1.2;
@@ -488,7 +482,7 @@
       gap: var(--s4);
       flex-wrap: wrap;
     }
-    .footer__name { font-family: var(--serif); font-size: var(--t-15); color: var(--ink); }
+    .footer__name { font-family: var(--sans-extended); font-size: var(--t-15); color: var(--ink); }
     .footer__links { list-style: none; display: flex; gap: var(--s4); }
     .footer__links a {
       font-family: var(--sans);

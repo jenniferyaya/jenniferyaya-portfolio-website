@@ -5,24 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yaya Falanga — Product Designer</title>
   <meta name="description" content="Yaya Falanga is a product and UX designer creating clear, accountable digital experiences — available for product design roles." />
-
-  <!-- Open Graph -->
   <meta property="og:title" content="Yaya Falanga — Product Designer" />
   <meta property="og:description" content="Product and UX designer. Work includes AI tools, iOS apps, and design systems." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.jenniferyaya.ca/" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-  <!-- Adobe Fonts — Area Normal -->
   <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
   <style>
-    /* ═══════════════════════════════════════════════════════════
-       DESIGN TOKENS — Clara source of truth
-    ═══════════════════════════════════════════════════════════ */
     :root {
       --ink:        #1a1a18;
       --ink-2:      #3d3d3a;
@@ -56,18 +47,11 @@
       --s16: 8rem;
       --s20: 10rem;
 
-      --col-text: 900px;
-      --col-wide: 1100px;
       --col-full: 1360px;
-
-      --serif: 'Instrument Serif', Georgia, serif;
-      --sans:  area-normal, sans-serif;
-      --sans-extended: area-extended, sans-serif;
+      --sans:  area-normal, 'Helvetica Neue', Arial, sans-serif;
+      --sans-extended: area-extended, 'Helvetica Neue', Arial, sans-serif;
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       RESET + BASE
-    ═══════════════════════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -82,498 +66,238 @@
     img { display: block; max-width: 100%; height: auto; }
     a   { color: inherit; text-decoration: none; }
 
-    /* ═══════════════════════════════════════════════════════════
-       NAVIGATION
-    ═══════════════════════════════════════════════════════════ */
+    /* ── NAV ── */
     .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
       padding: var(--s2) var(--s5);
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
+      background: var(--bg); border-bottom: 1px solid var(--border);
     }
     .nav__logo {
       font-family: var(--sans-extended);
-      font-size: var(--t-15);
-      color: var(--ink);
-      letter-spacing: -0.01em;
+      font-size: var(--t-15); color: var(--ink); letter-spacing: -0.01em;
     }
     .nav__links {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: var(--s5);
+      list-style: none; display: flex; align-items: center; gap: var(--s5);
     }
     .nav__links a {
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color 0.18s;
+      font-family: var(--sans); font-size: var(--t-11);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); transition: color 0.18s;
     }
     .nav__links a:hover { color: var(--ink); }
     .nav__links .nav__resume {
-      color: var(--ink);
-      border: 1px solid var(--border);
-      padding: 0.4rem 0.9rem;
-      border-radius: 2px;
+      color: var(--ink); border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem; border-radius: 2px;
       transition: background 0.18s, border-color 0.18s;
     }
     .nav__links .nav__resume:hover {
-      background: var(--ink);
-      color: var(--bg);
-      border-color: var(--ink);
+      background: var(--ink); color: var(--bg); border-color: var(--ink);
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════════════════════════ */
+    /* ── HERO ── */
     .hero {
-      min-height: 67svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      max-width: var(--col-full);
-      margin-inline: auto;
-      padding: 0 var(--s5) var(--s12);
+      min-height: 67svh; display: flex; flex-direction: column;
+      justify-content: flex-end; max-width: var(--col-full);
+      margin-inline: auto; padding: 0 var(--s5) var(--s12);
     }
-
     .hero__eyebrow {
-      display: block;
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-      margin-bottom: var(--s4);
+      display: block; font-family: var(--sans); font-size: var(--t-11);
+      font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted-2); margin-bottom: var(--s4);
     }
-
     .hero__title {
       font-family: var(--sans);
       font-size: clamp(var(--t-32), 5.5vw, var(--t-56));
-      line-height: 1.1;
-      color: var(--ink);
-      max-width: 18ch;
-      margin-bottom: var(--s5);
+      line-height: 1.1; color: var(--ink);
+      max-width: 18ch; margin-bottom: var(--s5);
     }
-
     .hero__bottom {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: var(--s8);
-      padding-top: var(--s5);
-      border-top: 1px solid var(--border);
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: var(--s8); padding-top: var(--s5); border-top: 1px solid var(--border);
     }
-
     .hero__sub {
-      font-family: var(--sans);
-      font-size: var(--t-15);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--muted-2);
-      max-width: 60ch;
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      line-height: 1.6; color: var(--muted-2); max-width: 60ch;
     }
-
     .hero__cta {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--s1);
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink);
-      border: 1px solid var(--border);
-      padding: 0.65rem 1.3rem;
-      border-radius: 2px;
-      white-space: nowrap;
-      flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: var(--s1);
+      font-family: var(--sans); font-size: var(--t-11); font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);
+      border: 1px solid var(--border); padding: 0.65rem 1.3rem;
+      border-radius: 2px; white-space: nowrap; flex-shrink: 0;
       transition: background 0.18s, border-color 0.18s;
     }
     .hero__cta::after { content: ' ↓'; opacity: 0.5; }
     .hero__cta:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
-    /* ═══════════════════════════════════════════════════════════
-       SECTION LABEL
-    ═══════════════════════════════════════════════════════════ */
+    /* ── SECTION LABEL ── */
     .section-label {
-      display: block;
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-top: var(--s4);
+      display: block; font-family: var(--sans); font-size: var(--t-11);
+      font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted-2); margin-bottom: var(--s8);
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       WORK SECTION
-    ═══════════════════════════════════════════════════════════ */
+    /* ── WORK ── */
     .work {
-      max-width: var(--col-full);
-      margin-inline: auto;
-      padding-inline: var(--s5);
-      padding-bottom: var(--s16);
-}
-
-    .work__list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+      max-width: var(--col-full); margin-inline: auto;
+      padding: var(--s8) var(--s5) var(--s16);
     }
+    .work__list { display: flex; flex-direction: column; }
 
-    /* ── Shared card ── */
+    /* shared card */
     .card {
-      display: block;
-      text-decoration: none;
+      display: block; text-decoration: none;
+      border-bottom: 1px solid var(--border);
       transition: background 0.2s;
     }
-    .card__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--s10);
-      align-items: center;
-      padding: var(--s4) 0;
-    }
+    .card:first-child { border-top: 1px solid var(--border); }
+    .card:hover { background: var(--bg-raised); }
 
+    .card__inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--s10); align-items: center; padding: var(--s8) 0;
+    }
     .card__visual {
-      overflow: hidden;
-      aspect-ratio: 4 / 3;
-      background: var(--bg-raised);
+      overflow: hidden; aspect-ratio: 4 / 3; background: var(--bg-raised);
     }
     .card__visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .card:hover .card__visual img { transform: scale(1.03); }
 
-    .card__body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
+    .card__body { display: flex; flex-direction: column; justify-content: center; }
     .card__tag {
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-      margin-bottom: var(--s1);
+      font-family: var(--sans); font-size: var(--t-11); font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted-2); margin-bottom: var(--s2);
     }
-
     .card__title {
-      font-family: var(--sans);
-      font-size: clamp(var(--t-20), 2vw, var(--t-32));
-      line-height: 1.12;
-      color: var(--ink);
-      margin-bottom: var(--s1);
+      font-family: var(--sans); font-size: clamp(var(--t-20), 2vw, var(--t-32));
+      line-height: 1.12; color: var(--ink); margin-bottom: var(--s2);
     }
-
     .card__desc {
-      font-family: var(--sans);
-      font-size: var(--t-15);
-      font-weight: 400;
-      line-height: 1.55;
-      color: var(--muted-2);
-      max-width: 40ch;
-      margin-bottom: var(--s3);
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      line-height: 1.55; color: var(--muted-2);
+      max-width: 40ch; margin-bottom: var(--s4);
     }
-
     .card__link {
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5em;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
-      width: fit-content;
-      transition: border-color 0.18s, gap 0.18s;
+      font-family: var(--sans); font-size: var(--t-11); font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink);
+      display: inline-flex; align-items: center; gap: 0.5em;
+      border-bottom: 1px solid var(--border); padding-bottom: 2px;
+      width: fit-content; transition: border-color 0.18s, gap 0.18s;
     }
     .card__link::after { content: '↗'; }
     .card:hover .card__link { gap: 0.8em; border-color: var(--ink); }
 
-    /* ── Featured card — full width ── */
-    .card--featured .card__inner {
-      grid-template-columns: 1fr;
-      gap: var(--s6);
-    }
-    .card--featured .card__visual {
-      aspect-ratio: 16 / 9;
-    }
-    .card--featured .card__title {
-      font-size: clamp(var(--t-32), 2vw, var(--t-56));
-    }
-    .card--featured .card__desc {
-      font-size: var(--t-17);
-      max-width: 56ch;
-    }
+    /* featured card */
+    .card--featured .card__inner { grid-template-columns: 1fr; gap: var(--s6); padding: var(--s10) 0; }
+    .card--featured .card__visual { aspect-ratio: 16 / 9; }
+    .card--featured .card__title { font-size: clamp(var(--t-32), 2vw, var(--t-56)); }
+    .card--featured .card__desc { font-size: var(--t-17); max-width: 56ch; }
 
-    /* ── Two-column pair row ── */
-    .work__pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .work__pair .card:first-child {
-      border-top: none;
-    }
-    .work__pair .card:last-child {
-      border-top: none;
-    }
-    .work__pair .card__inner {
-      grid-template-columns: 1fr;
-      gap: var(--s4);
-      padding: var(--s8) var(--s5);
-    }
-    .work__pair .card__visual {
-      aspect-ratio: 3 / 2;
-    }
+    /* pair row */
+    .work__pair { display: grid; grid-template-columns: 1fr 1fr; }
+    .work__pair .card { border-top: none; }
+    .work__pair .card:first-child { border-right: 1px solid var(--border); }
+    .work__pair .card__inner { grid-template-columns: 1fr; gap: var(--s4); padding: var(--s8) var(--s5); }
+    .work__pair .card__visual { aspect-ratio: 3 / 2; }
 
-    /* More work link */
-    .work__more {
-      display: flex;
-      justify-content: flex-end;
-      padding-top: var(--s6);
-    }
-    .work__more a {
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5em;
-      transition: color 0.18s;
-    }
-    .work__more a::after { content: '↓'; }
-    .work__more a:hover { color: var(--ink); }
-
-    /* ═══════════════════════════════════════════════════════════
-       MORE WORK — collapsed list
-    ═══════════════════════════════════════════════════════════ */
+    /* ── MORE WORK ── */
     .more-work {
+      max-width: var(--col-full); margin-inline: auto;
+      padding: var(--s8) var(--s5) var(--s6);
       border-top: 1px solid var(--border);
-      max-width: var(--col-full);
-      margin-inline: auto;
-      padding: 0 var(--s5) var(--s6);
-      padding-top: var(--s6);
     }
-
-    .more-work__list {
-      display: flex;
-      flex-direction: column;
-    }
-
+    .more-work__list { display: flex; flex-direction: column; }
     .more-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--s4);
-      padding: var(--s2) 0;
-      text-decoration: none;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--s4); padding: var(--s3) 0;
+      border-bottom: 1px solid var(--border-2);
+      text-decoration: none; transition: padding-left 0.18s;
     }
-
- .more-card__left {
-  display: flex;
-  align-items: baseline;
-  gap: var(--s5);
-  flex: 1;
-  min-width: 0;
-}
-
-.more-card__tag {
-  font-family: var(--sans);
-  font-size: var(--t-11);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted-2);
-  white-space: nowrap;
-  flex-shrink: 0;
-  min-width: 18ch;   /* was 14ch — give longer tags room */
-}
-
-.more-card__title {
-  font-family: var(--sans);
-  font-size: var(--t-15);
-  color: var(--ink);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;      /* critical — allows ellipsis to work inside flex */
-}
-
+    .more-card:first-child { border-top: 1px solid var(--border-2); }
+    .more-card:hover { padding-left: var(--s2); }
+    .more-card__left {
+      display: flex; align-items: baseline; gap: var(--s5); flex: 1; min-width: 0;
+    }
+    .more-card__tag {
+      font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted-2);
+      white-space: nowrap; flex-shrink: 0; min-width: 18ch;
+    }
+    .more-card__title {
+      font-family: var(--sans); font-size: var(--t-15); color: var(--ink);
+      line-height: 1.2; white-space: nowrap; overflow: hidden;
+      text-overflow: ellipsis; min-width: 0;
+    }
     .more-card__arrow {
-      font-family: var(--sans);
-      font-size: var(--t-13);
-      color: var(--muted-2);
-      flex-shrink: 0;
+      font-family: var(--sans); font-size: var(--t-13);
+      color: var(--muted-2); flex-shrink: 0;
       transition: color 0.18s, transform 0.18s;
     }
-    .more-card:hover .more-card__arrow { color: var(--muted-2); }
-    .more-card__tag:hover, .more-card__title:hover { color: var(--muted-2); }
+    .more-card:hover .more-card__arrow { color: var(--ink); transform: translate(3px, -3px); }
 
-    /* ═══════════════════════════════════════════════════════════
-       ABOUT
-    ═══════════════════════════════════════════════════════════ */
+    /* ── ABOUT ── */
     .about {
-      max-width: var(--col-full);
-      margin-inline: auto;
-      padding: var(--s16) var(--s5) var(--s16);
-      border-top: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--s12);
-      align-items: start;
+      max-width: var(--col-full); margin-inline: auto;
+      padding: var(--s16) var(--s5); border-top: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--s12); align-items: start;
     }
-
-    .about__text {}
-
     .about__heading {
-      font-family: var(--sans);
-      font-size: clamp(var(--t-32), 2vw, var(--t-56));
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      margin-bottom: var(--s6);
+      font-family: var(--sans); font-size: clamp(var(--t-32), 2vw, var(--t-56));
+      line-height: 1.08; letter-spacing: -0.01em; color: var(--ink); margin-bottom: var(--s6);
     }
-    .about__heading em { font-style: italic; }
-
     .about__bio {
-      font-family: var(--sans);
-      font-size: var(--t-15);
-      font-weight: 400;
-      line-height: 1.7;
-      color: var(--ink-2);
-      margin-bottom: var(--s3);
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      line-height: 1.7; color: var(--ink-2); margin-bottom: var(--s3);
     }
-
-    .about__right {
-      padding-top: var(--s3);
-    }
-
+    .about__right { padding-top: var(--s3); }
     .about__availability {
-      font-family: var(--sans);
-      font-size: var(--t-13);
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-      margin-bottom: var(--s5);
-      padding-bottom: var(--s4);
+      font-family: var(--sans); font-size: var(--t-13); font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-2);
+      margin-bottom: var(--s5); padding-bottom: var(--s4);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: var(--s2);
+      display: flex; align-items: center; gap: var(--s2);
     }
-    /* Green availability dot */
     .about__availability::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #4a8c5c;
-      flex-shrink: 0;
+      content: ''; display: inline-block; width: 6px; height: 6px;
+      border-radius: 50%; background: #4a8c5c; flex-shrink: 0;
     }
-
     .about__contact-label {
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-      margin-bottom: var(--s3);
+      font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted-2); margin-bottom: var(--s3);
     }
-
-    .about__links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: var(--s1);
-    }
+    .about__links { list-style: none; display: flex; flex-direction: column; }
+    .about__links li { border-bottom: 1px solid var(--border-2); }
     .about__links a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--s2) 0;
-      font-family: var(--sans);
-      font-size: var(--t-15);
-      font-weight: 400;
-      color: var(--ink);
-      transition: color 0.18s;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--s2) 0; font-family: var(--sans); font-size: var(--t-15);
+      font-weight: 400; color: var(--ink); transition: color 0.18s;
     }
     .about__links a:hover { color: var(--muted-2); }
-    .about__links a::after {
-      content: '↗';
-      font-size: var(--t-13);
-      color: var(--muted-2);
-    }
+    .about__links a::after { content: '↗'; font-size: var(--t-13); color: var(--muted-2); }
 
-    /* ═══════════════════════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════════════════════ */
+    /* ── FOOTER ── */
     .footer {
-      max-width: var(--col-full);
-      margin-inline: auto;
-      padding: var(--s4) var(--s5) var(--s6);
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--s4);
-      flex-wrap: wrap;
+      max-width: var(--col-full); margin-inline: auto;
+      padding: var(--s4) var(--s5) var(--s6); border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--s4); flex-wrap: wrap;
     }
-    .footer__name {
-      font-family: var(--serif);
-      font-size: var(--t-15);
-      color: var(--ink);
-    }
-    .footer__links {
-      list-style: none;
-      display: flex;
-      gap: var(--s4);
-    }
+    .footer__name { font-family: var(--sans-extended); font-size: var(--t-15); color: var(--ink); }
+    .footer__links { list-style: none; display: flex; gap: var(--s4); }
     .footer__links a {
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color 0.18s;
+      font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); transition: color 0.18s;
     }
     .footer__links a:hover { color: var(--ink); }
-    .footer__copy {
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      color: var(--muted-2);
-      letter-spacing: 0.04em;
-    }
+    .footer__copy { font-family: var(--sans); font-size: var(--t-11); color: var(--muted-2); letter-spacing: 0.04em; }
 
-    /* ═══════════════════════════════════════════════════════════
-       RESPONSIVE — two breakpoints
-    ═══════════════════════════════════════════════════════════ */
+    /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       :root { --s5: 1.5rem; --s8: 3rem; --s10: 4rem; --s16: 6rem; }
       .nav { padding: var(--s2) var(--s2); }
@@ -592,7 +316,6 @@
       .about { grid-template-columns: 1fr; gap: var(--s8); padding-inline: var(--s2); }
       .footer { padding-inline: var(--s2); flex-direction: column; align-items: flex-start; gap: var(--s2); }
     }
-
     @media (min-width: 481px) and (max-width: 768px) {
       .hero { padding: 0 var(--s3) var(--s10); }
       .hero__bottom { flex-direction: column; align-items: flex-start; gap: var(--s4); }
@@ -610,7 +333,7 @@
 </head>
 <body>
 
-  <!-- ─── NAV ─────────────────────────────────────────── -->
+  <!-- NAV -->
   <nav class="nav">
     <a href="index.html" class="nav__logo">Yaya Falanga</a>
     <ul class="nav__links">
@@ -620,27 +343,20 @@
     </ul>
   </nav>
 
-
-  <!-- ─── HERO ─────────────────────────────────────────── -->
+  <!-- HERO -->
   <div class="hero" aria-label="Introduction">
-
     <span class="hero__eyebrow">Product & UX Designer — Ottawa · Open to relocation</span>
-
-    <h1 class="hero__title">
-      Designing tools <br>that earn trust.
-    </h1>
-
+    <h1 class="hero__title">Designing tools that earn trust.</h1>
     <div class="hero__bottom">
       <p class="hero__sub">
-        I design product systems where clarity builds trust.<br>
-My work spans AI decision-support tools, iOS apps, and design systems.
+        I design product systems where clarity builds confidence.
+        My work spans AI decision-support tools, iOS apps, and design systems.
       </p>
+      <a class="hero__cta" href="#work">View work</a>
     </div>
-
   </div>
 
-
-  <!-- ─── SELECTED WORK ────────────────────────────────── -->
+  <!-- SELECTED WORK -->
   <section id="work" class="work" aria-label="Selected work">
 
     <span class="section-label">Selected Work</span>
@@ -658,34 +374,29 @@ My work spans AI decision-support tools, iOS apps, and design systems.
           <div class="card__body">
             <p class="card__tag">AI Tool · UX Design · Design Sprint</p>
             <h2 class="card__title">CAN-SIMPLAN</h2>
-            <p class="card__desc">Designing accountability into AI-assisted planning tools.
-            </p>
+            <p class="card__desc">Designing accountability into AI-assisted planning tools for the City of Mississauga.</p>
             <span class="card__link">View case study</span>
           </div>
         </div>
       </a>
 
-      <!-- Pair row — Aurafact + Clara-->
+      <!-- Row 1 — Aurafact + Clara -->
       <div class="work__pair">
-
-      <a class="card" href="aurafact.html">
-        <div class="card__inner">
-          <div class="card__visual">
-            <img src="img/JF_WEB_AurafactHero.png"
-                 alt="Aurafact — spatial archive for environmental audio"
-                 width="600" height="400" loading="lazy" />
+        <a class="card" href="aurafact.html">
+          <div class="card__inner">
+            <div class="card__visual">
+              <img src="img/JF_WEB_AurafactHero.png"
+                   alt="Aurafact — spatial archive for environmental audio"
+                   width="600" height="400" loading="lazy" />
+            </div>
+            <div class="card__body">
+              <p class="card__tag">Speculative Product · AI-Assisted Build</p>
+              <h2 class="card__title">Aurafact</h2>
+              <p class="card__desc">A spatial archive for environmental sound exploring how places can be remembered through audio.</p>
+              <span class="card__link">View case study</span>
+            </div>
           </div>
-          <div class="card__body">
-            <p class="card__tag">Speculative Product · AI-Assisted Build</p>
-            <h2 class="card__title">Aurafact</h2>
-            <p class="card__desc">
-              A spatial archive for environmental sound exploring how places can be remembered through audio.
-            </p>
-            <span class="card__link">View case study</span>
-          </div>
-        </div>
-      </a>
-
+        </a>
         <a class="card" href="clara-app.html">
           <div class="card__inner">
             <div class="card__visual">
@@ -696,17 +407,14 @@ My work spans AI decision-support tools, iOS apps, and design systems.
             <div class="card__body">
               <p class="card__tag">iOS App · UX Design</p>
               <h2 class="card__title">Clara</h2>
-              <p class="card__desc">An iOS app that makes ownership visible in shared trip planning.
-              </p>
+              <p class="card__desc">An iOS app that makes ownership visible in shared trip planning.</p>
               <span class="card__link">View case study</span>
             </div>
           </div>
         </a>
+      </div>
 
-      </div><!-- /work__pair -->
-      
-      <!-- Pair row — Conserva + Lululemon-->
-
+      <!-- Row 2 — Lululemon + Conserva -->
       <div class="work__pair">
         <a class="card" href="lululemon.html">
           <div class="card__inner">
@@ -718,13 +426,12 @@ My work spans AI decision-support tools, iOS apps, and design systems.
             <div class="card__body">
               <p class="card__tag">UX Sprint · Heuristic Evaluation</p>
               <h2 class="card__title">Lululemon</h2>
-              <p class="card__desc">Improving content discovery in the lululemon iOS app through heuristic evaluation and targeted UX redesign.
-              </p>
+              <p class="card__desc">Improving content discovery in the lululemon iOS app through heuristic evaluation and targeted redesign.</p>
               <span class="card__link">View case study</span>
             </div>
           </div>
-        </a>     
-          <a class="card" href="conserva.html">
+        </a>
+        <a class="card" href="conserva.html">
           <div class="card__inner">
             <div class="card__visual">
               <img src="img/JF_WEB_ConservaHero.png"
@@ -734,28 +441,22 @@ My work spans AI decision-support tools, iOS apps, and design systems.
             <div class="card__body">
               <p class="card__tag">UI Design · Design System</p>
               <h2 class="card__title">Conserva</h2>
-              <p class="card__desc">Designing a structured food discovery platform supported by a modular UI system.
-              </p>
+              <p class="card__desc">Designing a structured food discovery platform supported by a modular UI system.</p>
               <span class="card__link">View case study</span>
             </div>
           </div>
         </a>
-      </div><!-- /work__pair -->
+      </div>
 
-
-
-    </div><!-- /work__list -->
-
+    </div>
   </section>
 
-
-  <!-- ─── MORE WORK ─────────────────────────────────────── -->
+  <!-- MORE WORK -->
   <section id="more-work" class="more-work" aria-label="More work">
 
     <span class="section-label">More Work</span>
 
     <div class="more-work__list">
-
       <a class="more-card" href="fides-website.html">
         <div class="more-card__left">
           <span class="more-card__tag">Web Design</span>
@@ -763,7 +464,6 @@ My work spans AI decision-support tools, iOS apps, and design systems.
         </div>
         <span class="more-card__arrow">↗</span>
       </a>
-
       <a class="more-card" href="uottawa.html">
         <div class="more-card__left">
           <span class="more-card__tag">Motion · Multimedia</span>
@@ -771,7 +471,6 @@ My work spans AI decision-support tools, iOS apps, and design systems.
         </div>
         <span class="more-card__arrow">↗</span>
       </a>
-
       <a class="more-card" href="asuquomo.html">
         <div class="more-card__left">
           <span class="more-card__tag">Creative Direction</span>
@@ -779,19 +478,16 @@ My work spans AI decision-support tools, iOS apps, and design systems.
         </div>
         <span class="more-card__arrow">↗</span>
       </a>
-
     </div>
 
   </section>
 
-
-  <!-- ─── ABOUT ─────────────────────────────────────────── -->
+  <!-- ABOUT -->
   <section id="about" class="about" aria-label="About">
-
     <div class="about__text">
       <h2 class="about__heading">Designed with intention.</h2>
       <p class="about__bio">
-        I'm Yaya a product and UX designer who builds interfaces where
+        I'm Yaya — a product and UX designer who builds interfaces where
         clarity is structural, not decorative. My work spans AI tools,
         iOS apps, design systems, and brand, across civic tech, education,
         and consumer product.
@@ -802,21 +498,18 @@ My work spans AI decision-support tools, iOS apps, and design systems.
         merely polished. Based in Ottawa, open to remote roles and relocation.
       </p>
     </div>
-
     <div class="about__right">
       <p class="about__availability">Open to full-time and contract roles</p>
       <p class="about__contact-label">Get in touch</p>
       <ul class="about__links">
-        <li><a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a></li>
+        <li><a href="mailto:hello@jenniferyaya.ca">hello@jenniferyaya.ca</a></li>
         <li><a href="https://www.linkedin.com/in/yaya-falanga" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://drive.google.com/file/d/1B4VlNr7-69Jt8MQdsa--L1vvthpbpopd/view?usp=drive_link" target="_blank" rel="noopener">Download résumé</a></li>
       </ul>
     </div>
-
   </section>
 
-
-  <!-- ─── FOOTER ────────────────────────────────────────── -->
+  <!-- FOOTER -->
   <footer class="footer">
     <span class="footer__name">Yaya Falanga</span>
     <ul class="footer__links">
