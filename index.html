@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <!-- Adobe Fonts — Area Normal -->
-  <link rel="stylesheet" href="https://use.typekit.net/kbm3omb.css">
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
   <style>
     /* ═══════════════════════════════════════════════════════════
@@ -61,7 +61,8 @@
       --col-full: 1360px;
 
       --serif: 'Instrument Serif', Georgia, serif;
-      --sans:  'area-normal', sans-serif;
+      --sans:  area-normal, sans-serif;
+      --sans-extended: area-extended, sans-serif;
     }
 
     /* ═══════════════════════════════════════════════════════════
@@ -96,8 +97,8 @@
       border-bottom: 1px solid var(--border);
     }
     .nav__logo {
-      font-family: var(--serif);
-      font-size: var(--t-17);
+      font-family: var(--sans-extended);
+      font-size: var(--t-15);
       color: var(--ink);
       letter-spacing: -0.01em;
     }
@@ -154,15 +155,13 @@
     }
 
     .hero__title {
-      font-family: var(--serif);
-      font-size: clamp(var(--t-40), 7.5vw, 7.5rem);
-      line-height: 1.02;
-      letter-spacing: -0.015em;
+      font-family: var(--sans);
+      font-size: clamp(var(--t-32), 5.5vw, var(--t-56));
+      line-height: 1.1;
       color: var(--ink);
       max-width: 18ch;
       margin-bottom: var(--s5);
     }
-    .hero__title em { font-style: italic; }
 
     .hero__bottom {
       display: flex;
@@ -209,10 +208,10 @@
       display: block;
       font-family: var(--sans);
       font-size: var(--t-11);
-      font-weight: 400;
-      letter-spacing: 0.2em;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted-2);
+      color: var(--muted);
       padding-top: var(--s4);
     }
 
@@ -277,10 +276,9 @@
     }
 
     .card__title {
-      font-family: var(--serif);
-      font-size: clamp(var(--t-24), 2.8vw, var(--t-40));
+      font-family: var(--sans);
+      font-size: clamp(var(--t-20), 2vw, var(--t-32));
       line-height: 1.12;
-      letter-spacing: 0.01em;
       color: var(--ink);
       margin-bottom: var(--s1);
     }
@@ -322,7 +320,7 @@
       aspect-ratio: 16 / 9;
     }
     .card--featured .card__title {
-      font-size: clamp(var(--t-32), 4vw, var(--t-56));
+      font-size: clamp(var(--t-32), 2vw, var(--t-56));
     }
     .card--featured .card__desc {
       font-size: var(--t-17);
@@ -394,7 +392,6 @@
       gap: var(--s4);
       padding: var(--s2) 0;
       text-decoration: none;
-      transition: background 0.15s;
     }
 
  .more-card__left {
@@ -417,8 +414,8 @@
 }
 
 .more-card__title {
-  font-family: var(--serif);
-  font-size: var(--t-20);
+  font-family: var(--sans);
+  font-size: var(--t-15);
   color: var(--ink);
   line-height: 1.2;
   white-space: nowrap;
@@ -454,8 +451,8 @@
     .about__text {}
 
     .about__heading {
-      font-family: var(--serif);
-      font-size: clamp(var(--t-32), 4vw, var(--t-56));
+      font-family: var(--sans);
+      font-size: clamp(var(--t-32), 2vw, var(--t-56));
       line-height: 1.08;
       letter-spacing: -0.01em;
       color: var(--ink);
@@ -630,12 +627,12 @@
     <span class="hero__eyebrow">Product & UX Designer — Ottawa · Open to relocation</span>
 
     <h1 class="hero__title">
-      Designing tools that earn trust.
+      Designing tools <br>that earn trust.
     </h1>
 
     <div class="hero__bottom">
       <p class="hero__sub">
-        I design product systems where clarity builds trust.
+        I design product systems where clarity builds trust.<br>
 My work spans AI decision-support tools, iOS apps, and design systems.
       </p>
     </div>
