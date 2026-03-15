@@ -110,7 +110,6 @@
     }
     .hero__title em { font-style: italic; }
     .hero__tagline {
-      font-family: var(--serif); font-style: italic;
       font-size: clamp(var(--t-20), 2vw, var(--t-24));
       line-height: 1.45; color: var(--muted); max-width: 60ch; margin-bottom: var(--s5);
     }
@@ -379,15 +378,15 @@
 
       <span class="hero__eyebrow">Speculative Product · Information Architecture · AI-Assisted Build · 2026</span>
 
-      <h1 class="hero__title">Aurafact: <em>Archiving the acoustic memory of place</em></h1>
+      <h1 class="hero__title">Aurafact: Archiving the acoustic memory of place</h1>
 
       <p class="hero__tagline">
-        A spatial archive for environmental audio — designed from a cultural
+        A spatial archive for environmental audio designed from a cultural
         thesis, built in collaboration with AI, and hosted as a living product.
       </p>
 
       <a class="hero__cta"
-         href="https://aurafact.ca"
+         href="https://jenniferyaya.github.io/aura-fact/"
          target="_blank" rel="noopener">
         Visit Aurafact
       </a>
@@ -433,22 +432,22 @@
   <section class="cs-section problem">
     <div class="wrap-text">
 
-      <span class="cs-eyebrow">01 — The Problem</span>
-      <h2 class="cs-h2">We photograph every surface of the earth. We archive <em>almost none of its sound.</em></h2>
+      <span class="cs-eyebrow">The Problem</span>
+      <h2 class="cs-h2">We photograph every surface of the earth. We archive almost none of its sound.</h2>
 
       <p class="cs-p">
         We live in an era of visual over-saturation. Every landscape is
         routinely mapped, photographed, and filmed with clinical precision.
-        Its acoustic identity — the density of birdsong before a wildfire,
+        Its acoustic identity, the density of birdsong before a wildfire,
         the rhythmic clatter of a tram line that no longer runs, the low
-        drone of a harbour at dawn — disappears without record.
+        drone of a harbour at dawn, disappears without record.
       </p>
 
       <p class="cs-p">
         Existing approaches to sound archiving sit at two unhelpful extremes.
         Academic sound libraries are rich in data but absent of experience —
         digital graveyards that no one browses. Ambient sound apps are
-        beautiful to inhabit but impossible to study — toys, not tools.
+        beautiful to inhabit but impossible to study, toys, not tools.
         Neither treats environmental audio as what it actually is: a primary
         historical artifact.
       </p>
@@ -484,13 +483,13 @@
   <section class="cs-section insight">
     <div class="wrap-text">
 
-      <span class="cs-eyebrow">02 — Key Insight</span>
-      <h2 class="cs-h2">Sound is not a file. It is an <em>environmental event.</em></h2>
+      <span class="cs-eyebrow">Key Insight</span>
+      <h2 class="cs-h2">Sound is not a file. It is an environmental event.</h2>
 
       <p class="cs-p">
         The insight that shaped everything: most audio interfaces treat a
         recording as a media object to be played. Aurafact treats it as
-        a documented specimen — inseparable from the exact temperature,
+        a documented specimen, inseparable from the exact temperature,
         barometric pressure, microphone topology, and ecological conditions
         of its capture.
       </p>
@@ -498,7 +497,7 @@
       <p class="cs-p">
         This reframed the entire information architecture. A recording
         doesn't belong in a playlist. It belongs in an archive with full
-        environmental provenance — the same rigour a museum applies to a
+        environmental provenance, the same rigour a museum applies to a
         physical artifact. The interface had to be built around that idea,
         not bolted onto it.
       </p>
@@ -517,7 +516,7 @@
       alt="Aurafact Specimen Archive — searchable table showing specimen IDs, artifact names, locations, source types, subtypes, and frequency profiles with a detail panel open on the right"
       loading="lazy"
     />
-    <figcaption>The Specimen Archive: each recording documented as a fully provenance-traced artifact — not a file entry.</figcaption>
+    <figcaption>The Specimen Archive: each recording documented as a fully provenance-traced artifact, not a file entry.</figcaption>
   </figure>
 
 
@@ -530,8 +529,8 @@
   <section class="cs-section ai">
     <div class="wrap-text">
 
-      <span class="cs-eyebrow">03 — AI Collaboration</span>
-      <h2 class="cs-h2">Built with AI. <em>Directed by design.</em></h2>
+      <span class="cs-eyebrow">AI Collaboration</span>
+      <h2 class="cs-h2">Built with AI. Directed by design.</h2>
 
       <p class="cs-p">
         Aurafact was built in active collaboration with three AI tools —
@@ -547,7 +546,7 @@
           <p class="ai-cell__tool">Claude</p>
           <p class="ai-cell__role">Copy, rationale, and case study structure</p>
           <p class="ai-cell__detail">
-            Used to review and refine all written content — the Manifesto,
+            Used to review and refine all written content, the Manifesto,
             the Field Guide principles, specimen field notes, and the
             language of the taxonomy system. Every output was reviewed,
             edited, and approved before use. Claude's role was to push
@@ -604,8 +603,8 @@
   <section class="cs-section decisions">
     <div class="wrap-text">
 
-      <span class="cs-eyebrow">04 — Design Decisions</span>
-      <h2 class="cs-h2">Four decisions that made sound <em>navigable</em></h2>
+      <span class="cs-eyebrow">Design Decisions</span>
+      <h2 class="cs-h2">Four decisions that made sound navigable</h2>
 
       <div class="decisions__list">
 
@@ -615,7 +614,7 @@
             <h3 class="decision__title">The interface begins in darkness</h3>
             <p class="decision__body">
               The homepage opens on a near-black ground with a p5.js
-              waveform animation — vertical frequency columns that pulse
+              waveform animation, vertical frequency columns that pulse
               slowly across the viewport. There is no hero image. No bright
               photography. The darkness forces the eye to read the
               sound rather than consume a picture.
@@ -625,7 +624,7 @@
               <span class="decision__tradeoff-text">
                 A dark homepage is harder to read in bright environments
                 and can read as cold to casual visitors. The product is
-                not for casual visitors — and the darkness is the first
+                not for casual visitors and the darkness is the first
                 signal of that.
               </span>
             </div>
@@ -637,9 +636,9 @@
           <div>
             <h3 class="decision__title">Dual typography registers: serif for narrative, monospace for data</h3>
             <p class="decision__body">
-              Libre Baskerville carries the editorial voice — the thesis,
+              Libre Baskerville carries the editorial voice, the thesis,
               the field notes, the cultural argument. DM Mono carries the
-              technical layer — specimen IDs, frequency profiles, GPS
+              technical layer, specimen IDs, frequency profiles, GPS
               coordinates, metadata labels. The typographic switch is
               not decorative. It tells the user which register they are
               reading in at a glance.
@@ -649,7 +648,7 @@
               <span class="decision__tradeoff-text">
                 Two typefaces in a single interface risk visual conflict.
                 The risk is managed by restricting monospace strictly to
-                data fields — it never appears in prose.
+                data fields, it never appears in prose.
               </span>
             </div>
           </div>
@@ -671,7 +670,7 @@
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                A rigid taxonomy breaks down at the edges — some recordings
+                A rigid taxonomy breaks down at the edges, some recordings
                 sit between categories. The current version uses primary
                 classification only; a future version would support
                 multi-axis tagging per specimen.
@@ -707,7 +706,7 @@
       </div>
 
       <a class="cs-link"
-         href="https://aurafact.ca"
+         href="https://jenniferyaya.github.io/aura-fact/"
          target="_blank" rel="noopener">
         Visit the live product
       </a>
@@ -721,7 +720,7 @@
       alt="Aurafact Field Guide — design principles panel on the left alongside acoustic studies photography grid on the right"
       loading="lazy"
     />
-    <figcaption>The Field Guide: design principles and acoustic studies — the product's intellectual and visual foundation made public.</figcaption>
+    <figcaption>The Field Guide: design principles and acoustic studies, the product's intellectual and visual foundation made public.</figcaption>
   </figure>
 
 
@@ -734,7 +733,7 @@
   <section class="cs-section outcome">
     <div class="wrap-text">
 
-      <span class="cs-eyebrow">05 — Outcome</span>
+      <span class="cs-eyebrow">Outcome</span>
 
       <p class="outcome__lead">
         A live, multi-page product that demonstrates what a research-grade audio archive looks and feels like.
@@ -788,8 +787,8 @@
   <section class="cs-section reflection">
     <div class="wrap-text">
 
-      <span class="cs-eyebrow">06 — Reflection</span>
-      <h2 class="cs-h2">What designing for sound revealed about <em>interfaces</em></h2>
+      <span class="cs-eyebrow">Reflection</span>
+      <h2 class="cs-h2">What designing for sound revealed about interfaces</h2>
 
       <p class="cs-p">
         Aurafact made visible how thoroughly visual modern interface
@@ -809,9 +808,9 @@
       </p>
 
       <ul class="reflection__list">
-        <li>An interactive spectrogram component — scrubbable, frequency-annotated, and accessible to d/Deaf users via haptic output and descriptive transcription</li>
+        <li>An interactive spectrogram component: scrubbable, frequency-annotated, and accessible to d/Deaf users via haptic output and descriptive transcription</li>
         <li>The Compare Tool: two specimens placed in synchronized spectral juxtaposition, with difference highlighting and shareable output</li>
-        <li>A spatial map discovery layer — geographic clustering of recordings with acoustic heatmap overlay showing where silence is being lost globally</li>
+        <li>A spatial map discovery layer: geographic clustering of recordings with acoustic heatmap overlay showing where silence is being lost globally</li>
         <li>AI-generated descriptive audio transcriptions, built on the prompt library developed during this phase, deployed as accessibility and discoverability infrastructure</li>
       </ul>
 
@@ -837,7 +836,7 @@
     <span class="footer__name">Yaya Falanga</span>
     <ul class="footer__links">
       <li><a href="https://www.linkedin.com/in/yaya-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-      <li><a href="mailto:hello@jenniferyaya.ca">Email</a></li>
+      <li><a href="mailto:yayafalanga@gmail.com">Email</a></li>
     </ul>
     <span class="footer__copy">© 2026 Yaya Falanga</span>
   </footer>
