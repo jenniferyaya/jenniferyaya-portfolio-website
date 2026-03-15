@@ -9,6 +9,7 @@
   <meta property="og:description" content="A spatial archive for environmental audio — designed and built in collaboration with Claude, Cursor, and ChatGPT." />
   <meta property="og:type" content="article" />
 
+  <!-- Fonts -->
   <!-- Adobe Fonts — Area Normal -->
   <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
@@ -55,8 +56,8 @@
       --col-wide: 1100px;
       --col-full: 1360px;
 
-      --sans:  'area-normal', sans-serif;
-      --sans-extended: area-extended, sans-serif;
+      --sans:  area-normal, 'Helvetica Neue', Arial, sans-serif;
+      --sans-extended: area-extended, 'Helvetica Neue', Arial, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -157,11 +158,10 @@
     }
     .cs-h2 {
       font-family: var(--sans);
-      font-size: clamp(var(--t-24), 3.5vw, var(--t-24));
+      font-size: clamp(var(--t-20), 3.5vw, var(--t-40));
       line-height: 1.14;
       letter-spacing: 0.015em;
       color: var(--ink);
-      margin-bottom: var(--s4);
     }
     .cs-p {
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
@@ -173,7 +173,7 @@
     .cs-quote__text {
       font-family: var(--sans);
       font-style: italic;
-      font-size: clamp(var(--t-20), 2vw, var(--t-17));
+      font-size: var(--t-17);
       line-height: 1.55;
       color: var(--ink);
     }
@@ -250,30 +250,29 @@
       color: var(--muted-2); margin-bottom: var(--s2);
     }
     .ai-cell__role {
-      font-family: var(--serif); font-size: var(--t-20);
+      font-family: var(--sans); font-size: var(--t-20);
       line-height: 1.3; color: var(--ink); margin-bottom: var(--s2);
     }
     .ai-cell__detail {
       font-family: var(--sans); font-size: var(--t-14);
-      font-weight: 400; line-height: 1.6; color: var(--muted-2);
+      font-weight: 400; line-height: 1.6; color: var(--muted);
     }
 
     /* ── DESIGN DECISIONS ────────────────────────────────── */
-    .decisions__list { margin-top: var(--s6); }
     .decision {
       display: grid; grid-template-columns: 3.5rem 1fr; gap: var(--s5);
-      align-items: start; padding: var(--s6) 0; border-top: 1px solid var(--border);
+      align-items: start; padding: var(--s6) 0;
     }
-    .decision:last-child { border-bottom: 1px solid var(--border); }
     .decision__num {
       font-family: var(--sans);
       font-size: var(--t-17);
       padding-top: 0.1rem;
       line-height: 1;
+      color: var(--ink);
     }
     .decision__title {
       font-family: var(--sans);
-      font-size: clamp(var(--t-17), 2vw, var(--t-17));
+      font-size: var(--t-17);
       line-height: 1.3;
       color: var(--ink);
       margin-bottom: var(--s2);
@@ -281,11 +280,11 @@
     }
     .decision__body {
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
-      line-height: 1.5; color: var(--ink-2); margin-bottom: var(--s3);
+      line-height: 1.5; color: var(--ink-2); margin-bottom: var(--s1);
     }
     .decision__tradeoff {
       display: grid; grid-template-columns: auto 1fr; gap: var(--s2);
-      align-items: baseline; padding-top: var(--s2); border-top: 1px solid var(--border-2);
+      align-items: baseline; padding-top: var(--s2);
     }
     .decision__tradeoff-label {
       font-family: var(--sans); font-size: var(--t-13); letter-spacing: 0.12em;
@@ -300,7 +299,7 @@
     .outcome__lead {
       font-family: var(--sans);
       font-style: italic;
-      font-size: clamp(var(--t-20), 2.5vw, var(--t-20));
+      font-size: clamp(var(--t-20), 2.5vw, var(--t-32));
       line-height: 1.35;
       letter-spacing: -0.015em;
       color: var(--ink);
@@ -849,10 +848,10 @@
 
 
   <!-- NEXT PROJECT -->
-  <a class="next-project" href="fides-website.html">
+  <a class="next-project" href="clara-app.html">
     <div>
       <p class="next-project__label">Next Project</p>
-      <p class="next-project__title">FIDES: A player-first sports agency</p>
+      <p class="next-project__title">Clara: Clarity and collaboration for every journey</p>
     </div>
     <span class="next-project__arrow" aria-hidden="true">↗</span>
   </a>
@@ -862,10 +861,6 @@
     <span class="footer__name">Yaya Falanga</span>
     <ul class="footer__links">
       <li><a href="https://www.linkedin.com/in/yaya-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-      <li><a href="mailto:yayafalanga@gmail.com">Email</a></li>
+      <li><a href="mailto:hello@jenniferyaya.ca">Email</a></li>
     </ul>
-    <span class="footer__copy">© 2026 Yaya Falanga</span>
-  </footer>
-
-</body>
-</html>
+    <span class="footer__copy">© 2026 Yaya Falanga
