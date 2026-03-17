@@ -571,8 +571,8 @@
 
       <p class="hero__tagline">
         An AI-assisted zoning pre-screen tool that helps municipal planners evaluate
-        development proposals faster while keeping every decision traceable,
-        defensible, and human.
+        development proposals faster while keeping every decision traceable
+        and defensible.
       </p>
 
       <a class="hero__cta"
@@ -623,21 +623,17 @@
     <div class="wrap-text">
 
       <span class="cs-eyebrow">The Problem</span>
-      <h2 class="cs-h2">Planners don't need faster AI. They need AI they can defend.</h2>
+      <h2 class="cs-h2">Municipal planners don't need faster AI. They need AI they can defend.</h2>
 
       <p class="cs-p">
-        Municipal planners evaluate complex development proposals under intense
-        political and public scrutiny. A rejected proposal or an approved one
-        that later fails — both carry professional and civic consequences.
-        The planner's name is on the decision.
+        Municipal planners review complex development proposals under intense public and political scrutiny. Every approval or rejection carries professional and civic consequences, and the planner’s name is ultimately attached to the decision.
       </p>
 
       <p class="cs-p">
-        Existing tools can summarize data and flag anomalies. What they can't do
-        is explain themselves. When AI produces a recommendation without showing
-        its work, it puts the planner in an impossible position: responsible for
-        a decision they can't fully trace.
+        Many emerging tools promise efficiency. They summarize documents, extract signals, and flag anomalies. But when those systems produce recommendations without showing their reasoning, they create a new risk: the planner becomes responsible for a decision they cannot fully explain.
       </p>
+
+      <p class="cs-p">Accuracy alone isn’t enough. In public governance, decisions must also be traceable, defensible, and transparent.</p>
 
       <div class="cs-quote">
         <p class="cs-quote__text">The model might be accurate but accuracy isn't enough. I need to be able to stand up in a council meeting and explain why.</p>
@@ -645,9 +641,7 @@
       </div>
 
       <p class="cs-p">
-        <strong>Design challenge:</strong> How might we design an AI planning tool
-        that accelerates proposal review while ensuring every output a planner acts
-        on is something they can explain, trace, and stand behind?
+        <strong>Design challenge:</strong> How might we design an AI-assisted planning tool that accelerates proposal review while ensuring every output a planner relies on is transparent, traceable, and defensible?
       </p>
 
     </div>
@@ -667,17 +661,12 @@
       <h2 class="cs-h2">The AI isn't the problem. The opacity is.</h2>
 
       <p class="cs-p">
-        Early research conversations with planners revealed a consistent pattern:
-        the barrier to AI adoption wasn't skepticism about the model's accuracy.
-        It was the inability to explain any individual output to a colleague,
-        a councillor, or a community member asking hard questions.
+        Early research conversations revealed a consistent pattern:
+        the barrier to AI adoption wasn’t skepticism about model accuracy — it was the inability to explain any individual output to a colleague, a councillor, or a community member asking difficult questions.
       </p>
 
       <p class="cs-p">
-        This reframed the design problem entirely. The goal wasn't to make AI
-        smarter or faster. It was to make it legible — to surface the reasoning
-        behind every score, flag every assumption the model made, and keep a
-        human hand visible at every step of the workflow.
+This insight reframed the design problem entirely. The goal wasn’t to make the AI smarter or faster. It was to make it legible — surfacing the reasoning behind each output, exposing the assumptions within the model, and ensuring the planner’s judgment remained visible throughout the workflow.
       </p>
 
       <!-- Before / After pivot -->
@@ -688,7 +677,7 @@
         </div>
         <div class="pivot__cell pivot__cell--dark">
           <p class="pivot__cell-label">The reframe</p>
-          <p class="pivot__cell-text">How do we make AI-assisted decisions something a planner can defend?</p>
+          <p class="pivot__cell-text">How might we design AI-assisted decisions that a planner can clearly explain, trace, and defend?</p>
         </div>
       </div>
 
@@ -719,15 +708,12 @@
 
       <p class="cs-p">
         CAN-SIMPLAN is designed around one principle: the AI surfaces analysis,
-        the planner makes the call. Every design decision was tested against
-        that constraint. If it gave the AI more authority than the planner,
-        it was cut.
+        the planner makes the call.</p>
+        <p class="cs-p">Every interface decision was tested against that constraint. If a feature increased the model’s authority without increasing the planner’s understanding, it didn’t make it into the product.
       </p>
 
       <p class="cs-p">
-        I designed the end-to-end interface, from login to audit trail, 
-        so that every output the planner sees is something they can explain,
-        trace, and act on with confidence.
+       I designed the end-to-end interface — from intake to audit trail, so that every output a planner encounters is something they can trace, explain, and confidently stand behind.
       </p>
 
     </div>
@@ -771,15 +757,12 @@
           <div>
             <h3 class="decision__title">Blocking flags enforce engagement</h3>
             <p class="decision__body">
-              When the simulation raises a concern, the planner cannot move forward
-              without writing a rationale. The workflow literally stops.
-              Engagement cannot be optional in a governance context.
+              When the simulation raises a concern, the planner cannot move forward without documenting a rationale. The workflow deliberately pauses until the planner records their reasoning. In governance contexts, engagement cannot be optional. The system makes the moment of judgment explicit.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                This adds friction to every flagged case. That friction is the point —
-                it's what transforms a checkbox into a considered judgment.
+                This introduces friction into every flagged case. That friction is intentional. It transforms a passive checkbox into a considered decision.
               </span>
             </div>
           </div>
@@ -790,16 +773,12 @@
           <div>
             <h3 class="decision__title">Confidence lives in the header, not a technical panel</h3>
             <p class="decision__body">
-              Model confidence score, version, and last-run timestamp surface at the
-              top of every proposal view. Planners need to calibrate their trust in
-              the output before engaging with it — not after.
+              Model confidence, version, and last-run timestamp appear at the top of every proposal view. Planners need to calibrate their trust in the system before engaging with its recommendations, not after.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                Surfacing uncertainty feels counterintuitive for an AI product.
-                It's also the only honest approach — and what distinguishes
-                a governance tool from a consumer product.
+                Surfacing uncertainty can feel counterintuitive in AI products. In governance contexts, it’s essential. Transparency is what distinguishes a decision-support tool from a black box.
               </span>
             </div>
           </div>
@@ -808,19 +787,14 @@
         <div class="decision">
           <span class="decision__num">03</span>
           <div>
-            <h3 class="decision__title">Plain language over technical accuracy</h3>
+            <h3 class="decision__title">Plain language over technical precision</h3>
             <p class="decision__body">
-              Every simulation flag includes a plain-language explanation written
-              for planners, not data scientists. The planner's job is judgment.
-              The interface's job is translation.
+              Each simulation flag includes a plain-language explanation written for planners, not data scientists. The planner’s role is judgment. The interface’s role is translation.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                Simplifying technical output risks losing precision.
-                The decision was to prioritize usability for the person
-                responsible — and let the full technical detail live one
-                level deeper for those who need it.
+                Simplifying technical output risks losing nuance. The design prioritizes usability for the person responsible for the decision, while preserving full technical detail one level deeper for those who need it.
               </span>
             </div>
           </div>
@@ -831,16 +805,12 @@
           <div>
             <h3 class="decision__title">The audit trail belongs in the primary workflow</h3>
             <p class="decision__body">
-              Every override is logged, timestamped, and immutable — inside the
-              proposal view, not buried in an admin panel. When accountability
-              is hidden, it becomes optional.
+              Every override is logged, timestamped, and immutable — directly within the proposal view rather than hidden in an administrative panel.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                Embedding the audit trail in the main view adds visual weight
-                to an already dense workspace. The alternative — a secondary
-                panel no one opens — would defeat the purpose entirely.
+                Embedding the audit trail in the main interface adds visual weight to an already dense workspace. The alternative, burying it in a secondary panel, would undermine its purpose.
               </span>
             </div>
           </div>
@@ -892,17 +862,11 @@
       </p>
 
       <p class="cs-p">
-        The prototype was completed in four days as part of a cross-disciplinary
-        sprint team and selected for presentation to the City of Mississauga.
-        The end-to-end interface covers login through audit trail, with every
-        screen designed around the constraint that AI analysis must pass through
-        a human review checkpoint before the workflow can advance.
+        The prototype was developed in four days as part of a cross-disciplinary sprint and selected for presentation to the City of Mississauga. The interface spans the full workflow, from login to audit trail, with every stage designed so AI analysis passes through a clear human review checkpoint before a decision can move forward.
       </p>
 
       <p class="cs-p">
-        The core insight, that the barrier to AI adoption in civic contexts
-        isn't accuracy, it's legibility, shaped every design decision from
-        the proposal dashboard to the flag override flow.
+        The project ultimately demonstrated a key insight: in civic decision-making, the barrier to AI adoption is rarely model accuracy. It’s legibility. When the reasoning behind a system’s output is visible and traceable, planners can engage with it confidently and responsibly.
       </p>
 
     </div>
@@ -934,28 +898,23 @@
       <h2 class="cs-h2">Designing for governance changed how I think about friction</h2>
 
       <p class="cs-p">
-        The default instinct in UX is to remove friction. This project pushed me
-        to question that. In high-accountability contexts, some friction is
-        protective, it's the mechanism by which a workflow enforces engagement
-        rather than just recording it.
+        UX design often treats friction as something to eliminate. This project challenged that assumption. In high-accountability environments, some friction is protective,it ensures that critical decisions require deliberate engagement rather than passive confirmation.
       </p>
 
       <p class="cs-p">
-        Working at the boundary between simulation logic and human decision-making
-        also sharpened a skill I hadn't expected to develop: translating in both
-        directions, from technical constraints into interface clarity, and from
-        planner needs back into system requirements.
+        Working at the boundary between simulation logic and human judgment also sharpened an unexpected skill: translating in both directions. The interface had to translate technical constraints into something planners could understand, while also translating planner needs back into system requirements the model could support.
       </p>
 
       <ul class="reflection__list">
-        <li>Usability testing on the flag-override flows: does mandatory rationale actually change planner behaviour, or create workarounds?</li>
-        <li>A full accessibility audit: civic tools must meet the highest accessibility standards without exception</li>
-        <li>The post-approval feedback loop: how real outcomes recalibrate the model over time, and how that recalibration is communicated to planners</li>
-        <li>Research into how different municipalities weight domain scores differently, and whether the interface can adapt to those preferences</li>
+        <li>Usability testing on the flag-override flows: Does requiring a written rationale meaningfully change planner behavior, or does it introduce workarounds?</li>
+        <li>A full accessibility audit: Civic decision tools must meet the highest accessibility standards without exception.</li>
+        <li>The post-approval feedback loop: How real-world outcomes recalibrate the model over time — and how that recalibration is communicated back to planners.</li>
+        <li>Municipal configuration layers: Different cities weigh planning criteria differently. Could the interface adapt to those variations without compromising transparency?</li>
       </ul>
 
       <div class="cs-quote" style="margin-top: var(--s10);">
-        <p class="cs-quote__text">The most interesting design question CAN-SIMPLAN raises isn't 'how do we make AI faster?', it's 'how do we make accountability a feature, not a constraint?'</p>
+        <p class="cs-quote__text">The most interesting question CAN-SIMPLAN raises isn’t “How do we make AI faster?”
+It’s “How do we make accountability a feature of the system itself?</p>
       </div>
 
     </div>
