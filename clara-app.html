@@ -766,8 +766,7 @@
       <h1 class="hero__title">Clara</h1>
 
       <p class="hero__tagline">
-        An iOS app concept that makes task ownership and progress visible
-        in one shared space, so group trip planning feels balanced, not burdensome.
+        An iOS app concept that makes task ownership and progress visible in one shared space, so group trip planning feels balanced rather than burdensome.
       </p>
 
       <a class="hero__cta"
@@ -818,20 +817,16 @@
     <div class="wrap-text">
 
       <span class="cs-eyebrow">The Problem</span>
-      <h2 class="cs-h2">When ownership goes invisible</h2>
+      <h2 class="cs-h2">When ownership goes invisible.</h2>
 
       <p class="cs-p">
         Group trips rarely fall apart because people stop caring.
         They fall apart because responsibility becomes impossible to see.
-        Planning conversations scatter across group chats, spreadsheets,
-        and notes, tasks get discussed, rarely assigned, and almost never
-        tracked in one place.
+        Planning spreads across chats, notes, and spreadsheets. Tasks are discussed, but rarely assigned or tracked in one place. Over time, one person fills the gaps—following up, confirming details, carrying the coordination load..
       </p>
 
       <p class="cs-p">
-        The result: one person starts filling the gaps. They follow up,
-        re-confirm, and quietly absorb the coordination load while everyone
-        else drifts. It's not a motivation problem. It's a visibility problem.
+It's not a motivation problem. It's a visibility problem.
       </p>
 
       <div class="cs-quote">
@@ -841,7 +836,7 @@
 
       <p class="cs-p">
         <strong>Design challenge:</strong> How might we make task ownership continuously visible
-        so that coordination is shared rather than inherited by one person?
+        so that coordination is shared rather than absorbed by one person?
       </p>
 
     </div>
@@ -858,11 +853,11 @@
     <div class="wrap-text">
 
       <span class="cs-eyebrow">Key Insight</span>
-      <h2 class="cs-h2">Responsibility doesn't disappear, it becomes invisible</h2>
+      <h2 class="cs-h2">Responsibility doesn't disappear, it becomes invisible.</h2>
 
       <p class="cs-p">
         Research with frequent group trip planners confirmed that coordination
-        breakdowns are structural, not interpersonal. Participants consistently
+        breakdowns are structural. Participants consistently
         described the same pattern: tasks were discussed and informally acknowledged,
         but ownership was never made explicit. Without a shared record, people
         defaulted to assumptions, and one person defaulted to managing everything.
@@ -911,7 +906,7 @@
       alt="Maya — the friend who often becomes the default trip planner"
       loading="lazy"
     />
-    <figcaption>Meet Maya: the friend who often becomes the default trip planner, built from interview findings.</figcaption>
+    <figcaption>Meet Maya: The friend who often becomes the default trip planner, built from interview findings.</figcaption>
   </figure>
 
 
@@ -928,9 +923,7 @@
       <h2 class="cs-h2">One problem. One clear direction.</h2>
 
       <p class="cs-p">
-        Tasks became the primary unit of coordination. Everything else was built
-        to surface them, making ownership impossible to miss and progress easy
-        to assess without asking for an update.
+        Tasks became the core unit. The product is built to surface them, who owns what, what’s done, and what’s pending, without requiring follow-up.
       </p>
 
       <!-- Feature summary table -->
@@ -1007,24 +1000,21 @@
     <div class="wrap-text">
 
       <span class="cs-eyebrow">Design Decisions</span>
-      <h2 class="cs-h2">Three decisions that shaped the product</h2>
+      <h2 class="cs-h2">Three decisions that shaped the product.</h2>
 
       <div class="decisions__list">
 
         <div class="decision">
           <span class="decision__num">01</span>
           <div>
-            <h3 class="decision__title">Task list over timeline view</h3>
+            <h3 class="decision__title">Task list over timeline</h3>
             <p class="decision__body">
-              Group trip planners need to check who's handling something right now —
-              not sequence events in order. A timeline creates the illusion of planning;
-              a task list creates accountability.
+              The goal is to see who owns what now. A timeline suggests sequence, but obscures responsibility; a task list makes ownership explicit.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                The task list is less visually impressive. It sacrifices aesthetic richness
-                for immediate functional clarity, which is exactly what coordination needs.
+                The tradeoff is visual simplicity. The interface is less expressive, but more direct.
               </span>
             </div>
           </div>
@@ -1033,17 +1023,14 @@
         <div class="decision">
           <span class="decision__num">02</span>
           <div>
-            <h3 class="decision__title">Mandatory owner on every task</h3>
+            <h3 class="decision__title">Ownership is mandatory</h3>
             <p class="decision__body">
-              Allowing unassigned tasks would replicate the exact problem Clara was trying
-              to solve. Making ownership required removes the ability to create ambiguity
-              by default.
+              Every task must have an owner. Unassigned tasks recreate the original problem.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                This adds friction to task creation, intentional friction that prevents
-                the passive assumption problem from re-entering the system.
+                This adds friction at the moment of creation. That friction is intentional. It prevents ambiguity from entering the system.
               </span>
             </div>
           </div>
@@ -1052,17 +1039,16 @@
         <div class="decision">
           <span class="decision__num">03</span>
           <div>
-            <h3 class="decision__title">Labels over icons for task status</h3>
+            <h3 class="decision__title">Labels & icons for task status</h3>
             <p class="decision__body">
-              Testing showed that icons required interpretation; labels required recognition.
+              Testing showed that icons required interpretation by the users.
               When clarity is the core promise of the product, the UI can't afford to make
               users decode it.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                Labels take more space and are less refined-looking. That tradeoff was worth it —
-                hesitation during testing dropped measurably after the switch.
+                Text takes more space, but removes hesitation.
               </span>
             </div>
           </div>
@@ -1085,7 +1071,7 @@
       <span class="cs-eyebrow">Outcome</span>
 
       <p class="outcome__lead">
-        A stripped-down coordination tool, one that does less, but makes what it does impossible to miss.
+        A focused coordination tool that prioritizes clarity over feature breadth.
       </p>
 
       <p class="cs-p">
@@ -1095,9 +1081,7 @@
       </p>
 
       <p class="cs-p">
-        Moments of hesitation concentrated around icon-based status labels, which led
-        directly to the decision to replace them with text. After one iteration cycle,
-        the same tasks were completed with significantly less confusion.
+        Moments of hesitation concentrated around icon-based status labels were supplmented with labels to reduce confusion. After one iteration cycle, the same tasks were completed with significantly less confusion.
       </p>
 
       <p class="cs-p">
@@ -1131,21 +1115,21 @@
       <h2 class="cs-h2">What Clara hasn't solved yet</h2>
 
       <p class="cs-p">
-        The more interesting problem Clara surfaces, but hasn't tackled — is group
+        The more interesting problem Clara surfaces is group
         decision-making. Once everyone can see what needs doing, the friction moves from
         task ownership to task priority. Who decides which hotel? How does a group vote
         without derailing the chat?
       </p>
 
       <ul class="reflection__list">
-        <li>Open questions remain around: Lightweight group polling, structured decisions without chat chaos</li>
-        <li>Collaborative budgeting tied to assigned tasks, not just the trip total</li>
+        <li>Questions remain around how groups decide together without returning to chat-based chaos</li>
+        <li>olling, shared budgeting, and timing all introduce new layers of complexity</li>
         <li>A high-fidelity visual design pass to build Clara's brand identity</li>
         <li>Research into async vs. real-time coordination for longer trip timelines</li>
       </ul>
 
       <div class="cs-quote" style="margin-top: var(--s10);">
-        <p class="cs-quote__text">The most interesting design question Clara opens isn't 'how do we track tasks better?', it's 'what does fair collaboration actually look like at the product level?'</p>
+        <p class="cs-quote__text">The most interesting design question Clara opens "what does fair collaboration actually look like at the product level?"</p>
       </div>
 
     </div>
