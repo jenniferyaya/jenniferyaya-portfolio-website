@@ -162,6 +162,7 @@
       line-height: 1.14;
       letter-spacing: 0.015em;
       color: var(--ink);
+      margin-bottom: var(--s2);
     }
     .cs-p {
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
@@ -194,7 +195,7 @@
     .cs-link:hover  { color: var(--ink); border-color: var(--ink); }
     .cs-figure {
       max-width: var(--col-full); margin-inline: auto;
-      padding-inline: var(--s4); margin-top: var(--s10); margin-bottom: var(--s4);
+      padding-inline: var(--s4); margin-bottom: var(--s4);
     }
     .cs-figure img {
       width: 100%; border: 1px solid var(--border); display: block;
@@ -261,7 +262,7 @@
     /* ── DESIGN DECISIONS ────────────────────────────────── */
     .decision {
       display: grid; grid-template-columns: 3.5rem 1fr; gap: var(--s5);
-      align-items: start; padding: var(--s6) 0;
+      align-items: start; padding: var(--s3) 0;
     }
     .decision__num {
       font-family: var(--sans);
@@ -308,7 +309,7 @@
     }
 
     /* ── REFLECTION LIST ─────────────────────────────────── */
-    .reflection__list { list-style: none; margin-top: var(--s5); }
+    .reflection__list { list-style: none; }
     .reflection__list li {
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
       color: var(--ink-2); padding: var(--s1) 0;
@@ -406,8 +407,7 @@
       <h1 class="hero__title">Aurafact</h1>
 
       <p class="hero__tagline">
-        A spatial archive for environmental audio designed from a cultural
-        thesis, built in collaboration with AI, and hosted as a living product.
+        A spatial archive for environmental sound. Built from a cultural thesis, developed with AI, and released as a living product.
       </p>
 
       <a class="hero__cta"
@@ -427,7 +427,7 @@
         </div>
         <div class="hero__meta-item">
           <p class="meta-label">Built With</p>
-          <p class="meta-value">Claude · Cursor · ChatGPT · p5.js · GSAP</p>
+          <p class="meta-value">Claude, Cursor, ChatGPT, p5.js, GSAP</p>
         </div>
         <div class="hero__meta-item">
           <p class="meta-label">Outcome</p>
@@ -458,14 +458,10 @@
     <div class="wrap-text">
 
       <span class="cs-eyebrow">The Problem</span>
-      <h2 class="cs-h2">We photograph every surface of the earth. We archive almost none of its sound.</h2>
+      <h2 class="cs-h2">We archive almost nothing we hear.</h2>
 
       <p class="cs-p">
-        We live in an era of visual over-saturation. Every landscape is
-        routinely mapped, photographed, and filmed with clinical precision.
-        The Earth's acoustic identity, the density of birdsong before a wildfire,
-        the rhythmic clatter of a tram line that no longer runs, the low
-        drone of a harbour at dawn, the vibrato of a crowd gathering, disappears without record.
+        We live in a visually saturated world. Landscapes are mapped, photographed, and recorded with precision. But their acoustic identity, the density of birds before a wildfire, the rhythm of a tram line, the low hum of a harbour at dawn, disappears without record.
       </p>
 
       <p class="cs-p">
@@ -474,24 +470,22 @@
         digital graveyards that no one browses. Ambient sound apps are
         beautiful to inhabit but impossible to study, more like toys, not tools.
         Neither treats environmental audio as what it actually is: a primary
-        historical artifact.
+        historical artifact Sound is not absent. It is simply unkept.
       </p>
 
       <p class="cs-p">
-        <strong>Design question:</strong> How might we design a digital archive
-        that treats environmental audio as a cultural artifact, searchable,
-        interpretable, and accessible to radically different audiences?
+        <strong>Design question:</strong> How might we design an archive that treats environmental sound as a cultural artifact, searchable, interpretable, and usable across audiences?
       </p>
 
       <!-- Competitive gap -->
       <div class="insight__pivot" style="margin-top: var(--s8);">
         <div class="pivot__cell">
           <p class="pivot__cell-label">Digital Graveyards</p>
-          <p class="pivot__cell-text">Rich in data, absent of experience. British Library Sound Archive is authoritative but with lacks an immersiv experience.</p>
+          <p class="pivot__cell-text">Academic sound archives, like The British Library Sound Archive, are rich in data, but are rarely experienced.
         </div>
         <div class="pivot__cell pivot__cell--dark">
-          <p class="pivot__cell-label">Aurafact occupies the gap</p>
-          <p class="pivot__cell-text">Immersive utility. A research-grade archive that you actually want to inhabit.</p>
+          <p class="pivot__cell-label">Aurafact sits between two worlds</p>
+          <p class="pivot__cell-text">A system that combines structure and experience. A research-grade archive that you actually want to inhabit.</p>
         </div>
       </div>
 
@@ -512,19 +506,12 @@
       <h2 class="cs-h2">Sound is not a file. It is an environmental event.</h2>
 
       <p class="cs-p">
-        The insight that shaped everything: most audio interfaces treat a
-        recording as a media object to be played. Aurafact treats it as
-        a documented specimen, inseparable from the exact temperature,
-        barometric pressure, microphone topology, and ecological conditions
-        of its capture.
+        Most interfaces treat audio as something to play. Aurafact treats it as something that happened.
+       <i>Aurafact</i> treats sound as a documented specimen, inseparable from where it was captured, how it was recorded, what was present in that moment
       </p>
 
       <p class="cs-p">
-        This reframed the entire information architecture. A recording
-        doesn't belong in a playlist. It belongs in an archive with full
-        environmental provenance, the same rigour a museum applies to a
-        physical artifact. The interface had to be built around that idea,
-        not bolted onto it.
+        This reframed the entire system because a recording doesn’t belong in a playlist, it belongs in an archive with context, structure, and provenance.
       </p>
 
       <div class="cs-quote">
@@ -541,7 +528,7 @@
       alt="Aurafact Specimen Archive — searchable table showing specimen IDs, artifact names, locations, source types, subtypes, and frequency profiles with a detail panel open on the right"
       loading="lazy"
     />
-    <figcaption>The Specimen Archive: each recording documented as a fully provenance-traced artifact, not a file entry.</figcaption>
+    <figcaption>The Specimen Archive: Each recording documented as a traceable artifact, not a file.</figcaption>
   </figure>
 
 
@@ -558,61 +545,44 @@
       <h2 class="cs-h2">Built with AI. Directed by design.</h2>
 
       <p class="cs-p">
-        Aurafact was built in active collaboration with three AI tools,
-        each used for a specific role where it added the most value.
-        This wasn't AI-as-shortcut. It was AI-as-medium: a new way of
-        working that required the same design discipline as any other
-        tool, but demanded a different kind of precision.
+        <i>Aurafact</i> was developed in collaboration with three AI tools, each used with a specific role not as shortcuts, but as extensions of the design process.
       </p>
 
       <div class="ai-grid">
 
         <div class="ai-cell">
           <p class="ai-cell__tool">Claude + ChatGPT</p>
-          <p class="ai-cell__role">Copy, rationale, and case study structure</p>
+          <p class="ai-cell__role">Writing, structure, and rationale</p>
           <p class="ai-cell__detail">
-            Used to review and refine all written content, the Manifesto,
-            the Field Guide principles, specimen field notes, and the
-            language of the taxonomy system. Every output was reviewed,
-            edited, and approved before use. Claude's role was to push
-            the writing toward precision, not to write autonomously.
+            Used to refine the manifesto, taxonomy, field notes, and case study language.
+Every output was reviewed and edited. The goal was precision, not automation.
           </p>
         </div>
 
         <div class="ai-cell">
           <p class="ai-cell__tool">Cursor + Claude</p>
-          <p class="ai-cell__role">Front-end build and interaction development</p>
+          <p class="ai-cell__role">Front-end and interaction design</p>
           <p class="ai-cell__detail">
             Used to write and iterate on the HTML, CSS, and JavaScript
             across all four pages. The p5.js waveform simulation on the
             homepage, the GSAP page transitions, the archive table with
             its split-panel detail view, and the taxonomy colour system
-            were all developed through directed prompting in Cursor —
-            with each output reviewed against design intent before shipping.
+            were all developed through directed prompting in Cursor, with all outputs were directed and refined against design intent.
           </p>
         </div>
 
         <div class="ai-cell">
           <p class="ai-cell__tool">ChatGPT + Perplexity</p>
-          <p class="ai-cell__role">Research, taxonomy, and acoustic metadata</p>
+          <p class="ai-cell__role">Research and taxonomy</p>
           <p class="ai-cell__detail">
-            Used to develop the three-axis taxonomy system (Source ·
-            Texture · Environment), the acoustic metadata schema for each
-            specimen, and the supporting research behind the accessibility
-            framework. All outputs were cross-verified with Perplexity
-            before being incorporated into the product. ChatGPT was a
-            research assistant, not an authority.
+            Used to develop the three-axis classification system, the acoustic metadata schema and, the supporting research. All information was cross-checked before use. AI supported thinking, it did not replace it.
           </p>
         </div>
 
       </div>
 
       <p class="cs-p" style="margin-top: var(--s6);">
-        The most important insight from this way of working: AI tools amplify
-        the clarity of your thinking or the confusion of it. Every prompt
-        that returned something useful started with a precise design
-        constraint. The quality of the output was a direct function of
-        the quality of the brief.
+        AI amplifies clarity or confusion. The quality of output followed the quality of the brief and precision in prompting became a design skill.
       </p>
 
     </div>
@@ -629,7 +599,7 @@
     <div class="wrap-text">
 
       <span class="cs-eyebrow">Design Decisions</span>
-      <h2 class="cs-h2">Four decisions that made sound navigable</h2>
+      <h2 class="cs-h2">Four decisions that made sound navigable.</h2>
 
       <div class="decisions__list">
 
@@ -638,93 +608,39 @@
           <div>
             <h3 class="decision__title">The interface begins in darkness</h3>
             <p class="decision__body">
-              The homepage opens on a near-black ground with a p5.js
-              waveform animation, vertical frequency columns that pulse
-              slowly across the viewport. There is no hero image. No bright
-              photography. The darkness forces the eye to read the
-              sound rather than consume a picture.
+              The homepage opens on a near-black field with a slow waveform animation, no imagery. No visual anchor. The absence of image shifts attention toward sound.
             </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                A dark homepage is harder to read in bright environments
-                and can read as cold to casual visitors. The product is
-                not for casual visitors and the darkness is the first
-                signal of that.
-              </span>
-            </div>
           </div>
         </div>
 
         <div class="decision">
           <span class="decision__num">02</span>
           <div>
-            <h3 class="decision__title">Dual typography registers: serif for narrative, monospace for data</h3>
-            <p class="decision__body">
-              Libre Baskerville carries the editorial voice, the thesis,
-              the field notes, the cultural argument. DM Mono carries the
-              technical layer, specimen IDs, frequency profiles, GPS
-              coordinates, metadata labels. The typographic switch is
-              not decorative. It tells the user which register they are
-              reading in at a glance.
+            <h3 class="decision__title">Dual typography system</h3>
+            <p class="decision__body"> Two typefaces defined two modes. Serif for narrative and interpretation, and monospace for data and structure. The shift is functional becuase it tells the user what they are reading.
             </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                Two typefaces in a single interface risk visual conflict.
-                The risk is managed by restricting monospace strictly to
-                data fields, it never appears in prose.
-              </span>
-            </div>
           </div>
         </div>
 
         <div class="decision">
           <span class="decision__num">03</span>
           <div>
-            <h3 class="decision__title">A three-axis taxonomy, not a tag cloud</h3>
+            <h3 class="decision__title">A three-axis taxonomy</h3>
             <p class="decision__body">
-              Every specimen is classified across three independent axes:
-              Source (Geophony · Biophony · Anthropophony), Texture
-              (Rhythmic · Drone · Transient · Granular), and Environment
-              (Forest · Harbour · Transit · Street). This was developed
-              through structured research and validated against acoustic
-              ecology literature. The taxonomy is the product's intellectual
-              spine, it's what separates <i>Aurafact</i> from a folder of audio files.
+              Each recording is classified across: Source Type (Geophony, Biophony, Anthropophony), Location, Subtype, and Frequency Profile.
             </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                A rigid taxonomy breaks down at the edges, some recordings
-                sit between categories. The current version uses primary
-                classification only; a future version would support
-                multi-axis tagging per specimen.
-              </span>
-            </div>
           </div>
         </div>
 
         <div class="decision">
           <span class="decision__num">04</span>
           <div>
-            <h3 class="decision__title">The archive is a split-panel database, not a media gallery</h3>
+            <h3 class="decision__title">Archive as database, not gallery</h3>
             <p class="decision__body">
-              The Archive page presents specimens as rows in a research
-              database: Specimen ID, Artifact, Location, Source Type,
-              Subtype, Frequency Profile. Selecting a row opens a detail
+              The Archive page presents specimens as rows in a table. Selecting a row opens a detail
               panel on the right: audio playback, metadata fields, and
-              field notes. No thumbnails. No cards. This is a deliberate
-              break from how audio is usually presented online.
+              field notes.This is a deliberate break from how audio is usually presented online.
             </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                A table-first layout is less immediately engaging than
-                a card grid for casual browsers. It is significantly more
-                useful for the researchers, archivists, and sound designers
-                who are Aurafact's actual audience.
-              </span>
-            </div>
           </div>
         </div>
 
@@ -745,7 +661,7 @@
       alt="Aurafact Field Guide — design principles panel on the left alongside acoustic studies photography grid on the right"
       loading="lazy"
     />
-    <figcaption>The Field Guide: design principles and acoustic studies, the product's intellectual and visual foundation made public.</figcaption>
+    <figcaption>The Field Guide: The system’s principles and acoustic studies, made visible.</figcaption>
   </figure>
 
 
@@ -761,33 +677,22 @@
       <span class="cs-eyebrow">Outcome</span>
 
       <p class="outcome__lead">
-        A live, multi-page product that demonstrates what a research-grade audio archive looks and feels like.
+        A live, multi-page product demonstrating a new model for sound archiving.
       </p>
 
       <p class="cs-p">
         <i>Aurafact</i> is hosted on GitHub and live at <a class="text-link" href="https://jenniferyaya.github.io/aura-fact/index.html">jenniferyaya.github.io/aura-fact</a>. The product
-        comprises four pages — Homepage, Archive, Field Guide, and Glossary —
-        with a design system built on a strict 8pt grid, dual-register
-        typography, and a consistent token set. The archive currently holds
-        11 documented specimens across 4 regions, each with full
-        environmental provenance metadata.
+        includes four pages:Homepage, Archive, Field Guide, and Glossary.
+        The archive contains 13 specimens across 5 regions, each with full metadata and environmental context.
       </p>
 
       <p class="cs-p">
-        The homepage's p5.js waveform animation responds to live audio
-        spectrum data. The archive table supports sorting and live search.
-        The detail panel opens on row selection with audio playback,
-        metadata, and field notes. Every interaction was built through
-        directed AI prompting, reviewed against design intent, and
-        refined until it matched the product's archival character.
+        The homepage's p5.js waveform animation responds to live awaveform responding to audio data, a TSearchable, sortable archive table, and split-panel detail view with playback and metadata. Every interaction was built through directed AI collaboration and refined to match the product’s tone.
       </p>
 
       <p class="cs-p">
-        The project demonstrated something worth naming: when you work
-        with AI as a collaborator rather than a generator, the constraint
-        is always your own precision. The clearer the design brief, the
-        better the output. The more specific the prompt, the less
-        revision required. AI fluency, at its core, is design fluency.
+        The project demonstrated that when you work with AI the clearer the design brief, the
+        better the output. The more specific the prompt, the less revision required. AI fluency, at its core, is design fluency.
       </p>
 
     </div>
@@ -795,11 +700,11 @@
 
   <figure class="cs-figure">
     <img
-      src="img/JF_WEB_AurafactHome2.png"
+      src="img/JF_WEB_AurafactHome.png"
       alt="Aurafact homepage — below-fold section showing acoustic preservation statement and recent additions table with specimen data"
       loading="lazy"
     />
-    <figcaption>Homepage below fold: the acoustic preservation manifesto alongside the most recent archive additions.</figcaption>
+    <figcaption>Homepage (below fold): The preservation manifesto alongside recent additions..</figcaption>
   </figure>
 
 
@@ -816,9 +721,8 @@
       <h2 class="cs-h2">What designing for sound revealed about interfaces</h2>
 
       <p class="cs-p">
-        Aurafact made visible how thoroughly visual modern interface
-        paradigms are. Search, browse, filter, sort — every standard
-        pattern is built for the eye. Designing a product where sound
+        Designing for sound revealed how visual most interfaces are, but <i>Aurafact</i> required a different approach: taxonomy as translation, metadata as context, and typography as signal.
+Designing a product where sound
         is the primary artifact required building a different representational
         vocabulary from scratch: taxonomy as sensory translation, metadata
         as environmental context, typography register as content signal.
@@ -826,21 +730,21 @@
 
       <p class="cs-p">
         Working with AI throughout the build also changed how I think about
-        the relationship between design thinking and tool use. A prompt is
+        the relationship between design thinking and tools. A prompt is
         a brief. A revision is a critique. Cursor and Claude don't know
-        what good looks like in your product — you do. The designer's
-        job doesn't disappear; it becomes more precise.
+        what good looks like in your product, you do. The designer's
+        job doesn't disappear; it becomes more exact.
       </p>
 
       <ul class="reflection__list">
-        <li>An interactive spectrogram component: scrubbable, frequency-annotated, and accessible to d/Deaf users via haptic output and descriptive transcription</li>
-        <li>The Compare Tool: two specimens placed in synchronized spectral juxtaposition, with difference highlighting and shareable output</li>
-        <li>A spatial map discovery layer: geographic clustering of recordings with acoustic heatmap overlay showing where silence is being lost globally</li>
-        <li>AI-generated descriptive audio transcriptions, built on the prompt library developed during this phase, deployed as accessibility and discoverability infrastructure</li>
+        <li>Interactive spectrogram with annotation and accessibility support</li>
+        <li>Compare tool for side-by-side acoustic analysis</li>
+        <li>Spatial map for exploring sound geographically</li>
+        <li>AI-assisted descriptive audio transcriptions for accessibility and indexing</li>
       </ul>
 
-      <div class="cs-quote" style="margin-top: var(--s10);">
-        <p class="cs-quote__text">The next horizon is using AI not just to build the archive — but to recover what it contains: reconstructing lost acoustic environments from fragmentary recordings.</p>
+      <div class="cs-quote" style="margin-top: var(--s4);">
+        <p class="cs-quote__text">Longer term: using AI not just to build the archive, but to reconstruct lost sound environments.</p>
       </div>
 
     </div>
