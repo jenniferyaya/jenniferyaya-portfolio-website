@@ -156,6 +156,13 @@
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
       line-height: 1.53; color: var(--ink-2); margin-bottom: var(--s3);
     }
+    .cs-p2 {
+      font-family: var(--sans);
+      font-size: var(--t-15);
+      font-weight: 400;
+      line-height: 1.53;
+      color: var(--ink-2);
+    }
     .cs-p:last-child { margin-bottom: 0; }
     .cs-p strong { color: var(--ink); font-weight: 700; }
     .cs-quote { margin: var(--s8) 0; }
@@ -284,7 +291,7 @@
     }
 
     /* ── REFLECTION LIST ─────────────────────────────────── */
-    .reflection__list { list-style: none; margin-top: var(--s5); }
+    .reflection__list { list-style: none; }
     .reflection__list li {
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
       color: var(--ink-2); padding: var(--s1) 0;
@@ -394,8 +401,7 @@
       <h1 class="hero__title">Lululemon</h1>
 
       <p class="hero__tagline">
-        A heuristic evaluation and targeted redesign of the lululemon iOS app and
-        finding where movement content gets lost to design a clearer path to it.
+        A heuristic evaluation and targeted redesign of the lululemon iOS app, identifying where movement content gets buried, and designing a clearer path to it.
       </p>
 
       <div class="hero__meta">
@@ -460,9 +466,7 @@
       </p>
 
       <p class="cs-p">
-        <strong>Design challenge:</strong> How might we make it easier for users
-        to find the right classes, products, and content, so they know what
-        to do next and feel confident using the app?
+        <strong>Design challenge:</strong> How might we redesign the navigation and content hierarchy so that movement-focused users can find, start, and complete a class without hitting a dead end?
       </p>
 
       <div class="insight__pivot">
@@ -493,7 +497,7 @@
       <h2 class="cs-h2">Seven issues were identified. Four carried the most weight.</h2>
 
       <p class="cs-p">
-        Our team followed the full journey—from home screen to class completion—using Nielsen’s heuristics and a 0–4 severity scale. The most significant issues shared a pattern: the interface set expectations it didn’t fulfill, and failed to guide users when those expectations broke.
+        Our team audited the full journey, from home screen to class completion, using Nielsen's heuristics and a 0–4 severity scale. The most significant findings shared one pattern: the interface set expectations it didn't fulfill, then left users with nowhere to go.
       </p>
 
       <table class="findings-table">
@@ -574,7 +578,7 @@
     <div class="wrap-text">
 
       <span class="cs-eyebrow">My Contribution</span>
-      <h2 class="cs-h2">Two screens. Two moments that matter.</h2>
+      <h2 class="cs-h2">The decision to start. The moment it ends.</h2>
 
       <p class="cs-p">
         Within the team's sprint, I owned the Class Detail page and the
@@ -594,7 +598,7 @@
               The original layout buried the start action beneath product cards and instructor details. A user ready to begin had to scroll past the shop to find the entry point.
             </p>
             <p class="decision__body">
-              The redesign moves the instructor context and start action to the topand product recommendations appear after the class, when they are most relevant.
+              The redesign moves instructor context and the start action to the top, product recommendations appear after the class, when they're actually relevant.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
@@ -610,10 +614,7 @@
           <span class="decision__num">02</span>
           <div>
             <h3 class="decision__title">Class Completion: Closing the loop</h3>
-            <p class="decision__body"> The existing flow ended without acknowledgment. After
-              a class ended, users were returned to the class player without
-              acknowledgement that anything had happened. No confirmation.
-              No closure. No next steps.
+            <p class="decision__body"> The existing flow ended without acknowledgement. Users were returned to the class player as if nothing had happened, no confirmation, no closure, no next step.
             </p>
             <p class="decision__body">
               Every movement app users have a reference point for — Peloton,
@@ -674,14 +675,11 @@
       <h2 class="cs-h2">Three goals. One coherent system.</h2>
 
       <p class="cs-p">
-        Our team's redesign addressed the three goals that emerged from
-        the prioritization matrix: make classes easy to find, help users
-        choose with confidence, and eliminate dead ends across the
-        movement journey.
+        Our team's redesign addressed three goals from the prioritization matrix: make classes easy to find, help users choose with confidence, and eliminate dead ends across the movement journey.
       </p>
 
       <p class="cs-p">
-        The <i>For You</i> screen was restructured so that movement content appears immediately, alongside product recommendations rather than behind separate navigation, community events were given equal visual weight, interactive elements were made consistently responsive, and dead ends were replaced with clear next steps.
+        The <i>For You</i> screen was restructured so movement content appears immediately (alongside product recommendations) rather than hidden behind separate navigation. Community events were given equal visual weight. Interactive elements were made consistently responsive. Dead ends were replaced with clear next steps.
       </p>
 
     </div>
@@ -736,12 +734,7 @@
       </p>
 
       <p class="cs-p">
-        The sharpest finding from the evaluation: that lululemon has
-        excellent content that the interface actively hides, translated
-        into a design strategy with a clear business case: a user who
-        can find and complete a class is more likely to return, engage
-        with the community, and convert on product recommendations
-        than one who never found the class in the first place.
+        The sharpest finding from the evaluation, that excellent content was being actively hidden by the interface,  translated directly into the design strategy and its business case: a user who can find and complete a class is more likely to return, engage with the community, and convert on product recommendations than one who never found the class at all.
       </p>
 
     </div>
@@ -761,15 +754,14 @@
       <h2 class="cs-h2">What a heuristic evaluation actually teaches you.</h2>
 
       <p class="cs-p">
-        The most useful thing this sprint reinforced is that heuristic
-        violations aren't UI bugs, they are breaks in trust—moments where the product signals one thing and delivers another. The accumulation of those moments is what turns a
-        user who came to move into a user who's confused and leaves.
+        What this sprint made concrete is something easy to say in theory: every heuristic violation is a broken promise. The lululemon app wasn't poorly designed, it was well-designed for a version of itself that didn't prioritize movement. The confusion wasn't random. It was the predictable result of a content strategy and an interface that had quietly diverged.
       </p>
 
       <p class="cs-p">
         Working on the Class Detail and Completion screens reinforced a simple principle: once a user has decided to act, the interface should step aside. The role of the system is to support that decision, not compete with it.
       </p>
 
+      <p class="cs-p2">If the project continued, the next layer would include:</p>
       <ul class="reflection__list">
         <li>Open questions remain around: Usability testing with new and returning movement users to validate whether the restructured For You screen reduces time-to-class</li>
         <li>A progress and streak layer on the Class Completion screen (once the backend infrastructure exists to support it)</li>
