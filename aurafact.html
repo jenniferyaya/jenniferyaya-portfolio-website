@@ -168,6 +168,13 @@
       font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
       line-height: 1.53; color: var(--ink-2); margin-bottom: var(--s3);
     }
+    .cs-p2 {
+      font-family: var(--sans);
+      font-size: var(--t-15);
+      font-weight: 400;
+      line-height: 1.53;
+      color: var(--ink-2);
+    }
     .cs-p:last-child { margin-bottom: 0; }
     .cs-p strong { color: var(--ink); font-weight: 700; }
     .cs-quote { margin: var(--s8) 0; }
@@ -407,7 +414,7 @@
       <h1 class="hero__title">Aurafact</h1>
 
       <p class="hero__tagline">
-        A spatial archive for environmental sound. Built from a cultural thesis, developed with AI, and released as a living product.
+       A spatial archive for environmental sound. Built from a cultural thesis, developed with AI, and published as a fully functional product.
       </p>
 
       <a class="hero__cta"
@@ -466,8 +473,7 @@
 
       <p class="cs-p">
         Existing approaches to sound archiving sit at two unhelpful extremes.
-        Academic sound libraries are rich in data but absent of experience, almost like
-        digital graveyards that no one browses. Ambient sound apps are
+        Academic sound libraries are rich in data but absent of experience — digital graveyards that no one browses. Ambient sound apps are
         beautiful to inhabit but impossible to study, more like toys, not tools.
         Neither treats environmental audio as what it actually is: a primary
         historical artifact Sound is not absent. It is simply unkept.
@@ -507,7 +513,7 @@
 
       <p class="cs-p">
         Most interfaces treat audio as something to play. Aurafact treats it as something that happened.
-       <i>Aurafact</i> treats sound as a documented specimen, inseparable from where it was captured, how it was recorded, what was present in that moment
+       <i>Aurafact</i> treats sound as a documented specimen, inseparable from where it was captured, how it was recorded, what was present in that moment.
       </p>
 
       <p class="cs-p">
@@ -563,11 +569,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
           <p class="ai-cell__tool">Cursor + Claude</p>
           <p class="ai-cell__role">Front-end and interaction design</p>
           <p class="ai-cell__detail">
-            Used to write and iterate on the HTML, CSS, and JavaScript
-            across all four pages. The p5.js waveform simulation on the
-            homepage, the GSAP page transitions, the archive table with
-            its split-panel detail view, and the taxonomy colour system
-            were all developed through directed prompting in Cursor, with all outputs were directed and refined against design intent.
+            Used to write and iterate on the HTML, CSS, and JavaScript across all five pages. The p5.js waveform, GSAP transitions, archive table with split-panel detail view, and taxonomy colour system were all developed through directed prompting in Cursor, each output tested and refined against design intent.
           </p>
         </div>
 
@@ -582,7 +584,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
       </div>
 
       <p class="cs-p" style="margin-top: var(--s6);">
-        AI amplifies clarity or confusion. The quality of output followed the quality of the brief and precision in prompting became a design skill.
+        AI amplifies clarity or confusion. The quality of output followed the quality of the brief, and precision in prompting became a design skill.
       </p>
 
     </div>
@@ -608,7 +610,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
           <div>
             <h3 class="decision__title">The interface begins in darkness</h3>
             <p class="decision__body">
-              The homepage opens on a near-black field with a slow waveform animation, no imagery. No visual anchor. The absence of image shifts attention toward sound.
+              The homepage opens on a near-black field with a slow waveform animation, no imagery. No visual anchor. The absence of a visual anchor is a provocation, it asks the visitor to arrive differently than they would on any other site.
             </p>
           </div>
         </div>
@@ -617,7 +619,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
           <span class="decision__num">02</span>
           <div>
             <h3 class="decision__title">Dual typography system</h3>
-            <p class="decision__body"> Two typefaces defined two modes. Serif for narrative and interpretation, and monospace for data and structure. The shift is functional becuase it tells the user what they are reading.
+            <p class="decision__body"> Two typefaces defined two modes. Serif for narrative and interpretation, and monospace for data and structure. The shift is functional because it tells the user what they are reading. In an archive where interpretation and data coexist on the same page, typography becomes a navigational signal, not decoration.
             </p>
           </div>
         </div>
@@ -627,7 +629,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
           <div>
             <h3 class="decision__title">A three-axis taxonomy</h3>
             <p class="decision__body">
-              Each recording is classified across: Source Type (Geophony, Biophony, Anthropophony), Location, Subtype, and Frequency Profile.
+              Classifying sound across three axes, source type, location, and frequency profile, required building a schema that works for both a researcher querying by biophony type and a visitor exploring by region. The taxonomy had to hold both use cases without flattening either.
             </p>
           </div>
         </div>
@@ -637,9 +639,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
           <div>
             <h3 class="decision__title">Archive as database, not gallery</h3>
             <p class="decision__body">
-              The Archive page presents specimens as rows in a table. Selecting a row opens a detail
-              panel on the right: audio playback, metadata fields, and
-              field notes.This is a deliberate break from how audio is usually presented online.
+              The default for audio online is a gallery or playlist, prioritising mood over meaning. A table was the only format that kept provenance, metadata, and specimen identity intact. The table earns its archival credibility precisely because it doesn't feel like a music app.
             </p>
           </div>
         </div>
@@ -687,11 +687,11 @@ Every output was reviewed and edited. The goal was precision, not automation.
       </p>
 
       <p class="cs-p">
-        The homepage's p5.js waveform animation responds to live awaveform responding to audio data, a TSearchable, sortable archive table, and split-panel detail view with playback and metadata. Every interaction was built through directed AI collaboration and refined to match the product’s tone.
+        The homepage features a p5.js waveform animation, a searchable and sortable archive table, and a split-panel detail view with playback and full metadata. Every interaction was built through directed AI collaboration and refined to match the product's tone.
       </p>
 
       <p class="cs-p">
-        The project demonstrated that when you work with AI the clearer the design brief, the
+        The project demonstrated that when you work with AI, the clearer the design brief and then the
         better the output. The more specific the prompt, the less revision required. AI fluency, at its core, is design fluency.
       </p>
 
@@ -704,7 +704,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
       alt="Aurafact homepage — below-fold section showing acoustic preservation statement and recent additions table with specimen data"
       loading="lazy"
     />
-    <figcaption>Homepage (below fold): The preservation manifesto alongside recent additions..</figcaption>
+    <figcaption>Homepage (below fold): The preservation manifesto alongside recent additions.</figcaption>
   </figure>
 
 
@@ -721,11 +721,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
       <h2 class="cs-h2">What designing for sound revealed about interfaces</h2>
 
       <p class="cs-p">
-        Designing for sound revealed how visual most interfaces are, but <i>Aurafact</i> required a different approach: taxonomy as translation, metadata as context, and typography as signal.
-Designing a product where sound
-        is the primary artifact required building a different representational
-        vocabulary from scratch: taxonomy as sensory translation, metadata
-        as environmental context, typography register as content signal.
+        Designing for sound revealed how deeply visual most interface assumptions are. Building <i>Aurafact</i> required constructing a different representational vocabulary from scratch, taxonomy as sensory translation, metadata as environmental context, typography as content signal.
       </p>
 
       <p class="cs-p">
@@ -736,8 +732,9 @@ Designing a product where sound
         job doesn't disappear; it becomes more exact.
       </p>
 
+      <p class="cs-p2">If the project continued, the next layer of work would include:</p>
       <ul class="reflection__list">
-        <li>Open questions remain around: Interactive spectrogram with annotation and accessibility support</li>
+        <li>Interactive spectrogram with annotation and accessibility support</li>
         <li>Compare tool for side-by-side acoustic analysis</li>
         <li>Spatial map for exploring sound geographically</li>
         <li>AI-assisted descriptive audio transcriptions for accessibility and indexing</li>
