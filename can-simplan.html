@@ -257,6 +257,13 @@
       color: var(--ink-2);
       margin-bottom: var(--s3);
     }
+     .cs-p2 {
+      font-family: var(--sans);
+      font-size: var(--t-15);
+      font-weight: 400;
+      line-height: 1.53;
+      color: var(--ink-2);
+    }
     .cs-p:last-child { margin-bottom: 0; }
     .cs-p strong { color: var(--ink); font-weight: 700; }
 
@@ -423,7 +430,7 @@
     /* ═══════════════════════════════════════════════════════════
        REFLECTION
     ═══════════════════════════════════════════════════════════ */
-    .reflection__list { list-style: none; margin-top: var(--s5); }
+    .reflection__list { list-style: none; }
     .reflection__list li {
       font-family: var(--sans);
       font-size: var(--t-15);
@@ -568,9 +575,7 @@
       </h1>
 
       <p class="hero__tagline">
-        An AI-assisted zoning pre-screen tool that helps municipal planners evaluate
-        proposals faster while keeping every decision traceable
-        and defensible.
+        An AI-assisted zoning pre-screen tool that helps municipal planners evaluate development proposals with confidence, ensuring every decision traceable, defensible, and human.
       </p>
 
       <a class="hero__cta"
@@ -633,7 +638,7 @@
       </div>
 
       <p class="cs-p">
-        <strong>Design challenge:</strong> How might we design an AI-assisted planning tool that accelerates proposal review while ensuring every output a planner relies on is transparent, traceable, and defensible?
+        <strong>Design challenge:</strong> How might we design an AI planning tool where every output a planner acts on is something they can explain and stand behind?
       </p>
 
     </div>
@@ -657,8 +662,7 @@
         the barrier to AI adoption wasn’t skepticism about model accuracy, it was the inability to explain any individual output to a colleague, a councillor, or a community member asking difficult questions.
       </p>
 
-      <p class="cs-p">
-This insight reframed the design problem entirely. The goal focused on making reasoning visible so each output could be understood, traced, and discussed.
+      <p class="cs-p"> This reframed the design problem entirely. The goal wasn't to make AI smarter or faster. It was to make it legible, and to keep a human hand visible at every step.
       </p>
 
       <!-- Before / After pivot -->
@@ -705,7 +709,7 @@ This insight reframed the design problem entirely. The goal focused on making re
       </p>
 
       <p class="cs-p">
-       I designed the end-to-end interface,from intake to audit trail, so that every output a planner encounters is something they can trace, explain, and confidently stand behind.
+       I owned the end-to-end interface, from login through audit trail, as the sole UX designer on a four-day multidisciplinary sprint team.
       </p>
 
     </div>
@@ -854,7 +858,7 @@ This insight reframed the design problem entirely. The goal focused on making re
       </p>
 
       <p class="cs-p">
-        The prototype was developed in four days as part of a cross-disciplinary sprint and selected as the wining project amongst oru cohort. The interface spans the full workflow, from login to audit trail, with every stage designed so AI analysis passes through a clear human review checkpoint before a decision can move forward.
+        hTe prototype was completed in four days and selected as the winning project amongst our cohort. The interface covers eight distinct screens, from proposal intake through audit trail, each passing through a mandatory human checkpoint before the workflow can advance. The sprint confirmed the central thesis: in civic AI tools, legibility isn't a nice-to-have, it's the condition under which the tool gets used at all.
       </p>
 
       <p class="cs-p">
@@ -897,8 +901,9 @@ This insight reframed the design problem entirely. The goal focused on making re
         It also required translating in both directions—making system logic legible to planners, while shaping planner input into something the system could support.
       </p>
 
+      <p class="cs-p2">If the project continued, the next layer of work would include:</p>
       <ul class="reflection__list">
-        <li>Open questions remain around: Does requiring a written rationale meaningfully change planner behaviour, or would it introduce workarounds?</li>
+        <li>Does requiring a written rationale meaningfully change planner behaviour, or would it introduce workarounds?</li>
         <li>Civic decision tools must meet the highest accessibility standards without exception.</li>
         <li>How would real-world outcomes recalibrate the model over time and how would that recalibration be communicated back to planners.</li>
         <li>ifferent cities weigh planning criteria differently. Could the interface adapt to those variations without compromising transparency?</li>
