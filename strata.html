@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strata — Yaya Falanga</title>
+  <meta name="description" content="Strata: A literary geography interface that maps world literature to the cities that shaped it — designed and built in collaboration with Claude by Jennifer Yaya Falanga." />
+  <meta property="og:title" content="Strata — Jennifer Yaya Falanga" />
+  <meta property="og:description" content="A literary geography interface mapping world literature to cities across historical eras. Designed and built with AI collaboration." />
+  <meta property="og:type" content="article" />
+  <link rel="icon" type="image/png" href="img/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS — verbatim from Clara (source of truth)
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --ink:        #1a1a18;
+      --ink-2:      #3d3d3a;
+      --muted:      #393937;
+      --muted-2:    #696962;
+      --border:     #e4e4de;
+      --border-2:   #f0f0ea;
+      --bg:         #faf9f7;
+      --bg-raised:  #f3f2ef;
+      --accent:     #1a1a18;
+
+      --t-11: 0.7075rem;
+      --t-13: 0.7525rem;
+      --t-14: 0.8775rem;
+      --t-15: 0.9775rem;
+      --t-17: 1.0825rem;
+      --t-20: 1.25rem;
+      --t-24: 1.5rem;
+      --t-32: 2rem;
+      --t-40: 2.5rem;
+      --t-56: 3.5rem;
+      --t-72: 4.5rem;
+
+      --s1:  0.5rem;
+      --s2:  1rem;
+      --s3:  1.5rem;
+      --s4:  2rem;
+      --s5:  2.5rem;
+      --s6:  3rem;
+      --s8:  4rem;
+      --s10: 5rem;
+      --s12: 6rem;
+      --s16: 8rem;
+      --s20: 10rem;
+
+      --col-text: 900px;
+      --col-wide: 1100px;
+      --col-full: 1360px;
+
+      --sans:          area-normal, 'Helvetica Neue', Arial, sans-serif;
+      --sans-extended: area-extended, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-size: var(--t-15);
+      line-height: 1.75;
+      color: var(--ink-2);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a   { color: inherit; text-decoration: none; }
+
+    .wrap-text { max-width: var(--col-text); margin-inline: auto; padding-inline: var(--s5); }
+    .wrap-full  { max-width: var(--col-full); margin-inline: auto; padding-inline: var(--s4); }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--s2) var(--s5);
+      background: var(--bg); border-bottom: 1px solid var(--border);
+    }
+    .nav__logo {
+      font-family: var(--sans-extended);
+      font-size: var(--t-15);
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .nav__back {
+      font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      display: flex; align-items: center; gap: 0.4em; transition: color 0.18s;
+    }
+    .nav__back::before { content: '←'; font-size: 0.9em; }
+    .nav__back:hover { color: var(--ink); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero { padding-top: calc(var(--s16) + 3rem); padding-bottom: var(--s10); }
+    .hero__eyebrow {
+      display: block; font-family: var(--sans); font-size: var(--t-11);
+      font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: var(--s3);
+    }
+    .hero__title {
+      font-family: var(--sans);
+      font-size: clamp(var(--t-32), 5.5vw, var(--t-56));
+      line-height: 1.2;
+      color: var(--ink);
+      max-width: 18ch;
+      margin-bottom: var(--s5);
+    }
+    .hero__title em { font-style: italic; }
+    .hero__tagline {
+      font-size: clamp(var(--t-20), 2vw, var(--t-24));
+      line-height: 1.45; color: var(--muted); max-width: 60ch; margin-bottom: var(--s5);
+    }
+    .hero__cta {
+      display: inline-flex; align-items: center; gap: var(--s1);
+      font-family: var(--sans); font-size: var(--t-13); font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink);
+      border: 1px solid var(--border); padding: 0.6rem 1.2rem;
+      border-radius: 2px; transition: background 0.18s, border-color 0.18s;
+    }
+    .hero__cta::after { content: ' ↗'; opacity: 0.5; }
+    .hero__cta:hover  { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .hero__meta {
+      display: flex; flex-wrap: wrap; gap: var(--s5);
+      margin-top: var(--s8); padding-top: var(--s4); border-top: 1px solid var(--border);
+    }
+    .meta-label {
+      font-family: var(--sans); font-size: var(--t-11); font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 0.25rem;
+    }
+    .meta-value {
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      color: var(--ink); line-height: 1.3; max-width: 28ch;
+    }
+    .hero__visual {
+      max-width: var(--col-full); margin-inline: auto;
+      padding-inline: var(--s4); margin-top: var(--s10);
+    }
+    .hero__visual img {
+      width: 100%; aspect-ratio: 16 / 7; object-fit: cover;
+      object-position: center top; border: 1px solid var(--border);
+    }
+
+    /* ── SHARED ATOMS ────────────────────────────────────── */
+    .rule { max-width: var(--col-full); margin-inline: auto; padding-inline: var(--s4); }
+    .rule hr { border: none; border-top: 1px solid var(--border); }
+    .cs-section { padding-top: var(--s16); padding-bottom: var(--s8); }
+    .cs-eyebrow {
+      display: block; font-family: var(--sans); font-size: var(--t-13);
+      font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: var(--s2);
+    }
+    .cs-h2 {
+      font-family: var(--sans);
+      font-size: clamp(var(--t-20), 3.5vw, var(--t-40));
+      line-height: 1.14;
+      letter-spacing: 0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s2);
+    }
+    .cs-p {
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      line-height: 1.53; color: var(--ink-2); margin-bottom: var(--s3);
+    }
+    .cs-p2 {
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      line-height: 1.53; color: var(--ink-2);
+    }
+    .cs-p:last-child { margin-bottom: 0; }
+    .cs-p strong { color: var(--ink); font-weight: 700; }
+    .cs-quote { margin: var(--s8) 0; }
+    .cs-quote__text {
+      font-family: var(--sans); font-style: italic;
+      font-size: var(--t-17); line-height: 1.55; color: var(--ink);
+    }
+    .cs-quote__cite {
+      display: block; font-family: var(--sans); font-size: var(--t-13);
+      font-weight: 400; letter-spacing: 0.08em; color: var(--muted);
+      margin-top: var(--s2); font-style: normal;
+    }
+    .cs-link {
+      display: inline-flex; align-items: center; gap: 0.3em;
+      font-family: var(--sans); font-size: var(--t-11); font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+      border-bottom: 1px solid var(--border); padding-bottom: 1px;
+      transition: color 0.18s, border-color 0.18s;
+      margin-top: var(--s4); margin-bottom: var(--s2);
+    }
+    .cs-link::after { content: ' ↗'; }
+    .cs-link:hover  { color: var(--ink); border-color: var(--ink); }
+    .cs-figure {
+      max-width: var(--col-full); margin-inline: auto;
+      padding-inline: var(--s4); margin-bottom: var(--s4);
+    }
+    .cs-figure img {
+      width: 100%; border: 1px solid var(--border); display: block;
+    }
+    .cs-figure figcaption {
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      letter-spacing: 0.02em; color: var(--muted-2); margin-top: var(--s2); text-align: center;
+    }
+    .text-link {
+      display: inline-flex; align-items: center; gap: 0.3em;
+      font-weight: 400; color: var(--muted-2);
+      border-bottom: 1px solid var(--border); padding-bottom: 1px;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .text-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* ── INSIGHT PIVOT ───────────────────────────────────── */
+    .insight__pivot {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border); margin-top: var(--s8);
+    }
+    .pivot__cell { padding: var(--s5) var(--s5); }
+    .pivot__cell--dark { background: var(--ink); }
+    .pivot__cell-label {
+      font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted-2); margin-bottom: var(--s2);
+    }
+    .pivot__cell--dark .pivot__cell-label { color: #f5f5f5; }
+    .pivot__cell-text {
+      font-family: var(--sans); font-size: var(--t-15);
+      font-weight: 400; line-height: 1.45; color: var(--ink);
+    }
+    .pivot__cell--dark .pivot__cell-text { color: var(--bg); }
+
+    /* ── THREE-AXIS GRID ─────────────────────────────────── */
+    .axis-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border); margin-top: var(--s8);
+    }
+    .axis-cell {
+      padding: var(--s5);
+      border-right: 1px solid var(--border);
+    }
+    .axis-cell:last-child { border-right: none; }
+    .axis-cell__label {
+      font-family: var(--sans); font-size: var(--t-13);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted-2); margin-bottom: var(--s2);
+    }
+    .axis-cell__title {
+      font-family: var(--sans); font-size: var(--t-20);
+      line-height: 1.3; color: var(--ink); margin-bottom: var(--s2);
+    }
+    .axis-cell__body {
+      font-family: var(--sans); font-size: var(--t-14);
+      font-weight: 400; line-height: 1.6; color: var(--muted);
+    }
+
+    /* ── AI COLLABORATION BLOCK ──────────────────────────── */
+    .ai-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border); margin-top: var(--s8);
+    }
+    .ai-cell {
+      padding: var(--s5);
+      border-right: 1px solid var(--border);
+    }
+    .ai-cell:last-child { border-right: none; }
+    .ai-cell__tool {
+      font-family: var(--sans); font-size: var(--t-13);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted-2); margin-bottom: var(--s2);
+    }
+    .ai-cell__role {
+      font-family: var(--sans); font-size: var(--t-20);
+      line-height: 1.3; color: var(--ink); margin-bottom: var(--s2);
+    }
+    .ai-cell__detail {
+      font-family: var(--sans); font-size: var(--t-14);
+      font-weight: 400; line-height: 1.6; color: var(--muted);
+    }
+
+    /* ── DESIGN DECISIONS ────────────────────────────────── */
+    .decisions__list { margin-top: var(--s8); }
+    .decision {
+      display: grid; grid-template-columns: 3.5rem 1fr; gap: var(--s5);
+      align-items: start; padding: var(--s3) 0;
+      border-bottom: 1px solid var(--border-2);
+    }
+    .decision:last-child { border-bottom: none; }
+    .decision__num {
+      font-family: var(--sans); font-size: var(--t-17);
+      padding-top: 0.1rem; line-height: 1; color: var(--ink);
+    }
+    .decision__title {
+      font-family: var(--sans); font-size: var(--t-17);
+      line-height: 1.3; color: var(--ink);
+      margin-bottom: var(--s2); letter-spacing: 0.021em;
+    }
+    .decision__body {
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      line-height: 1.5; color: var(--ink-2); margin-bottom: var(--s1);
+    }
+    .decision__tradeoff {
+      display: grid; grid-template-columns: auto 1fr; gap: var(--s2);
+      align-items: baseline; padding-top: var(--s2);
+    }
+    .decision__tradeoff-label {
+      font-family: var(--sans); font-size: var(--t-13); letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted-2); white-space: nowrap;
+    }
+    .decision__tradeoff-text {
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      line-height: 1.6; color: var(--muted-2);
+    }
+
+    /* ── OUTCOME LEAD ────────────────────────────────────── */
+    .outcome__lead {
+      font-family: var(--sans); font-style: italic;
+      font-size: clamp(var(--t-20), 2.5vw, var(--t-32));
+      line-height: 1.35; letter-spacing: -0.015em;
+      color: var(--ink); margin-bottom: var(--s6); max-width: 40ch;
+    }
+
+    /* ── REFLECTION LIST ─────────────────────────────────── */
+    .reflection__list { list-style: none; margin-top: var(--s3); }
+    .reflection__list li {
+      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
+      color: var(--ink-2); padding: var(--s1) 0;
+      display: flex; gap: var(--s2); align-items: baseline; line-height: 1.65;
+    }
+    .reflection__list li::before {
+      content: '→'; font-size: var(--t-13); color: var(--muted-2); flex-shrink: 0;
+    }
+
+    /* ── NEXT PROJECT ────────────────────────────────────── */
+    .next-project {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
+      max-width: var(--col-full); margin-inline: auto;
+      padding: var(--s8) var(--s4) var(--s12); border-top: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .next-project:hover { background: var(--bg-raised); }
+    .next-project__label {
+      font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted-2); margin-bottom: var(--s1);
+    }
+    .next-project__title {
+      font-family: var(--sans); font-size: clamp(var(--t-24), 3vw, var(--t-32));
+      color: var(--ink); line-height: 1.2;
+    }
+    .next-project__arrow {
+      font-size: var(--t-32); color: var(--muted-2); flex-shrink: 0;
+      transition: transform 0.22s, color 0.18s;
+    }
+    .next-project:hover .next-project__arrow { transform: translate(6px, -6px); color: var(--ink); }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    .footer {
+      max-width: var(--col-full); margin-inline: auto; padding: var(--s4) var(--s4) var(--s6);
+      border-top: 1px solid var(--border); display: flex; align-items: center;
+      justify-content: space-between; gap: var(--s4); flex-wrap: wrap;
+    }
+    .footer__name { font-family: var(--sans-extended); font-size: var(--t-15); color: var(--ink); }
+    .footer__links { list-style: none; display: flex; gap: var(--s4); }
+    .footer__links a {
+      font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); transition: color 0.18s;
+    }
+    .footer__links a:hover { color: var(--ink); }
+    .footer__copy { font-family: var(--sans); font-size: var(--t-11); color: var(--muted-2); letter-spacing: 0.04em; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 480px) {
+      :root { --s5: 1.5rem; --s8: 3rem; --s10: 4rem; --s16: 6rem; }
+      .nav { padding: var(--s2) var(--s2); }
+      .hero { padding-top: calc(var(--s12) + 1rem); padding-bottom: var(--s8); }
+      .hero__visual, .cs-figure, .rule, .next-project, .footer { padding-inline: var(--s2); }
+      .wrap-text { padding-inline: var(--s2); }
+      .hero__visual img { aspect-ratio: 4 / 3; }
+      .hero__meta { gap: var(--s4); }
+      .insight__pivot { grid-template-columns: 1fr; }
+      .pivot__cell--dark { border-top: 1px solid var(--border); }
+      .axis-grid { grid-template-columns: 1fr; }
+      .axis-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .axis-cell:last-child { border-bottom: none; }
+      .ai-grid { grid-template-columns: 1fr; }
+      .ai-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .ai-cell:last-child { border-bottom: none; }
+      .decision { grid-template-columns: 2rem 1fr; gap: var(--s2); padding: var(--s4) 0; }
+      .decision__tradeoff { grid-template-columns: 1fr; gap: var(--s1); }
+      .footer { flex-direction: column; align-items: flex-start; gap: var(--s2); }
+      .next-project__title { font-size: var(--t-20); }
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+      .hero { padding-top: calc(var(--s12) + 2rem); }
+      .hero__visual, .cs-figure, .rule, .next-project, .footer { padding-inline: var(--s3); }
+      .wrap-text { padding-inline: var(--s3); }
+      .insight__pivot { grid-template-columns: 1fr; }
+      .axis-grid { grid-template-columns: 1fr; }
+      .axis-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .axis-cell:last-child { border-bottom: none; }
+      .ai-grid { grid-template-columns: 1fr; }
+      .ai-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .ai-cell:last-child { border-bottom: none; }
+      .decision { grid-template-columns: 2.5rem 1fr; gap: var(--s3); }
+      .decision__tradeoff { grid-template-columns: 1fr; gap: var(--s1); }
+      .next-project__title { font-size: var(--t-24); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Yaya Falanga</a>
+    <a href="index.html#work" class="nav__back">All Work</a>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       ① HERO
+  ═══════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="wrap-text">
+
+      <span class="hero__eyebrow">Literary Geography · Product Design · AI-Assisted Build · 2026</span>
+
+      <h1 class="hero__title">Strata</h1>
+
+      <p class="hero__tagline">
+        A literary geography interface that maps world literature to the cities that produced it — across place, time, and perspective.
+      </p>
+
+      <a class="hero__cta"
+         href="strata/index.html"
+         target="_blank" rel="noopener">
+        Visit Strata
+      </a>
+
+      <div class="hero__meta">
+        <div class="hero__meta-item">
+          <p class="meta-label">Role</p>
+          <p class="meta-value">Lead Product Designer: Systems, IA & Front-End</p>
+        </div>
+        <div class="hero__meta-item">
+          <p class="meta-label">Type</p>
+          <p class="meta-value">Self-directed speculative product</p>
+        </div>
+        <div class="hero__meta-item">
+          <p class="meta-label">Built With</p>
+          <p class="meta-value">Claude, HTML, CSS, Vanilla JS, Natural Earth GeoJSON</p>
+        </div>
+        <div class="hero__meta-item">
+          <p class="meta-label">Outcome</p>
+          <p class="meta-value">Live product — 34 books, 27 cities, 6 continents, fully interactive</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero__visual">
+      <img
+        src="img/JF_WEB_StrataHero.png"
+        alt="Strata — literary geography interface showing a world map with city pins and an open shelf panel displaying books mapped to New York"
+        width="1360" height="595"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       ② THE PROBLEM
+  ═══════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section problem">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">The Problem</span>
+      <h2 class="cs-h2">Literature is organised by genre. It should be organised by place.</h2>
+
+      <p class="cs-p">
+        Cities shape the conditions of writing. The streets a novelist walks, the season a story is set in, the social texture of a neighbourhood at a particular historical moment — all of it enters the work. But no tool makes this spatial dimension of literature visible or navigable.
+      </p>
+
+      <p class="cs-p">
+        Existing entry points to world literature sit at two unhelpful extremes. Goodreads and genre sites organise by author, topic, and star rating — geography is an afterthought. Academic literary geography is rich with scholarship and empty of access: dense monographs that no one outside a seminar room navigates. Neither treats place as a primary organising principle.
+      </p>
+
+      <p class="cs-p">
+        <strong>Design question:</strong> How might we build an interface that treats city and era as the primary axes of literary discovery — not filters on top of a list, but the map itself?
+      </p>
+
+      <div class="insight__pivot" style="margin-top: var(--s8);">
+        <div class="pivot__cell">
+          <p class="pivot__cell-label">How literature is usually browsed</p>
+          <p class="pivot__cell-text">By genre, author, or algorithm. Place is metadata — a tag in a sidebar, a location note in a blurb. The map never becomes the interface.</p>
+        </div>
+        <div class="pivot__cell pivot__cell--dark">
+          <p class="pivot__cell-label">What Strata does differently</p>
+          <p class="pivot__cell-text">Geography is the primary navigation surface. You don't filter to a city — you start there. The map is the index.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       ③ KEY INSIGHT
+  ═══════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section insight">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Key Insight</span>
+      <h2 class="cs-h2">Cities accumulate meaning across centuries. Literature makes that visible.</h2>
+
+      <p class="cs-p">
+        The conceptual spine of Strata is the palimpsest — the manuscript written over, imperfectly erased, still legible beneath. Cities are palimpsests. Each generation writes over the last. The Marais in 1880 is not the Marais in 1943 or 2005, yet all three moments share the same streets. Literature is the record of those layers.
+      </p>
+
+      <p class="cs-p">
+        This reframed the entire product. The interaction model isn't search — it's excavation. The map surface isn't a background — it's the primary document. The era filter isn't a refinement — it's a temporal axis that shifts the entire view.
+      </p>
+
+      <div class="axis-grid">
+        <div class="axis-cell">
+          <p class="axis-cell__label">Axis one</p>
+          <p class="axis-cell__title">City</p>
+          <p class="axis-cell__body">Each city is a literary site — a place with a documented relationship to writing. Selection is intentional, not exhaustive. Cities are chosen because something significant happened in them.</p>
+        </div>
+        <div class="axis-cell">
+          <p class="axis-cell__label">Axis two</p>
+          <p class="axis-cell__title">Era</p>
+          <p class="axis-cell__body">Three periods — Pre-1920, Mid 20th Century, Contemporary — allow the same city to appear differently across time. The map pins shift. The shelf changes. The city remains.</p>
+        </div>
+        <div class="axis-cell">
+          <p class="axis-cell__label">Axis three</p>
+          <p class="axis-cell__title">Perspective</p>
+          <p class="axis-cell__body">Who is speaking from inside the city? The exile reads differently than the native. The expatriate carries different sight lines. Perspective is part of the archive, not a filter on top of it.</p>
+        </div>
+      </div>
+
+      <div class="cs-quote">
+        <p class="cs-quote__text">A city without its literature is a geography without a memory.</p>
+        <cite class="cs-quote__cite">— Strata design brief, 2026</cite>
+      </div>
+
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_StrataMap.png"
+      alt="Strata world map view — SVG country map with city pins across Africa, Europe, Asia and the Americas, shelf panel open on the right showing Canada aggregate view"
+      loading="lazy"
+    />
+    <figcaption>The map as primary document: 27 cities across 6 continents, each a literary site.</figcaption>
+  </figure>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       ④ AI COLLABORATION
+  ═══════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section ai">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">AI Collaboration</span>
+      <h2 class="cs-h2">Built with AI. Every decision owned.</h2>
+
+      <p class="cs-p">
+        Strata was built entirely in collaboration with Claude — not as a shortcut, but as an extended design process. Every prompt was a brief. Every revision was a critique. The product's quality followed the clarity of the intent behind each exchange.
+      </p>
+
+      <div class="ai-grid">
+
+        <div class="ai-cell">
+          <p class="ai-cell__tool">Claude — Concept</p>
+          <p class="ai-cell__role">Framing, brief-writing, and system design</p>
+          <p class="ai-cell__detail">
+            Used to develop the product concept, define the three-axis model, pressure-test the interaction logic, and write the editorial voice. The palimpsest metaphor emerged through dialogue, not in isolation.
+          </p>
+        </div>
+
+        <div class="ai-cell">
+          <p class="ai-cell__tool">Claude — Build</p>
+          <p class="ai-cell__role">Front-end: HTML, CSS, and Vanilla JS</p>
+          <p class="ai-cell__detail">
+            The entire codebase was built through directed prompting — custom SVG map projection, scale-invariant pins, country aggregate view, book expand interactions, era filter chips, and full responsive layout. Each feature was tested against design intent before proceeding.
+          </p>
+        </div>
+
+        <div class="ai-cell">
+          <p class="ai-cell__tool">Claude — Data</p>
+          <p class="ai-cell__role">Dataset, synopses, and content curation</p>
+          <p class="ai-cell__detail">
+            The 34-book dataset was structured with coordinates, era classification, genre, neighbourhood, synopsis, and quote — all written or verified through directed prompting. AI supported the curation; editorial judgment determined every inclusion.
+          </p>
+        </div>
+
+      </div>
+
+      <p class="cs-p" style="margin-top: var(--s6);">
+        The more specific the brief, the less revision required. AI fluency, at its core, is design fluency. Strata is a demonstration of that proposition.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       ⑤ DESIGN DECISIONS
+  ═══════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section decisions">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Design Decisions</span>
+      <h2 class="cs-h2">Five decisions that made geography readable.</h2>
+
+      <div class="decisions__list">
+
+        <div class="decision">
+          <span class="decision__num">01</span>
+          <div>
+            <h3 class="decision__title">The map is the interface, not the header</h3>
+            <p class="decision__body">
+              Most products that use maps treat them as a visual accent — a decorative layer above the real content. Strata's two-panel fixed layout puts the map and shelf on equal footing. Neither collapses into the other. Clicking the map changes the shelf. The geography drives the reading, not the reverse.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Trade-off</span>
+              <span class="decision__tradeoff-text">The fixed layout demands viewport real estate. On mobile the panels stack — map on top, shelf below — preserving the hierarchy without sacrificing the relationship.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">02</span>
+          <div>
+            <h3 class="decision__title">Country click shows all cities in that country</h3>
+            <p class="decision__body">
+              Clicking France surfaces Paris and Marseille together — an aggregate shelf grouped by city, each group a drill-down point. This was the highest-leverage interaction decision: it changes the shelf from a city-level tool into a region-level one, making multi-city countries navigable without added UI.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Trade-off</span>
+              <span class="decision__tradeoff-text">Single-city countries skip the aggregate view entirely and go directly to city view — so the pattern doesn't add friction where it adds no value.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">03</span>
+          <div>
+            <h3 class="decision__title">Era as chips, not a slider</h3>
+            <p class="decision__body">
+              An early build used a continuous era slider. It was removed because it introduced false precision — a continuous axis implies gradation where the data is actually categorical. Three pill chips (Pre-1920, Mid 20th C., Contemporary) are faster to use, visually clear, and honest about how the underlying data is structured.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Trade-off</span>
+              <span class="decision__tradeoff-text">The slider was more expressive as an aesthetic object. The chips are more correct as an information design choice.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">04</span>
+          <div>
+            <h3 class="decision__title">Pin labels hidden until hover</h3>
+            <p class="decision__body">
+              On the world view with 27 cities, always-visible labels create overlapping text noise that competes with the cartographic surface. Labels are hidden by default and fade in on hover — the city name appears as an act of discovery. The map becomes a constellation of dots, readable as density without being readable as clutter.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Trade-off</span>
+              <span class="decision__tradeoff-text">New users need to learn that the dots are interactive. The hover affordance is standard for cartographic interfaces, so the learning cost is low.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">05</span>
+          <div>
+            <h3 class="decision__title">Editorial restraint as a design constraint</h3>
+            <p class="decision__body">
+              The palette — near-monochrome, lavender-grey accent, Neue Haas Unica at weight 300–600 — was chosen to let the content carry visual weight rather than competing with it. Every element was tested against the question: does this earn its presence? Cards, shadows, and ornamental UI were rejected. Spacing, dividers, and typographic hierarchy do all the structural work.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Trade-off</span>
+              <span class="decision__tradeoff-text">The restrained palette requires stronger typographic hierarchy to compensate. Small errors in type scale or weight are more visible than they would be in a colourful UI.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="cs-link"
+         href="strata/index.html"
+         target="_blank" rel="noopener">
+        Visit the live product
+      </a>
+
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_StrataShelf.png"
+      alt="Strata shelf panel — city view showing book list with expand interaction open, displaying synopsis and quote for a selected title"
+      loading="lazy"
+    />
+    <figcaption>The shelf: each book opens to reveal a place-focused synopsis and literary quote.</figcaption>
+  </figure>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       ⑥ OUTCOME
+  ═══════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section outcome">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Outcome</span>
+
+      <p class="outcome__lead">
+        A live literary geography interface — 34 books, 27 cities, 6 continents.
+      </p>
+
+      <p class="cs-p">
+        Strata is hosted and fully interactive. The dataset covers Africa, Asia, Europe, North America, South America, and Oceania — each city chosen because something literarily significant happened there, not merely because writers passed through.
+      </p>
+
+      <p class="cs-p">
+        Every book entry carries coordinates, era classification, neighbourhood, a 2-sentence place-focused synopsis, and an in-text quote. The map renders from Natural Earth GeoJSON with a custom equirectangular projection — no mapping library, full visual control.
+      </p>
+
+      <p class="cs-p">
+        The product demonstrates that literary geography — underbuilt as a field of public access — can be made navigable without sacrificing intellectual rigour. It also demonstrates that directing AI through a design process produces different results than using it as an autocomplete: the quality of output follows the quality of the brief.
+      </p>
+
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_StrataAfrica.png"
+      alt="Strata Africa continent view — zoomed map showing African country outlines with city pins for Abidjan, Akure, Algiers, Bujumbura, Ibadan, Kigali, and Thebes"
+      loading="lazy"
+    />
+    <figcaption>Africa continent view: seven cities, seven literary traditions, one surface.</figcaption>
+  </figure>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       ⑦ REFLECTION
+  ═══════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section reflection">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Reflection</span>
+      <h2 class="cs-h2">What building a map taught me about information architecture</h2>
+
+      <p class="cs-p">
+        Strata began as a concept and became a product through iteration. The most important design decisions weren't visual — they were structural. What is the primary axis of navigation? What happens when a country has multiple cities? How does the shelf behave when no era filter is applied? Each of these required a clear answer before a single line of CSS was written.
+      </p>
+
+      <p class="cs-p">
+        Working with Claude throughout the build also clarified something about the design process itself. Prompting an AI is not different in kind from briefing a collaborator. The clearer the design intent, the more precise the output. The more ambiguous the instruction, the more revision required. AI didn't replace the thinking — it made the quality of the thinking visible faster.
+      </p>
+
+      <p class="cs-p2">If the project continues, the next layer of work would include:</p>
+      <ul class="reflection__list">
+        <li>User-contributed city and book entries with editorial moderation</li>
+        <li>Neighbourhood-level filtering — drilling from city to district</li>
+        <li>Reading list mechanic — save and export a personal literary itinerary</li>
+        <li>City portrait photography replacing the current placeholder slots</li>
+        <li>Supabase backend to support real-time data and scale to 500+ books</li>
+      </ul>
+
+      <div class="cs-quote" style="margin-top: var(--s4);">
+        <p class="cs-quote__text">Longer term: expanding the dataset to make literary geography a genuinely global tool — one that surfaces traditions underrepresented in English-language canon.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- NEXT PROJECT -->
+  <a class="next-project" href="aurafact.html">
+    <div>
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">Aurafact: Archiving the acoustic memory of place</p>
+    </div>
+    <span class="next-project__arrow">→</span>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer__name">Yaya Falanga</span>
+    <ul class="footer__links">
+      <li><a href="https://www.linkedin.com/in/yaya-falanga" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="mailto:hello@jenniferyaya.ca">Email</a></li>
+    </ul>
+    <span class="footer__copy">© 2026 Jennifer Yaya Falanga</span>
+  </footer>
+
+</body>
+</html>
