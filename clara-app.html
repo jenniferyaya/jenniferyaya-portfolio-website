@@ -306,7 +306,7 @@
 
     /* Pull quote / callout */
     .cs-quote {
-      margin: var(--s8) 0;
+      margin: var(--s5) 0;
     }
     .cs-quote__text {
       font-family: var(--sans);
@@ -771,7 +771,7 @@
       <h1 class="hero__title">Clara</h1>
 
       <p class="hero__tagline">
-       An iOS app that makes task ownership and progress visible in one shared space so that group trip planning feels balanced rather than burdensome.
+       Group trips don't fall apart because people stop caring. They fall apart because responsibility becomes impossible to see. Clara makes ownership the one thing you can't miss.
       </p>
 
       <a class="hero__cta"
@@ -840,8 +840,7 @@ It's not a motivation problem. It's a visibility problem.
       </div>
 
       <p class="cs-p">
-        <strong>Design challenge:</strong> How might we make task ownership continuously visible
-        so that coordination is shared rather than absorbed by one person?
+        <strong>Design challenge:</strong> How might we make task ownership continuously visible so that coordination is shared rather than absorbed by one person?
       </p>
 
     </div>
@@ -1035,7 +1034,7 @@ It's not a motivation problem. It's a visibility problem.
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                This adds friction at the moment of creation. That friction is intentional. It prevents ambiguity from entering the system.
+                It creates friction during early, generative trip planning when roles aren't yet clear. Some users pushed back in testing. My current answer is that a little friction early is worth a lot less confusion later, but this is where a "needs owner" buffer state would help.
               </span>
             </div>
           </div>
@@ -1078,13 +1077,15 @@ It's not a motivation problem. It's a visibility problem.
       </p>
 
       <p class="cs-p">
-        The prototype was validated through task-based usability walkthroughs.
-        Participants were asked to view the trip overview, assign a task, and
-        check progress without guidance. All three flows were completed successfully.
+        The prototype was validated through task-based usability walkthroughs. Participants were asked to view the trip overview, assign a task, and check progress without guidance. All three flows were completed successfully but the more interesting findings came from what participants did before completing them.
       </p>
 
       <p class="cs-p">
-       Moments of hesitation concentrated around icon-based status indicators, adding text labels in the next iteration resolved the confusion and the hesitation disappeared.
+       The most significant finding wasn't the icon confusion, which was caught and resolved with text labels. It was what happened when participants tried to create tasks in a group context during testing. Several instinctively wanted to create tasks without assigning them, intending to "figure out owners later" in conversation. This surfaced real tension between the mandatory-ownership rule and the way groups actually plan together early on, when enthusiasm is high and role clarity is genuinely low.
+      </p>
+
+      <p class="cs-p">
+        That tension validated the core reframe: the behavior I was trying to interrupt was showing up right in the prototype. But it also made clear that mandatory ownership might need an escape valve — a "needs owner" state that's visually distinct and urgent, not an invisible placeholder. The reframe held. The implementation needs another pass.
       </p>
 
       <p class="cs-p">
@@ -1115,29 +1116,46 @@ It's not a motivation problem. It's a visibility problem.
     <div class="wrap-text">
 
       <span class="cs-eyebrow">Reflection</span>
-      <h2 class="cs-h2">What Clara hasn't solved yet</h2>
+      <h2 class="cs-h2">Visibility was tractable. Equity is not.</h2>
 
       <p class="cs-p">
-        The more interesting problem Clara surfaces is group
-        decision-making. Once everyone can see what needs doing, the friction moves from
-        task ownership to task priority. Who decides which hotel? How does a group vote
-        without derailing the chat?
+        Clara solves for “no one knows who’s doing what.” It doesn’t solve for “we disagree about what needs doing, or whether the distribution is fair.” Once ownership is visible, the next friction point is task prioritization and group decision-making — who decides which hotel, how a group reaches consensus without devolving into a group chat debate.
       </p>
 
-      <p class="cs-p2">If the project continued, the next layer of work would include:</p>
-      <ul class="reflection__list">
-        <li>Shared decision-making: how groups make choices (which hotel, which itinerary) without returning to chat-based chaos</li>
-        <li>Collaborative budgeting and trip timing: both introduce coordination complexity that the current model doesn't address</li>
-        <li>A high-fidelity visual design pass to build Clara's brand identity</li>
-        <li>Research into async vs. real-time coordination for longer trip timelines</li>
-      </ul>
-
-      <div class="cs-quote" style="margin-top: var(--s10);">
-        <p class="cs-quote__text">The most interesting design question Clara opens: what does fair collaboration actually look like at the product level?</p>
-      </div>
+      <p class="cs-p">
+        That’s a harder design problem than visibility. Ownership is tractable: you either have an owner or you don’t. Equity isn’t: it’s relational, contextual, and contested. The open question Clara leaves me with is what fair collaboration actually looks like at the product level — and whether a tool can facilitate it without imposing a structure the group didn’t agree to.
+      </p>
 
     </div>
   </section>
+
+ <!-- ═══════════════════════════════════════════════════════
+       8 What I’d Do Differently
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section reflection">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">What I’d Do Differently</span>
+      <h2 class="cs-h2">Three things testing revealed that the prototype didn’t answer.</h2>
+
+      <p class="cs-p">
+        <b>Introduce a “needs owner” buffer state.</b> IMandatory ownership is the right instinct, but forcing it at creation causes real friction when role clarity is genuinely low. I’d explore a designated unowned state — visually urgent, not invisible — that signals “this gap has been acknowledged and still needs a person.” The goal stays the same: no task drifts. The mechanic is gentler, and more honest about how early trip planning actually works.
+      </p>
+
+      <p class="cs-p">
+        <b>Design for disagreement, not just visibility.</b> Clara surfaces what needs doing. It doesn’t help groups decide what to prioritize or how to resolve conflict when two people want different things. I’d explore lightweight voting or ranking mechanisms that let the group reach consensus without returning to chat — something that feels like a decision, not an interruption.
+      </p>
+
+      <p class="cs-p">
+        <b>Design the notification layer.</b> Clara has no notification model, which is a significant gap. Gentle accountability — reminders that feel more like social nudges than system alerts — is where a lot of the coordination behavior actually lives. I’d design notifications that reinforce ownership without feeling like surveillance: something closer to “your team can see this is due Friday” than “you haven’t completed your task.”
+      </p>
+
+    </div>
+  </section>
+
 
 
   <!-- ─── NEXT PROJECT ──────────────────────────────── -->
