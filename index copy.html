@@ -189,6 +189,16 @@
     .card__link::after { content: '↗'; }
     .card:hover .card__link { gap: 0.8em; border-color: var(--ink); }
 
+    /* flagship badge */
+    .card__flagship {
+      display: inline-block;
+      font-family: var(--sans); font-size: var(--t-11); font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink); border: 1px solid var(--ink);
+      padding: 0.2rem 0.55rem; border-radius: 2px;
+      margin-bottom: var(--s2);
+    }
+
     /* featured card */
     .card--featured .card__inner { grid-template-columns: 1fr; gap: var(--s6); padding: var(--s10) 0; }
     .card--featured .card__visual { aspect-ratio: 16 / 9; }
@@ -337,11 +347,11 @@
 
   <!-- HERO -->
   <div class="hero" aria-label="Introduction">
-    <span class="hero__eyebrow">UX & Product Designer</span>
+    <span class="hero__eyebrow">Product & UX Designer</span>
     <h1 class="hero__title">Designing products that earn trust.</h1>
     <div class="hero__bottom">
       <p class="hero__sub">
-        I design interfaces where clarity is structural, because in the products I work on, ambiguity has a cost. AI tools, mobile apps, and design systems for products where decisions get questioned.
+        I design interfaces where clarity is structural — because in the products I work on, ambiguity has a cost. AI tools, mobile apps, and design systems for products where decisions get questioned.
       </p>
     </div>
   </div>
@@ -362,9 +372,10 @@
                  width="1360" height="595" loading="eager" />
           </div>
           <div class="card__body">
+            <span class="card__flagship">Featured</span>
             <p class="card__tag">AI Tool · UX Design · Design Sprint</p>
             <h2 class="card__title">CAN-SIMPLAN</h2>
-            <p class="card__desc">In civic AI tools, accuracy isn't enough, the planner has to be able to explain the decision. This is the design that makes that possible.</p>
+            <p class="card__desc">In civic AI tools, accuracy isn't enough — the planner has to be able to explain the decision. This is the design that makes that possible.</p>
             <span class="card__link">View case study</span>
           </div>
         </div>
@@ -380,9 +391,10 @@
                    width="600" height="400" loading="lazy" />
             </div>
             <div class="card__body">
+              <span class="card__flagship">Featured</span>
               <p class="card__tag">Speculative Product · AI-Assisted Build</p>
               <h2 class="card__title">Aurafact</h2>
-              <p class="card__desc">Environmental sound is a primary historical artifact, it just isn't kept. Aurafact is a spatial archive designed to change that.</p>
+              <p class="card__desc">Environmental sound is a primary historical artifact — it just isn't kept. Aurafact is a spatial archive designed to change that.</p>
               <span class="card__link">View case study</span>
             </div>
           </div>
@@ -416,7 +428,7 @@
             <div class="card__body">
               <p class="card__tag">UX Sprint · Heuristic Evaluation</p>
               <h2 class="card__title">Lululemon</h2>
-              <p class="card__desc">lululemon had built a strong movement content library, the interface had quietly stopped surfacing it. A heuristic evaluation and targeted redesign to close that gap.</p>
+              <p class="card__desc">lululemon had built a strong movement content library. The interface had quietly stopped surfacing it. A heuristic evaluation and targeted redesign to close that gap.</p>
               <span class="card__link">View case study</span>
             </div>
           </div>
@@ -431,7 +443,7 @@
             <div class="card__body">
               <p class="card__tag">UI Design · Design System</p>
               <h2 class="card__title">Conserva</h2>
-              <p class="card__desc">On a premium food platform, inconsistency reads as carelessness. Conserva was built system-first, tokens before components, so the brand holds at every touchpoint.</p>
+              <p class="card__desc">On a premium food platform, inconsistency reads as carelessness. Conserva was built system-first — tokens before components — so the brand holds at every touchpoint.</p>
               <span class="card__link">View case study</span>
             </div>
           </div>
@@ -478,7 +490,7 @@
       <p class="about__availability">Currently open to full-time and contract roles.</p>
       <p class="about__contact-label">Get in touch</p>
       <ul class="about__links">
-        <li><a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#c0b9a1b9a1a6a1aca1aea7a180a7ada1a9aceea3afad"><span class="__cf_email__" data-cfemail="d3aab2aab2b5b2bfb2bdb4b293b4beb2babffdb0bcbe">[email&#160;protected]</span></a></li>
         <li><a href="https://drive.google.com/file/d/19ac8s_fQuLgfYAM2Ecn21mtmXTxHsEPQ/view?usp=drive_link" target="_blank" rel="noopener">Download résumé</a></li>
         <li><a href="https://www.linkedin.com/in/yaya-falanga" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://github.com/jenniferyaya" target="_blank" rel="noopener">Github</a></li>
@@ -493,10 +505,4 @@
     <span class="footer__name">Yaya Falanga</span>
     <ul class="footer__links">
       <li><a href="https://www.linkedin.com/in/yaya-falanga" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="mailto:yayafalanga@gmail.com">Email</a></li>
-    </ul>
-    <span class="footer__copy">© 2026 Yaya Falanga</span>
-  </footer>
-
-</body>
-</html>
+      <li><a href="/cdn
