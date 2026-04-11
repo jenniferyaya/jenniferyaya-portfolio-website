@@ -268,7 +268,7 @@
     .cs-p:last-child { margin-bottom: 0; }
     .cs-p strong { color: var(--ink); font-weight: 700; }
 
-    .cs-quote { margin: var(--s8) 0; }
+    .cs-quote { margin: var(--s5) 0; }
     .cs-quote__text {
       font-family: var(--sans);
       font-style: italic;
@@ -576,7 +576,8 @@
       </h1>
 
       <p class="hero__tagline">
-        An AI-assisted zoning pre-screen tool that helps municipal planners evaluate development proposals with confidence, ensuring every decision traceable, defensible, and human.
+        Accuracy isn't enough. A planner has to be able to stand up in a council meeting and explain why. CAN-SIMPLAN is the design that makes that possible. An AI-assisted zoning tool where every output is traceable, every decision is defensible, and the human stays accountable throughout.
+
       </p>
 
       <a class="hero__cta"
@@ -899,24 +900,75 @@
       </p>
 
       <p class="cs-p">
-        It also required translating in both directions—making system logic legible to planners, while shaping planner input into something the system could support.
+        It also required translating in both directions: making system logic legible to planners, while shaping planner input into something the system could record and defend.
       </p>
 
-      <p class="cs-p2">If the project continued, the next layer of work would include:</p>
-      <ul class="reflection__list">
-        <li>Does requiring a written rationale meaningfully change planner behaviour, or would it introduce workarounds?</li>
-        <li>Civic decision tools must meet the highest accessibility standards without exception.</li>
-        <li>How would real-world outcomes recalibrate the model over time and how would that recalibration be communicated back to planners.</li>
-        <li>ifferent cities weigh planning criteria differently. Could the interface adapt to those variations without compromising transparency?</li>
-      </ul>
+    </div>
+  </section>
 
-      <div class="cs-quote" style="margin-top: var(--s10);">
-        <p class="cs-quote__text">The most interesting question CAN-SIMPLAN raises isn’t “How do we make AI faster?”
-It’s “How do we make accountability a feature of the system itself?</p>
+  <!-- ═══════════════════════════════════════════════════════
+       8 What I’d Do Differently
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section reflection">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">What I’d Do Differently</span>
+      <h2 class="cs-h2">Three things I’d pressure-test before shipping.</h2>
+
+      <p class="cs-p">
+        <b>Test the rationale-recording step at realistic volume.</b> In a sprint prototype, mandatory rationale was evaluated against a single proposal. A planner reviewing twenty proposals in a week may experience it very differently, either as a meaningful pause or as rote overhead. I’d run a longitudinal study before committing mandatory checkpoints everywhere. The design likely needs tiered friction: mandatory for high-concern flags, optional for low.
+      </p>
+
+      <p class="cs-p">
+        <b>Involve a planning legal team earlier.</b> The audit trail was designed with legibility for planners in mind. Whether that format satisfies the evidentiary and procedural requirements for an actual appeal or council challenge is a different question, that requires legal review, not just UX testing. In a real development cycle, that input belongs in the design phase, not as a downstream compliance check.
+      </p>
+
+      <p class="cs-p">
+        <b>Pressure-test plain-language explanations against edge cases.</b> The flag explanations were written for clear-cut bylaw situations. Zoning is full of ambiguous cases, like overlapping provisions, discretionary uses, site-specific exceptions. I’d develop a set of edge-case flags and test whether plain language still holds, or whether ambiguity requires a different explanation structure entirely.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       10 The Larger Question
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section reflection">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">The Larger Question</span>
+      <h2 class="cs-h2">What if accountability were a feature of the system itself?</h2>
+
+      <p class="cs-p">
+        CAN-SIMPLAN kept raising a question that goes well beyond municipal planning: what if accountability weren’t a constraint on an AI tool, but a designed property of it?
+      </p>
+
+      <p class="cs-p">
+        In most AI product design, accountability shows up as a limitation. The human stays in the loop to absorb liability. The tool optimizes; the human signs off. This treats accountability as drag on an otherwise efficient system, something imposed from the outside, after the fact.
+      </p>
+
+      <p class="cs-p">
+       CAN-SIMPLAN suggests the opposite relationship. When accountability is designed into the moment of decision (not bolted on as a legal disclaimer, but built into the workflow itself) it changes what the tool fundamentally is. The rationale-recording step isn’t just documentation. It’s a cognitive checkpoint that makes the planner’s reasoning visible to themselves before it becomes visible to anyone else. The embedded audit trail isn’t just a record of what happened. It’s a structure that shapes what happens.
+      </p>
+
+      <p class="cs-p">
+       Any AI system operating where decisions get questioned (medical triage, legal research, financial advice, educational assessment, etc…) faces the same requirement. The standard response is human oversight at the point of output review. The harder design question is whether the system can be structured so that accountability is the product of using it, not just the burden placed on the person who used it. That’s the question this project leaves open, and the one I’d carry into the next one.
+      </p>
+
+      <div class="cs-quote">
+        <p class="cs-quote__text">“The most interesting question CAN-SIMPLAN raises isn’t ‘How do we make AI faster?’ It’s ‘How do we make accountability a feature of the system itself?’”</p>
       </div>
 
     </div>
   </section>
+
+
 
 
   <!-- ─── NEXT PROJECT ──────────────────────────────── -->
