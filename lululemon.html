@@ -402,7 +402,7 @@
       <h1 class="hero__title">Lululemon</h1>
 
       <p class="hero__tagline">
-        A heuristic evaluation and targeted redesign of the lululemon iOS app, identifying where movement content gets buried, and designing a clearer path to it.
+        lululemon's content strategy and its interface had quietly diverged. The movement content existed, users just couldn't find it. A heuristic evaluation to identify why, and a targeted redesign to close the gap.
       </p>
 
       <div class="hero__meta">
@@ -412,7 +412,7 @@
         </div>
         <div class="hero__meta-item">
           <p class="meta-label">Team</p>
-          <p class="meta-value">3 designers · lululemon × BrainStation sprint</p>
+          <p class="meta-value">3 UX Designers · lululemon × BrainStation sprint</p>
         </div>
         <div class="hero__meta-item">
           <p class="meta-label">Duration</p>
@@ -618,12 +618,11 @@
             <p class="decision__body"> The existing flow ended without acknowledgement. Users were returned to the class player as if nothing had happened, no confirmation, no closure, no next step.
             </p>
             <p class="decision__body">
-              Every movement app users have a reference point for — Peloton,
-              Nike Training Club, Apple Fitness+ — marks completion with
+              Every movement app users (Peloton, Nike Training Club, Apple Fitness+) have a reference point that marks completion with
               a dedicated moment. lululemon's absence of this state violated
               a basic user expectation and left the experience feeling
               unfinished. The redesign adds a clean completion screen:
-              "Class Complete · Great job!" with two clear paths forward —
+              "Class Complete · Great job!" with two clear paths forward:
               back to classes, or watch again.
             </p>
             <div class="decision__tradeoff">
@@ -735,7 +734,11 @@
       </p>
 
       <p class="cs-p">
-        The sharpest finding from the evaluation, that excellent content was being actively hidden by the interface,  translated directly into the design strategy and its business case: a user who can find and complete a class is more likely to return, engage with the community, and convert on product recommendations than one who never found the class at all.
+        The business case follows directly from that gap. lululemon's movement content isn't a feature sitting alongside its retail model: it's the retention layer. A user who finds and completes a class is more likely to return, more likely to engage with the community, and measurably more likely to convert on product recommendations. A user who never finds the class doesn't build a habit, doesn't return for the next session, and is less likely to participate in the broader lululemon ecosystem. OObscuring the content has a compounding cost that doesn't show up in any single session metric.
+      </p>
+
+      <p class="cs-p">
+        The presentation to lululemon stakeholders was received well. Feedback validated the central finding and opened conversation about the onboarding personalisation flow as a candidate for the next sprint, specifically whether earlier movement preference questions could improve first-session content matching.
       </p>
 
     </div>
@@ -759,16 +762,37 @@
       </p>
 
       <p class="cs-p">
-        Working on the Class Detail and Completion screens reinforced a simple principle: once a user has decided to act, the interface should step aside. The role of the system is to support that decision, not compete with it.
+        Working on the Class Detail and Completion screens reinforced a principle that’s easy to state and harder to consistently act on: once a user has decided to act, the interface should step aside. Every element that competes with that decision, a product card before the start button, a flow that ends without acknowledgment, is the interface prioritizing itself over the user. The redesign was, in that sense, an act of subtraction as much as addition.
       </p>
 
-      <p class="cs-p2">If the project continued, the next layer would include:</p>
-      <ul class="reflection__list">
-        <li>Usability testing with new and returning movement users to validate whether the restructured For You screen reduces time-to-class</li>
-        <li>A progress and streak layer on the Class Completion screen (once the backend infrastructure exists to support it)</li>
-        <li>Deeper exploration of the onboarding personalisation questions to improve first-session content matching</li>
-        <li>Cross-surface consistency audit to make sure that the same heuristic violations don't appear on web and in email communications</li>
-      </ul>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       8 What I’d Do Differently
+  ═══════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section reflection">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">What I’d Do Differently</span>
+      <h2 class="cs-h2">Three things a sprint timeline couldn’t answer.</h2>
+
+      <p class="cs-p">
+       <b>Run usability testing with movement-specific cohorts.</b> The heuristic evaluation was expert-led — it identifies structural problems but doesn’t validate whether proposed fixes actually change behavior. I’d run moderated sessions specifically with users who use the app primarily for classes, not shopping. Their mental models would sharpen several navigation decisions we made by inference, particularly whether surfacing movement content on the home screen changes time-to-first-class for new users.
+      </p>
+
+      <p class="cs-p">
+        <b>Explore progressive disclosure for gated content.</b> The current redesign treats Members-Only content as a destination. A longer engagement would let us test whether surfacing a preview of gated content to non-members (visible but locked for example) creates better motivation to engage than hiding it entirely. That’s a product question as much as a UX one, and it would need stakeholder input on lululemon’s conversion strategy to answer well.
+      </p>
+
+      <p class="cs-p">
+        <b>Map the full movement user journey, not just five screens.</b> A user discovering lululemon movement content for the first time likely starts outside the app, for example through a social link, a friend’s recommendation, an instructor’s profile. The in-app experience doesn’t exist in isolation. Understanding that full journey would change what we prioritize at the entry points, and might reveal that the onboarding flow is more important to fix than any individual screen downstream.
+      </p>
+
 
     </div>
   </section>
