@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clara — Yaya Falanga</title>
-  <meta name="description" content="Clara: An iOS app concept that makes task ownership and progress visible in one shared space — UX case study by Jennifer Yaya Falanga." />
-  <meta property="og:title" content="Clara — Jennifer Yaya Falanga" />
-  <meta property="og:description" content="UX case study: making task ownership visible in group trip planning." />
+  <title>WorkMap — Yaya Falanga</title>
+  <meta name="description" content="WorkMap: A role-based tool that shows professionals exactly where AI intersects with their work, task by task — product design case study by Jennifer Yaya Falanga." />
+  <meta property="og:title" content="WorkMap — Jennifer Yaya Falanga" />
+  <meta property="og:description" content="Product design case study: A shipped AI legibility tool mapping 45 roles and 657 tasks, built end-to-end in React." />
   <meta property="og:type" content="article" />
   <link rel="icon" type="image/png" href="img/favicon.ico" />
 
-  <!-- Adobe Fonts (Typekit) — Area Normal -->
-<link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
+  <!-- Fonts -->
+  <!-- Adobe Fonts — Area Normal -->
+  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
   <style>
     /* ═══════════════════════════════════════════════════════════
-       DESIGN TOKENS  — 8px grid, named type scale
+       DESIGN TOKENS — copied verbatim from CAN-SIMPLAN (source of truth)
+       8px grid, named type scale
     ═══════════════════════════════════════════════════════════ */
     :root {
       /* Colour */
@@ -30,29 +32,29 @@
       --accent:     #1a1a18;
 
       /* Type — all in rem, 1rem = 16px */
-      --t-11: 0.7075rem;  /* 11px — eyebrow, caption */
-      --t-13: 0.7525rem;  /* 13px — meta, label */
-      --t-15: 0.9775rem;  /* 15px — body */
-      --t-17: 1.0825rem;  /* 17px — body large */
-      --t-20: 1.25rem;    /* 20px — sub-heading, pullquote */
-      --t-24: 1.5rem;     /* 24px — section h3 */
-      --t-32: 2rem;       /* 32px — section h2 */
-      --t-40: 2.5rem;     /* 40px — section h2 large */
-      --t-56: 3.5rem;     /* 56px — hero title */
-      --t-72: 4.5rem;     /* 72px — hero title xl */
+      --t-11: 0.7075rem;
+      --t-13: 0.7525rem;
+      --t-15: 0.9775rem;
+      --t-17: 1.0825rem;
+      --t-20: 1.25rem;
+      --t-24: 1.5rem;
+      --t-32: 2rem;
+      --t-40: 2.5rem;
+      --t-56: 3.5rem;
+      --t-72: 4.5rem;
 
       /* Spacing — 8px base */
-      --s1:  0.5rem;   /*  8px */
-      --s2:  1rem;     /* 16px */
-      --s3:  1.5rem;   /* 24px */
-      --s4:  2rem;     /* 32px */
-      --s5:  2.5rem;   /* 40px */
-      --s6:  3rem;     /* 48px */
-      --s8:  4rem;     /* 64px */
-      --s10: 5rem;     /* 80px */
-      --s12: 6rem;     /* 96px */
-      --s16: 8rem;     /* 128px */
-      --s20: 10rem;    /* 160px */
+      --s1:  0.5rem;
+      --s2:  1rem;
+      --s3:  1.5rem;
+      --s4:  2rem;
+      --s5:  2.5rem;
+      --s6:  3rem;
+      --s8:  4rem;
+      --s10: 5rem;
+      --s12: 6rem;
+      --s16: 8rem;
+      --s20: 10rem;
 
       /* Layout */
       --col-text: 900px;
@@ -62,16 +64,13 @@
       /* Type families */
       --sans:  area-normal, 'Helvetica Neue', Arial, sans-serif;
       --sans-extended: area-extended, 'Helvetica Neue', Arial, sans-serif;
-
     }
 
     /* ═══════════════════════════════════════════════════════════
        RESET + BASE
     ═══════════════════════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--sans);
       font-size: var(--t-15);
@@ -81,7 +80,6 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
-
     img { display: block; max-width: 100%; height: auto; }
     a   { color: inherit; text-decoration: none; }
 
@@ -106,14 +104,12 @@
       background: var(--bg);
       border-bottom: 1px solid var(--border);
     }
-
     .nav__logo {
       font-family: var(--sans-extended);
       font-size: var(--t-15);
       color: var(--ink);
       letter-spacing: -0.01em;
     }
-
     .nav__back {
       font-family: var(--sans);
       font-size: var(--t-11);
@@ -135,7 +131,6 @@
       padding-top: calc(var(--s16) + 3rem);
       padding-bottom: var(--s10);
     }
-
     .hero__eyebrow {
       display: block;
       font-family: var(--sans);
@@ -146,7 +141,6 @@
       color: var(--muted);
       margin-bottom: var(--s3);
     }
-
     .hero__title {
       font-family: var(--sans);
       font-size: clamp(var(--t-32), 5.5vw, var(--t-56));
@@ -155,8 +149,6 @@
       max-width: 18ch;
       margin-bottom: var(--s5);
     }
-    .hero__title em { font-style: italic; color: var(--ink); }
-
     .hero__tagline {
       font-family: var(--sans);
       font-size: var(--t-17);
@@ -165,7 +157,11 @@
       max-width: 60ch;
       margin-bottom: var(--s5);
     }
-
+    .hero__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s2);
+    }
     .hero__cta {
       display: inline-flex;
       align-items: center;
@@ -183,8 +179,12 @@
     }
     .hero__cta::after { content: ' ↗'; opacity: 0.5; }
     .hero__cta:hover  { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .hero__cta--ghost {
+      color: var(--muted);
+      border-color: var(--border-2);
+    }
+    .hero__cta--ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
-    /* Meta strip */
     .hero__meta {
       display: flex;
       flex-wrap: wrap;
@@ -193,9 +193,6 @@
       padding-top: var(--s4);
       border-top: 1px solid var(--border);
     }
-
-    .hero__meta-item {}
-
     .meta-label {
       font-family: var(--sans);
       font-size: var(--t-11);
@@ -205,7 +202,6 @@
       color: var(--muted-2);
       margin-bottom: 0.25rem;
     }
-
     .meta-value {
       font-family: var(--sans);
       font-size: var(--t-15);
@@ -214,15 +210,12 @@
       line-height: 1.3;
       max-width: 28ch;
     }
-
-    /* Hero image — full bleed to wide col */
     .hero__visual {
       max-width: var(--col-full);
       margin-inline: auto;
       padding-inline: var(--s4);
       margin-top: var(--s10);
     }
-
     .hero__visual img {
       width: 100%;
       aspect-ratio: 16 / 7;
@@ -233,25 +226,13 @@
     /* ═══════════════════════════════════════════════════════════
        SECTION SHARED ATOMS
     ═══════════════════════════════════════════════════════════ */
+    .rule { max-width: var(--col-full); margin-inline: auto; padding-inline: var(--s4); }
+    .rule hr { border: none; border-top: 1px solid var(--border); }
 
-    /* The hairline rule that separates sections */
-    .rule {
-      max-width: var(--col-full);
-      margin-inline: auto;
-      padding-inline: var(--s4);
-    }
-    .rule hr {
-      border: none;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Section padding */
     .cs-section {
       padding-top: var(--s16);
       padding-bottom: var(--s8);
     }
-
-    /* Section eyebrow */
     .cs-eyebrow {
       display: block;
       font-family: var(--sans);
@@ -262,30 +243,14 @@
       color: var(--muted);
       margin-bottom: var(--s2);
     }
-
-    /* Section heading H2 */
     .cs-h2 {
       font-family: var(--sans);
       font-size: clamp(var(--t-20), 3.5vw, var(--t-40));
       line-height: 1.14;
       letter-spacing: 0.015em;
       color: var(--ink);
-      margin-bottom: var(--s1);
-    }
-    .cs-h2 em { font-style: italic; }
-
-    /* Section heading H3 — used in features / decisions */
-    .cs-h3 {
-      font-family: var(--serif);
-      font-size: clamp(var(--t-20), 2.5vw, var(--t-24));
-      line-height: 1.15;
-      letter-spacing: .02em;
-      color: var(--ink);
       margin-bottom: var(--s2);
     }
-    .cs-h3 em { font-style: italic; }
-
-    /* Body copy */
     .cs-p {
       font-family: var(--sans);
       font-size: var(--t-15);
@@ -294,20 +259,10 @@
       color: var(--ink-2);
       margin-bottom: var(--s3);
     }
-    .cs-p2 {
-      font-family: var(--sans);
-      font-size: var(--t-15);
-      font-weight: 400;
-      line-height: 1.53;
-      color: var(--ink-2);
-    }
     .cs-p:last-child { margin-bottom: 0; }
     .cs-p strong { color: var(--ink); font-weight: 700; }
 
-    /* Pull quote / callout */
-    .cs-quote {
-      margin: var(--s5) 0;
-    }
+    .cs-quote { margin: var(--s5) 0; }
     .cs-quote__text {
       font-family: var(--sans);
       font-style: italic;
@@ -325,8 +280,6 @@
       margin-top: var(--s2);
       font-style: normal;
     }
-
-    /* External link — subtle underline style */
     .cs-link {
       display: inline-flex;
       align-items: center;
@@ -346,7 +299,6 @@
     .cs-link::after { content: ' ↗'; }
     .cs-link:hover  { color: var(--ink); border-color: var(--ink); }
 
-    /* Wide figure */
     .cs-figure {
       max-width: var(--col-full);
       margin-inline: auto;
@@ -371,31 +323,16 @@
     }
 
     /* ═══════════════════════════════════════════════════════════
-       ② PROBLEM
+       INSIGHT — Before/After pivot
     ═══════════════════════════════════════════════════════════ */
-    /* uses shared atoms only */
-
-    /* ═══════════════════════════════════════════════════════════
-       ③ INSIGHT
-       Left-column label + right body, full bleed visual below
-    ═══════════════════════════════════════════════════════════ */
-
-    /* Before/After pivot table */
     .insight__pivot {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border: 1px solid var(--border);
       margin-top: var(--s8);
     }
-
-    .pivot__cell {
-      padding: var(--s5) var(--s5);
-    }
-
-    .pivot__cell--dark {
-      background: var(--ink);
-    }
-
+    .pivot__cell { padding: var(--s5) var(--s5); }
+    .pivot__cell--dark { background: var(--ink); }
     .pivot__cell-label {
       font-family: var(--sans);
       font-size: var(--t-11);
@@ -405,7 +342,6 @@
       margin-bottom: var(--s2);
     }
     .pivot__cell--dark .pivot__cell-label { color: #f5f5f5; }
-
     .pivot__cell-text {
       font-family: var(--sans);
       font-size: var(--t-15);
@@ -416,88 +352,71 @@
     .pivot__cell--dark .pivot__cell-text { color: var(--bg); }
 
     /* ═══════════════════════════════════════════════════════════
-       ④ PRODUCT STRATEGY
-       Each feature: tag + heading + body + full-bleed image
+       TECH BUILD TABLE
     ═══════════════════════════════════════════════════════════ */
-
-    .product__features {
-      margin-top: var(--s10);
-      display: flex;
-      flex-direction: column;
-      gap: var(--s16);
-    }
-
-    .feature__tag {
-      display: inline-block;
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 0.25rem 0.75rem;
-      margin-bottom: var(--s3);
-    }
-
-    /* Feature table — spans full text col */
-    .feature__table {
+    .tech-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: var(--s5);
-      border: 1px solid var(--border);
-    }
-
-    .feature__table th,
-    .feature__table td {
+      margin-top: var(--s6);
       font-family: var(--sans);
-      font-size: var(--t-15);
-      font-weight: 400;
-      text-align: left;
-      padding: var(--s2) var(--s3);
-      border: 1px solid var(--border);
-      vertical-align: top;
-      line-height: 1.65;
     }
-
-    .feature__table th {
-      font-size: var(--t-15);
-      letter-spacing: 0.12em;
+    .tech-table thead tr {
+      border-bottom: 2px solid var(--ink);
+    }
+    .tech-table th {
+      font-size: var(--t-11);
+      font-weight: 400;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--muted);
-      background: var(--bg-raised);
+      color: var(--muted-2);
+      text-align: left;
+      padding: var(--s2) var(--s3) var(--s2) 0;
+    }
+    .tech-table th:last-child { padding-right: 0; }
+    .tech-table tbody tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .tech-table tbody tr:last-child { border-bottom: none; }
+    .tech-table td {
+      font-size: var(--t-15);
       font-weight: 400;
-    }
-
-    .feature__table td {
       color: var(--ink-2);
+      padding: var(--s2) var(--s3) var(--s2) 0;
+      vertical-align: top;
+      line-height: 1.5;
     }
-
-    .feature__table td:first-child {
-      font-weight: 700;
+    .tech-table td:last-child { padding-right: 0; }
+    .tech-table td:first-child {
       color: var(--ink);
-      width: 28%;
+      font-weight: 500;
+      white-space: nowrap;
+      padding-right: var(--s4);
+      width: 20%;
+    }
+    .tech-table td:nth-child(2) {
+      width: 35%;
+      padding-right: var(--s4);
     }
 
     /* ═══════════════════════════════════════════════════════════
-       ⑤ DESIGN DECISIONS
+       DESIGN DECISIONS
     ═══════════════════════════════════════════════════════════ */
+    .decisions__list { margin-top: var(--s6); }
 
     .decision {
       display: grid;
       grid-template-columns: 3.5rem 1fr;
       gap: var(--s5);
       align-items: start;
-      padding: var(--s4) 0;
+      padding: var(--s3) 0;
     }
-
     .decision__num {
       font-family: var(--sans);
       font-size: var(--t-17);
+      color: var(--ink);
       padding-top: 0.1rem;
       line-height: 1;
     }
-
     .decision__title {
       font-family: var(--sans);
       font-size: var(--t-17);
@@ -506,7 +425,6 @@
       margin-bottom: var(--s2);
       letter-spacing: 0.021em;
     }
-
     .decision__body {
       font-family: var(--sans);
       font-size: var(--t-15);
@@ -514,16 +432,13 @@
       line-height: 1.5;
       color: var(--ink-2);
     }
-
     .decision__tradeoff {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: var(--s2);
       align-items: baseline;
       padding-top: var(--s2);
-
     }
-
     .decision__tradeoff-label {
       font-family: var(--sans);
       font-size: var(--t-13);
@@ -532,7 +447,6 @@
       color: var(--muted-2);
       white-space: nowrap;
     }
-
     .decision__tradeoff-text {
       font-family: var(--sans);
       font-size: var(--t-15);
@@ -542,10 +456,8 @@
     }
 
     /* ═══════════════════════════════════════════════════════════
-       ⑥ OUTCOME
-       Large serif lead sentence, then body
+       OUTCOME
     ═══════════════════════════════════════════════════════════ */
-
     .outcome__lead {
       font-family: var(--sans);
       font-style: italic;
@@ -558,36 +470,8 @@
     }
 
     /* ═══════════════════════════════════════════════════════════
-       ⑦ REFLECTION
-    ═══════════════════════════════════════════════════════════ */
-
-    .reflection__list {
-      list-style: none;
-    }
-
-    .reflection__list li {
-      font-family: var(--sans);
-      font-size: var(--t-15);
-      font-weight: 400;
-      color: var(--ink-2);
-      padding: var(--s1) 0;
-      display: flex;
-      gap: var(--s2);
-      align-items: baseline;
-      line-height: 1.65;
-    }
-
-    .reflection__list li::before {
-      content: '→';
-      font-size: var(--t-13);
-      color: var(--muted-2);
-      flex-shrink: 0;
-    }
-
-    /* ═══════════════════════════════════════════════════════════
        NEXT PROJECT
     ═══════════════════════════════════════════════════════════ */
-
     .next-project {
       display: flex;
       align-items: center;
@@ -600,7 +484,6 @@
       transition: background 0.2s;
     }
     .next-project:hover { background: var(--bg-raised); }
-
     .next-project__label {
       font-family: var(--sans);
       font-size: var(--t-11);
@@ -609,19 +492,17 @@
       color: var(--muted-2);
       margin-bottom: var(--s1);
     }
-
     .next-project__title {
       font-family: var(--sans);
       font-size: clamp(var(--t-24), 3vw, var(--t-32));
       color: var(--ink);
       line-height: 1.2;
     }
-
     .next-project__arrow {
       font-size: var(--t-32);
       color: var(--muted-2);
       flex-shrink: 0;
-      transition: transform 0.22s var(--ease), color 0.18s;
+      transition: transform 0.22s, color 0.18s;
     }
     .next-project:hover .next-project__arrow {
       transform: translate(6px, -6px);
@@ -631,7 +512,6 @@
     /* ═══════════════════════════════════════════════════════════
        FOOTER
     ═══════════════════════════════════════════════════════════ */
-
     .footer {
       max-width: var(--col-full);
       margin-inline: auto;
@@ -643,15 +523,8 @@
       gap: var(--s4);
       flex-wrap: wrap;
     }
-
     .footer__name { font-family: var(--sans-extended); font-size: var(--t-15); color: var(--ink); }
-
-    .footer__links {
-      list-style: none;
-      display: flex;
-      gap: var(--s4);
-    }
-
+    .footer__links { list-style: none; display: flex; gap: var(--s4); }
     .footer__links a {
       font-family: var(--sans);
       font-size: var(--t-11);
@@ -661,94 +534,46 @@
       transition: color 0.18s;
     }
     .footer__links a:hover { color: var(--ink); }
-
-    .footer__copy {
-      font-family: var(--sans);
-      font-size: var(--t-11);
-      color: var(--muted-2);
-      letter-spacing: 0.04em;
-    }
+    .footer__copy { font-family: var(--sans); font-size: var(--t-11); color: var(--muted-2); letter-spacing: 0.04em; }
 
     /* ═══════════════════════════════════════════════════════════
        RESPONSIVE — mobile first, two breakpoints
     ═══════════════════════════════════════════════════════════ */
-
-    /* ── Small mobile: ≤ 480px ── */
     @media (max-width: 480px) {
       :root {
-        --s5: 1.5rem;   /* tighten gutters on very small screens */
+        --s5: 1.5rem;
         --s8: 3rem;
         --s10: 4rem;
         --s16: 6rem;
       }
-
       .nav { padding: var(--s2) var(--s2); }
-
       .hero { padding-top: calc(var(--s12) + 1rem); padding-bottom: var(--s8); }
-      .hero__visual,
-      .cs-figure,
-      .rule,
-      .next-project,
-      .footer { padding-inline: var(--s2); }
-      .wrap-text,
-      .wrap-wide { padding-inline: var(--s2); }
-
-      /* Hero image: relax aspect ratio so it doesn't crush on small screens */
+      .hero__visual, .cs-figure, .rule, .next-project, .footer { padding-inline: var(--s2); }
+      .wrap-text, .wrap-wide { padding-inline: var(--s2); }
       .hero__visual img { aspect-ratio: 4 / 3; }
-
-      /* Meta strip: two per row */
       .hero__meta { gap: var(--s4); }
       .hero__meta-item { flex: 0 0 calc(50% - var(--s2)); }
-
-      /* Before/After pivot stacks */
       .insight__pivot { grid-template-columns: 1fr; }
       .pivot__cell--dark { border-top: 1px solid var(--border); }
-
-      /* Feature table: hide third column, stack what/why */
-      .feature__table thead th:last-child,
-      .feature__table td:last-child { display: none; }
-      .feature__table th,
-      .feature__table td { padding: var(--s2) var(--s2); font-size: var(--t-13); }
-
-      /* Decisions: collapse number column */
-      .decision { grid-template-columns: 2rem 1fr; gap: var(--s2); border-top: 1px solid var(--border);
-      padding: var(--s4) 0; }
-    .decision:last-child { border-bottom: 1px solid var(--border); }
-      .decision__num { font-size: var(--t-17); color: var(--ink); }
+      .decision { grid-template-columns: 2rem 1fr; gap: var(--s2); padding: var(--s4) 0; }
       .decision__tradeoff { grid-template-columns: 1fr; gap: var(--s1); }
-      .decision__tradeoff-label { margin-bottom: 0.2rem; }
-
-      /* Prototype iframe */
-      .cs-figure iframe { min-height: 480px; }
-
-      /* Footer: stack vertically */
       .footer { flex-direction: column; align-items: flex-start; gap: var(--s2); }
-      .footer__links { gap: var(--s3); }
-
-      /* Next project */
       .next-project__title { font-size: var(--t-20); }
+      .tech-table td:first-child { white-space: normal; }
+      .tech-table th:nth-child(3),
+      .tech-table td:nth-child(3) { display: none; }
     }
 
-    /* ── Tablet: 481px – 768px ── */
     @media (min-width: 481px) and (max-width: 768px) {
       .hero { padding-top: calc(var(--s12) + 2rem); }
-      .hero__visual,
-      .cs-figure,
-      .rule,
-      .next-project,
-      .footer { padding-inline: var(--s3); }
-      .wrap-text,
-      .wrap-wide { padding-inline: var(--s3); }
-
+      .hero__visual, .cs-figure, .rule, .next-project, .footer { padding-inline: var(--s3); }
+      .wrap-text, .wrap-wide { padding-inline: var(--s3); }
       .insight__pivot { grid-template-columns: 1fr; }
       .pivot__cell--dark { border-top: 1px solid var(--border); }
-
       .decision { grid-template-columns: 2.5rem 1fr; gap: var(--s3); }
       .decision__tradeoff { grid-template-columns: 1fr; gap: var(--s1); }
-
       .next-project__title { font-size: var(--t-24); }
     }
-
   </style>
 </head>
 <body>
@@ -766,36 +591,45 @@
   <section class="hero">
     <div class="wrap-text">
 
-      <span class="hero__eyebrow">UI/UX Design · iOS App Concept · 2026</span>
+      <span class="hero__eyebrow">Product Design &amp; Development · React · AI Tool · 2026</span>
 
-      <h1 class="hero__title">Clara</h1>
+      <h1 class="hero__title">
+        WorkMap
+      </h1>
 
       <p class="hero__tagline">
-       Group trips don't fall apart because people stop caring. They fall apart because responsibility becomes impossible to see. Clara makes ownership the one thing you can't miss.
+        Most AI coverage lands somewhere between vague and alarming. WorkMap is the alternative: a role-based tool that shows professionals exactly where AI intersects with their work, task by task, with honest scores and plain-language explanations. Not automation risk. A concrete map of what changes and what doesn't.
       </p>
 
-      <a class="hero__cta"
-         href="https://www.figma.com/proto/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=997-201&p=f&t=rsVFOBd9oWtWyPc9-1&scaling=scale-down&content-scaling=fixed&page-id=997%3A200&starting-point-node-id=997%3A201"
-         target="_blank" rel="noopener">
-        Explore interactive prototype
-      </a>
+      <div class="hero__ctas">
+        <a class="hero__cta"
+           href="https://work-map-eight.vercel.app"
+           target="_blank" rel="noopener">
+          View live product
+        </a>
+        <a class="hero__cta hero__cta--ghost"
+           href="https://github.com/jenniferyaya/workmap"
+           target="_blank" rel="noopener">
+          GitHub repo
+        </a>
+      </div>
 
       <div class="hero__meta">
         <div class="hero__meta-item">
           <p class="meta-label">Role</p>
-          <p class="meta-value">UX Researcher & Designer</p>
+          <p class="meta-value">Sole designer and developer</p>
         </div>
         <div class="hero__meta-item">
-          <p class="meta-label">Duration</p>
-          <p class="meta-value">8 Weeks</p>
+          <p class="meta-label">Stack</p>
+          <p class="meta-value">React + Vite, CSS Modules, Vercel</p>
         </div>
         <div class="hero__meta-item">
-          <p class="meta-label">Tools</p>
-          <p class="meta-value">Figma · Google Forms</p>
+          <p class="meta-label">Data</p>
+          <p class="meta-value">O*NET occupational data, Statistics Canada NOC 2021</p>
         </div>
         <div class="hero__meta-item">
-          <p class="meta-label">Outcome</p>
-          <p class="meta-value">Prototype validated with usability participants across three core flows</p>
+          <p class="meta-label">Dataset</p>
+          <p class="meta-value">100 roles, 657+ scored tasks</p>
         </div>
       </div>
 
@@ -803,8 +637,8 @@
 
     <div class="hero__visual">
       <img
-        src="img/JF_WEB_ClaraIndex.png"
-        alt="Clara iOS app — trip planning dashboard showing task ownership and progress"
+        src="img/JF_WEB_WORKMAPHero.png"
+        alt="WorkMap UI — role detail view showing task-level AI fit scores and plain-language explanations"
         width="1360" height="595"
         loading="eager"
       />
@@ -813,7 +647,7 @@
 
 
   <!-- ═══════════════════════════════════════════════════════
-       ② PROBLEM
+       ② THE PROBLEM
   ═══════════════════════════════════════════════════════ -->
 
   <div class="rule"><hr /></div>
@@ -822,25 +656,18 @@
     <div class="wrap-text">
 
       <span class="cs-eyebrow">The Problem</span>
-      <h2 class="cs-h2">When ownership goes invisible.</h2>
+      <h2 class="cs-h2">People were told AI would change their work. Nobody showed them how.</h2>
 
       <p class="cs-p">
-        Group trips rarely fall apart because people stop caring.
-        They fall apart because responsibility becomes impossible to see.
-        Planning spreads across chats, notes, and spreadsheets. Tasks are discussed, but rarely assigned or tracked in one place. Over time, one person fills the gaps—following up, confirming details, carrying the coordination load.
+        The person WorkMap is built for isn't a skeptic and isn't an early adopter. They're experienced, competent, and have been told by their organisation to get familiar with AI. They've been given no direction on what that means for the specific tasks they do on a Tuesday afternoon.
       </p>
 
       <p class="cs-p">
-It's not a motivation problem. It's a visibility problem.
+        The information available to them operates at the wrong altitude. Sector-level projections, occupation automation percentages, tool comparisons — none of it maps to what they actually do. There was no tool that started with a job title and walked through the work itself.
       </p>
 
-      <div class="cs-quote">
-        <p class="cs-quote__text">It's not that people don't want to help, it's that by the time we're in the group chat, no one knows who's doing what anymore.</p>
-        <cite class="cs-quote__cite">— Research participant</cite>
-      </div>
-
       <p class="cs-p">
-        <strong>Design challenge:</strong> How might we make task ownership continuously visible so that coordination is shared rather than absorbed by one person?
+        <strong>Design challenge:</strong> How might we make AI's impact on specific roles legible at the task level, without overstating what the data supports?
       </p>
 
     </div>
@@ -857,60 +684,38 @@ It's not a motivation problem. It's a visibility problem.
     <div class="wrap-text">
 
       <span class="cs-eyebrow">Key Insight</span>
-      <h2 class="cs-h2">Responsibility doesn't disappear, it becomes invisible.</h2>
+      <h2 class="cs-h2">The right unit of analysis isn't the job. It's the task.</h2>
 
       <p class="cs-p">
-        Research with frequent group trip planners confirmed that coordination
-        breakdowns are structural. Participants consistently
-        described the same pattern: tasks were discussed and informally acknowledged,
-        but ownership was never made explicit. Without a shared record, people
-        defaulted to assumptions, and one person defaulted to managing everything.
+        Two people with the same job title can have very different exposure to AI depending on which tasks dominate their day. A Registered Nurse who spends most of her time in clinical assessment has a different picture than one who spends most of her time on documentation and care coordination. The job title hides that. The task list surfaces it.
       </p>
 
       <p class="cs-p">
-        This shifted the project's direction. The problem wasn't that groups lacked
-        planning tools, they had plenty. The problem was that none of those tools surfaced
-        who owned what right now at a glance. The design needed to make responsibility visible
-        at a glance, not retrievable after digging.
+        This also forced a harder design constraint: scores had to be calibrated honestly. A safety-critical, physically present role shouldn't score the same as a document-heavy administrative one just because both have "data" in the description. The tool had to reflect that, or it wouldn't be worth using.
       </p>
 
       <!-- Before / After pivot -->
       <div class="insight__pivot">
         <div class="pivot__cell">
-          <p class="pivot__cell-label">Before</p>
-          <p class="pivot__cell-text">A feature problem: add more planning tools</p>
+          <p class="pivot__cell-label">The original framing</p>
+          <p class="pivot__cell-text">How do we give people AI literacy resources?</p>
         </div>
         <div class="pivot__cell pivot__cell--dark">
-          <p class="pivot__cell-label">After</p>
-          <p class="pivot__cell-text">A visibility problem: make ownership impossible to miss</p>
+          <p class="pivot__cell-label">The reframe</p>
+          <p class="pivot__cell-text">How might we show someone exactly where AI fits in the work they already know how to do?</p>
         </div>
       </div>
-
-      <a class="cs-link"
-         href="https://www.figma.com/design/lXe8xVPIq1DKITdWiT7qWA/Thematic-Analysis?node-id=1-32&t=UAIXerIyEBrNjJi7-1"
-         target="_blank" rel="noopener">
-        View research insights in Figma
-      </a>
 
     </div>
   </section>
 
   <figure class="cs-figure">
     <img
-      src="img/JF_WEB_ClaraSynthesis.png"
-      alt="Thematic analysis from user interviews"
+      src="img/JF_WEB_WORKMAPRoleView.png"
+      alt="WorkMap role view — task list with AI fit scores and plain-language explanations per task"
       loading="lazy"
     />
-    <figcaption>Thematic analysis from user interviews.</figcaption>
-  </figure>
-
-  <figure class="cs-figure" style="margin-top: var(--s4);">
-    <img
-      src="img/JF_WEB_ClaraPersona.png"
-      alt="Maya — the friend who often becomes the default trip planner"
-      loading="lazy"
-    />
-    <figcaption>Meet Maya: The friend who often becomes the default trip planner, built from interview findings.</figcaption>
+    <figcaption>Role view: Every task scored, explained, and traceable to its occupational source data.</figcaption>
   </figure>
 
 
@@ -924,49 +729,91 @@ It's not a motivation problem. It's a visibility problem.
     <div class="wrap-text">
 
       <span class="cs-eyebrow">Product Strategy</span>
-      <h2 class="cs-h2">Ownership as the organizing principle.</h2>
+      <h2 class="cs-h2">WorkMap is a legibility tool, not a scoring tool.</h2>
 
       <p class="cs-p">
-        Tasks became the core unit. The product is built to surface them, who owns what, what’s done, and what’s pending, without requiring follow-up.
+        The goal was never to produce a number. It was to give someone enough structure to understand their situation — and then decide what to do about it. That meant three things had to be true at once: the data had to come from a credible occupational source, the scores had to be calibrated to role type rather than applied uniformly, and the interface had to surface the reasoning behind each score, not just the label.
       </p>
 
-      <!-- Feature summary table -->
-      <table class="feature__table">
+      <p class="cs-p">
+        I designed and built WorkMap end-to-end: data architecture, scoring model, component system, and deployment. The product is live, organically growing, and in active development.
+      </p>
+
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_WORKMAPSearch.png"
+      alt="WorkMap search and role selection — role dropdown with NOC title matching"
+      loading="lazy"
+    />
+    <figcaption>Role search: NOC alias layer surfaces Canadian job titles alongside O*NET equivalents.</figcaption>
+  </figure>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       ⑤ TECHNICAL BUILD
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">Technical Build</span>
+      <h2 class="cs-h2">The architecture had to serve the data model, not the other way around.</h2>
+
+      <p class="cs-p">
+        WorkMap is built on O*NET occupational data — the US Department of Labor's structured task database. Each task is scored High, Medium, or Low AI fit, with plain-language fields for what AI helps with and what changes for the human. Three JSON files power the product at runtime: <code>roles.json</code>, <code>tasks.json</code>, and <code>ai_scores.json</code>.
+      </p>
+
+      <table class="tech-table">
         <thead>
           <tr>
-            <th>Feature</th>
-            <th>What it does</th>
+            <th>Layer</th>
+            <th>Decision</th>
             <th>Why it matters</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Shared Trip Dashboard</td>
-            <td>Single view of all tasks: status, owner, deadline</td>
-            <td>Replaces the follow-up message. Everyone sees progress without asking.</td>
+            <td>Data fetching</td>
+            <td>Runtime fetch via <code>useData.js</code>, never imported as ES modules</td>
+            <td>Prevents Vite from bundling large JSON at build time, fixing Vercel blank screen errors</td>
           </tr>
           <tr>
-            <td>Task Assignment</td>
-            <td>Name the task, assign an owner, set a due date</td>
-            <td>Turns a conversation into a commitment. No ambiguity about who's handling what.</td>
+            <td>Navigation</td>
+            <td>Single <code>activePage</code> state string in <code>App.jsx</code> — no router library</td>
+            <td>Three views, simple string state, no unnecessary dependency</td>
           </tr>
           <tr>
-            <td>Progress Indicators</td>
-            <td>Visual status per task and per trip overall</td>
-            <td>Makes planning momentum legible at a glance, not just to the organiser.</td>
+            <td>Role logic</td>
+            <td>Custom <code>useRole</code> hook accepts data as parameters, never imports directly</td>
+            <td>Keeps components focused on rendering; hook stays testable and reusable</td>
           </tr>
           <tr>
-            <td>Trip Setup Flow</td>
-            <td>Invite friends and set trip details before tasks are created</td>
-            <td>Establishes shared context upfront so ownership feels natural from the start.</td>
+            <td>NOC alias layer</td>
+            <td><code>noc_aliases.json</code> maps Statistics Canada NOC 2021 to O*NET equivalents</td>
+            <td>Canadian differentiator: users search by NOC title or code, not just US role names</td>
+          </tr>
+          <tr>
+            <td>Share Card</td>
+            <td>1200×630px PNG generated entirely via the native Canvas API</td>
+            <td>No html2canvas, no external dependencies; Web Share API confirmed on macOS</td>
+          </tr>
+          <tr>
+            <td>Cache busting</td>
+            <td><code>?v=${Date.now()}</code> parameter on every fetch</td>
+            <td>Prevents stale data on Vercel's CDN edge after redeployment</td>
           </tr>
         </tbody>
       </table>
 
       <a class="cs-link"
-         href="https://www.figma.com/design/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=16-2&t=UAIXerIyEBrNjJi7-1"
+         href="https://github.com/jenniferyaya/workmap"
          target="_blank" rel="noopener">
-        View exploratory sketches
+        View source on GitHub
       </a>
 
     </div>
@@ -974,28 +821,16 @@ It's not a motivation problem. It's a visibility problem.
 
   <figure class="cs-figure">
     <img
-      src="img/JF_WEB_ClaraSketch.png"
-      alt="Early Clara sketches exploring different ways to surface task ownership"
+      src="img/JF_WEB_WORKMAPSkillBridge.png"
+      alt="WorkMap Skill Bridge — skill mapping across four tiers relative to a role's task profile"
       loading="lazy"
     />
-    <figcaption>Early sketches explored different approaches to surfacing task ownership.</figcaption>
-  </figure>
-
-  <!-- ── Prototype embed ── -->
-  <figure class="cs-figure" id="final-design">
-    <iframe
-      style="border: 1px solid var(--border); display: block; min-height: 640px;"
-      width="100%" height="700"
-      src="https://embed.figma.com/proto/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=997-201&starting-point-node-id=997%3A201&embed-host=share"
-      allowfullscreen
-      title="Clara App — interactive prototype"
-    ></iframe>
-    <figcaption>Final prototype: trip creation, shared dashboard, and task assignment flows.</figcaption>
+    <figcaption>Skill Bridge: Four-tier skill mapping derived from each role's specific task profile.</figcaption>
   </figure>
 
 
   <!-- ═══════════════════════════════════════════════════════
-       ⑤ DESIGN DECISIONS
+       ⑥ DESIGN DECISIONS
   ═══════════════════════════════════════════════════════ -->
 
   <div class="rule"><hr /></div>
@@ -1004,21 +839,21 @@ It's not a motivation problem. It's a visibility problem.
     <div class="wrap-text">
 
       <span class="cs-eyebrow">Design Decisions</span>
-      <h2 class="cs-h2">Three decisions that shaped the product.</h2>
+      <h2 class="cs-h2">Four decisions that kept the interface honest.</h2>
 
       <div class="decisions__list">
 
         <div class="decision">
           <span class="decision__num">01</span>
           <div>
-            <h3 class="decision__title">Task list over timeline</h3>
+            <h3 class="decision__title">Fit scores, not risk scores.</h3>
             <p class="decision__body">
-              The goal is to see who owns what now. A timeline suggests sequence, but obscures responsibility; a task list makes ownership explicit.
+              WorkMap does not say "your job is X% at risk." It shows fit levels per task and lets the user interpret their own picture. High AI fit on a task means AI can help with it — not that the task, or the person doing it, is being replaced. This was a deliberate refusal of the framing that dominates AI coverage. The tool's job is legibility, not alarm.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                The tradeoff is visual simplicity. The interface is less expressive, but more direct.
+                Some users arrive expecting a risk number. The absence of one requires a small reframe. The how-it-works section and plain-language task explanations carry that weight.
               </span>
             </div>
           </div>
@@ -1027,14 +862,14 @@ It's not a motivation problem. It's a visibility problem.
         <div class="decision">
           <span class="decision__num">02</span>
           <div>
-            <h3 class="decision__title">Ownership is mandatory</h3>
+            <h3 class="decision__title">Scores calibrated by role type, not applied uniformly.</h3>
             <p class="decision__body">
-              Every task requires an owner at the moment of creation, because an unassigned task is just the original problem with a due date attached.
+              Safety-critical and physically present roles — Anesthesiologist, Commercial Pilot, Rigger — are scored conservatively. Data-heavy and document-heavy roles — Accountant, Paralegal, Proposal Coordinator — are scored high where the evidence supports it. A uniform rubric would have produced scores that felt implausible to anyone who actually knew the work.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                It creates friction during early, generative trip planning when roles aren't yet clear. Some users pushed back in testing. My current answer is that a little friction early is worth a lot less confusion later, but this is where a "needs owner" buffer state would help.
+                Calibration introduces subjectivity into what looks like an objective system. The methodology page exists to make that transparent.
               </span>
             </div>
           </div>
@@ -1043,26 +878,52 @@ It's not a motivation problem. It's a visibility problem.
         <div class="decision">
           <span class="decision__num">03</span>
           <div>
-            <h3 class="decision__title">Labels & icons for task status</h3>
+            <h3 class="decision__title">The design system is restrained by thesis, not by convention.</h3>
             <p class="decision__body">
-              Testing showed that icons alone made users pause. When clarity is the core promise of the product, the interface can't ask people to decode it.
+              No decorative elements, no illustration, no animation for its own sake. Warm slate palette, green accent, DM Sans throughout. Every visual decision is testable against the product thesis: does this make the data clearer, or does it make the interface feel more polished at the expense of clarity?
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
               <span class="decision__tradeoff-text">
-                Text takes more space, but removes hesitation.
+                The interface reads spare. That's intentional. The risk is that spare reads as unfinished to people who associate polish with complexity.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">04</span>
+          <div>
+            <h3 class="decision__title">Tier promotion in Skill Bridge preserves source data.</h3>
+            <p class="decision__body">
+              When the top tier yields zero matches for a given role, tier labels are reassigned sequentially at render time — without mutating <code>skill-bridge.json</code>. The source data stays clean; the UI always shows a meaningful first tier. A single <code>filteredTiers</code> variable drives both the sidebar counts and the card display, so the numbers are always in sync.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Tradeoff</span>
+              <span class="decision__tradeoff-text">
+                A skill's tier label depends on role context. A skill that is "Build first" for one role may be "Build next" for another. The current implementation doesn't surface this explicitly — that's a known gap.
               </span>
             </div>
           </div>
         </div>
 
       </div>
+
     </div>
   </section>
 
+  <figure class="cs-figure">
+    <img
+      src="img/JF_WEB_WORKMAPShareCard.png"
+      alt="WorkMap share card — 1200x630px PNG showing role, exposure profile, and fit distribution"
+      loading="lazy"
+    />
+    <figcaption>Share Card: Role-specific AI exposure profile generated via native Canvas API, shareable in one tap.</figcaption>
+  </figure>
+
 
   <!-- ═══════════════════════════════════════════════════════
-       ⑥ OUTCOME
+       ⑦ OUTCOME
   ═══════════════════════════════════════════════════════ -->
 
   <div class="rule"><hr /></div>
@@ -1073,41 +934,23 @@ It's not a motivation problem. It's a visibility problem.
       <span class="cs-eyebrow">Outcome</span>
 
       <p class="outcome__lead">
-        A focused coordination tool that prioritizes clarity over feature breadth.
+        A tool that gives professionals a concrete, role-specific picture of their AI exposure — built, shipped, and growing.
       </p>
 
       <p class="cs-p">
-        The prototype was validated through task-based usability walkthroughs. Participants were asked to view the trip overview, assign a task, and check progress without guidance. All three flows were completed successfully but the more interesting findings came from what participants did before completing them.
+        The dataset covers 45 roles and 657 fully scored tasks. The product is live on Vercel, deployed from a GitHub-connected repo with auto-deployment on push. Organic distribution has come primarily through LinkedIn, where the build process has been documented publicly in a consistent posting format since the project launched.
       </p>
 
       <p class="cs-p">
-       The most significant finding wasn't the icon confusion, which was caught and resolved with text labels. It was what happened when participants tried to create tasks in a group context during testing. Several instinctively wanted to create tasks without assigning them, intending to "figure out owners later" in conversation. This surfaced real tension between the mandatory-ownership rule and the way groups actually plan together early on, when enthusiasm is high and role clarity is genuinely low.
-      </p>
-
-      <p class="cs-p">
-        That tension validated the core reframe: the behavior I was trying to interrupt was showing up right in the prototype. But it also made clear that mandatory ownership might need an escape valve — a "needs owner" state that's visually distinct and urgent, not an invisible placeholder. The reframe held. The implementation needs another pass.
-      </p>
-
-      <p class="cs-p">
-        Clara demonstrated that reducing ambiguity, not adding features, is enough
-        to change how a group coordinates.
+        The NOC integration created a meaningful regional differentiator for the <code>.ca</code> deployment. The Share Card feature added a low-friction distribution mechanism tied directly to the product's core output.
       </p>
 
     </div>
   </section>
 
-  <figure class="cs-figure">
-    <img
-      src="img/JF_WEB_ClaraFrames.png"
-      alt="Final Clara screens — trip creation, dashboard, and task assignment"
-      loading="lazy"
-    />
-    <figcaption>Final prototype screens: trip creation, the shared dashboard, and task assignment.</figcaption>
-  </figure>
-
 
   <!-- ═══════════════════════════════════════════════════════
-       ⑦ REFLECTION
+       ⑧ REFLECTION
   ═══════════════════════════════════════════════════════ -->
 
   <div class="rule"><hr /></div>
@@ -1116,54 +959,83 @@ It's not a motivation problem. It's a visibility problem.
     <div class="wrap-text">
 
       <span class="cs-eyebrow">Reflection</span>
-      <h2 class="cs-h2">Visibility was tractable. Equity is not.</h2>
+      <h2 class="cs-h2">Building with AI changed what questions I asked about AI.</h2>
 
       <p class="cs-p">
-        Clara solves for “no one knows who’s doing what.” It doesn’t solve for “we disagree about what needs doing, or whether the distribution is fair.” Once ownership is visible, the next friction point is task prioritization and group decision-making — who decides which hotel, how a group reaches consensus without devolving into a group chat debate.
+        WorkMap was developed using Claude Code for implementation alongside architectural and strategy decisions. That process surfaced something the product is trying to articulate: the useful question isn't "what can AI do?" It's "what does AI do to this specific task, for this specific person, in this specific context?"
       </p>
 
       <p class="cs-p">
-        That’s a harder design problem than visibility. Ownership is tractable: you either have an owner or you don’t. Equity isn’t: it’s relational, contextual, and contested. The open question Clara leaves me with is what fair collaboration actually looks like at the product level and whether a tool can facilitate it without imposing a structure the group didn’t agree to.
+        Running both sides of that question at once — designing a tool that makes AI legible while using AI to build it — created a productive tension. Every time a design decision felt opaque or arbitrary, I had a working example of what opacity costs the person trying to make sense of a system they didn't build.
       </p>
 
     </div>
   </section>
 
- <!-- ═══════════════════════════════════════════════════════
-       8 What I’d Do Differently
+
+  <!-- ═══════════════════════════════════════════════════════
+       ⑨ WHAT I'D DO DIFFERENTLY
   ═══════════════════════════════════════════════════════ -->
 
   <div class="rule"><hr /></div>
 
-  <section class="cs-section reflection">
+  <section class="cs-section">
     <div class="wrap-text">
 
-      <span class="cs-eyebrow">What I’d Do Differently</span>
-      <h2 class="cs-h2">Three things testing revealed that the prototype didn’t answer.</h2>
+      <span class="cs-eyebrow">What I'd Do Differently</span>
+      <h2 class="cs-h2">Three things I'd pressure-test before the next phase.</h2>
 
       <p class="cs-p">
-        <b>Introduce a “needs owner” buffer state.</b> Mandatory ownership is the right instinct, but forcing it at creation causes real friction when role clarity is genuinely low. I’d explore a designated unowned state (visually urgent, not invisible) that signals “this gap has been acknowledged and still needs a person.” The goal stays the same: no task drifts. The mechanic is gentler, and more honest about how early trip planning actually works.
+        <strong>Validate the scoring rubric publicly before expanding the dataset.</strong> The calibration decisions that make WorkMap honest are also the ones hardest to defend without a published rubric. Expanding to more roles before that's documented creates a credibility risk. The methodology page exists; making the rubric explicit and version-controlled would close the gap.
       </p>
 
       <p class="cs-p">
-        <b>Design for disagreement, not just visibility.</b> Clara surfaces what needs doing. It doesn’t help groups decide what to prioritize or how to resolve conflict when two people want different things. I’d explore lightweight voting or ranking mechanisms that let the group reach consensus without returning to chat, something that feels like a decision, not an interruption.
+        <strong>Test the Skill Bridge with users who are actively in transition.</strong> The current skill matching is keyword-based against task descriptions. It works as a first pass. But the users who would get the most value from it — people actively considering a role change or reskilling — are also the users most likely to notice where the matches feel generic. A round of structured interviews with that group before shipping role-aware skill matching would sharpen what to fix first.
       </p>
 
       <p class="cs-p">
-        <b>Design the notification layer.</b> Clara has no notification model, which is a significant gap. Gentle accountability (reminders that feel more like social nudges than system alerts) is where a lot of the coordination behaviour actually lives. I’d design notifications that reinforce ownership without feeling like surveillance: something closer to “your team can see this is due Friday” than “you haven’t completed your task.”
+        <strong>Decide earlier what the Share Card is for.</strong> The card was designed as a distribution mechanism. But what a user shares is their AI exposure profile — which means the card only works if the recipient understands what they're looking at. The current design assumes context the recipient may not have. I'd test whether a short explanatory frame on the card improves downstream engagement, or whether it clutters a moment that's meant to be fast.
       </p>
 
     </div>
   </section>
 
 
+  <!-- ═══════════════════════════════════════════════════════
+       ⑩ THE LARGER QUESTION
+  ═══════════════════════════════════════════════════════ -->
+
+  <div class="rule"><hr /></div>
+
+  <section class="cs-section">
+    <div class="wrap-text">
+
+      <span class="cs-eyebrow">The Larger Question</span>
+      <h2 class="cs-h2">What does it mean to give someone an honest picture of a system they're inside?</h2>
+
+      <p class="cs-p">
+        The people using WorkMap didn't design the AI tools being introduced into their workplaces. They're encountering them as decisions made upstream, handed down without much explanation. The tool's job is to give them enough structure to form their own view — not to form it for them.
+      </p>
+
+      <p class="cs-p">
+        That constraint shaped every design decision. It's also the one I'd carry into the next project.
+      </p>
+
+      <div class="cs-quote">
+        <p class="cs-quote__text">"The useful question isn't 'what can AI do?' It's what does AI do to this specific task, for this specific person, in this specific context?"</p>
+      </div>
+
+    </div>
+  </section>
+
 
   <!-- ─── NEXT PROJECT ──────────────────────────────── -->
-  <a class="next-project" href="conserva.html">
+  <a class="next-project" href="clara.html">
     <div>
       <p class="next-project__label">Next Project</p>
-      <p class="next-project__title">Conserva: A bold, system-driven gourmet experience</p>
+      <p class="next-project__title">Clara: Making group coordination impossible to miss</p>
     </div>
+    <span class="next-project__arrow">↗</span>
   </a>
 
 
@@ -1174,4 +1046,8 @@ It's not a motivation problem. It's a visibility problem.
       <li><a href="https://www.linkedin.com/in/yaya-falanga" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="mailto:yayafalanga@gmail.com">Email</a></li>
     </ul>
-    <span class="footer__copy">© 2026 Yaya Falanga
+    <span class="footer__copy">© 2026 Yaya Falanga</span>
+  </footer>
+
+</body>
+</html>
