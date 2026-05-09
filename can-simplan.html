@@ -589,19 +589,15 @@
       <div class="hero__meta">
         <div class="hero__meta-item">
           <p class="meta-label">Role</p>
-          <p class="meta-value">Sole UX Designer</p>
+          <p class="meta-value">Sole UX designer. End-to-end interface: proposal intake, simulation output, rationale recording, audit trail. Selected as winning project among the cohort.</p>
         </div>
         <div class="hero__meta-item">
-          <p class="meta-label">Team</p>
-          <p class="meta-value">Cross-disciplinary sprint team</p>
+          <p class="meta-label">Context</p>
+          <p class="meta-value">Four-day cross-disciplinary sprint, four-person team.</p>
         </div>
         <div class="hero__meta-item">
-          <p class="meta-label">Duration</p>
-          <p class="meta-value">4-day design sprint</p>
-        </div>
-        <div class="hero__meta-item">
-          <p class="meta-label">Outcome</p>
-          <p class="meta-value">Prototype ranked first by a panel of industry reviewers</p>
+          <p class="meta-label">Tools</p>
+          <p class="meta-value">Figma. Interactive prototype, end-to-end.</p>
         </div>
       </div>
 
@@ -664,7 +660,7 @@
         the barrier to AI adoption wasn’t skepticism about model accuracy, it was the inability to explain any individual output to a colleague, a councillor, or a community member asking difficult questions.
       </p>
 
-      <p class="cs-p"> This reframed the design problem entirely. The goal wasn't to make AI smarter or faster. It was to make it legible, and to keep a human hand visible at every step.
+      <p class="cs-p">The design problem wasn't speed. It was legibility, to keep a human hand visible at every step.
       </p>
 
       <!-- Before / After pivot -->
@@ -755,7 +751,7 @@
           <div>
             <h3 class="decision__title">Blocking flags enforce engagement</h3>
             <p class="decision__body">
-              When a concern is raised, the workflow pauses, and the planner must record a rationale before proceeding. This introduces friction by design because it turns a passive step into an explicit decision. The team debated this. The argument against was based on behavioural reality: optional fields get skipped, especially under time pressure, which is precisely when the rationale matters most. That friction was the point.
+              When a concern is raised, the workflow pauses, and the planner must record a rationale before proceeding. This introduces friction by design because it turns a passive step into an explicit decision. The argument against was based on behavioural reality: optional fields get skipped, especially under time pressure, which is precisely when the rationale matters most. That friction was the point.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
@@ -771,7 +767,7 @@
           <div>
             <h3 class="decision__title">Confidence appears before interpretation</h3>
             <p class="decision__body">
-              Model confidence, version, and timestamp are visible at the top of each proposal.
+              Model confidence, version, and timestamp are visible at the top of each proposal. A planner asked to defend a decision needs to know what the system knew, and when. Surfacing that upfront is the difference between a traceable decision and an opaque one.
             </p>
             <div class="decision__tradeoff">
               <span class="decision__tradeoff-label">Tradeoff</span>
@@ -860,7 +856,7 @@
       </p>
 
       <p class="cs-p">
-        The prototype was completed in four days and selected as the winning project amongst our cohort. The interface covers distinct screens, from proposal intake through audit trail, each passing through a mandatory human checkpoint before the workflow can advance. The sprint confirmed the central thesis: in civic AI tools, legibility isn't a nice-to-have, it's the condition under which the tool gets used at all.
+        Eight-screen prototype covering the full proposal lifecycle, completed in four days, selected as winning project. The thesis held: in civic AI tools, legibility is a precondition for use, not an enhancement.
       </p>
 
       <p class="cs-p">
@@ -884,7 +880,7 @@
 
 
   <!-- ═══════════════════════════════════════════════════════
-       ⑦ REFLECTION
+       ⑦ What I'd Do Differently
   ═══════════════════════════════════════════════════════ -->
 
   <div class="rule"><hr /></div>
@@ -892,31 +888,8 @@
   <section class="cs-section reflection">
     <div class="wrap-text">
 
-      <span class="cs-eyebrow">Reflection</span>
-      <h2 class="cs-h2">Designing for governance reframed friction.</h2>
-
-      <p class="cs-p">
-        UX design often treats friction as something to eliminate. Here, it was necessary as it slowed the workflow at critical moments, ensuring decisions are considered rather than passed through.
-      </p>
-
-      <p class="cs-p">
-        It also required translating in both directions: making system logic legible to planners, while shaping planner input into something the system could record and defend.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════
-       8 What I’d Do Differently
-  ═══════════════════════════════════════════════════════ -->
-
-  <div class="rule"><hr /></div>
-
-  <section class="cs-section reflection">
-    <div class="wrap-text">
-
-      <span class="cs-eyebrow">What I’d Do Differently</span>
-      <h2 class="cs-h2">Three things I’d pressure-test before shipping.</h2>
+      <span class="cs-eyebrow">What I'd Do Differently</span>
+      <h2 class="cs-h2">Two things I'd pressure-test before shipping.</h2>
 
       <p class="cs-p">
         <b>Test the rationale-recording step at realistic volume.</b> In a sprint prototype, mandatory rationale was evaluated against a single proposal. A planner reviewing twenty proposals in a week may experience it very differently, either as a meaningful pause or as rote overhead. I’d run a longitudinal study before committing mandatory checkpoints everywhere. The design likely needs tiered friction: mandatory for high-concern flags, optional for low.
@@ -926,50 +899,8 @@
         <b>Involve a planning legal team earlier.</b> The audit trail was designed with legibility for planners in mind. Whether that format satisfies the evidentiary and procedural requirements for an actual appeal or council challenge is a different question, that requires legal review, not just UX testing. In a real development cycle, that input belongs in the design phase, not as a downstream compliance check.
       </p>
 
-      <p class="cs-p">
-        <b>Pressure-test plain-language explanations against edge cases.</b> The flag explanations were written for clear-cut bylaw situations. Zoning is full of ambiguous cases, like overlapping provisions, discretionary uses, site-specific exceptions. I’d develop a set of edge-case flags and test whether plain language still holds, or whether ambiguity requires a different explanation structure entirely.
-      </p>
-
     </div>
   </section>
-
-  <!-- ═══════════════════════════════════════════════════════
-       9 The Larger Question
-  ═══════════════════════════════════════════════════════ -->
-
-  <div class="rule"><hr /></div>
-
-  <section class="cs-section reflection">
-    <div class="wrap-text">
-
-      <span class="cs-eyebrow">The Larger Question</span>
-      <h2 class="cs-h2">What if accountability were a feature of the system itself?</h2>
-
-      <p class="cs-p">
-        CAN-SIMPLAN kept raising a question that goes well beyond municipal planning: what if accountability weren’t a constraint on an AI tool, but a designed property of it?
-      </p>
-
-      <p class="cs-p">
-        In most AI product design, accountability shows up as a limitation. The human stays in the loop to absorb liability. The tool optimizes; the human signs off. This treats accountability as drag on an otherwise efficient system, something imposed from the outside, after the fact.
-      </p>
-
-      <p class="cs-p">
-       CAN-SIMPLAN suggests the opposite relationship. When accountability is designed into the moment of decision (not bolted on as a legal disclaimer, but built into the workflow itself) it changes what the tool fundamentally is. The rationale-recording step isn’t just documentation. It’s a cognitive checkpoint that makes the planner’s reasoning visible to themselves before it becomes visible to anyone else. The embedded audit trail isn’t just a record of what happened. It’s a structure that shapes what happens.
-      </p>
-
-      <p class="cs-p">
-       Any AI system operating where decisions get questioned (medical triage, legal research, financial advice, educational assessment, etc…) faces the same requirement. The standard response is human oversight at the point of output review. The harder design question is whether the system can be structured so that accountability is the product of using it, not just the burden placed on the person who used it. That’s the question this project leaves open, and the one I’d carry into the next one.
-      </p>
-
-      <div class="cs-quote">
-        <p class="cs-quote__text">“The most interesting question CAN-SIMPLAN raises isn’t ‘How do we make AI faster?’ It’s ‘How do we make accountability a feature of the system itself?’”</p>
-      </div>
-
-    </div>
-  </section>
-
-
-
 
   <!-- ─── NEXT PROJECT ──────────────────────────────── -->
   <a class="next-project" href="workmap.html">

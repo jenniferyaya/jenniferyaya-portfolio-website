@@ -612,19 +612,19 @@
       <div class="hero__meta">
         <div class="hero__meta-item">
           <p class="meta-label">Role</p>
-          <p class="meta-value">Sole designer and developer</p>
+          <p class="meta-value">Designed and built end-to-end. Problem framing, data architecture, scoring model, component system, deployment.</p>
         </div>
         <div class="hero__meta-item">
-          <p class="meta-label">Stack</p>
-          <p class="meta-value">React + Vite, CSS Modules, Vercel</p>
+          <p class="meta-label">Context</p>
+          <p class="meta-value">Self-initiated. Live, in active development.</p>
         </div>
         <div class="hero__meta-item">
-          <p class="meta-label">Data</p>
-          <p class="meta-value">O*NET occupational data, Statistics Canada NOC 2021</p>
+          <p class="meta-label">Tools</p>
+          <p class="meta-value">React, Vite, Vercel, Claude Code. Data sources: O*NET (US Department of Labor), NOC 2021 (Statistics Canada).</p>
         </div>
         <div class="hero__meta-item">
-          <p class="meta-label">Dataset</p>
-          <p class="meta-value">100 roles, 657+ scored tasks</p>
+          <p class="meta-label">Deliverable</p>
+          <p class="meta-value">Shipped web product.</p>
         </div>
       </div>
 
@@ -682,24 +682,12 @@
       <h2 class="cs-h2">The right unit of analysis isn't the job. It's the task.</h2>
 
       <p class="cs-p">
-        Two people with the same job title can have very different exposure to AI depending on which tasks dominate their day. A Registered Nurse who spends most of her time in clinical assessment has a different picture than one who spends most of her time on documentation and care coordination. The job title hides that. The task list surfaces it.
+       Two people with the same job title can have very different AI exposure depending on which tasks dominate their day. The job title hides that. The task list surfaces it.
       </p>
 
       <p class="cs-p">
         This also forced a harder design constraint: scores had to be calibrated honestly. A safety-critical, physically present role shouldn't score the same as a document-heavy administrative one just because both have "data" in the description. The tool had to reflect that, or it wouldn't be worth using.
       </p>
-
-      <!-- Before / After pivot -->
-      <div class="insight__pivot">
-        <div class="pivot__cell">
-          <p class="pivot__cell-label">The original framing</p>
-          <p class="pivot__cell-text">How do we give people AI literacy resources?</p>
-        </div>
-        <div class="pivot__cell pivot__cell--dark">
-          <p class="pivot__cell-label">The reframe</p>
-          <p class="pivot__cell-text">How might we show someone exactly where AI fits in the work they already know how to do?</p>
-        </div>
-      </div>
 
     </div>
   </section>
@@ -945,23 +933,23 @@
 
 
   <!-- ═══════════════════════════════════════════════════════
-       ⑧ REFLECTION
+       ⑧ AI COLLABORATION AS METHODOLOGY
   ═══════════════════════════════════════════════════════ -->
 
   <div class="rule"><hr /></div>
 
-  <section class="cs-section reflection">
+  <section class="cs-section">
     <div class="wrap-text">
 
-      <span class="cs-eyebrow">Reflection</span>
+      <span class="cs-eyebrow">AI Collaboration As Methodology</span>
       <h2 class="cs-h2">Building with AI changed what questions I asked about AI.</h2>
 
       <p class="cs-p">
-        WorkMap was developed using Claude Code for implementation alongside architectural and strategy decisions. That process surfaced something the product is trying to articulate: the useful question isn't "what can AI do?" It's "what does AI do to this specific task, for this specific person, in this specific context?"
+        WorkMap was developed using Claude Code for implementation, alongside architectural and strategic decisions made independently. That process surfaced what the product is trying to articulate: the useful question isn't "what can AI do?" It's "what does AI do to this specific task, for this specific person, in this specific context?"
       </p>
 
       <p class="cs-p">
-        Running both sides of that question at once — designing a tool that makes AI legible while using AI to build it — created a productive tension. Every time a design decision felt opaque or arbitrary, I had a working example of what opacity costs the person trying to make sense of a system they didn't build.
+        Running both sides of the question at once — designing a tool that makes AI legible while using AI to build it — created a productive tension. Every time a design decision felt opaque or arbitrary, there was a working example of what opacity costs the person trying to make sense of a system they didn't build. That experience sharpened what WorkMap needed to be.
       </p>
 
     </div>
@@ -978,7 +966,7 @@
     <div class="wrap-text">
 
       <span class="cs-eyebrow">What I'd Do Differently</span>
-      <h2 class="cs-h2">Three things I'd pressure-test before the next phase.</h2>
+      <h2 class="cs-h2">Two things I'd pressure-test before the next phase.</h2>
 
       <p class="cs-p">
         <strong>Validate the scoring rubric publicly before expanding the dataset.</strong> The calibration decisions that make WorkMap honest are also the ones hardest to defend without a published rubric. Expanding to more roles before that's documented creates a credibility risk. The methodology page exists; making the rubric explicit and version-controlled would close the gap.
@@ -986,10 +974,6 @@
 
       <p class="cs-p">
         <strong>Test the Skill Bridge with users who are actively in transition.</strong> The current skill matching is keyword-based against task descriptions. It works as a first pass. But the users who would get the most value from it — people actively considering a role change or reskilling — are also the users most likely to notice where the matches feel generic. A round of structured interviews with that group before shipping role-aware skill matching would sharpen what to fix first.
-      </p>
-
-      <p class="cs-p">
-        <strong>Decide earlier what the Share Card is for.</strong> The card was designed as a distribution mechanism. But what a user shares is their AI exposure profile — which means the card only works if the recipient understands what they're looking at. The current design assumes context the recipient may not have. I'd test whether a short explanatory frame on the card improves downstream engagement, or whether it clutters a moment that's meant to be fast.
       </p>
 
     </div>
