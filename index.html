@@ -273,6 +273,18 @@
     }
     .about__links a:hover { color: var(--muted-2); }
 
+    .text-link {
+      display: inline-flex; 
+      align-items: center; 
+      gap: 0.3em;
+      font-weight: 400;
+      color: var(--muted-2);
+      border-bottom: 1px solid var(--border); padding-bottom: 1px;
+      transition: color 0.18s, border-color 0.18s;
+      margin-top: var(--s4);
+    }
+    .text-link:hover  { color: var(--ink); border-color: var(--ink); }
+
     /* ── FOOTER ── */
     .footer {
       max-width: var(--col-full); margin-inline: auto;
