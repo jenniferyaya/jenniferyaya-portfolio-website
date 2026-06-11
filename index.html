@@ -3,549 +3,524 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yaya Falanga — UX Designer</title>
-  <meta name="description" content="Yaya Falanga is a product and UX designer creating clear, accountable digital experiences — available for product design roles." />
-  <meta property="og:title" content="Yaya Falanga — Product Designer" />
-  <meta property="og:description" content="Product and UX designer. Work includes AI tools, iOS apps, and design systems." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.jenniferyaya.ca/" />
-  <link rel="icon" type="image/png" href="img/favicon.ico" />
+  <title>Yaya Falanga — UX &amp; Product Designer</title>
+  <meta name="description" content="Yaya Falanga is a UX and product designer in Ottawa designing AI products that earn trust — decision-support tools, oversight interfaces, and working agents." />
 
-  <!-- Fonts -->
   <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
   <style>
-    :root {
-      --ink:        #1a1a18;
-      --ink-2:      #3d3d3a;
-      --muted:      #393937;
-      --muted-2:    #696962;
-      --border:     #e4e4de;
-      --border-2:   #f0f0ea;
-      --bg:         #faf9f7;
-      --bg-raised:  #f3f2ef;
-
-      --t-11: 0.7075rem;
-      --t-13: 0.7525rem;
-      --t-15: 0.9775rem;
-      --t-17: 1.0825rem;
-      --t-20: 1.25rem;
-      --t-24: 1.5rem;
-      --t-32: 2rem;
-      --t-40: 2.5rem;
-      --t-56: 3.5rem;
-      --t-72: 4.5rem;
-
-      --s1:  0.5rem;
-      --s2:  1rem;
-      --s3:  1.5rem;
-      --s4:  2rem;
-      --s5:  2.5rem;
-      --s6:  3rem;
-      --s8:  4rem;
-      --s10: 5rem;
-      --s12: 6rem;
-      --s16: 8rem;
-      --s20: 10rem;
-
-      --col-full: 1360px;
-      --sans:  area-normal, 'Helvetica Neue', Arial, sans-serif;
-      --sans-extended: area-extended, 'Helvetica Neue', Arial, sans-serif;
-    }
+    /* ============================================================
+       Yaya Falanga — Portfolio 2026 Redesign
+       Homepage. Self-contained styles; tokens to be extracted to
+       a shared stylesheet once remaining pages are redesigned.
+       ============================================================ */
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--sans);
-      font-size: var(--t-15);
-      line-height: 1.75;
-      color: var(--ink-2);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; height: auto; }
-    a   { color: inherit; text-decoration: none; }
 
-    /* ── NAV ── */
+    /* ─── Design Tokens ────────────────────────────────────── */
+    :root {
+      /* Colour */
+      --ink:        #5A0600;   /* Primary text + fills (footer, buttons) */
+      --ink-soft:   #CAA3A3;   /* Secondary text + secondary lines */
+      --bg:         #F9F8F6;   /* Page background */
+      --bone:       #F9F8F6;   /* Light text on ink fills */
+      --placeholder:#DBDBDB;   /* Image placeholder grey */
+
+      /* Type */
+      --font-display: "mr-eaves-modern", "Helvetica Neue", Arial, sans-serif;
+      --font-body:    "mr-eaves-sans", "Helvetica Neue", Arial, sans-serif;
+
+      /* Grid — 12 col / 80px margins / 16px gutter */
+      --margin: 80px;
+      --gutter: 16px;
+
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 1.1875rem;       /* 19px — Mr Eaves runs small */
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    ::selection { background: var(--ink); color: var(--bone); }
+
+    /* ─── Grid scaffold ────────────────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--gutter);
+      padding-inline: var(--margin);
+    }
+
+    /* Content spans 10 of 12 columns (cols 2–11) */
+    .span-content { grid-column: 2 / 12; }
+
+    /* ─── Shared text styles ───────────────────────────────── */
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .eyebrow--soft { color: var(--ink-soft); }
+
+    .text-link {
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+      text-decoration-thickness: 1px;
+      transition: text-decoration-color var(--transition);
+    }
+    .text-link:hover { text-decoration-color: var(--ink-soft); }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--ink-soft);
+    }
+
+    /* ─── Navigation ───────────────────────────────────────── */
     .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: var(--s2) var(--s5);
-      background: var(--bg); border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--ink);
+      align-items: center;
+      padding-block: 2rem;
+    }
+    .nav__inner {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
     }
     .nav__logo {
-      font-family: var(--sans-extended);
-      font-size: var(--t-15); color: var(--ink); letter-spacing: -0.01em;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
     }
     .nav__links {
-      list-style: none; display: flex; align-items: center; gap: var(--s5);
+      display: flex;
+      gap: 4.5rem;
+      font-weight: 700;
+      font-size: 1.0625rem;
     }
     .nav__links a {
-      font-family: var(--sans); font-size: var(--t-11);
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--muted); transition: color 0.18s;
+      transition: color var(--transition);
     }
-    .nav__links a:hover { color: var(--ink); }
-    .nav__links .nav__resume {
-      color: var(--ink); border: 1px solid var(--border);
-      padding: 0.4rem 0.9rem; border-radius: 2px;
-      transition: background 0.18s, border-color 0.18s;
-    }
-    .nav__links .nav__resume:hover {
-      background: var(--ink); color: var(--bg); border-color: var(--ink);
-    }
+    .nav__links a:hover { color: var(--ink-soft); }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 67svh; display: flex; flex-direction: column;
-      justify-content: flex-end; max-width: var(--col-full);
-      margin-inline: auto; padding: 0 var(--s5) var(--s12);
-    }
-    .hero__eyebrow {
-      display: block; font-family: var(--sans); font-size: var(--t-11);
-      font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--muted-2); margin-bottom: var(--s4);
-    }
+    /* ─── Hero ─────────────────────────────────────────────── */
+    .hero { padding-block: 7rem 0; }
+
+    .hero__eyebrow { display: block; margin-bottom: 1.75rem; }
+
     .hero__title {
-      font-family: var(--sans);
-      font-size: clamp(var(--t-32), 5.5vw, var(--t-56));
-      line-height: 1.1; color: var(--ink);
-      max-width: 18ch; margin-bottom: var(--s5);
-    }
-    .hero__bottom {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      gap: var(--s8); padding-top: var(--s5); border-top: 1px solid var(--border);
-    }
-    .hero__sub {
-      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
-      line-height: 1.6; color: var(--muted-2); max-width: 60ch;
-    }
-    .hero__cta {
-      display: inline-flex; align-items: center; gap: var(--s1);
-      font-family: var(--sans); font-size: var(--t-11); font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);
-      border: 1px solid var(--border); padding: 0.65rem 1.3rem;
-      border-radius: 2px; white-space: nowrap; flex-shrink: 0;
-      transition: background 0.18s, border-color 0.18s;
-    }
-    .hero__cta::after { content: ' ↓'; opacity: 0.5; }
-    .hero__cta:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-
-    /* ── SECTION LABEL ── */
-    .section-label {
-      display: block; font-family: var(--sans); font-size: var(--t-11);
-      font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--muted-2); margin-bottom: var(--s2);
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: 0.005em;
+      max-width: 14ch;
+      margin-bottom: 3.5rem;
     }
 
-    /* ── WORK ── */
-    .work {
-      max-width: var(--col-full); margin-inline: auto;
-      padding: var(--s8) var(--s5) var(--s16);
-    }
-    .work__list { display: flex; flex-direction: column; }
+    .hero__rule { grid-column: 2 / 12; }
 
-    /* shared card */
+    .hero__intro {
+      grid-column: 2 / 7;
+      margin-top: 2.5rem;
+      font-size: 1.1875rem;
+    }
+
+    /* ─── Selected Work ────────────────────────────────────── */
+    .work { padding-top: 8rem; }
+
+    .work__label { display: block; margin-bottom: 2.5rem; }
+
     .card {
-      display: block; text-decoration: none;
-      transition: background 0.2s;
+      grid-column: 2 / 12;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      column-gap: var(--gutter);
+      align-items: start;
+      padding-block: 1.5rem 6rem;
     }
-    .card__inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: var(--s10); align-items: center; padding: var(--s8) 0;
-    }
-    .card__visual {
-      overflow: hidden; aspect-ratio: 4 / 3;
-    }
-    .card__visual img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .card:hover .card__visual img { transform: scale(1.03); }
 
-    .card__body { display: flex; flex-direction: column; justify-content: center; }
-    .card__tag {
-      font-family: var(--sans); font-size: var(--t-11); font-weight: 400;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--muted-2); margin-bottom: var(--s2);
+    .card__text { grid-column: 1 / 6; }
+    .card__media { grid-column: 7 / 11; }
+
+    .card__tags {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-size: 0.75rem;
     }
+
     .card__title {
-      font-family: var(--sans); font-size: clamp(var(--t-20), 2vw, var(--t-32));
-      line-height: 1.12; color: var(--ink); margin-bottom: var(--s2);
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 0.9rem;
     }
-    .card__desc {
-      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
-      line-height: 1.55; color: var(--muted-2);
-      max-width: 40ch; margin-bottom: var(--s4);
+
+    .card__body {
+      max-width: 52ch;
+      margin-bottom: 1.75rem;
     }
+
     .card__link {
-      font-family: var(--sans); font-size: var(--t-11); font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink);
-      display: inline-flex; align-items: center; gap: 0.5em;
-      border-bottom: 1px solid var(--border); padding-bottom: 2px;
-      width: fit-content; transition: border-color 0.18s, gap 0.18s;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 0.15em;
+      transition: color var(--transition), border-color var(--transition);
     }
-    .card__link::after { content: '↗'; }
-    .card:hover .card__link { gap: 0.8em; border-color: var(--ink); }
+    .card__link:hover { color: var(--ink-soft); border-color: var(--ink-soft); }
 
-    /* featured card */
-    .card--featured .card__inner { grid-template-columns: 1fr; gap: var(--s6); padding: var(--s10) 0; }
-    .card--featured .card__visual { aspect-ratio: 16 / 9; }
-    .card--featured .card__title { font-size: clamp(var(--t-32), 2vw, var(--t-56)); }
-    .card--featured .card__desc { font-size: var(--t-17); max-width: 56ch; }
-
-    /* pair row */
-    .work__pair { display: grid; grid-template-columns: 1fr 1fr; }
-    .work__pair .card { border-top: none; }
-    .work__pair .card__inner { grid-template-columns: 1fr; gap: var(--s4); padding: var(--s8) var(--s5); }
-    .work__pair .card__visual { aspect-ratio: 3 / 2; }
-
-    /* ── MORE WORK ── */
-    .more-work {
-      max-width: var(--col-full); margin-inline: auto;
-      padding: var(--s8) var(--s5) var(--s10);
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    }
-    .more-work__intro { margin-bottom: var(--s8); }
-    .more-work__lede {
-      font-family: var(--sans); font-size: var(--t-15);
-      color: var(--muted-2); line-height: 1.55; max-width: 40ch;
-    }
-    .more-work__list {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: var(--s8);
-    }
-    .more-card {
-      display: flex; flex-direction: column; align-items: flex-start;
-      gap: var(--s2); text-decoration: none;
-      transition: transform 0.18s;
-    }
-    .more-card:hover { transform: translateY(-2px); }
-    .more-card__tag {
-      font-family: var(--sans); font-size: var(--t-11); letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--muted-2);
-    }
-    .more-card__title {
-      font-family: var(--sans); font-size: var(--t-17); color: var(--ink);
-      line-height: 1.3;
-      transition: color 0.18s;
-    }
-    .more-card:hover .more-card__title { color: var(--muted); }
-
-    /* ── ABOUT ── */
-    .about {
-      max-width: var(--col-full); margin-inline: auto;
-      padding: var(--s10) var(--s5) var(--s12);
-      border-top: 1px solid var(--border);
-      display: grid; grid-template-columns: 1fr 3fr;
-      gap: var(--s8); align-items: start;
-    }
-    .about__body { max-width: 78ch; }
-    .about__bio {
-      font-family: var(--sans); font-size: var(--t-15); font-weight: 400;
-      line-height: 1.7; color: var(--ink-2); margin-bottom: var(--s3);
-    }
-    .about__bio a {
-      color: var(--ink); text-decoration: underline;
-      text-decoration-thickness: 1px; text-underline-offset: 3px;
-      transition: color 0.18s;
-    }
-    .about__bio a:hover { color: var(--muted-2); }
-    .about__bio strong { color: var(--ink); font-weight: 500; }
-    .about__pill {
-      display: inline-block; margin-top: var(--s3);
-      font-family: var(--sans); font-size: var(--t-13); color: var(--ink-2);
-      background: var(--bg-raised); border: 1px solid var(--border);
-      padding: 0.5rem 0.95rem; border-radius: 2px;
+    .card__media img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: var(--placeholder); /* placeholder grey until image exists */
     }
 
-    /* ── CONTACT ── */
-    .contact {
-      max-width: var(--col-full); margin-inline: auto;
-      padding: var(--s6) var(--s5);
-      border-top: 1px solid var(--border);
-      display: grid; grid-template-columns: 1fr 3fr;
-      gap: var(--s8); align-items: center;
-    }
-    .contact__links {
-      list-style: none; display: flex; flex-wrap: wrap;
-      gap: var(--s4); align-items: center;
-    }
-    .contact__links a {
-      font-family: var(--sans); font-size: var(--t-15); color: var(--ink);
-      text-decoration: underline; text-decoration-thickness: 1px;
-      text-underline-offset: 3px; transition: color 0.18s;
-    }
-    .contact__links a:hover { color: var(--muted-2); }
+    /* ─── About ────────────────────────────────────────────── */
+    .about { padding-block: 5rem 8rem; }
 
-    /* ── FOOTER ── */
+    .about__rule { grid-column: 2 / 12; margin-bottom: 5rem; }
+
+    .about__label { grid-column: 2 / 5; }
+
+    .about__body { grid-column: 6 / 12; }
+    .about__body p + p { margin-top: 1.4rem; }
+
+    /* ─── Footer ───────────────────────────────────────────── */
     .footer {
-      max-width: var(--col-full); margin-inline: auto;
-      padding: var(--s4) var(--s5) var(--s5); border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      gap: var(--s4); flex-wrap: wrap;
-    }
-    .footer__copy,
-    .footer__location {
-      font-family: var(--sans); font-size: var(--t-13);
-      color: var(--muted-2); letter-spacing: 0.02em;
+      background: var(--ink);
+      color: var(--bone);
+      padding-block: 4.5rem 3.5rem;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 480px) {
-      :root { --s5: 1.5rem; --s8: 3rem; --s10: 4rem; --s16: 6rem; }
-      .nav { padding: var(--s2) var(--s2); }
-      .nav__links { gap: var(--s3); }
-      .hero { padding: 0 var(--s2) var(--s10); }
-      .hero__bottom { flex-direction: column; align-items: flex-start; gap: var(--s4); }
-      .work { padding-inline: var(--s2); }
-      .card__inner { grid-template-columns: 1fr; gap: var(--s3); padding: var(--s6) 0; }
-      .card--featured .card__inner { padding: var(--s8) 0; }
-      .work__pair { grid-template-columns: 1fr; }
-      .work__pair .card:first-child { border-right: none; border-bottom: 1px solid var(--border); }
-      .work__pair .card__inner { padding: var(--s6) var(--s2); }
-      .more-work { padding-inline: var(--s2); }
-      .more-work__list { grid-template-columns: 1fr; gap: var(--s5); }
-      .more-work__intro { margin-bottom: var(--s5); }
-      .about { grid-template-columns: 1fr; gap: var(--s3); padding-inline: var(--s2); }
-      .contact { grid-template-columns: 1fr; gap: var(--s3); padding-inline: var(--s2); }
-      .contact__links { gap: var(--s3); }
-      .footer { padding-inline: var(--s2); flex-direction: column; align-items: flex-start; gap: var(--s2); }
+    .footer__inner {
+      grid-column: 1 / 13;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--gutter);
+      row-gap: 5rem;
     }
-    @media (min-width: 481px) and (max-width: 768px) {
-      .hero { padding: 0 var(--s3) var(--s10); }
-      .hero__bottom { flex-direction: column; align-items: flex-start; gap: var(--s4); }
-      .work { padding-inline: var(--s3); }
-      .card__inner { grid-template-columns: 1fr; gap: var(--s4); }
-      .card--featured .card__inner { gap: var(--s5); }
-      .work__pair { grid-template-columns: 1fr; }
-      .work__pair .card:first-child { border-right: none; border-bottom: 1px solid var(--border); }
-      .work__pair .card__inner { padding: var(--s6) var(--s3); }
-      .more-work { padding-inline: var(--s3); }
-      .more-work__list { grid-template-columns: 1fr; gap: var(--s5); }
-      .more-work__intro { margin-bottom: var(--s6); }
-      .about { grid-template-columns: 1fr; gap: var(--s3); padding-inline: var(--s3); }
-      .contact { grid-template-columns: 1fr; gap: var(--s3); padding-inline: var(--s3); }
-      .footer { padding-inline: var(--s3); }
+
+    .footer__chat { grid-column: 1 / 6; display: flex; flex-direction: column; justify-content: space-between; }
+
+    .footer__chat-line {
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer__social {
+      display: inline-flex;
+      align-self: flex-start;
+    }
+    .footer__social svg { width: 20px; height: 20px; }
+
+    .footer__contact { grid-column: 7 / 11; }
+    .footer__pages   { grid-column: 11 / 13; }
+
+    .footer__contact, .footer__pages {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .footer h3 {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      margin-bottom: 2.75rem;
+    }
+
+    .footer__fields {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .footer__field-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .footer__field-value {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .footer a.footer__field-value:hover,
+    .footer__pages a:hover { opacity: 0.7; }
+    .footer a { transition: opacity var(--transition); }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      padding: 0;
+      transition: opacity var(--transition);
+    }
+    .copy-btn:hover { opacity: 0.7; }
+    .copy-btn svg { width: 14px; height: 14px; }
+
+    .footer__pages-links {
+      display: flex;
+      gap: 2rem;
+      align-items: baseline;
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    /* ─── Focus visibility ─────────────────────────────────── */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+
+    /* ─── Responsive ───────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      :root { --margin: 48px; }
+      .span-content, .hero__rule, .about__rule { grid-column: 1 / 13; }
+      .hero__intro { grid-column: 1 / 9; }
+      .card { grid-column: 1 / 13; }
+      .about__label { grid-column: 1 / 13; margin-bottom: 2rem; }
+      .about__body { grid-column: 1 / 13; }
+    }
+
+    @media (max-width: 720px) {
+      :root { --margin: 24px; }
+      body { font-size: 1.125rem; }
+      .nav { padding-block: 1.4rem; }
+      .nav__links { gap: 2rem; }
+      .hero { padding-top: 4.5rem; }
+      .hero__title { margin-bottom: 2.5rem; }
+      .hero__intro { grid-column: 1 / 13; }
+      .work { padding-top: 5rem; }
+      .card { grid-template-columns: 1fr; padding-bottom: 4.5rem; }
+      .card__text, .card__media { grid-column: 1 / -1; }
+      .card__media { margin-top: 2rem; }
+      .footer__chat, .footer__contact, .footer__pages { grid-column: 1 / 13; }
+      .footer__inner { row-gap: 3.5rem; }
+      .footer__social { margin-top: 2rem; }
+      .footer h3 { margin-bottom: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <a href="index.html" class="nav__logo">Yaya Falanga</a>
-    <ul class="nav__links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a class="nav__resume" href="https://drive.google.com/file/d/1p8ECjp0nHWpvip55dB8SnCMhe9rH5tzy/view?usp=drive_link" target="_blank" rel="noopener">Résumé</a></li>
-    </ul>
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav class="nav grid">
+    <div class="nav__inner span-content" style="grid-column: 1 / 13;">
+      <a href="index.html" class="nav__logo">Yaya Falanga</a>
+      <div class="nav__links">
+        <a href="#work">Work</a>
+        <a href="ai-creative.html">Fun</a>
+        <a href="#about">About</a>
+      </div>
+    </div>
   </nav>
 
-  <!-- HERO -->
-  <div class="hero" aria-label="Introduction">
-    <span class="hero__eyebrow">UX & Product Designer</span>
-    <h1 class="hero__title">Designing products that earn trust.</h1>
-    <div class="hero__bottom">
-      <p class="hero__sub">
-        Decision-support tools, oversight interfaces, and the occasional working agent. The work is for moments where the wrong call has consequences, and where the system has to be explainable to the person standing behind the decision.
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <header class="hero grid">
+    <div class="span-content">
+      <span class="eyebrow hero__eyebrow">UX &amp; Product Designer</span>
+      <h1 class="hero__title">Designing products that earn trust.</h1>
+    </div>
+    <hr class="rule hero__rule" />
+    <p class="hero__intro">
+      Decision-support tools, oversight interfaces, and the occasional working
+      agent. The work is for moments where the wrong call has consequences,
+      and where the system has to be explainable to the person standing behind
+      the decision.
+    </p>
+  </header>
+
+
+  <!-- ─── SELECTED WORK ────────────────────────────────────── -->
+  <main id="work" class="work grid">
+    <div class="span-content">
+      <span class="eyebrow work__label">Selected Work</span>
+    </div>
+
+    <!-- Check-In Agent -->
+    <article class="card">
+      <div class="card__text">
+        <span class="eyebrow eyebrow--soft card__tags">AI Agent &middot; Fintech &middot; Behavioural Design</span>
+        <h2 class="card__title">The Check-In Agent</h2>
+        <p class="card__body">
+          First-time investors panic-sell at the bottom. This is an AI agent
+          that watches for the moment, and stays silent until it's earned the
+          right to interrupt.
+        </p>
+        <a class="card__link" href="checkin-agent.html">View Case Study</a>
+      </div>
+      <div class="card__media">
+        <a href="checkin-agent.html">
+          <img src="img/JF_WEB_CHECKINAGENTHero.png"
+               alt="The Check-In Agent — behavioural fintech agent interface" />
+        </a>
+      </div>
+    </article>
+
+    <!-- CAN-SIMPLAN -->
+    <article class="card">
+      <div class="card__text">
+        <span class="eyebrow eyebrow--soft card__tags">AI Tool &middot; UX Design &middot; Design Sprint</span>
+        <h2 class="card__title">CAN-SIMPLAN</h2>
+        <p class="card__body">
+          In civic AI tools, accuracy isn't enough, the planner has to be able
+          to explain the decision. This is the design that makes that possible.
+        </p>
+        <a class="card__link" href="can-simplan.html">View Case Study</a>
+      </div>
+      <div class="card__media">
+        <a href="can-simplan.html">
+          <img src="img/JF_WEB_CANSIMPLANHero.png"
+               alt="CAN-SIMPLAN — civic AI planning tool interface" />
+        </a>
+      </div>
+    </article>
+
+    <!-- WorkMap -->
+    <article class="card">
+      <div class="card__text">
+        <span class="eyebrow eyebrow--soft card__tags">Product Design &amp; Development &middot; React &middot; AI Tool</span>
+        <h2 class="card__title">WorkMap</h2>
+        <p class="card__body">
+          Most AI coverage lands at the wrong altitude. WorkMap maps AI's
+          impact task by task&mdash;built and shipped end-to-end in React.
+        </p>
+        <a class="card__link" href="workmap.html">View Case Study</a>
+      </div>
+      <div class="card__media">
+        <a href="workmap.html">
+          <img src="img/JF_WEB_WORKMAPHero.png"
+               alt="WorkMap — role-based AI exposure mapping tool" />
+        </a>
+      </div>
+    </article>
+  </main>
+
+
+  <!-- ─── ABOUT ────────────────────────────────────────────── -->
+  <section id="about" class="about grid">
+    <hr class="rule about__rule" />
+    <span class="eyebrow about__label">About</span>
+    <div class="about__body">
+      <p>
+        I'm Yaya, a product designer based in Ottawa. I design AI products for
+        high-stakes contexts&mdash;decision-support tools, oversight interfaces, and
+        agents that have to know when to step back. My work sits at the layer
+        where AI meets human accountability, which means most of it is about
+        restraint: what the system shouldn't do, what it has to make legible,
+        and where the person is still the one who has to defend the call.
+      </p>
+      <p>
+        The through-line is structural clarity. Making uncertainty visible
+        instead of implied. Designing friction that prevents the wrong decision
+        instead of dressing up the right one. Treating accountability as a
+        load-bearing part of the interface, not a compliance footnote. The
+        contexts vary (civic AI, fintech, productivity) but the discipline is
+        the same.
+      </p>
+      <p>
+        I work fluently with AI as a build collaborator.
+        <a class="text-link" href="workmap.html">WorkMap</a> was developed
+        end-to-end in React.
+        <a class="text-link" href="checkin-agent.html">The Check-In Agent</a>
+        runs on a system-prompted Claude endpoint I designed and wrote. I think
+        out loud about the practice in
+        <a class="text-link" href="working-notes.html">Working Notes</a>.
+        Outside of design, I host philosophy caf&eacute;s, haunt bookshops, and think
+        about sunny beach days more than is probably warranted.
       </p>
     </div>
-  </div>
+  </section>
 
-  <!-- SELECTED WORK -->
-  <section id="work" class="work" aria-label="Selected work">
 
-    <span class="section-label">Selected Work</span>
+  <!-- ─── FOOTER ───────────────────────────────────────────── -->
+  <footer class="footer grid">
+    <div class="footer__inner">
 
-    <div class="work__list">
+      <div class="footer__chat">
+        <span class="footer__chat-line">I'd love to chat!</span>
+        <a class="footer__social" href="https://www.linkedin.com/in/yaya-falanga"
+           target="_blank" rel="noopener" aria-label="LinkedIn — Yaya Falanga">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+        </a>
+      </div>
 
-      <!-- Featured — CAN-SIMPLAN -->
-      <a class="card card--featured" href="checkin-agent.html">
-        <div class="card__inner">
-          <div class="card__visual">
-            <img src="img/JF_WEB_CHECKINAGENTHero.png"
-                 alt="Check-In Agent: ambient indicator surfacing inside a simulated investment app during a market downturn"
-                 width="1360" height="595" loading="eager" />
+      <div class="footer__contact">
+        <h3>Contact</h3>
+        <div class="footer__fields">
+          <div>
+            <span class="footer__field-label">Email</span>
+            <span class="footer__field-value">
+              <a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a>
+              <button class="copy-btn" type="button" aria-label="Copy email address"
+                      onclick="navigator.clipboard.writeText('yayafalanga@gmail.com'); this.setAttribute('aria-label','Copied');">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                  <rect x="5" y="5" width="9" height="9" rx="1"/>
+                  <path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/>
+                </svg>
+              </button>
+            </span>
           </div>
-          <div class="card__body">
-            <p class="card__tag">AI Agent · Fintech · Behavioural Design</p>
-            <h2 class="card__title">The Check-In Agent</h2>
-            <p class="card__desc">First-time investors panic-sell at the bottom. This is an AI agent that watches for the moment, and stays silent until it's earned the right to interrupt.</p>
-            <span class="card__link">View case study</span>
+          <div>
+            <span class="footer__field-label">Resume</span>
+            <a class="footer__field-value" href="YayaFalanga_CV_Product_Designer.pdf" download>
+              Download resume &darr;
+            </a>
           </div>
         </div>
-      </a>
-
-      <!-- Row 1 — CAN-SIMPLAN + WorkMap + Clara -->
-      <div class="work__pair">
-
-        <a class="card" href="can-simplan.html">
-          <div class="card__inner">
-            <div class="card__visual">
-              <img src="img/JF_WEB_CANSIMPLANHero.png"
-                   alt="WorkMap — role-based AI exposure tool showing task-level fit scores"
-                   width="600" height="400" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <p class="card__tag">AI Tool · UX Design · Design Sprint</p>
-              <h2 class="card__title">CAN-SIMPLAN</h2>
-              <p class="card__desc">In civic AI tools, accuracy isn't enough, the planner has to be able to explain the decision. This is the design that makes that possible.</p>
-              <span class="card__link">View case study</span>
-            </div>
-          </div>
-        </a>
-
-
-        <a class="card" href="workmap.html">
-          <div class="card__inner">
-            <div class="card__visual">
-              <img src="img/JF_WEB_WORKMAPHero.png"
-                   alt="WorkMap — role-based AI exposure tool showing task-level fit scores"
-                   width="600" height="400" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <p class="card__tag">Product Design &amp; Development · React · AI Tool</p>
-              <h2 class="card__title">WorkMap</h2>
-              <p class="card__desc">Most AI coverage lands at the wrong altitude. WorkMap maps AI's impact task by task — built and shipped end-to-end in React.</p>
-              <span class="card__link">View case study</span>
-            </div>
-          </div>
-        </a>
-        
-        <a class="card" href="clara-app.html">
-          <div class="card__inner">
-            <div class="card__visual">
-              <img src="img/JF_WEB_ClaraIndex.png"
-                   alt="Clara — iOS app for shared trip planning"
-                   width="600" height="400" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <p class="card__tag">iOS App · UX Design</p>
-              <h2 class="card__title">Clara</h2>
-              <p class="card__desc">An unassigned task is just the original problem with a due date. Clara makes ownership impossible to miss in shared trip planning.</p>
-              <span class="card__link">View case study</span>
-            </div>
-          </div>
-        </a>
-
-        <a class="card" href="conserva.html">
-          <div class="card__inner">
-            <div class="card__visual">
-              <img src="img/JF_WEB_ConservaHero.png"
-                   alt="Conserva — bold, system-driven gourmet food platform"
-                   width="600" height="400" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <p class="card__tag">UI Design · Design System</p>
-              <h2 class="card__title">Conserva</h2>
-              <p class="card__desc">On a premium food platform, inconsistency reads as carelessness. Conserva was built system-first, tokens before components, so the brand holds at every touchpoint.</p>
-              <span class="card__link">View case study</span>
-            </div>
-          </div>
-        </a>
-
-
-
       </div>
 
-      <!-- Row 2 — Conserva + Aurafact (supporting) -->
-      <div class="work__pair">
-        <a class="card" href="aurafact.html">
-          <div class="card__inner">
-            <div class="card__visual">
-              <img src="img/JF_WEB_AurafactHero.png"
-                   alt="Aurafact — spatial archive for environmental audio"
-                   width="600" height="400" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <p class="card__tag">Speculative Product · AI-Assisted Build</p>
-              <h2 class="card__title">Aurafact</h2>
-              <p class="card__desc">Environmental sound is a primary historical artifact, it just isn't kept. Aurafact is a spatial archive designed to change that.</p>
-              <span class="card__link">View case study</span>
-            </div>
-          </div>
-        </a>
-      
-        <a class="card" href="ai-creative.html">
-          <div class="card__inner">
-            <div class="card__visual">
-              <!-- Replace with your actual campaign image export -->
-              <img src="img/JF_WEB_GenerativeCampaignHero.png"
-                   alt="Generative Campaign Work — AI-directed stills and motion for invented brand campaigns"
-                   width="600" height="400" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <p class="card__tag">AI Creative Direction · Stills &amp; Motion</p>
-              <h2 class="card__title">Generative Campaign Work</h2>
-              <p class="card__desc">Self-initiated campaigns from brutalist lifestyle product photography and a portrait-forward skincare launch art directed from brief to final frame using Midjourney, Sora, and Grok Imagine.</p>
-              <span class="card__link">View work</span>
-            </div>
-          </div>
-        </a>
-
-
+      <div class="footer__pages">
+        <h3>Pages</h3>
+        <div class="footer__pages-links">
+          <a href="#work">Work</a>
+          <a href="ai-creative.html">Fun</a>
+          <a href="#about">About</a>
+        </div>
       </div>
 
     </div>
-  </section>
-
-  <!-- MORE WORK -->
-  <section id="more-work" class="more-work" aria-label="More work">
-
-    <div class="more-work__intro">
-      <span class="section-label">More Work</span>
-      <p class="more-work__lede">Shorter projects and collaborations.</p>
-    </div>
-
-    <div class="more-work__list">
-      <a class="more-card" href="lululemon.html">
-        <span class="more-card__tag">UX Sprint &amp; Heuristic Evaluation</span>
-        <span class="more-card__title">lululemon: A heuristic evaluation and targeted redesign.</span>
-      </a>
-      <a class="more-card" href="uottawa.html">
-        <span class="more-card__tag">Motion &amp; Multimedia</span>
-        <span class="more-card__title">uOttawa: Bringing academic content to life</span>
-      </a>
-      <a class="more-card" href="asuquomo.html">
-        <span class="more-card__tag">Creative Direction</span>
-        <span class="more-card__title">Asuquomo: Wide Awake visual campaign</span>
-      </a>
-    </div>
-
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="about" aria-label="About">
-    <span class="section-label">About</span>
-    <div class="about__body">
-      <p class="about__bio">I'm Yaya, a product designer based in Ottawa. I design AI products for high-stakes contexts—decision-support tools, oversight interfaces, and agents that have to know when to step back. My work sits at the layer where AI meets human accountability, which means most of it is about restraint: what the system shouldn't do, what it has to make legible, and where the person is still the one who has to defend the call.</p>
-      
-      <p class="about__bio">The throughline is structural clarity. Making uncertainty visible instead of implied. Designing friction that prevents the wrong decision instead of dressing up the right one. Treating accountability as a load-bearing part of the interface, not a compliance footnote. The contexts vary (civic AI, fintech, productivity) but the discipline is the same.</p>
-      
-      <p class="about__bio">I work fluently with AI as a build collaborator. <a href="workmap.html"target="_blank" rel="noopener">WorkMap</a> was developed end-to-end in React. <a href="checkin-agent.html"target="_blank" rel="noopener">The Check-In Agent</a> runs on a system-prompted Claude endpoint I designed and wrote. I think out loud about the practice in <a href="https://yayafalanga.substack.com/" target="_blank" rel="noopener">Working Notes</a>. Outside of design, I host philosophy cafés, haunt bookshops, and think about sunny beach days more than is probably warranted.</p>
-
-      <span class="about__pill">Open to full-time and contract roles · Ottawa, remote</span>
-    </div>
-  </section>
-
-  <!-- GET IN TOUCH -->
-  <section id="contact" class="contact" aria-label="Get in touch">
-    <span class="section-label">Get in touch</span>
-    <ul class="contact__links">
-      <li><a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a></li>
-      <li><a href="https://drive.google.com/file/d/1p8ECjp0nHWpvip55dB8SnCMhe9rH5tzy/view?usp=drive_link" target="_blank" rel="noopener">Résumé (PDF)</a></li>
-      <li><a href="https://www.linkedin.com/in/yaya-falanga" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="https://github.com/jenniferyaya" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a href="https://yayafalanga.substack.com/" target="_blank" rel="noopener">Workingnotes</a></li>
-    </ul>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <span class="footer__copy">© 2026 Yaya Falanga</span>
-    <span class="footer__location">Ottawa</span>
   </footer>
 
 </body>
