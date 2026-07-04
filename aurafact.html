@@ -145,8 +145,6 @@
       margin-bottom: 1.75rem;
     }
 
-    .cs-sidebar-meta { display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3rem; }
-
     .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
     .cs-toc a {
       display: block;
@@ -172,7 +170,15 @@
     }
 
     .hero__tagline {
-      grid-column: 2 / 8;
+      grid-column: 2 / 7;
+      margin-top: 2rem;
+    }
+
+    .context-meta {
+      grid-column: 8 / 12;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
       margin-top: 2rem;
     }
 
@@ -552,6 +558,7 @@
       .span-content, .hero__cta,
       .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
+      .context-meta { grid-column: 1 / 10; margin-top: 2.5rem; }
       .cs-layout { grid-template-columns: 1fr; }
       .cs-sidebar { position: static; padding-block: 0 3rem; }
     }
@@ -563,6 +570,7 @@
       .nav__links { gap: 2rem; }
       .cs-sidebar { padding-block: 3.5rem 3rem; }
       .hero__tagline { grid-column: 1 / 13; }
+      .context-meta { grid-column: 1 / 13; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -616,21 +624,6 @@
       <span class="eyebrow hero__eyebrow">Speculative Product · Information Architecture · AI-Assisted Build · 2026</span>
       <h1 class="hero__title">Aurafact</h1>
 
-      <div class="cs-sidebar-meta">
-        <div>
-          <span class="meta-label">Role</span>
-          <p class="meta-value">Lead Product Designer: Systems & IA</p>
-        </div>
-        <div>
-          <span class="meta-label">Type</span>
-          <p class="meta-value">Self-directed speculative product</p>
-        </div>
-        <div>
-          <span class="meta-label">Built With</span>
-          <p class="meta-value">Claude, Cursor, ChatGPT, p5.js, GSAP</p>
-        </div>
-      </div>
-
       <nav class="cs-toc">
         <ul>
           <li><a href="#context" class="cs-toc-link">Context</a></li>
@@ -664,6 +657,22 @@
     <p class="hero__tagline">
       Sound is not absent. It is simply unkept. Aurafact is a spatial archive that treats environmental sound as a primary historical artifact, searchable, interpretable, and enjoyable.
     </p>
+
+    <div class="context-meta">
+      <div class="context-meta-item">
+        <span class="meta-label">Role</span>
+        <p class="meta-value">Lead Product Designer: Systems & IA</p>
+      </div>
+      <div class="context-meta-item">
+        <span class="meta-label">Type</span>
+        <p class="meta-value">Self-directed speculative product</p>
+      </div>
+      <div class="context-meta-item">
+        <span class="meta-label">Built With</span>
+        <p class="meta-value">Claude, Cursor, ChatGPT, p5.js, GSAP</p>
+      </div>
+    </div>
+
     <a class="hero__cta"
          href="https://jenniferyaya.github.io/aura-fact/"
          target="_blank" rel="noopener">

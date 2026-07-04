@@ -145,8 +145,6 @@
       margin-bottom: 1.75rem;
     }
 
-    .cs-sidebar-meta { display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3rem; }
-
     .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
     .cs-toc a {
       display: block;
@@ -172,7 +170,15 @@
     }
 
     .hero__tagline {
-      grid-column: 2 / 8;
+      grid-column: 2 / 7;
+      margin-top: 2rem;
+    }
+
+    .context-meta {
+      grid-column: 8 / 12;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
       margin-top: 2rem;
     }
 
@@ -552,6 +558,7 @@
       .span-content, .hero__cta,
       .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
+      .context-meta { grid-column: 1 / 10; margin-top: 2.5rem; }
       .cs-layout { grid-template-columns: 1fr; }
       .cs-sidebar { position: static; padding-block: 0 3rem; }
     }
@@ -563,6 +570,7 @@
       .nav__links { gap: 2rem; }
       .cs-sidebar { padding-block: 3.5rem 3rem; }
       .hero__tagline { grid-column: 1 / 13; }
+      .context-meta { grid-column: 1 / 13; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -616,25 +624,6 @@
       <span class="eyebrow hero__eyebrow">Product Design &amp; Development · React · AI Tool · 2026</span>
       <h1 class="hero__title">WorkMap</h1>
 
-      <div class="cs-sidebar-meta">
-        <div>
-          <span class="meta-label">Role</span>
-          <p class="meta-value">Designed and built end-to-end. Problem framing, data architecture, scoring model, component system, deployment.</p>
-        </div>
-        <div>
-          <span class="meta-label">Context</span>
-          <p class="meta-value">Self-initiated. Live, in active development.</p>
-        </div>
-        <div>
-          <span class="meta-label">Tools</span>
-          <p class="meta-value">React, Vite, Vercel, Claude Code. Data sources: O*NET (US Department of Labor), NOC 2021 (Statistics Canada).</p>
-        </div>
-        <div>
-          <span class="meta-label">Deliverable</span>
-          <p class="meta-value">Shipped web product.</p>
-        </div>
-      </div>
-
       <nav class="cs-toc">
         <ul>
           <li><a href="#context" class="cs-toc-link">Context</a></li>
@@ -668,6 +657,26 @@
     <p class="hero__tagline">
       Most AI coverage lands somewhere between vague and alarming. WorkMap is the alternative: a role-based tool that shows professionals exactly where AI intersects with their work, task by task, with honest scores and plain-language explanations. Not automation risk. A concrete map of what changes and what doesn't.
     </p>
+
+    <div class="context-meta">
+      <div class="context-meta-item">
+        <span class="meta-label">Role</span>
+        <p class="meta-value">Designed and built end-to-end. Problem framing, data architecture, scoring model, component system, deployment.</p>
+      </div>
+      <div class="context-meta-item">
+        <span class="meta-label">Context</span>
+        <p class="meta-value">Self-initiated. Live, in active development.</p>
+      </div>
+      <div class="context-meta-item">
+        <span class="meta-label">Tools</span>
+        <p class="meta-value">React, Vite, Vercel, Claude Code. Data sources: O*NET (US Department of Labor), NOC 2021 (Statistics Canada).</p>
+      </div>
+      <div class="context-meta-item">
+        <span class="meta-label">Deliverable</span>
+        <p class="meta-value">Shipped web product.</p>
+      </div>
+    </div>
+
     <div class="hero__ctas">
         <a class="hero__cta"
            href="https://work-map.ca"

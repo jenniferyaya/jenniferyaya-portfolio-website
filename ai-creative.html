@@ -145,8 +145,6 @@
       margin-bottom: 1.75rem;
     }
 
-    .cs-sidebar-meta { display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3rem; }
-
     .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
     .cs-toc a {
       display: block;
@@ -172,7 +170,15 @@
     }
 
     .hero__tagline {
-      grid-column: 2 / 8;
+      grid-column: 2 / 7;
+      padding-top: 5.5rem;
+    }
+
+    .context-meta {
+      grid-column: 8 / 12;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
       padding-top: 5.5rem;
     }
 
@@ -551,6 +557,7 @@
       .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
       .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
+      .context-meta { grid-column: 1 / 10; padding-top: 2.5rem; }
       .project__head, .media-block .media-inner, .caption-strip, .project__brief, .approach .wrap-text { grid-column: 1 / 13; }
       .cs-layout { grid-template-columns: 1fr; }
       .cs-sidebar { position: static; padding-block: 0 3rem; }
@@ -563,6 +570,7 @@
       .nav__links { gap: 2rem; }
       .cs-sidebar { padding-block: 3.5rem 3rem; }
       .hero__tagline { grid-column: 1 / 13; }
+      .context-meta { grid-column: 1 / 13; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -618,21 +626,6 @@
       <span class="eyebrow hero__eyebrow">AI Creative Direction</span>
       <h1 class="hero__title">Directing AI.<br><em>Not just prompting it.</em></h1>
 
-      <div class="cs-sidebar-meta">
-        <div>
-          <span class="meta-label">Role</span>
-          <p class="meta-value">Creative direction, art direction, visual development, prompt engineering</p>
-        </div>
-        <div>
-          <span class="meta-label">Tools</span>
-          <p class="meta-value">Midjourney &middot; Sora &middot; Grok Imagine &middot; GPT-4o</p>
-        </div>
-        <div>
-          <span class="meta-label">Type</span>
-          <p class="meta-value">Self-initiated.</p>
-        </div>
-      </div>
-
       <nav class="cs-toc">
         <ul>
           <li><a href="#conserva" class="cs-toc-link">Conserva</a></li>
@@ -651,6 +644,21 @@
       Sora, and Grok Imagine&mdash;art directed from brief to final frame. The work
       spans invented brand identities, product photography, and campaign motion.
     </p>
+
+    <div class="context-meta">
+      <div class="context-meta-item">
+        <span class="meta-label">Role</span>
+        <p class="meta-value">Creative direction, art direction, visual development, prompt engineering</p>
+      </div>
+      <div class="context-meta-item">
+        <span class="meta-label">Tools</span>
+        <p class="meta-value">Midjourney &middot; Sora &middot; Grok Imagine &middot; GPT-4o</p>
+      </div>
+      <div class="context-meta-item">
+        <span class="meta-label">Type</span>
+        <p class="meta-value">Self-initiated.</p>
+      </div>
+    </div>
     </div>
 
 
