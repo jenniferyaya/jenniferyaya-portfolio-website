@@ -408,35 +408,24 @@
     }
 
 
-    /* ─── Play gallery — bento grid ────────────────────────── */
+    /* ─── Play gallery ─────────────────────────────────────── */
     .gallery { padding-block: 4rem 7rem; }
     .gallery__inner { grid-column: 2 / 12; }
-    .gallery__grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-auto-rows: 4px; /* fine unit; JS sets each tile's row span to match its image's aspect ratio */
-      gap: var(--gutter);
+    .gallery__columns {
+      columns: 3;
+      column-gap: var(--gutter);
     }
     .gallery__item {
+      break-inside: avoid;
+      margin-bottom: var(--gutter);
       background: var(--placeholder);
       overflow: hidden;
       border-radius: 2px;
     }
     .gallery__item img {
       width: 100%;
-      height: 100%;
       display: block;
-      object-fit: cover;
     }
-
-    /* Repeating 7-tile bento pattern — column widths only; row height fits each image's own ratio */
-    .gallery__item:nth-of-type(7n+1) { grid-column: span 3; }
-    .gallery__item:nth-of-type(7n+2) { grid-column: span 1; }
-    .gallery__item:nth-of-type(7n+3) { grid-column: span 2; }
-    .gallery__item:nth-of-type(7n+4) { grid-column: span 1; }
-    .gallery__item:nth-of-type(7n+5) { grid-column: span 1; }
-    .gallery__item:nth-of-type(7n+6) { grid-column: span 2; }
-    .gallery__item:nth-of-type(7n)   { grid-column: span 3; }
 
     /* ─── Focus + motion ───────────────────────────────────── */
     a:focus-visible, button:focus-visible {
@@ -457,13 +446,8 @@
       .hero__tagline { grid-column: 1 / 10; }
       .hero__meta { grid-template-columns: repeat(2, 1fr); }
       .gallery__inner { grid-column: 1 / 13; }
+      .gallery__columns { columns: 2; }
       .hero__meta-item { grid-column: auto; }
-
-      .gallery__grid { grid-template-columns: repeat(4, 1fr); }
-      .gallery__item:nth-of-type(7n+1) { grid-column: span 2; }
-      .gallery__item:nth-of-type(7n+3) { grid-column: span 2; }
-      .gallery__item:nth-of-type(7n+6) { grid-column: span 2; }
-      .gallery__item:nth-of-type(7n)   { grid-column: span 2; }
     }
 
     @media (max-width: 720px) {
@@ -485,13 +469,7 @@
       .footer__social { margin-top: 2rem; }
       .footer h3 { margin-bottom: 1.5rem; }
       .gallery { padding-block: 2.5rem 4.5rem; }
-      .gallery__grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery__item,
-      .gallery__item:nth-of-type(7n+1),
-      .gallery__item:nth-of-type(7n+4),
-      .gallery__item:nth-of-type(7n+6) { grid-column: span 1; }
-      .gallery__item:nth-of-type(7n+3),
-      .gallery__item:nth-of-type(7n) { grid-column: span 2; }
+      .gallery__columns { columns: 1; }
     }
   </style>
   <script type="application/ld+json">
@@ -542,7 +520,7 @@
   <!-- ─── GALLERY ──────────────────────────────────────────── -->
   <main class="gallery grid">
     <div class="gallery__inner">
-      <div class="gallery__grid">
+      <div class="gallery__columns">
         <figure class="gallery__item">
           <img src="img/JF_WEB_FUN01.jpg" alt="" loading="lazy" />
         </figure>
@@ -641,48 +619,6 @@
 
     </div>
   </footer>
-
-  <script>
-    (function () {
-      var grid = document.querySelector('.gallery__grid');
-      if (!grid) return;
-      var ROW_UNIT = 4; // px — must match .gallery__grid's grid-auto-rows
-
-      function gapPx() {
-        return parseFloat(getComputedStyle(grid).columnGap) || 0;
-      }
-
-      function fitItem(item) {
-        var img = item.querySelector('img');
-        if (!img || !img.naturalWidth) return;
-        var gap = gapPx();
-        var width = item.getBoundingClientRect().width;
-        var height = (width * img.naturalHeight) / img.naturalWidth;
-        var rowSpan = Math.ceil((height + gap) / (ROW_UNIT + gap));
-        item.style.gridRowEnd = 'span ' + rowSpan;
-      }
-
-      function fitAll() {
-        grid.querySelectorAll('.gallery__item').forEach(fitItem);
-      }
-
-      grid.querySelectorAll('.gallery__item').forEach(function (item) {
-        var img = item.querySelector('img');
-        if (!img) return;
-        if (img.complete && img.naturalWidth) {
-          fitItem(item);
-        } else {
-          img.addEventListener('load', function () { fitItem(item); });
-        }
-      });
-
-      var resizeTimer;
-      window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(fitAll, 100);
-      });
-    })();
-  </script>
 
 </body>
 </html>
