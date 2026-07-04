@@ -395,23 +395,36 @@
     }
 
 
-    /* ─── Fun gallery ──────────────────────────────────────── */
+    /* ─── Fun gallery — bento grid ─────────────────────────── */
     .gallery { padding-block: 4rem 7rem; }
     .gallery__inner { grid-column: 2 / 12; }
-    .gallery__columns {
-      columns: 3;
-      column-gap: var(--gutter);
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 160px;
+      grid-auto-flow: dense;
+      gap: var(--gutter);
     }
     .gallery__item {
-      break-inside: avoid;
-      margin-bottom: var(--gutter);
       background: var(--placeholder);
+      overflow: hidden;
+      border-radius: 2px;
     }
     .gallery__item img {
       width: 100%;
+      height: 100%;
       display: block;
-      min-height: 240px; /* placeholder presence until images exist */
+      object-fit: cover;
     }
+
+    /* Repeating 7-tile bento pattern (big square, small, wide, tall, small, big square, wide bar) */
+    .gallery__item:nth-of-type(7n+1) { grid-column: span 3; grid-row: span 2; }
+    .gallery__item:nth-of-type(7n+2) { grid-column: span 1; grid-row: span 1; }
+    .gallery__item:nth-of-type(7n+3) { grid-column: span 2; grid-row: span 1; }
+    .gallery__item:nth-of-type(7n+4) { grid-column: span 1; grid-row: span 2; }
+    .gallery__item:nth-of-type(7n+5) { grid-column: span 1; grid-row: span 1; }
+    .gallery__item:nth-of-type(7n+6) { grid-column: span 2; grid-row: span 2; }
+    .gallery__item:nth-of-type(7n)   { grid-column: span 3; grid-row: span 1; }
 
     /* ─── Focus + motion ───────────────────────────────────── */
     a:focus-visible, button:focus-visible {
@@ -432,8 +445,13 @@
       .hero__tagline { grid-column: 1 / 10; }
       .hero__meta { grid-template-columns: repeat(2, 1fr); }
       .gallery__inner { grid-column: 1 / 13; }
-      .gallery__columns { columns: 2; }
       .hero__meta-item { grid-column: auto; }
+
+      .gallery__grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 140px; }
+      .gallery__item:nth-of-type(7n+1) { grid-column: span 2; grid-row: span 2; }
+      .gallery__item:nth-of-type(7n+3) { grid-column: span 2; grid-row: span 1; }
+      .gallery__item:nth-of-type(7n+6) { grid-column: span 2; grid-row: span 2; }
+      .gallery__item:nth-of-type(7n)   { grid-column: span 2; grid-row: span 1; }
     }
 
     @media (max-width: 720px) {
@@ -455,7 +473,13 @@
       .footer__social { margin-top: 2rem; }
       .footer h3 { margin-bottom: 1.5rem; }
       .gallery { padding-block: 2.5rem 4.5rem; }
-      .gallery__columns { columns: 1; }
+      .gallery__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; gap: var(--gutter); }
+      .gallery__item,
+      .gallery__item:nth-of-type(7n+1),
+      .gallery__item:nth-of-type(7n+4),
+      .gallery__item:nth-of-type(7n+6) { grid-column: span 1; grid-row: span 1; }
+      .gallery__item:nth-of-type(7n+3),
+      .gallery__item:nth-of-type(7n) { grid-column: span 2; grid-row: span 1; }
     }
   </style>
 </head>
@@ -491,7 +515,7 @@
   <!-- ─── GALLERY ──────────────────────────────────────────── -->
   <main class="gallery grid">
     <div class="gallery__inner">
-      <div class="gallery__columns">
+      <div class="gallery__grid">
         <figure class="gallery__item">
           <img src="img/JF_WEB_FUN01.jpg" alt="" loading="lazy" />
         </figure>
