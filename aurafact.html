@@ -312,30 +312,26 @@
       margin-bottom: 1.6rem;
     }
 
-    /* ─── Next project ─────────────────────────────────────── */
+    /* ─── Next project (sidebar) ───────────────────────────── */
     .next-project {
       display: block;
-      padding-block: 5.5rem 6.5rem;
+      margin-top: 3rem;
     }
-    .next-project .wrap-text { grid-column: 2 / 12; }
     .next-project__label {
-      font-size: 0.8125rem;
+      font-size: 0.6875rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
     .next-project__title {
       font-family: var(--font-display);
-      font-size: clamp(1.75rem, 3.4vw, 2.625rem);
+      font-size: 1.4875rem;
       line-height: 1.15;
       transition: color var(--transition);
     }
     a.next-project:hover .next-project__title { color: var(--ink-soft); }
-
-    .rule-section { padding-top: 5.5rem; }
-    .rule-section hr { grid-column: 2 / 12; }
 
     /* ─── Footer ───────────────────────────────────────────── */
     .footer {
@@ -540,8 +536,7 @@
     @media (max-width: 1024px) {
       :root { --margin: 48px; }
       .span-content, .hero__cta,
-      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
-      .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
+      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
       .cs-layout { grid-template-columns: 1fr; }
       .cs-sidebar { position: static; padding-block: 0 3rem; }
@@ -617,6 +612,11 @@
           <li><a href="#outcome" class="cs-toc-link">Outcome</a></li>
         </ul>
       </nav>
+
+      <a class="next-project" href="ai-creative.html">
+        <p class="next-project__label">Next Project</p>
+        <p class="next-project__title">Generative AI: Directing AI, not just prompting it</p>
+      </a>
     </aside>
 
     <div class="cs-content" id="context">
@@ -929,17 +929,6 @@ Every output was reviewed and edited. The goal was precision, not automation.
 
     </div>
   </section>
-
-  <!-- ─── NEXT PROJECT ─────────────────────────────────────── -->
-  <div class="rule-section cs-inner-grid">
-    <hr class="rule" />
-  </div>
-  <a class="next-project cs-inner-grid" href="lululemon.html">
-    <div class="wrap-text">
-      <p class="next-project__label">Next Project</p>
-      <p class="next-project__title">lululemon: A heuristic evaluation and targeted redesign</p>
-    </div>
-  </a>
 
     </div>
   </div>
