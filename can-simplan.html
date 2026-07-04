@@ -109,9 +109,44 @@
     .nav__links a { transition: color var(--transition); }
     .nav__links a:hover { color: var(--ink-soft); }
 
-    /* ─── Hero ─────────────────────────────────────────────── */
-    .hero { padding-block: 5.5rem 0; }
+    /* ─── Case study layout (sticky sidebar + content) ─────── */
+    .cs-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      column-gap: var(--gutter);
+      padding-inline: var(--margin);
+      align-items: start;
+    }
 
+    .cs-inner-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--gutter);
+    }
+
+    .cs-sidebar { position: sticky; top: 8rem; padding-block: 5.5rem 3rem; }
+
+    .cs-sidebar .hero__title {
+      font-size: clamp(1.75rem, 2.2vw, 2.25rem);
+      margin-bottom: 1.75rem;
+    }
+
+    .cs-sidebar-meta { display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3rem; }
+
+    .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    .cs-toc a {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      transition: color var(--transition);
+    }
+    .cs-toc a:hover,
+    .cs-toc a.is-active { color: var(--ink); }
+
+    /* ─── Hero ─────────────────────────────────────────────── */
     .hero__eyebrow { display: block; margin-bottom: 1.1rem; }
 
     .hero__title {
@@ -122,12 +157,12 @@
       margin-bottom: 2.25rem;
     }
 
-    .hero__rule { grid-column: 2 / 12; }
-
     .hero__tagline {
       grid-column: 2 / 8;
       margin-top: 2rem;
     }
+
+    .cs-content > .cs-figure:first-child { padding-top: 5.5rem; }
 
     .hero__cta {
       grid-column: 2 / 12;
@@ -144,17 +179,6 @@
     }
     .hero__cta:hover { background: var(--ink); color: var(--bone); }
 
-    .hero__meta {
-      grid-column: 2 / 12;
-      margin-top: 4rem;
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      column-gap: var(--gutter);
-      row-gap: 2rem;
-    }
-    .hero__meta-item { grid-column: span 3; }
-    .hero__meta-item:nth-child(3n+1):last-child,
-    .hero__meta-item:nth-child(4) { grid-column: span 3; }
     .meta-label {
       display: block;
       color: var(--ink-soft);
@@ -515,12 +539,12 @@
     /* ─── Responsive ───────────────────────────────────────── */
     @media (max-width: 1024px) {
       :root { --margin: 48px; }
-      .span-content, .hero__rule, .hero__cta, .hero__meta,
+      .span-content, .hero__cta,
       .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
       .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
-      .hero__meta { grid-template-columns: repeat(2, 1fr); }
-      .hero__meta-item { grid-column: auto; }
+      .cs-layout { grid-template-columns: 1fr; }
+      .cs-sidebar { position: static; padding-block: 0 3rem; }
     }
 
     @media (max-width: 720px) {
@@ -528,9 +552,8 @@
       body { font-size: 1.125rem; }
       .nav { padding-block: 1.4rem; }
       .nav__links { gap: 2rem; }
-      .hero { padding-top: 3.5rem; }
+      .cs-sidebar { padding-block: 3.5rem 3rem; }
       .hero__tagline { grid-column: 1 / 13; }
-      .hero__meta { grid-template-columns: 1fr; row-gap: 1.5rem; margin-top: 3rem; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -562,38 +585,43 @@
   </nav>
 
 
-  <!-- ─── HERO ─────────────────────────────────────────────── -->
-  <header class="hero grid">
-    <div class="span-content">
+  <!-- ─── CASE STUDY LAYOUT (sticky sidebar + content) ─────── -->
+  <div class="cs-layout grid">
+
+    <aside class="cs-sidebar">
       <span class="eyebrow hero__eyebrow">UX Design · AI Tool · Design Sprint · 2026</span>
       <h1 class="hero__title">CAN-SIMPLAN</h1>
-    </div>
-    <hr class="rule hero__rule" />
-    <p class="hero__tagline">
-      Accuracy isn't enough. A planner has to be able to stand up in a council meeting and explain why. CAN-SIMPLAN is the design that makes that possible. An AI-assisted zoning tool where every output is traceable, every decision is defensible, and the human stays accountable throughout.
-    </p>
-    <a class="hero__cta"
-         href="https://www.figma.com/proto/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=1-2&starting-point-node-id=1%3A2&t=zJe3LDu5HQo78ESO-1"
-         target="_blank" rel="noopener">
-        Explore interactive prototype
-      </a>
-    <div class="hero__meta">
-      <div class="hero__meta-item">
+
+      <div class="cs-sidebar-meta">
+        <div>
           <span class="meta-label">Role</span>
           <p class="meta-value">Sole UX designer. End-to-end interface: proposal intake, simulation output, rationale recording, audit trail. Selected as winning project among the cohort.</p>
         </div>
-      <div class="hero__meta-item">
+        <div>
           <span class="meta-label">Context</span>
           <p class="meta-value">Four-day cross-disciplinary sprint, four-person team.</p>
         </div>
-      <div class="hero__meta-item">
+        <div>
           <span class="meta-label">Tools</span>
           <p class="meta-value">Figma. Interactive prototype, end-to-end.</p>
         </div>
-    </div>
-  </header>
+      </div>
 
-  <div class="cs-figure grid">
+      <nav class="cs-toc">
+        <ul>
+          <li><a href="#context" class="cs-toc-link">Context</a></li>
+          <li><a href="#challenge" class="cs-toc-link">Challenge</a></li>
+          <li><a href="#strategy" class="cs-toc-link">Strategy</a></li>
+          <li><a href="#design-decisions" class="cs-toc-link">Design decisions</a></li>
+          <li><a href="#application" class="cs-toc-link">Application</a></li>
+          <li><a href="#outcome" class="cs-toc-link">Outcome</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="cs-content" id="context">
+
+  <div class="cs-figure cs-inner-grid">
     <figure class="fig-inner">
       <img
         src="img/JF_WEB_CANSIMPLANHero.png"
@@ -603,12 +631,23 @@
     </figure>
   </div>
 
+    <div class="cs-inner-grid">
+    <p class="hero__tagline">
+      Accuracy isn't enough. A planner has to be able to stand up in a council meeting and explain why. CAN-SIMPLAN is the design that makes that possible. An AI-assisted zoning tool where every output is traceable, every decision is defensible, and the human stays accountable throughout.
+    </p>
+    <a class="hero__cta"
+         href="https://www.figma.com/proto/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=1-2&starting-point-node-id=1%3A2&t=zJe3LDu5HQo78ESO-1"
+         target="_blank" rel="noopener">
+        Explore interactive prototype
+      </a>
+    </div>
+
 
   <!-- ═══════════════════════════════════════════════════════
-       ② THE PROBLEM
+       ② THE PROBLEM (Challenge)
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section grid">
+  <section class="cs-section cs-inner-grid" id="challenge">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">The Problem</span>
@@ -634,7 +673,7 @@
        ③ KEY INSIGHT
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section grid">
+  <section class="cs-section cs-inner-grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Key Insight</span>
@@ -663,7 +702,7 @@
     </div>
   </section>
 
-  <div class="cs-figure grid"><figure class="fig-inner">
+  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_CANSIMPLANSystemOverview.jpg"
       alt="CAN-SIMPLAN system overview: four transparent stages from intake to decision"
@@ -673,10 +712,10 @@
   </figure></div>
 
   <!-- ═══════════════════════════════════════════════════════
-       ④ PRODUCT STRATEGY
+       ④ PRODUCT STRATEGY (Strategy)
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section grid">
+  <section class="cs-section cs-inner-grid" id="strategy">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Product Strategy</span>
@@ -695,7 +734,7 @@
     </div>
   </section>
 
-  <div class="cs-figure grid"><figure class="fig-inner">
+  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_CANSIMPLANDashboard.png"
       alt="CAN-SIMPLAN proposal dashboard — queue, model confidence trend, and review velocity"
@@ -704,7 +743,7 @@
     <figcaption>The Proposal Dashboard: What needs attention before the planner opens a single case.</figcaption>
   </figure></div>
 
-  <div class="cs-figure grid"><figure class="fig-inner">
+  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_CANSIMPLANProposalDetail.jpg"
       alt="CAN-SIMPLAN proposal detail — domain scorecards, simulation flags, planner action panel"
@@ -717,7 +756,7 @@
        ⑤ DESIGN DECISIONS
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section grid">
+  <section class="cs-section cs-inner-grid" id="design-decisions">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Design Decisions</span>
@@ -800,7 +839,7 @@
     </div>
   </section>
 
-  <div class="cs-figure grid"><figure class="fig-inner">
+  <div class="cs-figure cs-inner-grid" id="application"><figure class="fig-inner">
     <img
       src="img/JF_WEB_CANSIMPLANTransparency.jpg"
       alt="CAN-SIMPLAN transparency panel — scoring assumptions and data source attribution"
@@ -809,7 +848,7 @@
     <figcaption>Transparency Panel: Every scoring assumption and data source — visible, attributed, traceable.</figcaption>
   </figure></div>
 
-  <div class="cs-figure grid"><figure class="fig-inner">
+  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_CANSIMPLANAuditTrail.jpg"
       alt="CAN-SIMPLAN audit trail and planner decision panel"
@@ -822,7 +861,7 @@
        ⑥ OUTCOME
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section grid">
+  <section class="cs-section cs-inner-grid" id="outcome">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Outcome</span>
@@ -843,7 +882,7 @@
   </section>
 
   <!-- Prototype embed -->
-  <div class="cs-figure grid" id="prototype"><figure class="fig-inner">
+  <div class="cs-figure cs-inner-grid" id="prototype"><figure class="fig-inner">
     <iframe
       style="border: 1px solid var(--ink-soft); display: block; min-height: 640px;"
       width="100%" height="700"
@@ -858,7 +897,7 @@
        ⑦ What I'd Do Differently
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section grid">
+  <section class="cs-section cs-inner-grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">What I'd Do Differently</span>
@@ -875,18 +914,19 @@
     </div>
   </section>
 
-  <!-- ─── NEXT PROJECT ──────────────────────────────── -->
-  
   <!-- ─── NEXT PROJECT ─────────────────────────────────────── -->
-  <div class="rule-section grid">
+  <div class="rule-section cs-inner-grid">
     <hr class="rule" />
   </div>
-  <a class="next-project grid" href="workmap.html">
+  <a class="next-project cs-inner-grid" href="workmap.html">
     <div class="wrap-text">
       <p class="next-project__label">Next Project</p>
       <p class="next-project__title">WorkMap: Mapping AI's impact in the workplace task-by-task</p>
     </div>
   </a>
+
+    </div>
+  </div>
 
 
 <!-- ─── FOOTER ───────────────────────────────────────────── -->
@@ -940,5 +980,24 @@
     </div>
   </footer>
 
+  <script>
+    (() => {
+      const links = document.querySelectorAll('.cs-toc-link');
+      if (!links.length) return;
+      const sections = Array.from(links)
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+      const setActive = id => {
+        links.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`));
+      };
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
+      }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+      sections.forEach(section => observer.observe(section));
+    })();
+  </script>
 </body>
 </html>
