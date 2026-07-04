@@ -4,8 +4,9 @@
     {
       "name": "static-site",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-l", "8080", "."],
-      "port": 8080
+      "runtimeArgs": ["serve", "."],
+      "port": 8080,
+      "autoPort": true
     }
   ]
 }
