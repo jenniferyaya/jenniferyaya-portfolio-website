@@ -5,20 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conserva — Jennifer Yaya Falanga</title>
   <meta name="description" content="Conserva: a structured AI prompting framework producing a coherent visual library across a premium food product, paired with a system-first design language." />
-  <link rel="canonical" href="https://yayafalanga.ca/conserva.html" />
-  <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-
-  <meta property="og:site_name" content="Jennifer Yaya Falanga" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://yayafalanga.ca/conserva.html" />
-  <meta property="og:title" content="Conserva — Jennifer Yaya Falanga" />
-  <meta property="og:description" content="Conserva: a structured AI prompting framework producing a coherent visual library across a premium food product, paired with a system-first design language." />
-  <meta property="og:image" content="https://yayafalanga.ca/img/JF_WEB_ConservaHero.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Conserva — Jennifer Yaya Falanga" />
-  <meta name="twitter:description" content="Conserva: a structured AI prompting framework producing a coherent visual library across a premium food product, paired with a system-first design language." />
-  <meta name="twitter:image" content="https://yayafalanga.ca/img/JF_WEB_ConservaHero.png" />
 
   <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
@@ -123,42 +109,9 @@
     .nav__links a { transition: color var(--transition); }
     .nav__links a:hover { color: var(--ink-soft); }
 
-    /* ─── Case study layout (sticky sidebar + content) ─────── */
-    .cs-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      column-gap: var(--gutter);
-      padding-inline: var(--margin);
-      align-items: start;
-    }
-
-    .cs-inner-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-    }
-
-    .cs-sidebar { position: sticky; top: 8rem; padding-block: 5.5rem 3rem; }
-
-    .cs-sidebar .hero__title {
-      font-size: clamp(1.75rem, 2.2vw, 2.25rem);
-      margin-bottom: 1.75rem;
-    }
-
-    .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
-    .cs-toc a {
-      display: block;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      transition: color var(--transition);
-    }
-    .cs-toc a:hover,
-    .cs-toc a.is-active { color: var(--ink); }
-
     /* ─── Hero ─────────────────────────────────────────────── */
+    .hero { padding-block: 5.5rem 0; }
+
     .hero__eyebrow { display: block; margin-bottom: 1.1rem; }
 
     .hero__title {
@@ -169,21 +122,12 @@
       margin-bottom: 2.25rem;
     }
 
+    .hero__rule { grid-column: 2 / 12; }
+
     .hero__tagline {
-      grid-column: 2 / 7;
+      grid-column: 2 / 8;
       margin-top: 2rem;
     }
-
-    .context-meta {
-      grid-column: 8 / 12;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-      margin-top: 2rem;
-    }
-
-    .cs-content > .cs-figure:first-child { padding-top: 5.5rem; }
-    .cs-content { padding-bottom: 6.5rem; }
 
     .hero__cta {
       grid-column: 2 / 12;
@@ -200,6 +144,17 @@
     }
     .hero__cta:hover { background: var(--ink); color: var(--bone); }
 
+    .hero__meta {
+      grid-column: 2 / 12;
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      column-gap: var(--gutter);
+      row-gap: 2rem;
+    }
+    .hero__meta-item { grid-column: span 3; }
+    .hero__meta-item:nth-child(3n+1):last-child,
+    .hero__meta-item:nth-child(4) { grid-column: span 3; }
     .meta-label {
       display: block;
       color: var(--ink-soft);
@@ -218,6 +173,7 @@
     .cs-figure img,
     .cs-figure iframe {
       width: 100%;
+      border: 1px solid var(--ink-soft);
       background: var(--placeholder);
     }
     .cs-figure figcaption {
@@ -332,26 +288,30 @@
       margin-bottom: 1.6rem;
     }
 
-    /* ─── Next project (sidebar) ───────────────────────────── */
+    /* ─── Next project ─────────────────────────────────────── */
     .next-project {
       display: block;
-      margin-top: 3rem;
+      padding-block: 5.5rem 6.5rem;
     }
+    .next-project .wrap-text { grid-column: 2 / 12; }
     .next-project__label {
-      font-size: 0.6875rem;
+      font-size: 0.8125rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
     }
     .next-project__title {
       font-family: var(--font-display);
-      font-size: 1.4875rem;
+      font-size: clamp(1.75rem, 3.4vw, 2.625rem);
       line-height: 1.15;
       transition: color var(--transition);
     }
     a.next-project:hover .next-project__title { color: var(--ink-soft); }
+
+    .rule-section { padding-top: 5.5rem; }
+    .rule-section hr { grid-column: 2 / 12; }
 
     /* ─── Footer ───────────────────────────────────────────── */
     .footer {
@@ -447,12 +407,12 @@
     /* ─── Responsive ───────────────────────────────────────── */
     @media (max-width: 1024px) {
       :root { --margin: 48px; }
-      .span-content, .hero__cta,
-      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner { grid-column: 1 / 13; }
+      .span-content, .hero__rule, .hero__cta, .hero__meta,
+      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
+      .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
-      .context-meta { grid-column: 1 / 10; margin-top: 2.5rem; }
-      .cs-layout { grid-template-columns: 1fr; }
-      .cs-sidebar { position: static; padding-block: 0 3rem; }
+      .hero__meta { grid-template-columns: repeat(2, 1fr); }
+      .hero__meta-item { grid-column: auto; }
     }
 
     @media (max-width: 720px) {
@@ -460,9 +420,9 @@
       body { font-size: 1.125rem; }
       .nav { padding-block: 1.4rem; }
       .nav__links { gap: 2rem; }
-      .cs-sidebar { padding-block: 3.5rem 3rem; }
+      .hero { padding-top: 3.5rem; }
       .hero__tagline { grid-column: 1 / 13; }
-      .context-meta { grid-column: 1 / 13; }
+      .hero__meta { grid-template-columns: 1fr; row-gap: 1.5rem; margin-top: 3rem; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -475,21 +435,6 @@
       .footer h3 { margin-bottom: 1.5rem; }
     }
   </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "name": "Conserva",
-  "description": "Conserva: a structured AI prompting framework producing a coherent visual library across a premium food product, paired with a system-first design language.",
-  "url": "https://yayafalanga.ca/conserva.html",
-  "image": "https://yayafalanga.ca/img/JF_WEB_ConservaHero.png",
-  "author": {
-    "@type": "Person",
-    "name": "Jennifer Yaya Falanga",
-    "url": "https://yayafalanga.ca/"
-  }
-}
-  </script>
 </head>
 <body>
 
@@ -499,311 +444,302 @@
       <a href="index.html" class="nav__logo">Jennifer Yaya Falanga</a>
       <div class="nav__links">
         <a href="index.html#work">Work</a>
-        <a href="play.html">Play</a>
+        <a href="fun.html">Fun</a>
         <a href="index.html#about">About</a>
       </div>
     </div>
   </nav>
 
 
-  <!-- ─── CASE STUDY LAYOUT (sticky sidebar + content) ─────── -->
-  <div class="cs-layout grid">
-
-    <aside class="cs-sidebar">
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <header class="hero grid">
+    <div class="span-content">
       <span class="eyebrow hero__eyebrow">UI Design &middot; Brand System &middot; 2026</span>
       <h1 class="hero__title">Conserva</h1>
-
-      <nav class="cs-toc">
-        <ul>
-          <li><a href="#context" class="cs-toc-link">Context</a></li>
-          <li><a href="#challenge" class="cs-toc-link">Challenge</a></li>
-          <li><a href="#strategy" class="cs-toc-link">Strategy</a></li>
-          <li><a href="#brand-system" class="cs-toc-link">Brand system</a></li>
-          <li><a href="#application" class="cs-toc-link">Application</a></li>
-          <li><a href="#outcome" class="cs-toc-link">Outcome</a></li>
-        </ul>
-      </nav>
-
-      <a class="next-project" href="aurafact.html">
-        <p class="next-project__label">Next Project</p>
-        <p class="next-project__title">Aurafact: Archiving the acoustic memory of place</p>
-      </a>
-    </aside>
-
-    <div class="cs-content" id="context">
-
-      <div class="cs-figure cs-inner-grid">
-        <figure class="fig-inner">
-          <img src="img/JF_WEB_ConservaHero.png"
-               alt="Conserva UI — hero screen showing the gourmet food experience"
-               loading="eager" />
-        </figure>
-      </div>
-
-      <div class="cs-inner-grid">
-        <p class="hero__tagline">
-          AI image generation only stays consistent when the person directing it
-          thinks like a designer. Conserva is what that looks like: a structured
-          prompting framework producing a coherent visual library across an entire
-          premium product, paired with a system-first design language built to hold
-          its point of view as it scales.
-        </p>
-
-        <div class="context-meta">
-          <div class="context-meta-item">
-            <span class="meta-label">Role</span>
-            <p class="meta-value">End-to-end. Brand definition, design system, prototype, AI image generation methodology. Self-initiated, no external client &mdash; eight-week BrainStation project.</p>
-          </div>
-          <div class="context-meta-item">
-            <span class="meta-label">Tools</span>
-            <p class="meta-value">Figma, Atomic Design methodology, structured AI prompting framework (Sora, Adobe Photoshop).</p>
-          </div>
-          <div class="context-meta-item">
-            <span class="meta-label">Deliverable</span>
-            <p class="meta-value">High-fidelity multi-platform prototype and design system.</p>
-          </div>
-        </div>
-
-        <a class="hero__cta"
-           href="https://www.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&t=xO9peq6C65Y57fmj-1&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394"
-           target="_blank" rel="noopener">
-          Explore interactive prototype
-        </a>
-      </div>
-
-
-      <!-- ─── THE PROBLEM (Challenge) ────────────────────────── -->
-      <section class="cs-section cs-inner-grid" id="challenge">
-        <div class="wrap-text">
-          <span class="eyebrow cs-eyebrow">The Problem</span>
-          <h2 class="cs-h2">Food apps that feel clinical, or ones that feel chaotic. Neither is right.</h2>
-          <p class="cs-p">
-            Food platforms tend to fall into two patterns. Some are purely functional: structured, efficient, and difficult to browse with any sense of pleasure. Others lean heavily into visual richness, but lose clarity under the weight of it.
-          </p>
-          <p class="cs-p">
-            Neither serves the discerning home cook. What that user wants is a platform that feels like it has an opinion, on what's worth eating, how food should be described, what's worth showing and what's worth leaving out. And critically, that opinion has to hold. A platform that's expressive on the discovery screen and transactional three taps in doesn't feel curated. It feels inconsistent. In a premium context, inconsistency reads as carelessness and a user who stops trusting the curation stops using the platform.
-          </p>
-          <p class="cs-p">
-            <strong>Design challenge:</strong> How do you build a product that feels expressive and opinionated at every touchpoint, without that expression collapsing into inconsistency as it grows?
-          </p>
-        </div>
-      </section>
-
-
-      <!-- ─── KEY INSIGHT (Strategy) ─────────────────────────── -->
-      <section class="cs-section cs-inner-grid" id="strategy">
-        <div class="wrap-text">
-          <span class="eyebrow cs-eyebrow">Key Insight</span>
-          <h2 class="cs-h2">Structure doesn't limit creativity. It protects it.</h2>
-          <p class="cs-p">
-            Early exploration made one thing clear: a distinct visual voice only stays distinct if it's anchored by rules: colour, typography, composition, and how those elements relate to each other across screens. Without that, the system fragments as content is added.
-          </p>
-
-          <div class="insight__pivot">
-            <div class="pivot__cell">
-              <p class="pivot__cell-label">The instinct</p>
-              <p class="pivot__cell-text">Build the brand first, then figure out the system later.</p>
-            </div>
-            <div class="pivot__cell pivot__cell--dark">
-              <p class="pivot__cell-label">The reframe</p>
-              <p class="pivot__cell-text">The system is the brand. Build both together.</p>
-            </div>
-          </div>
-
-          <a class="cs-link"
-             href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=8008-104&t=6RXNufCwGPRbihoB-1"
-             target="_blank" rel="noopener">
-            View brand and UI moodboards
-          </a>
-        </div>
-      </section>
-
-      <div class="cs-figure cs-inner-grid">
-        <figure class="fig-inner">
-          <img src="img/JF_WEB_ConservaMoodboard.png"
-               alt="Conserva brand and UI design moodboards"
-               loading="lazy" />
-          <figcaption>Brand and UI moodboards: The visual language established before a single component was built.</figcaption>
-        </figure>
-      </div>
-
-
-      <!-- ─── DESIGN SYSTEM (Brand system) ───────────────────── -->
-      <section class="cs-section cs-inner-grid" id="brand-system">
-        <div class="wrap-text">
-          <span class="eyebrow cs-eyebrow">Design System</span>
-          <h2 class="cs-h2">Built from the atom up.</h2>
-          <p class="cs-p">
-            The system was built using Atomic Design methodology: colour tokens and type scales defined first, spacing rules locked next, then components assembled from those foundations. Nothing was designed in isolation. Every component inherits from the system rather than overriding it.
-          </p>
-          <p class="cs-p">
-            This allows the product to scale across iOS, Android, and web while maintaining a consistent point of view.
-          </p>
-          <a class="cs-link"
-             href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=7134-257&t=6RXNufCwGPRbihoB-1"
-             target="_blank" rel="noopener">
-            Explore the Conserva Design System
-          </a>
-        </div>
-      </section>
-
-      <div class="cs-figure cs-inner-grid">
-        <figure class="fig-inner">
-          <img src="img/JF_WEB_ConservaAccessibility.png"
-               alt="Conserva accessibility contrast standards"
-               loading="lazy" />
-          <figcaption>Accessibility contrast standards: Every colour combination tested and documented before use in components.</figcaption>
-        </figure>
-      </div>
-
-
-      <!-- ─── DESIGN DECISIONS (Application) ─────────────────── -->
-      <section class="cs-section cs-inner-grid" id="application">
-        <div class="wrap-text">
-          <span class="eyebrow cs-eyebrow">Design Decisions</span>
-          <h2 class="cs-h2">Four decisions that kept the brand honest</h2>
-
-          <div class="decisions__list">
-
-            <div class="decision">
-              <span class="decision__num">01</span>
-              <div>
-                <h3 class="decision__title">AI image generation as a design system problem</h3>
-                <p class="decision__body">
-                  Product photography was produced through an AI image generation workflow built around a structured prompting framework. The framework specifies lighting conditions, texture qualities, compositional relationships, and colour constraints before any prompt is submitted. Without those constraints, AI-generated images produce variety where the product needs coherence. The prompting framework is, in effect, a visual brief applied to a new medium &mdash; design thinking about what the system needs, expressed as a specification for the tool.
-                </p>
-                <div class="decision__tradeoff">
-                  <span class="decision__tradeoff-label">Tradeoff</span>
-                  <span class="decision__tradeoff-text">
-                    The framework adds upfront work before any image is generated. The payoff is that the output stays brand-coherent across an entire library, without per-image policing. AI image generation only stays consistent when the person directing it thinks like a designer.
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="decision">
-              <span class="decision__num">02</span>
-              <div>
-                <h3 class="decision__title">Photography as navigation</h3>
-                <p class="decision__body">
-                  Full-bleed imagery anchors categories and product views. Rather than competing with type or icons, photography does the cognitive work, reducing the need for labels and making visual richness the navigation mechanism, not decoration.
-                </p>
-                <div class="decision__tradeoff">
-                  <span class="decision__tradeoff-label">Tradeoff</span>
-                  <span class="decision__tradeoff-text">
-                    Photography-first design is only sustainable if the image quality is consistent. The AI prompting framework above is what makes that sustainable.
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="decision">
-              <span class="decision__num">03</span>
-              <div>
-                <h3 class="decision__title">Colour as structure, never decoration</h3>
-                <p class="decision__body">
-                  Colour appears sparingly and with purpose&mdash;calls to action, category anchors, key modules. It is never ambient.
-                </p>
-                <div class="decision__tradeoff">
-                  <span class="decision__tradeoff-label">Tradeoff</span>
-                  <span class="decision__tradeoff-text">
-                    This restraint reduces visual noise, but it also makes the interface feel quieter than competitors. That tradeoff is intentional.
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="decision">
-              <span class="decision__num">04</span>
-              <div>
-                <h3 class="decision__title">Sensory language before specifications</h3>
-                <p class="decision__body">
-                  Product descriptions open with sensory cues, <em>Bright. Softened. Gently saline</em>, before any technical detail. This sequence reflects how people actually decide whether they want something: feeling first, then fact.
-                </p>
-                <div class="decision__tradeoff">
-                  <span class="decision__tradeoff-label">Tradeoff</span>
-                  <span class="decision__tradeoff-text">
-                    Leading with sensory language assumes a certain kind of reader: one who has time to browse rather than search. For users who want quick answers, this sequence may slow them down. A future iteration would test a more scannable layer without losing the tone.
-                  </span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <div class="cs-figure cs-inner-grid">
-        <figure class="fig-inner">
-          <img src="img/JF_WEB_ConservaKeyScreenHome.jpg"
-               alt="Conserva home screen — editorial statement, category grid, and community event module"
-               loading="lazy" />
-          <figcaption>Home: An editorial statement, a structured category grid, and a community module that reads as part of the brand, not an interruption.</figcaption>
-        </figure>
-      </div>
-
-      <div class="cs-figure cs-inner-grid">
-        <figure class="fig-inner">
-          <img src="img/JF_WEB_ConservaKeyScreenShop.jpg"
-               alt="Conserva shop and product detail screens"
-               loading="lazy" />
-          <figcaption>Shop and product detail: Browsing structured, not chaotic, sensory description first, provenance second, specs last.</figcaption>
-        </figure>
-      </div>
-
-
-      <!-- ─── OUTCOME ─────────────────────────────────────────── -->
-      <section class="cs-section cs-inner-grid" id="outcome">
-        <div class="wrap-text">
-          <span class="eyebrow cs-eyebrow">Outcome</span>
-          <p class="outcome__lead">
-            A high-fidelity product where the point of view and the system that sustains it were designed as one thing, not two.
-          </p>
-          <p class="cs-p">
-            The prototype covers the full purchase flow&mdash;discovery, browsing, product detail, and cart&mdash;across platforms. The system defines tokens, components, and patterns at a level that can be carried into development without dilution. The AI prompting framework produced a visually coherent image library across product categories without manual policing of each output.
-          </p>
-        </div>
-      </section>
-
-      <div class="cs-figure cs-inner-grid">
-        <figure class="fig-inner">
-          <img src="img/JF_WEB_ConservaAI.jpg"
-               alt="Conserva AI-generated product photography — structured visual prompt system"
-               loading="lazy" />
-          <figcaption>AI-generated product photography: By defining lighting, texture, composition, and colour relationships upfront, every image stays aligned with the brand.</figcaption>
-        </figure>
-      </div>
-
-      <!-- Prototype embed -->
-      <div class="cs-figure cs-inner-grid" id="prototype">
-        <figure class="fig-inner">
-          <iframe
-            style="display: block; min-height: 640px;"
-            width="100%" height="700"
-            src="https://embed.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394&embed-host=share"
-            allowfullscreen
-            title="Conserva — interactive prototype"></iframe>
-          <figcaption>Interactive prototype: home, category, product detail, and cart flows.</figcaption>
-        </figure>
-      </div>
-
-
-      <!-- ─── WHAT I'D DO DIFFERENTLY ─────────────────────────── -->
-      <section class="cs-section cs-inner-grid">
-        <div class="wrap-text">
-          <span class="eyebrow cs-eyebrow">What I'd Do Differently</span>
-          <h2 class="cs-h2">Two things the system doesn't cover yet.</h2>
-          <p class="cs-p">
-            <strong>Test the sensory-first copywriting with actual users.</strong> The editorial logic (sensory cues before technical detail) is defensible, but it was never validated. Does "Bright. Softened. Gently saline." create confidence in a purchase, or does it create confusion about what the product actually is? I'd want to test comprehension and conversion intent against a more descriptive alternative before committing the pattern at scale.
-          </p>
-          <p class="cs-p">
-            <strong>Design for personalization within system constraints.</strong> The current system is deliberately consistent: the same tone, the same visual logic, everywhere. A more developed version might allow personalization (preferred categories surfaced differently, copywriting emphasis adjusted for return users) while maintaining the system's coherence. That's the harder design problem: how do you let a system adapt to individuals without losing the editorial point of view that makes it trustworthy?
-          </p>
-        </div>
-      </section>
-
     </div>
+    <hr class="rule hero__rule" />
+    <p class="hero__tagline">
+      AI image generation only stays consistent when the person directing it
+      thinks like a designer. Conserva is what that looks like: a structured
+      prompting framework producing a coherent visual library across an entire
+      premium product, paired with a system-first design language built to hold
+      its point of view as it scales.
+    </p>
+    <a class="hero__cta"
+       href="https://www.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&t=xO9peq6C65Y57fmj-1&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394"
+       target="_blank" rel="noopener">
+      Explore interactive prototype
+    </a>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <span class="meta-label">Role</span>
+        <p class="meta-value">End-to-end. Brand definition, design system, prototype, AI image generation methodology.</p>
+      </div>
+      <div class="hero__meta-item">
+        <span class="meta-label">Context</span>
+        <p class="meta-value">Self-initiated, no external client. Eight-week BrainStation project.</p>
+      </div>
+      <div class="hero__meta-item">
+        <span class="meta-label">Tools</span>
+        <p class="meta-value">Figma, Atomic Design methodology, structured AI prompting framework (Sora, Adobe Photoshop).</p>
+      </div>
+      <div class="hero__meta-item">
+        <span class="meta-label">Deliverable</span>
+        <p class="meta-value">High-fidelity multi-platform prototype and design system.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="cs-figure grid">
+    <figure class="fig-inner">
+      <img src="img/JF_WEB_ConservaHero.png"
+           alt="Conserva UI — hero screen showing the gourmet food experience"
+           loading="eager" />
+    </figure>
   </div>
+
+
+  <!-- ─── THE PROBLEM ──────────────────────────────────────── -->
+  <section class="cs-section grid">
+    <div class="wrap-text">
+      <span class="eyebrow cs-eyebrow">The Problem</span>
+      <h2 class="cs-h2">Food apps that feel clinical, or ones that feel chaotic. Neither is right.</h2>
+      <p class="cs-p">
+        Food platforms tend to fall into two patterns. Some are purely functional: structured, efficient, and difficult to browse with any sense of pleasure. Others lean heavily into visual richness, but lose clarity under the weight of it.
+      </p>
+      <p class="cs-p">
+        Neither serves the discerning home cook. What that user wants is a platform that feels like it has an opinion, on what's worth eating, how food should be described, what's worth showing and what's worth leaving out. And critically, that opinion has to hold. A platform that's expressive on the discovery screen and transactional three taps in doesn't feel curated. It feels inconsistent. In a premium context, inconsistency reads as carelessness and a user who stops trusting the curation stops using the platform.
+      </p>
+      <p class="cs-p">
+        <strong>Design challenge:</strong> How do you build a product that feels expressive and opinionated at every touchpoint, without that expression collapsing into inconsistency as it grows?
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ─── KEY INSIGHT ──────────────────────────────────────── -->
+  <section class="cs-section grid">
+    <div class="wrap-text">
+      <span class="eyebrow cs-eyebrow">Key Insight</span>
+      <h2 class="cs-h2">Structure doesn't limit creativity. It protects it.</h2>
+      <p class="cs-p">
+        Early exploration made one thing clear: a distinct visual voice only stays distinct if it's anchored by rules: colour, typography, composition, and how those elements relate to each other across screens. Without that, the system fragments as content is added.
+      </p>
+
+      <div class="insight__pivot">
+        <div class="pivot__cell">
+          <p class="pivot__cell-label">The instinct</p>
+          <p class="pivot__cell-text">Build the brand first, then figure out the system later.</p>
+        </div>
+        <div class="pivot__cell pivot__cell--dark">
+          <p class="pivot__cell-label">The reframe</p>
+          <p class="pivot__cell-text">The system is the brand. Build both together.</p>
+        </div>
+      </div>
+
+      <a class="cs-link"
+         href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=8008-104&t=6RXNufCwGPRbihoB-1"
+         target="_blank" rel="noopener">
+        View brand and UI moodboards
+      </a>
+    </div>
+  </section>
+
+  <div class="cs-figure grid">
+    <figure class="fig-inner">
+      <img src="img/JF_WEB_ConservaMoodboard.png"
+           alt="Conserva brand and UI design moodboards"
+           loading="lazy" />
+      <figcaption>Brand and UI moodboards: The visual language established before a single component was built.</figcaption>
+    </figure>
+  </div>
+
+
+  <!-- ─── DESIGN SYSTEM ────────────────────────────────────── -->
+  <section class="cs-section grid">
+    <div class="wrap-text">
+      <span class="eyebrow cs-eyebrow">Design System</span>
+      <h2 class="cs-h2">Built from the atom up.</h2>
+      <p class="cs-p">
+        The system was built using Atomic Design methodology: colour tokens and type scales defined first, spacing rules locked next, then components assembled from those foundations. Nothing was designed in isolation. Every component inherits from the system rather than overriding it.
+      </p>
+      <p class="cs-p">
+        This allows the product to scale across iOS, Android, and web while maintaining a consistent point of view.
+      </p>
+      <a class="cs-link"
+         href="https://www.figma.com/design/Ke1qpirEsmjmxmRnrFti5s/Unit-4--Part-2?node-id=7134-257&t=6RXNufCwGPRbihoB-1"
+         target="_blank" rel="noopener">
+        Explore the Conserva Design System
+      </a>
+    </div>
+  </section>
+
+  <div class="cs-figure grid">
+    <figure class="fig-inner">
+      <img src="img/JF_WEB_ConservaAccessibility.png"
+           alt="Conserva accessibility contrast standards"
+           loading="lazy" />
+      <figcaption>Accessibility contrast standards: Every colour combination tested and documented before use in components.</figcaption>
+    </figure>
+  </div>
+
+
+  <!-- ─── DESIGN DECISIONS ─────────────────────────────────── -->
+  <section class="cs-section grid">
+    <div class="wrap-text">
+      <span class="eyebrow cs-eyebrow">Design Decisions</span>
+      <h2 class="cs-h2">Four decisions that kept the brand honest</h2>
+
+      <div class="decisions__list">
+
+        <div class="decision">
+          <span class="decision__num">01</span>
+          <div>
+            <h3 class="decision__title">AI image generation as a design system problem</h3>
+            <p class="decision__body">
+              Product photography was produced through an AI image generation workflow built around a structured prompting framework. The framework specifies lighting conditions, texture qualities, compositional relationships, and colour constraints before any prompt is submitted. Without those constraints, AI-generated images produce variety where the product needs coherence. The prompting framework is, in effect, a visual brief applied to a new medium &mdash; design thinking about what the system needs, expressed as a specification for the tool.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Tradeoff</span>
+              <span class="decision__tradeoff-text">
+                The framework adds upfront work before any image is generated. The payoff is that the output stays brand-coherent across an entire library, without per-image policing. AI image generation only stays consistent when the person directing it thinks like a designer.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">02</span>
+          <div>
+            <h3 class="decision__title">Photography as navigation</h3>
+            <p class="decision__body">
+              Full-bleed imagery anchors categories and product views. Rather than competing with type or icons, photography does the cognitive work, reducing the need for labels and making visual richness the navigation mechanism, not decoration.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Tradeoff</span>
+              <span class="decision__tradeoff-text">
+                Photography-first design is only sustainable if the image quality is consistent. The AI prompting framework above is what makes that sustainable.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">03</span>
+          <div>
+            <h3 class="decision__title">Colour as structure, never decoration</h3>
+            <p class="decision__body">
+              Colour appears sparingly and with purpose&mdash;calls to action, category anchors, key modules. It is never ambient.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Tradeoff</span>
+              <span class="decision__tradeoff-text">
+                This restraint reduces visual noise, but it also makes the interface feel quieter than competitors. That tradeoff is intentional.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="decision__num">04</span>
+          <div>
+            <h3 class="decision__title">Sensory language before specifications</h3>
+            <p class="decision__body">
+              Product descriptions open with sensory cues, <em>Bright. Softened. Gently saline</em>, before any technical detail. This sequence reflects how people actually decide whether they want something: feeling first, then fact.
+            </p>
+            <div class="decision__tradeoff">
+              <span class="decision__tradeoff-label">Tradeoff</span>
+              <span class="decision__tradeoff-text">
+                Leading with sensory language assumes a certain kind of reader: one who has time to browse rather than search. For users who want quick answers, this sequence may slow them down. A future iteration would test a more scannable layer without losing the tone.
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-figure grid">
+    <figure class="fig-inner">
+      <img src="img/JF_WEB_ConservaKeyScreenHome.jpg"
+           alt="Conserva home screen — editorial statement, category grid, and community event module"
+           loading="lazy" />
+      <figcaption>Home: An editorial statement, a structured category grid, and a community module that reads as part of the brand, not an interruption.</figcaption>
+    </figure>
+  </div>
+
+  <div class="cs-figure grid">
+    <figure class="fig-inner">
+      <img src="img/JF_WEB_ConservaKeyScreenShop.jpg"
+           alt="Conserva shop and product detail screens"
+           loading="lazy" />
+      <figcaption>Shop and product detail: Browsing structured, not chaotic, sensory description first, provenance second, specs last.</figcaption>
+    </figure>
+  </div>
+
+
+  <!-- ─── OUTCOME ──────────────────────────────────────────── -->
+  <section class="cs-section grid">
+    <div class="wrap-text">
+      <span class="eyebrow cs-eyebrow">Outcome</span>
+      <p class="outcome__lead">
+        A high-fidelity product where the point of view and the system that sustains it were designed as one thing, not two.
+      </p>
+      <p class="cs-p">
+        The prototype covers the full purchase flow&mdash;discovery, browsing, product detail, and cart&mdash;across platforms. The system defines tokens, components, and patterns at a level that can be carried into development without dilution. The AI prompting framework produced a visually coherent image library across product categories without manual policing of each output.
+      </p>
+    </div>
+  </section>
+
+  <div class="cs-figure grid">
+    <figure class="fig-inner">
+      <img src="img/JF_WEB_ConservaAI.jpg"
+           alt="Conserva AI-generated product photography — structured visual prompt system"
+           loading="lazy" />
+      <figcaption>AI-generated product photography: By defining lighting, texture, composition, and colour relationships upfront, every image stays aligned with the brand.</figcaption>
+    </figure>
+  </div>
+
+  <!-- Prototype embed -->
+  <div class="cs-figure grid" id="prototype">
+    <figure class="fig-inner">
+      <iframe
+        style="display: block; min-height: 640px;"
+        width="100%" height="700"
+        src="https://embed.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394&embed-host=share"
+        allowfullscreen
+        title="Conserva — interactive prototype"></iframe>
+      <figcaption>Interactive prototype: home, category, product detail, and cart flows.</figcaption>
+    </figure>
+  </div>
+
+
+  <!-- ─── WHAT I'D DO DIFFERENTLY ──────────────────────────── -->
+  <section class="cs-section grid">
+    <div class="wrap-text">
+      <span class="eyebrow cs-eyebrow">What I'd Do Differently</span>
+      <h2 class="cs-h2">Two things the system doesn't cover yet.</h2>
+      <p class="cs-p">
+        <strong>Test the sensory-first copywriting with actual users.</strong> The editorial logic (sensory cues before technical detail) is defensible, but it was never validated. Does "Bright. Softened. Gently saline." create confidence in a purchase, or does it create confusion about what the product actually is? I'd want to test comprehension and conversion intent against a more descriptive alternative before committing the pattern at scale.
+      </p>
+      <p class="cs-p">
+        <strong>Design for personalization within system constraints.</strong> The current system is deliberately consistent: the same tone, the same visual logic, everywhere. A more developed version might allow personalization (preferred categories surfaced differently, copywriting emphasis adjusted for return users) while maintaining the system's coherence. That's the harder design problem: how do you let a system adapt to individuals without losing the editorial point of view that makes it trustworthy?
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ─── NEXT PROJECT ─────────────────────────────────────── -->
+  <div class="rule-section grid">
+    <hr class="rule" />
+  </div>
+  <a class="next-project grid" href="aurafact.html">
+    <div class="wrap-text">
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">Aurafact: Archiving the acoustic memory of place</p>
+    </div>
+  </a>
 
 
   <!-- ─── FOOTER ───────────────────────────────────────────── -->
@@ -849,7 +785,7 @@
         <h3>Pages</h3>
         <div class="footer__pages-links">
           <a href="index.html#work">Work</a>
-          <a href="play.html">Play</a>
+          <a href="ai-creative.html">Fun</a>
           <a href="index.html#about">About</a>
         </div>
       </div>
@@ -857,24 +793,5 @@
     </div>
   </footer>
 
-  <script>
-    (() => {
-      const links = document.querySelectorAll('.cs-toc-link');
-      if (!links.length) return;
-      const sections = Array.from(links)
-        .map(link => document.querySelector(link.getAttribute('href')))
-        .filter(Boolean);
-
-      const setActive = id => {
-        links.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`));
-      };
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
-      }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
-
-      sections.forEach(section => observer.observe(section));
-    })();
-  </script>
 </body>
 </html>
