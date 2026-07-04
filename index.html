@@ -196,31 +196,7 @@
       border-radius: 2px;
     }
 
-    .card__media { position: relative; cursor: none; }
     .card__media a { display: block; }
-
-    .card__media-cta {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translate(-50%, -50%);
-      background: rgba(90, 6, 0, 0.8);
-      color: #fff;
-      font-size: 9.9px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 6px 7.2px;
-      opacity: 0;
-      transition: opacity var(--transition);
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    .card__media:hover .card__media-cta,
-    .card__media a:focus-visible .card__media-cta {
-      opacity: 1;
-    }
 
     /* ─── About ────────────────────────────────────────────── */
     .about { padding-block: 5rem 8rem; }
@@ -419,7 +395,6 @@
         <a href="checkin-agent.html">
           <img src="img/JF_WEB_CHECKINAGENTHero.png"
                alt="The Check-In Agent — behavioural fintech agent interface" />
-          <span class="card__media-cta">View Case Study</span>
         </a>
       </div>
     </article>
@@ -439,7 +414,6 @@
         <a href="can-simplan.html">
           <img src="img/JF_WEB_CANSIMPLANHero.png"
                alt="CAN-SIMPLAN — civic AI planning tool interface" />
-          <span class="card__media-cta">View Case Study</span>
         </a>
       </div>
     </article>
@@ -459,7 +433,6 @@
         <a href="workmap.html">
           <img src="img/JF_WEB_WORKMAPHero.png"
                alt="WorkMap — role-based AI exposure mapping tool" />
-          <span class="card__media-cta">View Case Study</span>
         </a>
       </div>
     </article>
@@ -477,7 +450,6 @@
         <a href="clara-app.html">
           <img src="img/JF_WEB_ClaraHero.png"
                alt="Clara — shared trip planning app with visible task ownership" />
-          <span class="card__media-cta">View Case Study</span>
         </a>
       </div>
     </article>
@@ -495,7 +467,6 @@
         <a href="conserva.html">
           <img src="img/JF_WEB_ConservaHero.png"
                alt="Conserva — premium food platform built system-first" />
-          <span class="card__media-cta">View Case Study</span>
         </a>
       </div>
 
@@ -515,7 +486,6 @@
         <a href="aurafact.html">
           <img src="img/JF_WEB_AurafactHero.png"
                alt="Aurafact — spatial archive of environmental sound" />
-          <span class="card__media-cta">View Case Study</span>
         </a>
       </div>
     </article>
@@ -534,7 +504,6 @@
         <a href="ai-creative.html">
           <img src="img/JF_WEB_GenerativeCampaignHero.png"
                alt="Generative AI campaigns — stills and motion art directed by Yaya Falanga" />
-          <span class="card__media-cta">View Case Study</span>
         </a>
       </div>
     </article>
@@ -629,15 +598,5 @@
     </div>
   </footer>
 
-  <script>
-    document.querySelectorAll('.card__media').forEach(media => {
-      const cta = media.querySelector('.card__media-cta');
-      media.addEventListener('mousemove', e => {
-        const rect = media.getBoundingClientRect();
-        cta.style.left = (e.clientX - rect.left) + 'px';
-        cta.style.top = (e.clientY - rect.top) + 'px';
-      });
-    });
-  </script>
 </body>
 </html>
