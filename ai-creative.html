@@ -5,20 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Creative Direction — Jennifer Yaya Falanga</title>
   <meta name="description" content="Two self-initiated campaigns built entirely with generative AI — Midjourney, Sora, and Grok Imagine — art directed from brief to final frame." />
-  <link rel="canonical" href="https://yayafalanga.ca/ai-creative.html" />
-  <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-
-  <meta property="og:site_name" content="Jennifer Yaya Falanga" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://yayafalanga.ca/ai-creative.html" />
-  <meta property="og:title" content="AI Creative Direction — Jennifer Yaya Falanga" />
-  <meta property="og:description" content="Two self-initiated campaigns built entirely with generative AI — Midjourney, Sora, and Grok Imagine — art directed from brief to final frame." />
-  <meta property="og:image" content="https://yayafalanga.ca/img/JF_WEB_GenerativeCampaignHero.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AI Creative Direction — Jennifer Yaya Falanga" />
-  <meta name="twitter:description" content="Two self-initiated campaigns built entirely with generative AI — Midjourney, Sora, and Grok Imagine — art directed from brief to final frame." />
-  <meta name="twitter:image" content="https://yayafalanga.ca/img/JF_WEB_GenerativeCampaignHero.png" />
 
   <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
@@ -123,42 +109,9 @@
     .nav__links a { transition: color var(--transition); }
     .nav__links a:hover { color: var(--ink-soft); }
 
-    /* ─── Case study layout (sticky sidebar + content) ─────── */
-    .cs-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      column-gap: var(--gutter);
-      padding-inline: var(--margin);
-      align-items: start;
-    }
-
-    .cs-inner-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-    }
-
-    .cs-sidebar { position: sticky; top: 8rem; padding-block: 5.5rem 3rem; }
-
-    .cs-sidebar .hero__title {
-      font-size: clamp(1.75rem, 2.2vw, 2.25rem);
-      margin-bottom: 1.75rem;
-    }
-
-    .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
-    .cs-toc a {
-      display: block;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      transition: color var(--transition);
-    }
-    .cs-toc a:hover,
-    .cs-toc a.is-active { color: var(--ink); }
-
     /* ─── Hero ─────────────────────────────────────────────── */
+    .hero { padding-block: 5.5rem 0; }
+
     .hero__eyebrow { display: block; margin-bottom: 1.1rem; }
 
     .hero__title {
@@ -169,17 +122,11 @@
       margin-bottom: 2.25rem;
     }
 
-    .hero__tagline {
-      grid-column: 2 / 7;
-      padding-top: 5.5rem;
-    }
+    .hero__rule { grid-column: 2 / 12; }
 
-    .context-meta {
-      grid-column: 8 / 12;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-      padding-top: 5.5rem;
+    .hero__tagline {
+      grid-column: 2 / 8;
+      margin-top: 2rem;
     }
 
     .hero__cta {
@@ -197,6 +144,17 @@
     }
     .hero__cta:hover { background: var(--ink); color: var(--bone); }
 
+    .hero__meta {
+      grid-column: 2 / 12;
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      column-gap: var(--gutter);
+      row-gap: 2rem;
+    }
+    .hero__meta-item { grid-column: span 3; }
+    .hero__meta-item:nth-child(3n+1):last-child,
+    .hero__meta-item:nth-child(4) { grid-column: span 3; }
     .meta-label {
       display: block;
       color: var(--ink-soft);
@@ -209,13 +167,13 @@
     .meta-value { font-size: 1.0625rem; max-width: 36ch; }
 
     /* ─── Figures ──────────────────────────────────────────── */
-    .cs-content { padding-bottom: 6.5rem; }
     .cs-figure { padding-block: 4.5rem 0; }
     .cs-figure figure,
     .cs-figure .fig-inner { grid-column: 2 / 12; }
     .cs-figure img,
     .cs-figure iframe {
       width: 100%;
+      border: 1px solid var(--ink-soft);
       background: var(--placeholder);
     }
     .cs-figure figcaption {
@@ -553,14 +511,13 @@
     /* ─── Responsive ───────────────────────────────────────── */
     @media (max-width: 1024px) {
       :root { --margin: 48px; }
-      .span-content, .hero__cta,
+      .span-content, .hero__rule, .hero__cta, .hero__meta,
       .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
       .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
-      .context-meta { grid-column: 1 / 10; padding-top: 2.5rem; }
+      .hero__meta { grid-template-columns: repeat(2, 1fr); }
       .project__head, .media-block .media-inner, .caption-strip, .project__brief, .approach .wrap-text { grid-column: 1 / 13; }
-      .cs-layout { grid-template-columns: 1fr; }
-      .cs-sidebar { position: static; padding-block: 0 3rem; }
+      .hero__meta-item { grid-column: auto; }
     }
 
     @media (max-width: 720px) {
@@ -568,9 +525,9 @@
       body { font-size: 1.125rem; }
       .nav { padding-block: 1.4rem; }
       .nav__links { gap: 2rem; }
-      .cs-sidebar { padding-block: 3.5rem 3rem; }
+      .hero { padding-top: 3.5rem; }
       .hero__tagline { grid-column: 1 / 13; }
-      .context-meta { grid-column: 1 / 13; }
+      .hero__meta { grid-template-columns: 1fr; row-gap: 1.5rem; margin-top: 3rem; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -588,21 +545,6 @@
       .step { grid-template-columns: 2.25rem 1fr; padding-block: 1.5rem; }
     }
   </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "name": "AI Creative Direction",
-  "description": "Two self-initiated campaigns built entirely with generative AI \u2014 Midjourney, Sora, and Grok Imagine \u2014 art directed from brief to final frame.",
-  "url": "https://yayafalanga.ca/ai-creative.html",
-  "image": "https://yayafalanga.ca/img/JF_WEB_GenerativeCampaignHero.png",
-  "author": {
-    "@type": "Person",
-    "name": "Jennifer Yaya Falanga",
-    "url": "https://yayafalanga.ca/"
-  }
-}
-  </script>
 </head>
 <body>
 
@@ -612,58 +554,44 @@
       <a href="index.html" class="nav__logo">Jennifer Yaya Falanga</a>
       <div class="nav__links">
         <a href="index.html#work">Work</a>
-        <a href="play.html">Play</a>
+        <a href="fun.html">Fun</a>
         <a href="index.html#about">About</a>
       </div>
     </div>
   </nav>
 
 
-  <!-- ─── CASE STUDY LAYOUT (sticky sidebar + content) ─────── -->
-  <div class="cs-layout grid">
-
-    <aside class="cs-sidebar">
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <header class="hero grid">
+    <div class="span-content">
       <span class="eyebrow hero__eyebrow">AI Creative Direction</span>
       <h1 class="hero__title">Directing AI.<br><em>Not just prompting it.</em></h1>
-
-      <nav class="cs-toc">
-        <ul>
-          <li><a href="#conserva" class="cs-toc-link">Conserva</a></li>
-          <li><a href="#vesper" class="cs-toc-link">Vesper</a></li>
-          <li><a href="#thomas" class="cs-toc-link">Thomas</a></li>
-          <li><a href="#how-i-work" class="cs-toc-link">How I work</a></li>
-        </ul>
-      </nav>
-    </aside>
-
-    <div class="cs-content">
-
-    <div class="cs-inner-grid">
+    </div>
+    <hr class="rule hero__rule" />
     <p class="hero__tagline">
       Self-initiated campaigns built entirely with generative AI&mdash;Midjourney,
       Sora, and Grok Imagine&mdash;art directed from brief to final frame. The work
       spans invented brand identities, product photography, and campaign motion.
     </p>
-
-    <div class="context-meta">
-      <div class="context-meta-item">
+    <div class="hero__meta">
+      <div class="hero__meta-item">
         <span class="meta-label">Role</span>
         <p class="meta-value">Creative direction, art direction, visual development, prompt engineering</p>
       </div>
-      <div class="context-meta-item">
+      <div class="hero__meta-item">
         <span class="meta-label">Tools</span>
         <p class="meta-value">Midjourney &middot; Sora &middot; Grok Imagine &middot; GPT-4o</p>
       </div>
-      <div class="context-meta-item">
+      <div class="hero__meta-item">
         <span class="meta-label">Type</span>
         <p class="meta-value">Self-initiated.</p>
       </div>
     </div>
-    </div>
+  </header>
 
 
   <!-- ─── PROJECT 01 — CONSERVA ────────────────────────────── -->
-  <section class="project cs-inner-grid" id="conserva">
+  <section class="project grid">
     <div class="project__head">
       <span class="eyebrow cs-eyebrow">Project 01</span>
       <h2 class="hero__title" style="font-size: clamp(2.25rem, 4vw, 3.25rem); margin-bottom: 1rem;">Conserva</h2>
@@ -683,7 +611,7 @@
     </div>
   </section>
 
-  <div class="media-block cs-inner-grid">
+  <div class="media-block grid">
     <div class="media-inner">
       <div class="media-grid media-grid--2col">
         <div class="media-item media-item--portrait">
@@ -707,7 +635,7 @@
     </div>
   </div>
 
-  <div class="cs-inner-grid" style="padding-top: 0;">
+  <div class="grid" style="padding-top: 0;">
     <div class="caption-strip">
       <div class="caption-cell">
         <p class="caption-cell__label">Creative brief</p>
@@ -724,7 +652,7 @@
     </div>
   </div>
 
-  <div class="cs-inner-grid">
+  <div class="grid">
     <div class="project__brief">
       <span class="project__brief-label">Brief</span>
       <p class="project__brief-text">Three adjectives: bold, expressive, architectural. The assignment was a UI project. The actual question was whether a food platform could have an opinion and hold it. Not just on the discovery screen &mdash; all the way through. Most lifestyle food brands go expressive at the top and transactional three taps in. That inconsistency is a trust problem: a user who stops believing in the curation stops using the platform. Conserva was built to test whether restraint and expressiveness could be the same design move.</p>
@@ -733,7 +661,7 @@
 
 
   <!-- ─── PROJECT 02 — VESPER ──────────────────────────────── -->
-  <section class="project cs-inner-grid" id="vesper">
+  <section class="project grid">
     <div class="project__head">
       <span class="eyebrow cs-eyebrow">Project 02</span>
       <h2 class="hero__title" style="font-size: clamp(2.25rem, 4vw, 3.25rem); margin-bottom: 1rem;">Patch Campaign, <em>Vesper</em></h2>
@@ -754,7 +682,7 @@
     </div>
   </section>
 
-  <div class="media-block cs-inner-grid">
+  <div class="media-block grid">
     <div class="media-inner">
       <div class="media-grid media-grid--2col">
         <div class="media-item media-item--portrait">
@@ -778,7 +706,7 @@
     </div>
   </div>
 
-  <div class="cs-inner-grid" style="padding-top: 0;">
+  <div class="grid" style="padding-top: 0;">
     <div class="caption-strip">
       <div class="caption-cell">
         <p class="caption-cell__label">Creative brief</p>
@@ -795,7 +723,7 @@
     </div>
   </div>
 
-  <div class="cs-inner-grid">
+  <div class="grid">
     <div class="project__brief">
       <span class="project__brief-label">Brief</span>
       <p class="project__brief-text">The brief was this: a pimple patch worn as part of a look, not hidden under one. The audience is women in their 30s and up &mdash; not teenagers, not the self-help crowd &mdash; women who have decided that skin texture is not a problem to be solved before leaving the house. Vesper had to feel like a brand that understood this without announcing it. The visual language had to hold across two contexts: staying in on a Thursday and going out on a Saturday. The star patch is the same object in both. The campaign had to prove that.</p>
@@ -803,7 +731,7 @@
   </div>
 
 <!-- ─── PROJECT 03 — THOMAS ──────────────────────────────── -->
-  <section class="project cs-inner-grid" id="thomas">
+  <section class="project grid">
     <div class="project__head">
       <span class="eyebrow cs-eyebrow">Project 03</span>
       <h2 class="hero__title" style="font-size: clamp(2.25rem, 4vw, 3.25rem); margin-bottom: 1rem;">Thomas</h2>
@@ -823,7 +751,7 @@
     </div>
   </section>
 
-  <div class="media-block cs-inner-grid">
+  <div class="media-block grid">
     <div class="media-inner">
       <div class="media-grid media-grid--2col">
         <div class="media-item media-item--portrait">
@@ -847,7 +775,7 @@
     </div>
   </div>
 
-  <div class="cs-inner-grid" style="padding-top: 0;">
+  <div class="grid" style="padding-top: 0;">
     <div class="caption-strip">
       <div class="caption-cell">
         <p class="caption-cell__label">Creative brief</p>
@@ -864,7 +792,7 @@
     </div>
   </div>
 
-  <div class="cs-inner-grid">
+  <div class="grid">
     <div class="project__brief">
       <span class="project__brief-label">Brief</span>
       <p class="project__brief-text">The brief was this: Thomas porcelain is not decorative. It is structural. The problem with most tableware campaigns is that objects float &mdash; isolated against white, lit for the catalogue, removed from every surface they actually live on. Thomas had strong product and a design language worth taking seriously. The challenge was to show that a cup on a windowsill, a bowl on a shelf, a plate stacked on a counter is already a composition &mdash; already architecture. The campaign had to make that argument visually without explaining it. No styled excess, no editorial clutter. Just objects placed with the same intention a designer brings to a room. Bright light. Disciplined colour. The table treated as a floor plan.</p>
@@ -876,7 +804,7 @@
 
 
   <!-- ─── HOW I WORK ───────────────────────────────────────── -->
-  <section class="approach cs-inner-grid" id="how-i-work">
+  <section class="approach grid">
     <div class="wrap-text">
       <span class="eyebrow cs-eyebrow">How I Work</span>
       <div class="approach__steps">
@@ -911,9 +839,6 @@
       </div>
     </div>
   </section>
-
-    </div>
-  </div>
 
 
 <!-- ─── FOOTER ───────────────────────────────────────────── -->
@@ -959,7 +884,7 @@
         <h3>Pages</h3>
         <div class="footer__pages-links">
           <a href="index.html#work">Work</a>
-          <a href="play.html">Play</a>
+          <a href="ai-creative.html">Fun</a>
           <a href="index.html#about">About</a>
         </div>
       </div>
@@ -967,24 +892,5 @@
     </div>
   </footer>
 
-  <script>
-    (() => {
-      const links = document.querySelectorAll('.cs-toc-link');
-      if (!links.length) return;
-      const sections = Array.from(links)
-        .map(link => document.querySelector(link.getAttribute('href')))
-        .filter(Boolean);
-
-      const setActive = id => {
-        links.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`));
-      };
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
-      }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
-
-      sections.forEach(section => observer.observe(section));
-    })();
-  </script>
 </body>
 </html>

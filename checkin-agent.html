@@ -3,22 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Check-In Agent — Jennifer Yaya Falanga</title>
-  <meta name="description" content="The Check-In Agent: an AI agent that watches for the moment first-time investors panic-sell, and stays silent until it's earned the right to interrupt." />
-  <link rel="canonical" href="https://yayafalanga.ca/checkin-agent.html" />
-  <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-
-  <meta property="og:site_name" content="Jennifer Yaya Falanga" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://yayafalanga.ca/checkin-agent.html" />
-  <meta property="og:title" content="The Check-In Agent — Jennifer Yaya Falanga" />
-  <meta property="og:description" content="The Check-In Agent: an AI agent that watches for the moment first-time investors panic-sell, and stays silent until it's earned the right to interrupt." />
-  <meta property="og:image" content="https://yayafalanga.ca/img/JF_WEB_CHECKINAGENTHero.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Check-In Agent — Jennifer Yaya Falanga" />
-  <meta name="twitter:description" content="The Check-In Agent: an AI agent that watches for the moment first-time investors panic-sell, and stays silent until it's earned the right to interrupt." />
-  <meta name="twitter:image" content="https://yayafalanga.ca/img/JF_WEB_CHECKINAGENTHero.png" />
+  <title>CAN-SIMPLAN — Jennifer Yaya Falanga</title>
+  <meta name="description" content="The Check-In Agent: First-time investors panic-sell at the bottom. This is an AI agent that watches for the moment, and stays silent until it's earned the right to interrupt. — UX case study by Jennifer Yaya Falanga." />
 
   <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
@@ -123,42 +109,9 @@
     .nav__links a { transition: color var(--transition); }
     .nav__links a:hover { color: var(--ink-soft); }
 
-    /* ─── Case study layout (sticky sidebar + content) ─────── */
-    .cs-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      column-gap: var(--gutter);
-      padding-inline: var(--margin);
-      align-items: start;
-    }
-
-    .cs-inner-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-    }
-
-    .cs-sidebar { position: sticky; top: 8rem; padding-block: 5.5rem 3rem; }
-
-    .cs-sidebar .hero__title {
-      font-size: clamp(1.75rem, 2.2vw, 2.25rem);
-      margin-bottom: 1.75rem;
-    }
-
-    .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
-    .cs-toc a {
-      display: block;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      transition: color var(--transition);
-    }
-    .cs-toc a:hover,
-    .cs-toc a.is-active { color: var(--ink); }
-
     /* ─── Hero ─────────────────────────────────────────────── */
+    .hero { padding-block: 5.5rem 0; }
+
     .hero__eyebrow { display: block; margin-bottom: 1.1rem; }
 
     .hero__title {
@@ -169,21 +122,12 @@
       margin-bottom: 2.25rem;
     }
 
+    .hero__rule { grid-column: 2 / 12; }
+
     .hero__tagline {
-      grid-column: 2 / 7;
+      grid-column: 2 / 8;
       margin-top: 2rem;
     }
-
-    .context-meta {
-      grid-column: 8 / 12;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-      margin-top: 2rem;
-    }
-
-    .cs-content > .cs-figure:first-child { padding-top: 5.5rem; }
-    .cs-content { padding-bottom: 6.5rem; }
 
     .hero__cta {
       grid-column: 2 / 12;
@@ -200,6 +144,17 @@
     }
     .hero__cta:hover { background: var(--ink); color: var(--bone); }
 
+    .hero__meta {
+      grid-column: 2 / 12;
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      column-gap: var(--gutter);
+      row-gap: 2rem;
+    }
+    .hero__meta-item { grid-column: span 3; }
+    .hero__meta-item:nth-child(3n+1):last-child,
+    .hero__meta-item:nth-child(4) { grid-column: span 3; }
     .meta-label {
       display: block;
       color: var(--ink-soft);
@@ -218,6 +173,7 @@
     .cs-figure img,
     .cs-figure iframe {
       width: 100%;
+      border: 1px solid var(--ink-soft);
       background: var(--placeholder);
     }
     .cs-figure figcaption {
@@ -332,26 +288,30 @@
       margin-bottom: 1.6rem;
     }
 
-    /* ─── Next project (sidebar) ───────────────────────────── */
+    /* ─── Next project ─────────────────────────────────────── */
     .next-project {
       display: block;
-      margin-top: 3rem;
+      padding-block: 5.5rem 6.5rem;
     }
+    .next-project .wrap-text { grid-column: 2 / 12; }
     .next-project__label {
-      font-size: 0.6875rem;
+      font-size: 0.8125rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
     }
     .next-project__title {
       font-family: var(--font-display);
-      font-size: 1.4875rem;
+      font-size: clamp(1.75rem, 3.4vw, 2.625rem);
       line-height: 1.15;
       transition: color var(--transition);
     }
     a.next-project:hover .next-project__title { color: var(--ink-soft); }
+
+    .rule-section { padding-top: 5.5rem; }
+    .rule-section hr { grid-column: 2 / 12; }
 
     /* ─── Footer ───────────────────────────────────────────── */
     .footer {
@@ -555,12 +515,12 @@
     /* ─── Responsive ───────────────────────────────────────── */
     @media (max-width: 1024px) {
       :root { --margin: 48px; }
-      .span-content, .hero__cta,
-      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner { grid-column: 1 / 13; }
+      .span-content, .hero__rule, .hero__cta, .hero__meta,
+      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
+      .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
-      .context-meta { grid-column: 1 / 10; margin-top: 2.5rem; }
-      .cs-layout { grid-template-columns: 1fr; }
-      .cs-sidebar { position: static; padding-block: 0 3rem; }
+      .hero__meta { grid-template-columns: repeat(2, 1fr); }
+      .hero__meta-item { grid-column: auto; }
     }
 
     @media (max-width: 720px) {
@@ -568,9 +528,9 @@
       body { font-size: 1.125rem; }
       .nav { padding-block: 1.4rem; }
       .nav__links { gap: 2rem; }
-      .cs-sidebar { padding-block: 3.5rem 3rem; }
+      .hero { padding-top: 3.5rem; }
       .hero__tagline { grid-column: 1 / 13; }
-      .context-meta { grid-column: 1 / 13; }
+      .hero__meta { grid-template-columns: 1fr; row-gap: 1.5rem; margin-top: 3rem; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -586,21 +546,6 @@
       .hero__ctas { grid-column: 1 / 13; }
     }
   </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "name": "The Check-In Agent",
-  "description": "The Check-In Agent: an AI agent that watches for the moment first-time investors panic-sell, and stays silent until it's earned the right to interrupt.",
-  "url": "https://yayafalanga.ca/checkin-agent.html",
-  "image": "https://yayafalanga.ca/img/JF_WEB_CHECKINAGENTHero.png",
-  "author": {
-    "@type": "Person",
-    "name": "Jennifer Yaya Falanga",
-    "url": "https://yayafalanga.ca/"
-  }
-}
-  </script>
 </head>
 <body>
 
@@ -610,40 +555,45 @@
       <a href="index.html" class="nav__logo">Jennifer Yaya Falanga</a>
       <div class="nav__links">
         <a href="index.html#work">Work</a>
-        <a href="play.html">Play</a>
+        <a href="fun.html">Fun</a>
         <a href="index.html#about">About</a>
       </div>
     </div>
   </nav>
 
 
-  <!-- ─── CASE STUDY LAYOUT (sticky sidebar + content) ─────── -->
-  <div class="cs-layout grid">
-
-    <aside class="cs-sidebar">
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <header class="hero grid">
+    <div class="span-content">
       <span class="eyebrow hero__eyebrow">AI Agent · Fintech · AI Certification · 2026</span>
       <h1 class="hero__title">The Check-In Agent</h1>
-
-      <nav class="cs-toc">
-        <ul>
-          <li><a href="#context" class="cs-toc-link">Context</a></li>
-          <li><a href="#challenge" class="cs-toc-link">Challenge</a></li>
-          <li><a href="#strategy" class="cs-toc-link">Strategy</a></li>
-          <li><a href="#design-decisions" class="cs-toc-link">Design decisions</a></li>
-          <li><a href="#application" class="cs-toc-link">Application</a></li>
-          <li><a href="#outcome" class="cs-toc-link">Outcome</a></li>
-        </ul>
-      </nav>
-
-      <a class="next-project" href="can-simplan.html">
-        <p class="next-project__label">Next Project</p>
-        <p class="next-project__title">CAN-SIMPLAN: Designing accountability into AI</p>
+    </div>
+    <hr class="rule hero__rule" />
+    <p class="hero__tagline">
+      An AI agent built for one moment: when a first-time investor is about to sell during a market downturn. The design challenge wasn't what the agent says. It was when it has earned the right to speak at all.
+    </p>
+    <a class="hero__cta"
+         href="https://checkin-agent.vercel.app/"
+         target="_blank" rel="noopener">
+        Try the working prototype
       </a>
-    </aside>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+          <span class="meta-label">Role</span>
+          <p class="meta-value">Sole designer and builder. Concept, behavioural research, trigger logic, system prompt, front-end prototype, and case study. End-to-end.</p>
+        </div>
+      <div class="hero__meta-item">
+          <span class="meta-label">Context</span>
+          <p class="meta-value">Final project for the AI Certification Course, 2026. Scoped as a portfolio piece aimed at AI-native Canadian fintech.</p>
+        </div>
+      <div class="hero__meta-item">
+          <span class="meta-label">Tools</span>
+          <p class="meta-value">Claude for structure and system prompt iteration. Perplexity for research. Anthropic API as the agent runtime. HTML, JS, and Vercel for the prototype.</p>
+        </div>
+    </div>
+  </header>
 
-    <div class="cs-content" id="context">
-
-  <div class="cs-figure cs-inner-grid">
+  <div class="cs-figure grid">
     <figure class="fig-inner">
       <img
         src="img/JF_WEB_CHECKINAGENTHero.png"
@@ -653,39 +603,12 @@
     </figure>
   </div>
 
-    <div class="cs-inner-grid">
-    <p class="hero__tagline">
-      An AI agent built for one moment: when a first-time investor is about to sell during a market downturn. The design challenge wasn't what the agent says. It was when it has earned the right to speak at all.
-    </p>
-
-    <div class="context-meta">
-      <div class="context-meta-item">
-        <span class="meta-label">Role</span>
-        <p class="meta-value">Sole designer and builder. Concept, behavioural research, trigger logic, system prompt, front-end prototype, and case study. End-to-end.</p>
-      </div>
-      <div class="context-meta-item">
-        <span class="meta-label">Context</span>
-        <p class="meta-value">Final project for the AI Certification Course, 2026. Scoped as a portfolio piece aimed at AI-native Canadian fintech.</p>
-      </div>
-      <div class="context-meta-item">
-        <span class="meta-label">Tools</span>
-        <p class="meta-value">Claude for structure and system prompt iteration. Perplexity for research. Anthropic API as the agent runtime. HTML, JS, and Vercel for the prototype.</p>
-      </div>
-    </div>
-
-    <a class="hero__cta"
-         href="https://checkin-agent.vercel.app/"
-         target="_blank" rel="noopener">
-        Try the working prototype
-      </a>
-    </div>
-
 
   <!-- ═══════════════════════════════════════════════════════
-       ② THE PROBLEM (Challenge)
+       ② THE PROBLEM
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="challenge">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">The Problem</span>
@@ -715,7 +638,7 @@
        ③ KEY INSIGHT
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Key Insight</span>
@@ -743,7 +666,7 @@
     </div>
   </section>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_CHECKINAGENTFourstates.png"
       alt="State machine diagram: Dormant → Attentive → Ready → Engaged."
@@ -753,10 +676,10 @@
   </figure></div>
 
   <!-- ═══════════════════════════════════════════════════════
-       ④ PRODUCT STRATEGY (Strategy)
+       ④ PRODUCT STRATEGY
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="strategy">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Product Strategy</span>
@@ -773,7 +696,7 @@
     </div>
   </section>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_CHECKINAGENTFourmoments.png"
       alt="Walkthrough: quiet portfolio → accumulating signals → ambient surface → intervention → articulation → branching response → proceed-or-pause → decision log."
@@ -786,7 +709,7 @@
        ⑤ DESIGN DECISIONS
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="design-decisions">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Design Decisions</span>
@@ -863,7 +786,7 @@
     </div>
   </section>
 
-  <div class="cs-figure cs-inner-grid" id="application"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_CHECKINAGENT.png"
       alt="CAN-SIMPLAN transparency panel — scoring assumptions and data source attribution"
@@ -872,7 +795,7 @@
     <figcaption>The check-in surface.</figcaption>
   </figure></div>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_CHECKINAGENTLog.png"
       alt="Check-in Agent decision log"
@@ -885,7 +808,7 @@
        ⑥ OUTCOME
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="outcome">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Outcome</span>
@@ -917,7 +840,7 @@
        ⑦ What I'd Do Differently
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">What I'd Do Differently</span>
@@ -934,8 +857,18 @@
     </div>
   </section>
 
-    </div>
+  <!-- ─── NEXT PROJECT ──────────────────────────────── -->
+  
+  <!-- ─── NEXT PROJECT ─────────────────────────────────────── -->
+  <div class="rule-section grid">
+    <hr class="rule" />
   </div>
+  <a class="next-project grid" href="can-simplan.html">
+    <div class="wrap-text">
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">CAN-SIMPLAN: Designing accountability into AI</p>
+    </div>
+  </a>
 
 
 <!-- ─── FOOTER ───────────────────────────────────────────── -->
@@ -981,7 +914,7 @@
         <h3>Pages</h3>
         <div class="footer__pages-links">
           <a href="index.html#work">Work</a>
-          <a href="play.html">Play</a>
+          <a href="ai-creative.html">Fun</a>
           <a href="index.html#about">About</a>
         </div>
       </div>
@@ -1072,24 +1005,5 @@
     })();
   </script>
 
-  <script>
-    (() => {
-      const links = document.querySelectorAll('.cs-toc-link');
-      if (!links.length) return;
-      const sections = Array.from(links)
-        .map(link => document.querySelector(link.getAttribute('href')))
-        .filter(Boolean);
-
-      const setActive = id => {
-        links.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`));
-      };
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
-      }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
-
-      sections.forEach(section => observer.observe(section));
-    })();
-  </script>
 </body>
 </html>
