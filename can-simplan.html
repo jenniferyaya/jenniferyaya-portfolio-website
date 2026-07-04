@@ -145,8 +145,6 @@
       margin-bottom: 1.75rem;
     }
 
-    .cs-sidebar-meta { display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3rem; }
-
     .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
     .cs-toc a {
       display: block;
@@ -172,7 +170,15 @@
     }
 
     .hero__tagline {
-      grid-column: 2 / 8;
+      grid-column: 2 / 7;
+      margin-top: 2rem;
+    }
+
+    .context-meta {
+      grid-column: 8 / 12;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
       margin-top: 2rem;
     }
 
@@ -552,6 +558,7 @@
       .span-content, .hero__cta,
       .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
+      .context-meta { grid-column: 1 / 10; margin-top: 2.5rem; }
       .cs-layout { grid-template-columns: 1fr; }
       .cs-sidebar { position: static; padding-block: 0 3rem; }
     }
@@ -563,6 +570,7 @@
       .nav__links { gap: 2rem; }
       .cs-sidebar { padding-block: 3.5rem 3rem; }
       .hero__tagline { grid-column: 1 / 13; }
+      .context-meta { grid-column: 1 / 13; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -616,21 +624,6 @@
       <span class="eyebrow hero__eyebrow">UX Design · AI Tool · Design Sprint · 2026</span>
       <h1 class="hero__title">CAN-SIMPLAN</h1>
 
-      <div class="cs-sidebar-meta">
-        <div>
-          <span class="meta-label">Role</span>
-          <p class="meta-value">Sole UX designer. End-to-end interface: proposal intake, simulation output, rationale recording, audit trail. Selected as winning project among the cohort.</p>
-        </div>
-        <div>
-          <span class="meta-label">Context</span>
-          <p class="meta-value">Four-day cross-disciplinary sprint, four-person team.</p>
-        </div>
-        <div>
-          <span class="meta-label">Tools</span>
-          <p class="meta-value">Figma. Interactive prototype, end-to-end.</p>
-        </div>
-      </div>
-
       <nav class="cs-toc">
         <ul>
           <li><a href="#context" class="cs-toc-link">Context</a></li>
@@ -664,6 +657,22 @@
     <p class="hero__tagline">
       Accuracy isn't enough. A planner has to be able to stand up in a council meeting and explain why. CAN-SIMPLAN is the design that makes that possible. An AI-assisted zoning tool where every output is traceable, every decision is defensible, and the human stays accountable throughout.
     </p>
+
+    <div class="context-meta">
+      <div class="context-meta-item">
+        <span class="meta-label">Role</span>
+        <p class="meta-value">Sole UX designer. End-to-end interface: proposal intake, simulation output, rationale recording, audit trail. Selected as winning project among the cohort.</p>
+      </div>
+      <div class="context-meta-item">
+        <span class="meta-label">Context</span>
+        <p class="meta-value">Four-day cross-disciplinary sprint, four-person team.</p>
+      </div>
+      <div class="context-meta-item">
+        <span class="meta-label">Tools</span>
+        <p class="meta-value">Figma. Interactive prototype, end-to-end.</p>
+      </div>
+    </div>
+
     <a class="hero__cta"
          href="https://www.figma.com/proto/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=1-2&starting-point-node-id=1%3A2&t=zJe3LDu5HQo78ESO-1"
          target="_blank" rel="noopener">

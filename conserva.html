@@ -145,8 +145,6 @@
       margin-bottom: 1.75rem;
     }
 
-    .cs-sidebar-meta { display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3rem; }
-
     .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
     .cs-toc a {
       display: block;
@@ -172,7 +170,15 @@
     }
 
     .hero__tagline {
-      grid-column: 2 / 8;
+      grid-column: 2 / 7;
+      margin-top: 2rem;
+    }
+
+    .context-meta {
+      grid-column: 8 / 12;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
       margin-top: 2rem;
     }
 
@@ -444,6 +450,7 @@
       .span-content, .hero__cta,
       .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
+      .context-meta { grid-column: 1 / 10; margin-top: 2.5rem; }
       .cs-layout { grid-template-columns: 1fr; }
       .cs-sidebar { position: static; padding-block: 0 3rem; }
     }
@@ -455,6 +462,7 @@
       .nav__links { gap: 2rem; }
       .cs-sidebar { padding-block: 3.5rem 3rem; }
       .hero__tagline { grid-column: 1 / 13; }
+      .context-meta { grid-column: 1 / 13; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -505,21 +513,6 @@
       <span class="eyebrow hero__eyebrow">UI Design &middot; Brand System &middot; 2026</span>
       <h1 class="hero__title">Conserva</h1>
 
-      <div class="cs-sidebar-meta">
-        <div>
-          <span class="meta-label">Role</span>
-          <p class="meta-value">End-to-end. Brand definition, design system, prototype, AI image generation methodology. Self-initiated, no external client &mdash; eight-week BrainStation project.</p>
-        </div>
-        <div>
-          <span class="meta-label">Tools</span>
-          <p class="meta-value">Figma, Atomic Design methodology, structured AI prompting framework (Sora, Adobe Photoshop).</p>
-        </div>
-        <div>
-          <span class="meta-label">Deliverable</span>
-          <p class="meta-value">High-fidelity multi-platform prototype and design system.</p>
-        </div>
-      </div>
-
       <nav class="cs-toc">
         <ul>
           <li><a href="#context" class="cs-toc-link">Context</a></li>
@@ -555,6 +548,22 @@
           premium product, paired with a system-first design language built to hold
           its point of view as it scales.
         </p>
+
+        <div class="context-meta">
+          <div class="context-meta-item">
+            <span class="meta-label">Role</span>
+            <p class="meta-value">End-to-end. Brand definition, design system, prototype, AI image generation methodology. Self-initiated, no external client &mdash; eight-week BrainStation project.</p>
+          </div>
+          <div class="context-meta-item">
+            <span class="meta-label">Tools</span>
+            <p class="meta-value">Figma, Atomic Design methodology, structured AI prompting framework (Sora, Adobe Photoshop).</p>
+          </div>
+          <div class="context-meta-item">
+            <span class="meta-label">Deliverable</span>
+            <p class="meta-value">High-fidelity multi-platform prototype and design system.</p>
+          </div>
+        </div>
+
         <a class="hero__cta"
            href="https://www.figma.com/proto/Ke1qpirEsmjmxmRnrFti5s/Conserva-Design-System?node-id=4828-394&p=f&t=xO9peq6C65Y57fmj-1&scaling=scale-down&content-scaling=fixed&page-id=4666%3A644&starting-point-node-id=4828%3A394"
            target="_blank" rel="noopener">
