@@ -5,20 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clara — Jennifer Yaya Falanga</title>
   <meta name="description" content="Clara: An iOS app concept that makes task ownership and progress visible in one shared space — UX case study by Jennifer Yaya Falanga." />
-  <link rel="canonical" href="https://yayafalanga.ca/clara-app.html" />
-  <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-
-  <meta property="og:site_name" content="Jennifer Yaya Falanga" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://yayafalanga.ca/clara-app.html" />
-  <meta property="og:title" content="Clara — Jennifer Yaya Falanga" />
-  <meta property="og:description" content="Clara: An iOS app concept that makes task ownership and progress visible in one shared space — UX case study by Jennifer Yaya Falanga." />
-  <meta property="og:image" content="https://yayafalanga.ca/img/JF_WEB_ClaraHero.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Clara — Jennifer Yaya Falanga" />
-  <meta name="twitter:description" content="Clara: An iOS app concept that makes task ownership and progress visible in one shared space — UX case study by Jennifer Yaya Falanga." />
-  <meta name="twitter:image" content="https://yayafalanga.ca/img/JF_WEB_ClaraHero.png" />
 
   <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
@@ -123,42 +109,9 @@
     .nav__links a { transition: color var(--transition); }
     .nav__links a:hover { color: var(--ink-soft); }
 
-    /* ─── Case study layout (sticky sidebar + content) ─────── */
-    .cs-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      column-gap: var(--gutter);
-      padding-inline: var(--margin);
-      align-items: start;
-    }
-
-    .cs-inner-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-    }
-
-    .cs-sidebar { position: sticky; top: 8rem; padding-block: 5.5rem 3rem; }
-
-    .cs-sidebar .hero__title {
-      font-size: clamp(1.75rem, 2.2vw, 2.25rem);
-      margin-bottom: 1.75rem;
-    }
-
-    .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
-    .cs-toc a {
-      display: block;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      transition: color var(--transition);
-    }
-    .cs-toc a:hover,
-    .cs-toc a.is-active { color: var(--ink); }
-
     /* ─── Hero ─────────────────────────────────────────────── */
+    .hero { padding-block: 5.5rem 0; }
+
     .hero__eyebrow { display: block; margin-bottom: 1.1rem; }
 
     .hero__title {
@@ -169,21 +122,12 @@
       margin-bottom: 2.25rem;
     }
 
+    .hero__rule { grid-column: 2 / 12; }
+
     .hero__tagline {
-      grid-column: 2 / 7;
+      grid-column: 2 / 8;
       margin-top: 2rem;
     }
-
-    .context-meta {
-      grid-column: 8 / 12;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-      margin-top: 2rem;
-    }
-
-    .cs-content > .cs-figure:first-child { padding-top: 5.5rem; }
-    .cs-content { padding-bottom: 6.5rem; }
 
     .hero__cta {
       grid-column: 2 / 12;
@@ -200,6 +144,17 @@
     }
     .hero__cta:hover { background: var(--ink); color: var(--bone); }
 
+    .hero__meta {
+      grid-column: 2 / 12;
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      column-gap: var(--gutter);
+      row-gap: 2rem;
+    }
+    .hero__meta-item { grid-column: span 3; }
+    .hero__meta-item:nth-child(3n+1):last-child,
+    .hero__meta-item:nth-child(4) { grid-column: span 3; }
     .meta-label {
       display: block;
       color: var(--ink-soft);
@@ -218,6 +173,7 @@
     .cs-figure img,
     .cs-figure iframe {
       width: 100%;
+      border: 1px solid var(--ink-soft);
       background: var(--placeholder);
     }
     .cs-figure figcaption {
@@ -332,26 +288,30 @@
       margin-bottom: 1.6rem;
     }
 
-    /* ─── Next project (sidebar) ───────────────────────────── */
+    /* ─── Next project ─────────────────────────────────────── */
     .next-project {
       display: block;
-      margin-top: 3rem;
+      padding-block: 5.5rem 6.5rem;
     }
+    .next-project .wrap-text { grid-column: 2 / 12; }
     .next-project__label {
-      font-size: 0.6875rem;
+      font-size: 0.8125rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
     }
     .next-project__title {
       font-family: var(--font-display);
-      font-size: 1.4875rem;
+      font-size: clamp(1.75rem, 3.4vw, 2.625rem);
       line-height: 1.15;
       transition: color var(--transition);
     }
     a.next-project:hover .next-project__title { color: var(--ink-soft); }
+
+    .rule-section { padding-top: 5.5rem; }
+    .rule-section hr { grid-column: 2 / 12; }
 
     /* ─── Footer ───────────────────────────────────────────── */
     .footer {
@@ -555,12 +515,12 @@
     /* ─── Responsive ───────────────────────────────────────── */
     @media (max-width: 1024px) {
       :root { --margin: 48px; }
-      .span-content, .hero__cta,
-      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner { grid-column: 1 / 13; }
+      .span-content, .hero__rule, .hero__cta, .hero__meta,
+      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
+      .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
-      .context-meta { grid-column: 1 / 10; margin-top: 2.5rem; }
-      .cs-layout { grid-template-columns: 1fr; }
-      .cs-sidebar { position: static; padding-block: 0 3rem; }
+      .hero__meta { grid-template-columns: repeat(2, 1fr); }
+      .hero__meta-item { grid-column: auto; }
     }
 
     @media (max-width: 720px) {
@@ -568,9 +528,9 @@
       body { font-size: 1.125rem; }
       .nav { padding-block: 1.4rem; }
       .nav__links { gap: 2rem; }
-      .cs-sidebar { padding-block: 3.5rem 3rem; }
+      .hero { padding-top: 3.5rem; }
       .hero__tagline { grid-column: 1 / 13; }
-      .context-meta { grid-column: 1 / 13; }
+      .hero__meta { grid-template-columns: 1fr; row-gap: 1.5rem; margin-top: 3rem; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -586,21 +546,6 @@
       .hero__ctas { grid-column: 1 / 13; }
     }
   </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "name": "Clara",
-  "description": "Clara: An iOS app concept that makes task ownership and progress visible in one shared space \u2014 UX case study by Jennifer Yaya Falanga.",
-  "url": "https://yayafalanga.ca/clara-app.html",
-  "image": "https://yayafalanga.ca/img/JF_WEB_ClaraHero.png",
-  "author": {
-    "@type": "Person",
-    "name": "Jennifer Yaya Falanga",
-    "url": "https://yayafalanga.ca/"
-  }
-}
-  </script>
 </head>
 <body>
 
@@ -610,40 +555,49 @@
       <a href="index.html" class="nav__logo">Jennifer Yaya Falanga</a>
       <div class="nav__links">
         <a href="index.html#work">Work</a>
-        <a href="archives.html">Archives</a>
+        <a href="archives.html">Archive</a>
         <a href="index.html#about">About</a>
       </div>
     </div>
   </nav>
 
 
-  <!-- ─── CASE STUDY LAYOUT (sticky sidebar + content) ─────── -->
-  <div class="cs-layout grid">
-
-    <aside class="cs-sidebar">
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <header class="hero grid">
+    <div class="span-content">
       <span class="eyebrow hero__eyebrow">UI/UX Design · iOS App Concept · 2026</span>
       <h1 class="hero__title">Clara</h1>
-
-      <nav class="cs-toc">
-        <ul>
-          <li><a href="#context" class="cs-toc-link">Context</a></li>
-          <li><a href="#challenge" class="cs-toc-link">Challenge</a></li>
-          <li><a href="#strategy" class="cs-toc-link">Strategy</a></li>
-          <li><a href="#prototype" class="cs-toc-link">Prototype</a></li>
-          <li><a href="#application" class="cs-toc-link">Application</a></li>
-          <li><a href="#outcome" class="cs-toc-link">Outcome</a></li>
-        </ul>
-      </nav>
-
-      <a class="next-project" href="conserva.html">
-        <p class="next-project__label">Next Project</p>
-        <p class="next-project__title">Conserva: A bold, system-driven gourmet experience</p>
+    </div>
+    <hr class="rule hero__rule" />
+    <p class="hero__tagline">
+      Group trips don't fall apart because people stop caring. They fall apart because responsibility becomes impossible to see. Clara makes ownership the one thing you can't miss.
+    </p>
+    <a class="hero__cta"
+         href="https://www.figma.com/proto/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=997-201&p=f&t=rsVFOBd9oWtWyPc9-1&scaling=scale-down&content-scaling=fixed&page-id=997%3A200&starting-point-node-id=997%3A201"
+         target="_blank" rel="noopener">
+        Explore interactive prototype
       </a>
-    </aside>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+          <span class="meta-label">Role</span>
+          <p class="meta-value">Solo end-to-end. Research, problem framing, IA, interaction design, usability testing.</p>
+        </div>
+      <div class="hero__meta-item">
+          <span class="meta-label">Context</span>
+          <p class="meta-value">Eight-week BrainStation project.</p>
+        </div>
+      <div class="hero__meta-item">
+          <span class="meta-label">Tools</span>
+          <p class="meta-value">Figma. Methods: qualitative interviews and survey, task-based usability walkthroughs.</p>
+        </div>
+      <div class="hero__meta-item">
+          <span class="meta-label">Deliverable</span>
+          <p class="meta-value">Interactive iOS prototype.</p>
+        </div>
+    </div>
+  </header>
 
-    <div class="cs-content" id="context">
-
-  <div class="cs-figure cs-inner-grid">
+  <div class="cs-figure grid">
     <figure class="fig-inner">
       <img
         src="img/JF_WEB_ClaraHero.png"
@@ -653,43 +607,12 @@
     </figure>
   </div>
 
-    <div class="cs-inner-grid">
-    <p class="hero__tagline">
-      Group trips don't fall apart because people stop caring. They fall apart because responsibility becomes impossible to see. Clara makes ownership the one thing you can't miss.
-    </p>
-
-    <div class="context-meta">
-      <div class="context-meta-item">
-        <span class="meta-label">Role</span>
-        <p class="meta-value">Solo end-to-end. Research, problem framing, IA, interaction design, usability testing.</p>
-      </div>
-      <div class="context-meta-item">
-        <span class="meta-label">Context</span>
-        <p class="meta-value">Eight-week BrainStation project.</p>
-      </div>
-      <div class="context-meta-item">
-        <span class="meta-label">Tools</span>
-        <p class="meta-value">Figma. Methods: qualitative interviews and survey, task-based usability walkthroughs.</p>
-      </div>
-      <div class="context-meta-item">
-        <span class="meta-label">Deliverable</span>
-        <p class="meta-value">Interactive iOS prototype.</p>
-      </div>
-    </div>
-
-    <a class="hero__cta"
-         href="https://www.figma.com/proto/uioFI6Nc8eI4erJjSbesAN/Clara-App?node-id=997-201&p=f&t=rsVFOBd9oWtWyPc9-1&scaling=scale-down&content-scaling=fixed&page-id=997%3A200&starting-point-node-id=997%3A201"
-         target="_blank" rel="noopener">
-        Explore interactive prototype
-      </a>
-    </div>
-
 
   <!-- ═══════════════════════════════════════════════════════
-       ② PROBLEM (Challenge)
+       ② PROBLEM
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="challenge">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">The Problem</span>
@@ -721,7 +644,7 @@ It's not a motivation problem. It's a visibility problem.
        ③ KEY INSIGHT
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Key Insight</span>
@@ -759,7 +682,7 @@ It's not a motivation problem. It's a visibility problem.
     </div>
   </section>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_ClaraSynthesis.png"
       alt="Thematic analysis from user interviews"
@@ -768,7 +691,7 @@ It's not a motivation problem. It's a visibility problem.
     <figcaption>Thematic analysis from user interviews.</figcaption>
   </figure></div>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_ClaraPersona.png"
       alt="Maya — the friend who often becomes the default trip planner"
@@ -778,10 +701,10 @@ It's not a motivation problem. It's a visibility problem.
   </figure></div>
 
   <!-- ═══════════════════════════════════════════════════════
-       ④ PRODUCT STRATEGY (Strategy)
+       ④ PRODUCT STRATEGY
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="strategy">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Product Strategy</span>
@@ -828,7 +751,7 @@ It's not a motivation problem. It's a visibility problem.
     </div>
   </section>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_ClaraSketch.png"
       alt="Early Clara sketches exploring different ways to surface task ownership"
@@ -838,7 +761,7 @@ It's not a motivation problem. It's a visibility problem.
   </figure></div>
 
   <!-- ── Prototype embed ── -->
-  <div class="cs-figure cs-inner-grid" id="prototype"><figure class="fig-inner">
+  <div class="cs-figure grid" id="final-design"><figure class="fig-inner">
     <iframe
       style="border: 1px solid var(--ink-soft); display: block; min-height: 640px;"
       width="100%" height="700"
@@ -850,10 +773,10 @@ It's not a motivation problem. It's a visibility problem.
   </figure></div>
 
   <!-- ═══════════════════════════════════════════════════════
-       ⑤ DESIGN DECISIONS (Application)
+       ⑤ DESIGN DECISIONS
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="application">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Design Decisions</span>
@@ -917,7 +840,7 @@ It's not a motivation problem. It's a visibility problem.
        ⑥ OUTCOME
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="outcome">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Outcome</span>
@@ -946,7 +869,7 @@ It's not a motivation problem. It's a visibility problem.
     </div>
   </section>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_ClaraFrames.png"
       alt="Final Clara screens — trip creation, dashboard, and task assignment"
@@ -959,7 +882,7 @@ It's not a motivation problem. It's a visibility problem.
        ⑦ What I'd Do Differently
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">What I'd Do Differently</span>
@@ -976,8 +899,18 @@ It's not a motivation problem. It's a visibility problem.
     </div>
   </section>
 
-    </div>
+  <!-- ─── NEXT PROJECT ──────────────────────────────── -->
+  
+  <!-- ─── NEXT PROJECT ─────────────────────────────────────── -->
+  <div class="rule-section grid">
+    <hr class="rule" />
   </div>
+  <a class="next-project grid" href="conserva.html">
+    <div class="wrap-text">
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">Conserva: A bold, system-driven gourmet experience</p>
+    </div>
+  </a>
 
 
 <!-- ─── FOOTER ───────────────────────────────────────────── -->
@@ -1023,7 +956,7 @@ It's not a motivation problem. It's a visibility problem.
         <h3>Pages</h3>
         <div class="footer__pages-links">
           <a href="index.html#work">Work</a>
-          <a href="archives.html">Archives</a>
+          <a href="ai-creative.html">Fun</a>
           <a href="index.html#about">About</a>
         </div>
       </div>
@@ -1031,24 +964,5 @@ It's not a motivation problem. It's a visibility problem.
     </div>
   </footer>
 
-  <script>
-    (() => {
-      const links = document.querySelectorAll('.cs-toc-link');
-      if (!links.length) return;
-      const sections = Array.from(links)
-        .map(link => document.querySelector(link.getAttribute('href')))
-        .filter(Boolean);
-
-      const setActive = id => {
-        links.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`));
-      };
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
-      }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
-
-      sections.forEach(section => observer.observe(section));
-    })();
-  </script>
 </body>
 </html>

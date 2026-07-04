@@ -5,20 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aurafact — Jennifer Yaya Falanga</title>
   <meta name="description" content="Aurafact: Archiving the acoustic memory of place — a speculative product built with AI collaboration by Jennifer Yaya Falanga." />
-  <link rel="canonical" href="https://yayafalanga.ca/aurafact.html" />
-  <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-
-  <meta property="og:site_name" content="Jennifer Yaya Falanga" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://yayafalanga.ca/aurafact.html" />
-  <meta property="og:title" content="Aurafact — Jennifer Yaya Falanga" />
-  <meta property="og:description" content="Aurafact: Archiving the acoustic memory of place — a speculative product built with AI collaboration by Jennifer Yaya Falanga." />
-  <meta property="og:image" content="https://yayafalanga.ca/img/JF_WEB_AurafactHero.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Aurafact — Jennifer Yaya Falanga" />
-  <meta name="twitter:description" content="Aurafact: Archiving the acoustic memory of place — a speculative product built with AI collaboration by Jennifer Yaya Falanga." />
-  <meta name="twitter:image" content="https://yayafalanga.ca/img/JF_WEB_AurafactHero.png" />
 
   <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
@@ -123,42 +109,9 @@
     .nav__links a { transition: color var(--transition); }
     .nav__links a:hover { color: var(--ink-soft); }
 
-    /* ─── Case study layout (sticky sidebar + content) ─────── */
-    .cs-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      column-gap: var(--gutter);
-      padding-inline: var(--margin);
-      align-items: start;
-    }
-
-    .cs-inner-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-    }
-
-    .cs-sidebar { position: sticky; top: 8rem; padding-block: 5.5rem 3rem; }
-
-    .cs-sidebar .hero__title {
-      font-size: clamp(1.75rem, 2.2vw, 2.25rem);
-      margin-bottom: 1.75rem;
-    }
-
-    .cs-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
-    .cs-toc a {
-      display: block;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      transition: color var(--transition);
-    }
-    .cs-toc a:hover,
-    .cs-toc a.is-active { color: var(--ink); }
-
     /* ─── Hero ─────────────────────────────────────────────── */
+    .hero { padding-block: 5.5rem 0; }
+
     .hero__eyebrow { display: block; margin-bottom: 1.1rem; }
 
     .hero__title {
@@ -169,21 +122,12 @@
       margin-bottom: 2.25rem;
     }
 
+    .hero__rule { grid-column: 2 / 12; }
+
     .hero__tagline {
-      grid-column: 2 / 7;
+      grid-column: 2 / 8;
       margin-top: 2rem;
     }
-
-    .context-meta {
-      grid-column: 8 / 12;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-      margin-top: 2rem;
-    }
-
-    .cs-content > .cs-figure:first-child { padding-top: 5.5rem; }
-    .cs-content { padding-bottom: 6.5rem; }
 
     .hero__cta {
       grid-column: 2 / 12;
@@ -200,6 +144,17 @@
     }
     .hero__cta:hover { background: var(--ink); color: var(--bone); }
 
+    .hero__meta {
+      grid-column: 2 / 12;
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      column-gap: var(--gutter);
+      row-gap: 2rem;
+    }
+    .hero__meta-item { grid-column: span 3; }
+    .hero__meta-item:nth-child(3n+1):last-child,
+    .hero__meta-item:nth-child(4) { grid-column: span 3; }
     .meta-label {
       display: block;
       color: var(--ink-soft);
@@ -218,6 +173,7 @@
     .cs-figure img,
     .cs-figure iframe {
       width: 100%;
+      border: 1px solid var(--ink-soft);
       background: var(--placeholder);
     }
     .cs-figure figcaption {
@@ -332,26 +288,30 @@
       margin-bottom: 1.6rem;
     }
 
-    /* ─── Next project (sidebar) ───────────────────────────── */
+    /* ─── Next project ─────────────────────────────────────── */
     .next-project {
       display: block;
-      margin-top: 3rem;
+      padding-block: 5.5rem 6.5rem;
     }
+    .next-project .wrap-text { grid-column: 2 / 12; }
     .next-project__label {
-      font-size: 0.6875rem;
+      font-size: 0.8125rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
     }
     .next-project__title {
       font-family: var(--font-display);
-      font-size: 1.4875rem;
+      font-size: clamp(1.75rem, 3.4vw, 2.625rem);
       line-height: 1.15;
       transition: color var(--transition);
     }
     a.next-project:hover .next-project__title { color: var(--ink-soft); }
+
+    .rule-section { padding-top: 5.5rem; }
+    .rule-section hr { grid-column: 2 / 12; }
 
     /* ─── Footer ───────────────────────────────────────────── */
     .footer {
@@ -555,12 +515,12 @@
     /* ─── Responsive ───────────────────────────────────────── */
     @media (max-width: 1024px) {
       :root { --margin: 48px; }
-      .span-content, .hero__cta,
-      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner { grid-column: 1 / 13; }
+      .span-content, .hero__rule, .hero__cta, .hero__meta,
+      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
+      .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
       .hero__tagline { grid-column: 1 / 10; }
-      .context-meta { grid-column: 1 / 10; margin-top: 2.5rem; }
-      .cs-layout { grid-template-columns: 1fr; }
-      .cs-sidebar { position: static; padding-block: 0 3rem; }
+      .hero__meta { grid-template-columns: repeat(2, 1fr); }
+      .hero__meta-item { grid-column: auto; }
     }
 
     @media (max-width: 720px) {
@@ -568,9 +528,9 @@
       body { font-size: 1.125rem; }
       .nav { padding-block: 1.4rem; }
       .nav__links { gap: 2rem; }
-      .cs-sidebar { padding-block: 3.5rem 3rem; }
+      .hero { padding-top: 3.5rem; }
       .hero__tagline { grid-column: 1 / 13; }
-      .context-meta { grid-column: 1 / 13; }
+      .hero__meta { grid-template-columns: 1fr; row-gap: 1.5rem; margin-top: 3rem; }
       .cs-section { padding-top: 4rem; }
       .cs-figure { padding-top: 3rem; }
       .insight__pivot { grid-template-columns: 1fr; }
@@ -586,21 +546,6 @@
       .hero__ctas { grid-column: 1 / 13; }
     }
   </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "name": "Aurafact",
-  "description": "Aurafact: Archiving the acoustic memory of place \u2014 a speculative product built with AI collaboration by Jennifer Yaya Falanga.",
-  "url": "https://yayafalanga.ca/aurafact.html",
-  "image": "https://yayafalanga.ca/img/JF_WEB_AurafactHero.png",
-  "author": {
-    "@type": "Person",
-    "name": "Jennifer Yaya Falanga",
-    "url": "https://yayafalanga.ca/"
-  }
-}
-  </script>
 </head>
 <body>
 
@@ -610,40 +555,49 @@
       <a href="index.html" class="nav__logo">Jennifer Yaya Falanga</a>
       <div class="nav__links">
         <a href="index.html#work">Work</a>
-        <a href="archives.html">Archives</a>
+        <a href="archives.html">Archive</a>
         <a href="index.html#about">About</a>
       </div>
     </div>
   </nav>
 
 
-  <!-- ─── CASE STUDY LAYOUT (sticky sidebar + content) ─────── -->
-  <div class="cs-layout grid">
-
-    <aside class="cs-sidebar">
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <header class="hero grid">
+    <div class="span-content">
       <span class="eyebrow hero__eyebrow">Speculative Product · Information Architecture · AI-Assisted Build · 2026</span>
       <h1 class="hero__title">Aurafact</h1>
-
-      <nav class="cs-toc">
-        <ul>
-          <li><a href="#context" class="cs-toc-link">Context</a></li>
-          <li><a href="#challenge" class="cs-toc-link">Challenge</a></li>
-          <li><a href="#strategy" class="cs-toc-link">Strategy</a></li>
-          <li><a href="#ai-collaboration" class="cs-toc-link">AI collaboration</a></li>
-          <li><a href="#application" class="cs-toc-link">Application</a></li>
-          <li><a href="#outcome" class="cs-toc-link">Outcome</a></li>
-        </ul>
-      </nav>
-
-      <a class="next-project" href="ai-creative.html">
-        <p class="next-project__label">Next Project</p>
-        <p class="next-project__title">Generative AI: Directing AI, not just prompting it</p>
+    </div>
+    <hr class="rule hero__rule" />
+    <p class="hero__tagline">
+      Sound is not absent. It is simply unkept. Aurafact is a spatial archive that treats environmental sound as a primary historical artifact, searchable, interpretable, and enjoyable.
+    </p>
+    <a class="hero__cta"
+         href="https://jenniferyaya.github.io/aura-fact/"
+         target="_blank" rel="noopener">
+        Visit Aurafact
       </a>
-    </aside>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+          <span class="meta-label">Role</span>
+          <p class="meta-value">Lead Product Designer: Systems & IA</p>
+        </div>
+      <div class="hero__meta-item">
+          <span class="meta-label">Type</span>
+          <p class="meta-value">Self-directed speculative product</p>
+        </div>
+      <div class="hero__meta-item">
+          <span class="meta-label">Built With</span>
+          <p class="meta-value">Claude, Cursor, ChatGPT, p5.js, GSAP</p>
+        </div>
+      <div class="hero__meta-item">
+          <span class="meta-label">Outcome</span>
+          <p class="meta-value">Live multi-page product hosted on GitHub, 13 archived specimens across 5 regions</p>
+        </div>
+    </div>
+  </header>
 
-    <div class="cs-content" id="context">
-
-  <div class="cs-figure cs-inner-grid">
+  <div class="cs-figure grid">
     <figure class="fig-inner">
       <img
         src="img/JF_WEB_AurafactHero.png"
@@ -653,39 +607,12 @@
     </figure>
   </div>
 
-    <div class="cs-inner-grid">
-    <p class="hero__tagline">
-      Sound is not absent. It is simply unkept. Aurafact is a spatial archive that treats environmental sound as a primary historical artifact, searchable, interpretable, and enjoyable.
-    </p>
-
-    <div class="context-meta">
-      <div class="context-meta-item">
-        <span class="meta-label">Role</span>
-        <p class="meta-value">Lead Product Designer: Systems & IA</p>
-      </div>
-      <div class="context-meta-item">
-        <span class="meta-label">Type</span>
-        <p class="meta-value">Self-directed speculative product</p>
-      </div>
-      <div class="context-meta-item">
-        <span class="meta-label">Built With</span>
-        <p class="meta-value">Claude, Cursor, ChatGPT, p5.js, GSAP</p>
-      </div>
-    </div>
-
-    <a class="hero__cta"
-         href="https://jenniferyaya.github.io/aura-fact/"
-         target="_blank" rel="noopener">
-        Visit Aurafact
-      </a>
-    </div>
-
 
   <!-- ═══════════════════════════════════════════════════
-       ② THE PROBLEM (Challenge)
+       ② THE PROBLEM
   ═══════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="challenge">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">The Problem</span>
@@ -723,10 +650,10 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════
-       ③ KEY INSIGHT (Strategy)
+       ③ KEY INSIGHT
   ═══════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="strategy">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Key Insight</span>
@@ -749,7 +676,7 @@
     </div>
   </section>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_AurafactArchive.png"
       alt="Aurafact Specimen Archive — searchable table showing specimen IDs, artifact names, locations, source types, subtypes, and frequency profiles with a detail panel open on the right"
@@ -762,7 +689,7 @@
        ④ AI COLLABORATION
   ═══════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="ai-collaboration">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">AI Collaboration</span>
@@ -817,10 +744,10 @@ Every output was reviewed and edited. The goal was precision, not automation.
   </section>
 
   <!-- ═══════════════════════════════════════════════════
-       ⑤ DESIGN DECISIONS (Application)
+       ⑤ DESIGN DECISIONS
   ═══════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="application">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Design Decisions</span>
@@ -878,7 +805,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
     </div>
   </section>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_AurafactFieldGuide.png"
       alt="Aurafact Field Guide — design principles panel on the left alongside acoustic studies photography grid on the right"
@@ -891,7 +818,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
        ⑥ OUTCOME
   ═══════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid" id="outcome">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Outcome</span>
@@ -917,7 +844,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
     </div>
   </section>
 
-  <div class="cs-figure cs-inner-grid"><figure class="fig-inner">
+  <div class="cs-figure grid"><figure class="fig-inner">
     <img
       src="img/JF_WEB_AurafactHome.png"
       alt="Aurafact homepage — below-fold section showing acoustic preservation statement and recent additions table with specimen data"
@@ -930,7 +857,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
        ⑦ REFLECTION
   ═══════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">Reflection</span>
@@ -951,7 +878,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
        8 What I’d Do Differently
   ═══════════════════════════════════════════════════════ -->
 
-  <section class="cs-section cs-inner-grid">
+  <section class="cs-section grid">
     <div class="wrap-text">
 
       <span class="eyebrow cs-eyebrow">What I’d Do Differently</span>
@@ -968,8 +895,18 @@ Every output was reviewed and edited. The goal was precision, not automation.
     </div>
   </section>
 
-    </div>
+  <!-- NEXT PROJECT -->
+  
+  <!-- ─── NEXT PROJECT ─────────────────────────────────────── -->
+  <div class="rule-section grid">
+    <hr class="rule" />
   </div>
+  <a class="next-project grid" href="ai-creative.html">
+    <div class="wrap-text">
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">Generative AI: Directing AI, not just prompting it</p>
+    </div>
+  </a>
 
 
 <!-- ─── FOOTER ───────────────────────────────────────────── -->
@@ -978,8 +915,8 @@ Every output was reviewed and edited. The goal was precision, not automation.
 
       <div class="footer__chat">
         <span class="footer__chat-line">I'd love to chat!</span>
-        <a class="footer__social" href="https://www.linkedin.com/in/jenniferyaya-falanga"
-           target="_blank" rel="noopener" aria-label="LinkedIn — Jennifer Yaya Falanga">
+        <a class="footer__social" href="https://www.linkedin.com/in/yaya-falanga"
+           target="_blank" rel="noopener" aria-label="LinkedIn — Yaya Falanga">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
           </svg>
@@ -1015,7 +952,7 @@ Every output was reviewed and edited. The goal was precision, not automation.
         <h3>Pages</h3>
         <div class="footer__pages-links">
           <a href="index.html#work">Work</a>
-          <a href="archives.html">Archives</a>
+          <a href="ai-creative.html">Fun</a>
           <a href="index.html#about">About</a>
         </div>
       </div>
@@ -1023,24 +960,5 @@ Every output was reviewed and edited. The goal was precision, not automation.
     </div>
   </footer>
 
-  <script>
-    (() => {
-      const links = document.querySelectorAll('.cs-toc-link');
-      if (!links.length) return;
-      const sections = Array.from(links)
-        .map(link => document.querySelector(link.getAttribute('href')))
-        .filter(Boolean);
-
-      const setActive = id => {
-        links.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`));
-      };
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
-      }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
-
-      sections.forEach(section => observer.observe(section));
-    })();
-  </script>
 </body>
 </html>
