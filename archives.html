@@ -412,19 +412,51 @@
     /* ─── Play gallery ─────────────────────────────────────── */
     .gallery { padding-block: 4rem 7rem; }
     .gallery__inner { grid-column: 2 / 12; }
-    .gallery__columns {
+    .gallery__grid {
       columns: 3;
       column-gap: var(--gutter);
     }
     .gallery__item {
+      display: block;
+      color: inherit;
       break-inside: avoid;
-      margin-bottom: var(--gutter);
+      margin-bottom: 2.5rem;
+    }
+    .gallery__item-media {
       overflow: hidden;
       border-radius: 2px;
+      background: var(--placeholder);
+      margin-bottom: 1rem;
     }
-    .gallery__item img {
+    .gallery__item-media img {
       width: 100%;
+      height: auto;
       display: block;
+      transition: transform var(--transition);
+    }
+    a.gallery__item:hover .gallery__item-media img { transform: scale(1.03); }
+    .gallery__item-title {
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .gallery__item-desc {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.6rem;
+    }
+    .gallery__item-tag {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .gallery__item-placeholder {
+      font-style: italic;
+      color: var(--ink-soft);
     }
 
     /* ─── Focus + motion ───────────────────────────────────── */
@@ -446,7 +478,7 @@
       .hero__tagline { grid-column: 1 / 10; }
       .hero__meta { grid-template-columns: repeat(2, 1fr); }
       .gallery__inner { grid-column: 1 / 13; }
-      .gallery__columns { columns: 2; }
+      .gallery__grid { columns: 2; }
       .hero__meta-item { grid-column: auto; }
     }
 
@@ -469,7 +501,8 @@
       .footer__socials { margin-top: 2rem; }
       .footer h3 { margin-bottom: 1.5rem; }
       .gallery { padding-block: 2.5rem 4.5rem; }
-      .gallery__columns { columns: 1; }
+      .gallery__grid { columns: 1; }
+      .gallery__item { margin-bottom: 2rem; }
     }
   </style>
   <script type="application/ld+json">
@@ -519,62 +552,144 @@
   <!-- ─── GALLERY ──────────────────────────────────────────── -->
   <main class="gallery grid">
     <div class="gallery__inner">
-      <div class="gallery__columns">
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN01.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN02.gif" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN03.png" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN04.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN05.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN06.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN07.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN08.gif" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN09.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN10.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN11.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN12.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN18.gif" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN14.jpg" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN15.png" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN16.png" alt="" loading="lazy" />
-        </figure>
+      <div class="gallery__grid">
 
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN17.gif" alt="" loading="lazy" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="img/JF_WEB_FUN13.png" alt="" loading="lazy" />
-        </figure>
+        <!-- 01  -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN01.jpg" alt="Asuquomo — Wide Awake visual campaign" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Asuquomo</span>
+          <p class="gallery__item-desc">Wide Awake visual campaign • Creative direction</p>
+        </div>
+
+        <!-- 02  -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN02.gif" alt="Executive MHA — slide transitions" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Motion Graphics</span>
+          <p class="gallery__item-desc">Executive MHA • University of Ottawa</p>
+        </div>
+
+        <!-- 03  -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN03.png" alt="Moncrest typeface" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Type Design</span>
+          <p class="gallery__item-desc">Moncrest type • Personal project</p>
+        </div>
+
+        <!-- 04  -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN04.jpg" alt="Twitter marketing campaign animated GIFs" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Animated GIFs</span>
+          <p class="gallery__item-desc">Twitter Campaign • IBM</p>
+        </div>
+
+        <!-- 05 -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN05.jpg" alt="Photography studio advertisement" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Print Design</span>
+          <p class="gallery__item-desc">Two Mills Studio • Freelance</p>
+        </div>
+
+        <!-- 06 -->
+        <a class="gallery__item" href="https://jenniferyaya.github.io/aura-fact/" target="_blank" rel="noopener">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN13.png" alt="Aurafact soundscape archive" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Soundscape Archive</span>
+          <p class="gallery__item-desc">Aurafact • Personal project</p>
+        </a>
+
+        <!-- 07 -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN07.jpg" alt="Countdown timer website design" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Countdown Timer</span>
+          <p class="gallery__item-desc">Daily UI Challenge</p>
+        </div>
+
+        <!-- 08  -->
+        <a class="gallery__item" href="uottawa.html">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN08.gif" alt="Lettres françaises branding and motion suite" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Motion Graphics</span>
+          <p class="gallery__item-desc">Lettres françaises • University of Ottawa</p>
+        </a>
+
+        <!-- 09 -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN09.jpg" alt="Online physio concept" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">UX Design</span>
+          <p class="gallery__item-desc">Concept • Freelance</p>
+        </div>
+
+        <!-- 11 -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN11.jpg" alt="Masieta typeface" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Typeface Design</span>
+          <p class="gallery__item-desc">Masieta type • Personal project</p>
+
+        </div>
+
+        <!-- 13  -->
+        <a class="gallery__item" href="uottawa.html">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN18.gif" alt="Maîtrise en administration des affaires motion graphics" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Motion Graphics</span>
+          <p class="gallery__item-desc">Maîtrise en administration des affaires • University of Ottawa</p>
+        </a>
+
+        <!-- 14  -->
+        <a class="gallery__item" href="asuquomo.html">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN14.jpg" alt="Asuquomo — Wide Awake visual campaign" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Visual Campaign</span>
+          <p class="gallery__item-desc">Asuquomo • Freelance</p>
+        </a>
+
+        <!-- 15  -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN15.png" alt="Makenda Fitness logo design" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Logo Design</span>
+          <p class="gallery__item-desc">Makenda Fitness • Freelance</p>
+        </div>
+
+        <!-- 17 -->
+        <a class="gallery__item" href="uottawa.html">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN17.gif" alt="Lettres françaises motion graphics" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Motion Graphics</span>
+          <p class="gallery__item-desc">Lettres françaises • University of Ottawa</p>
+        </a>
+
+        <!-- 18  -->
+        <div class="gallery__item">
+          <div class="gallery__item-media">
+            <img src="img/JF_WEB_FUN06.jpg" alt="Local café branding" loading="lazy" />
+          </div>
+          <span class="gallery__item-title">Branding</span>
+          <p class="gallery__item-desc">Amazon Café • Concept</p>
+        </div>
+
 
       </div>
     </div>
