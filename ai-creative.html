@@ -1,905 +1,990 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Creative Direction — Jennifer Yaya Falanga</title>
-  <meta name="description" content="Two self-initiated campaigns built entirely with generative AI — Midjourney, Sora, and Grok Imagine — art directed from brief to final frame." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Creative Direction — Yaya Falanga</title>
+<meta name="description" content="Two self-initiated campaigns built entirely with generative AI — Midjourney, Sora, and Grok Imagine — art directed from brief to final frame, by Jennifer Yaya Falanga." />
 
-  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
+<!-- Adobe Fonts — Area Extended / Area Normal -->
+<link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
-  <style>
-    /* ============================================================
-       Yaya Falanga — Portfolio 2026 Redesign
-       Case study template. Self-contained styles; tokens to be
-       extracted to a shared stylesheet once all pages migrate.
-       ============================================================ */
+<style>
+  /* ══════════════════════════════════════════════
+     DESIGN TOKENS — new system, replaces maroon/Mr Eaves
+  ══════════════════════════════════════════════ */
+  :root {
+    --bg:        #FEFEFE;
+    --ink:       #320300;
+    --highlight: #CAA3A3; /* decorative only: dividers, chip backgrounds, dark-surface text — fails WCAG as text on --bg */
+    --muted:     #806767; /* AA-safe secondary/inactive text on --bg, 5.14:1 */
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    --font-display: "area-extended", "Helvetica Neue", Arial, sans-serif;
+    --font-body:    "area-normal", "Helvetica Neue", Arial, sans-serif;
 
-    /* ─── Design Tokens ────────────────────────────────────── */
-    :root {
-      --ink:        #5A0600;
-      --ink-soft:   #CAA3A3;
-      --bg:         #F9F8F6;
-      --bone:       #F9F8F6;
-      --placeholder:#DBDBDB;
+    --margin: 80px;
+    --col-gutter: 16px;
+  }
 
-      --font-display: "mr-eaves-modern", "Helvetica Neue", Arial, sans-serif;
-      --font-body:    "mr-eaves-sans", "Helvetica Neue", Arial, sans-serif;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      --margin: 80px;
-      --gutter: 16px;
+  html { scroll-behavior: smooth; }
 
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    background: #DADADA; /* placeholder fill matching mockup gray blocks */
+  }
+
+  img:hover { /* intentionally no change */ }
+
+  img.fade-on-load {
+    opacity: 0;
+    animation: fade-in 300ms ease forwards;
+  }
+
+  @keyframes fade-in { to { opacity: 1; } }
+
+  a { color: inherit; }
+
+  /* ── TOP NAV ─────────────────────────────────── */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px var(--margin);
+    border-bottom: 1px solid #ECECEC;
+  }
+  .top-nav__logo {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .top-nav__links {
+    display: flex;
+    gap: 48px;
+    list-style: none;
+  }
+  .top-nav__links a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  /* explicitly no hover state on top nav */
+  .top-nav__links a:hover {
+    color: var(--ink);
+  }
+  .top-nav__links a:focus-visible {
+    outline: revert;
+  }
+
+  /* ── PAGE LAYOUT ─────────────────────────────── */
+  /* True 12-column grid: 80px margins, 16px gutters between all 12 tracks.
+     Rail occupies columns 1–4, content occupies columns 5–12. */
+  .page {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--col-gutter);
+    padding: 64px var(--margin) 0;
+    align-items: start;
+  }
+
+  /* ── LEFT RAIL (section nav) ─────────────────── */
+  .rail {
+    grid-column: 1 / span 4;
+    position: sticky;
+    top: 64px;
+    align-self: start;
+  }
+  .rail__eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .rail__title {
+    font-family: var(--font-display);
+    font-size: 2.75rem;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .rail__nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .rail__nav a {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 200ms ease;
+    display: inline-block;
+    width: fit-content;
+  }
+  .rail__nav a.is-active {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .rail__nav a:focus-visible {
+    outline: revert;
+  }
+
+  /* ── CONTENT COLUMN ──────────────────────────── */
+  .content {
+    grid-column: 5 / span 8;
+    padding-bottom: 120px;
+  }
+
+  .cs-section {
+    scroll-margin-top: 33vh; /* aligns with top-third trigger point for smooth-scroll targeting */
+    padding-bottom: 96px;
+  }
+
+  .cs-figure {
+    margin-bottom: 48px;
+  }
+  .cs-figure img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .meta-row {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .meta-block + .meta-block { margin-top: 28px; }
+  .meta-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .meta-value {
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .meta-desc {
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  /* ── OUTLINED BUTTON ──────────────────────────── */
+  .btn-outline {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    padding: 14px 22px;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+  .btn-outline:hover,
+  .btn-outline:focus-visible {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* ── SECTION TEXT ─────────────────────────────── */
+  .cs-eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .cs-h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 100ch;
+    margin-bottom: 20px;
+  }
+  .cs-p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 20px;
+    max-width: 90ch;
+  }
+  .cs-p:last-child { margin-bottom: 0; }
+  .cs-p strong { font-weight: 600; }
+
+  .reframe-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--ink);
+    margin: 32px 0 48px;
+  }
+  .reframe-table__cell {
+    padding: 28px 32px;
+  }
+  .reframe-table__cell--instinct {
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .reframe-table__cell--reframe {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .reframe-table__label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+  .reframe-table__text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .pull-quote {
+    border-left: 2px solid var(--ink);
+    padding: 0.4rem 0 0.4rem 32px;
+    margin: 32px 0 48px;
+  }
+  .pull-quote p {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+
+  .cs-h3 {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 40px 0 16px;
+  }
+
+  .cs-list {
+    list-style: none;
+    margin: 0 0 32px;
+  }
+  .cs-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink);
+    padding: 14px 0;
+    border-bottom: 1px solid #ECECEC;
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+  }
+  .cs-list li::before {
+    content: '→';
+    color: var(--muted);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .cs-list li:last-child { border-bottom: none; }
+
+  .pivot-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 32px 0 48px;
+  }
+  .pivot-compare__cell {
+    border: 1px solid #ECECEC;
+    padding: 28px 24px;
+  }
+  .pivot-compare__cell--highlight {
+    border-color: var(--ink);
+    background: var(--ink);
+  }
+  .pivot-compare__label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .pivot-compare__cell--highlight .pivot-compare__label { color: var(--highlight); }
+  .pivot-compare__text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .pivot-compare__cell--highlight .pivot-compare__text { color: var(--bg); }
+  @media (max-width: 700px) {
+    .pivot-compare { grid-template-columns: 1fr; }
+  }
+
+  .ai-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin: 32px 0 48px;
+  }
+  .ai-cell {
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+  }
+  .ai-cell__tool {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .ai-cell__role {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .ai-cell__detail {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  @media (max-width: 900px) {
+    .ai-grid { grid-template-columns: 1fr; }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 24px;
+  }
+  .project-tag {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid #ECECEC;
+    padding: 6px 14px;
+    color: var(--muted);
+    border-radius: 2px;
+  }
+
+  .media-grid {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .media-grid--2col { grid-template-columns: 1fr 1fr; }
+  .media-grid--3col { grid-template-columns: 1fr 1fr 1fr; }
+  .media-item img,
+  .media-item iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .media-item--portrait { aspect-ratio: 3 / 4; }
+  .media-item--wide { aspect-ratio: 4 / 5; }
+  @media (max-width: 900px) {
+    .media-grid--2col, .media-grid--3col { grid-template-columns: 1fr; }
+  }
+
+  .caption-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin: 0 0 40px;
+    padding-top: 24px;
+    border-top: 1px solid #ECECEC;
+  }
+  .caption-cell__label {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .caption-cell__value {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  @media (max-width: 900px) {
+    .caption-strip { grid-template-columns: 1fr; }
+  }
+
+  .project-brief {
+    border-left: 2px solid var(--ink);
+    padding: 4px 0 4px 32px;
+    margin-bottom: 56px;
+  }
+  .project-brief__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .project-brief__text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  }
+
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .image-pair img,
+  .image-full img {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    width: 100%;
+  }
+  .image-full img { aspect-ratio: 16/11; }
+
+  /* ── FOOTER ───────────────────────────────────── */
+  .footer {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 96px var(--margin) 56px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--col-gutter);
+    row-gap: 48px;
+  }
+
+  .footer__intro  { grid-column: 1 / span 4; }
+  .footer__contact { grid-column: 5 / span 5; }
+  .footer__pages   { grid-column: 10 / span 3; }
+
+  .footer__heading {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 28px;
+  }
+  .footer__social {
+    display: flex;
+    gap: 16px;
+  }
+  .footer__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+    text-decoration: none;
+  }
+  .footer__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer__label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin-bottom: 24px;
+  }
+
+  .footer__contact-row {
+    display: flex;
+    gap: 56px;
+  }
+  .footer__sublabel {
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--bg);
+    opacity: 0.55;
+    margin-bottom: 6px;
+  }
+  .footer__sublabel--muted {
+    opacity: 0.4;
+  }
+  .footer__value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer__value a {
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--bg);
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .copy-btn:hover {
+    opacity: 1;
+  }
+  .copy-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .footer__pages {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer__pages-row {
+    margin-top: auto;
+    display: flex;
+    gap: 28px;
+  }
+  .footer__pages-row a {
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  /* ══════════════════════════════════════════════
+     MOBILE
+  ══════════════════════════════════════════════ */
+  @media (max-width: 860px) {
+    :root { --margin: 24px; }
+
+    .top-nav { padding-left: var(--margin); padding-right: var(--margin); }
+    .top-nav__links { gap: 24px; }
+
+    .page {
+      grid-template-columns: 1fr;
+      padding-top: 40px;
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-body);
-      font-size: 1.1875rem;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
+    .rail {
+      grid-column: 1;
+      position: static;
+      margin-bottom: 40px;
     }
+    .rail__nav { display: none; } /* nav fully removed on mobile — no dropdown, no pills */
+    .rail__title { font-size: 2.1rem; }
 
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    ::selection { background: var(--ink); color: var(--bone); }
-
-    /* ─── Grid scaffold ────────────────────────────────────── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-      padding-inline: var(--margin);
-    }
-    .span-content { grid-column: 2 / 12; }
-
-    /* ─── Shared text styles ───────────────────────────────── */
-    .eyebrow {
-      font-family: var(--font-body);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .eyebrow--soft { color: var(--ink-soft); }
-
-    .text-link {
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
-      text-decoration-thickness: 1px;
-      transition: text-decoration-color var(--transition);
-    }
-    .text-link:hover { text-decoration-color: var(--ink-soft); }
-
-    hr.rule { border: none; border-top: 1px solid var(--ink-soft); }
-
-    /* ─── Navigation ───────────────────────────────────────── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--ink);
-      align-items: center;
-      padding-block: 2rem;
-    }
-    .nav__inner {
-      grid-column: 1 / 13;
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-    .nav__logo {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-    .nav__links {
-      display: flex;
-      gap: 4.5rem;
-      font-weight: 700;
-      font-size: 1.0625rem;
-    }
-    .nav__links a { transition: color var(--transition); }
-    .nav__links a:hover { color: var(--ink-soft); }
-
-    /* ─── Hero ─────────────────────────────────────────────── */
-    .hero { padding-block: 5.5rem 0; }
-
-    .hero__eyebrow { display: block; margin-bottom: 1.1rem; }
-
-    .hero__title {
-      font-family: var(--font-display);
-      font-size: clamp(2.75rem, 5.5vw, 4.5rem);
-      font-weight: 400;
-      line-height: 1.08;
-      margin-bottom: 2.25rem;
+    .content {
+      grid-column: 1;
     }
 
-    .hero__rule { grid-column: 2 / 12; }
-
-    .hero__tagline {
-      grid-column: 2 / 8;
-      margin-top: 2rem;
+    .meta-row {
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
 
-    .hero__cta {
-      grid-column: 2 / 12;
-      justify-self: start;
-      margin-top: 2rem;
-      display: inline-block;
-      border: 1px solid var(--ink);
-      padding: 0.85em 1.6em;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: background var(--transition), color var(--transition);
-    }
-    .hero__cta:hover { background: var(--ink); color: var(--bone); }
+    .reframe-table { grid-template-columns: 1fr; }
+    .image-pair { grid-template-columns: 1fr; }
 
-    .hero__meta {
-      grid-column: 2 / 12;
-      margin-top: 4rem;
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      column-gap: var(--gutter);
-      row-gap: 2rem;
-    }
-    .hero__meta-item { grid-column: span 3; }
-    .hero__meta-item:nth-child(3n+1):last-child,
-    .hero__meta-item:nth-child(4) { grid-column: span 3; }
-    .meta-label {
-      display: block;
-      color: var(--ink-soft);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.45rem;
-    }
-    .meta-value { font-size: 1.0625rem; max-width: 36ch; }
-
-    /* ─── Figures ──────────────────────────────────────────── */
-    .cs-figure { padding-block: 4.5rem 0; }
-    .cs-figure figure,
-    .cs-figure .fig-inner { grid-column: 2 / 12; }
-    .cs-figure img,
-    .cs-figure iframe {
-      width: 100%;
-      border: 1px solid var(--ink-soft);
-      background: var(--placeholder);
-    }
-    .cs-figure figcaption {
-      margin-top: 0.8rem;
-      font-size: 0.9375rem;
-      color: var(--ink);
-    }
-
-    /* ─── Case study sections ──────────────────────────────── */
-    .cs-section { padding-top: 5.5rem; }
-    .cs-section .wrap-text { grid-column: 2 / 12; max-width: 82ch; }
-
-    .cs-eyebrow {
-      display: block;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 1.1rem;
-    }
-
-    .cs-h2 {
-      font-family: var(--font-body);
-      font-size: 1.625rem;
-      font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 1.4rem;
-    }
-
-    .cs-p { margin-bottom: 1.4rem; }
-    .cs-p:last-child { margin-bottom: 0; }
-
-    .cs-link {
-      display: inline-block;
-      margin-top: 0.5rem;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 0.15em;
-      transition: color var(--transition), border-color var(--transition);
-    }
-    .cs-link:hover { color: var(--ink-soft); border-color: var(--ink-soft); }
-
-    /* ─── Insight pivot ────────────────────────────────────── */
-    .insight__pivot {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      margin-block: 2.25rem 1.5rem;
-    }
-    .pivot__cell {
-      border: 1px solid var(--ink);
-      padding: 1.4rem 1.6rem;
-    }
-    .pivot__cell--dark {
-      background: var(--ink);
-      color: var(--bone);
-      border-color: var(--ink);
-    }
-    .pivot__cell-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .pivot__cell--dark .pivot__cell-label { color: var(--ink-soft); }
-    .pivot__cell-text { font-size: 1.125rem; }
-
-    /* ─── Decisions ────────────────────────────────────────── */
-    .decisions__list { margin-top: 1rem; }
-    .decision {
-      display: grid;
-      grid-template-columns: 3.5rem 1fr;
-      gap: var(--gutter);
-      padding-block: 2.25rem;
-      border-top: 1px solid var(--ink-soft);
-    }
-    .decision:first-child { border-top: none; padding-top: 1rem; }
-    .decision__num {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-    }
-    .decision__title {
-      font-family: var(--font-body);
-      font-size: 1.1875rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-    }
-    .decision__body { margin-bottom: 1.1rem; }
-    .decision__tradeoff {
-      display: grid;
-      grid-template-columns: 6.5rem 1fr;
-      gap: var(--gutter);
-      font-size: 1.0625rem;
-    }
-    .decision__tradeoff-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      padding-top: 0.25em;
-    }
-
-    /* ─── Outcome ──────────────────────────────────────────── */
-    .outcome__lead {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      line-height: 1.3;
-      margin-bottom: 1.6rem;
-    }
-
-    /* ─── Next project ─────────────────────────────────────── */
-    .next-project {
-      display: block;
-      padding-block: 5.5rem 6.5rem;
-    }
-    .next-project .wrap-text { grid-column: 2 / 12; }
-    .next-project__label {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.8rem;
-    }
-    .next-project__title {
-      font-family: var(--font-display);
-      font-size: clamp(1.75rem, 3.4vw, 2.625rem);
-      line-height: 1.15;
-      transition: color var(--transition);
-    }
-    a.next-project:hover .next-project__title { color: var(--ink-soft); }
-
-    .rule-section { padding-top: 5.5rem; }
-    .rule-section hr { grid-column: 2 / 12; }
-
-    /* ─── Footer ───────────────────────────────────────────── */
     .footer {
-      background: var(--ink);
-      color: var(--bone);
-      padding-block: 4.5rem 3.5rem;
+      grid-template-columns: 1fr;
+      row-gap: 32px;
     }
-    .footer__inner {
-      grid-column: 1 / 13;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-      row-gap: 5rem;
+    .footer__intro,
+    .footer__contact,
+    .footer__pages {
+      grid-column: 1;
     }
-    .footer__chat {
-      grid-column: 1 / 6;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .footer__contact-row {
+      gap: 40px;
     }
-    .footer__chat-line {
-      font-size: 0.875rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .footer__social { display: inline-flex; }
-    .footer__socials { display: flex; gap: 1rem; align-self: flex-start; }
-    .footer__social svg { width: 20px; height: 20px; }
+  }
 
-    .footer__contact { grid-column: 7 / 11; }
-    .footer__pages   { grid-column: 11 / 13; }
-    .footer__contact, .footer__pages {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .footer h3 {
-      font-family: var(--font-body);
-      font-size: 0.9375rem;
-      font-weight: 700;
-      margin-bottom: 2.75rem;
-    }
-    .footer__fields { display: flex; gap: 3rem; flex-wrap: wrap; }
-    .footer__field-label {
-      display: block;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.4rem;
-    }
-    .footer__field-value {
-      font-size: 0.9375rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .footer a { transition: opacity var(--transition); }
-    .footer a.footer__field-value:hover,
-    .footer__pages a:hover,
-    .footer__social:hover { opacity: 0.7; }
-    .copy-btn {
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      display: inline-flex;
-      padding: 0;
-      transition: opacity var(--transition);
-    }
-    .copy-btn:hover { opacity: 0.7; }
-    .copy-btn svg { width: 14px; height: 14px; }
-    .footer__pages-links {
-      display: flex;
-      gap: 2rem;
-      align-items: baseline;
-      font-size: 0.9375rem;
-      font-weight: 700;
-    }
-
-
-    /* ─── Project sections ─────────────────────────────────── */
-    .project { padding-top: 6rem; }
-    .project__head { grid-column: 2 / 12; }
-    .project__tagline {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      line-height: 1.25;
-      margin-bottom: 1.4rem;
-      max-width: 26ch;
-    }
-    .project__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .tag {
-      border: 1px solid var(--ink-soft);
-      padding: 0.3em 0.9em;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .project__desc { max-width: 72ch; margin-bottom: 1.4rem; }
-
-    /* ─── Media grids — tight editorial gaps ───────────────── */
-    .media-block { padding-top: 3rem; }
-    .media-block .media-inner { grid-column: 2 / 12; }
-    .media-grid { display: grid; gap: 2px; }
-    .media-grid + .media-grid { margin-top: 2px; }
-    .media-grid--asymmetric { grid-template-columns: 2fr 1fr; }
-    .media-grid--2col { grid-template-columns: 1fr 1fr; }
-    .media-grid--3col { grid-template-columns: repeat(3, 1fr); }
-    .media-stack { display: flex; flex-direction: column; gap: 2px; }
-    .media-item { position: relative; overflow: hidden; background: var(--placeholder); }
-    .media-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .media-item--tall { aspect-ratio: 4 / 5; }
-    .media-item--square { aspect-ratio: 1 / 1; }
-    .media-item--wide { aspect-ratio: 4 / 3; }
-    .media-item--portrait { aspect-ratio: 4 / 5; }
-    .media-item--portrait iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* ─── Caption strip ────────────────────────────────────── */
-    .caption-strip {
-      grid-column: 2 / 12;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      column-gap: var(--gutter);
-      row-gap: 1.5rem;
-      padding-top: 1.5rem;
-    }
-    .caption-cell__label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.4rem;
-    }
-    .caption-cell__value { font-size: 1.0625rem; }
-
-    /* ─── Brief block ──────────────────────────────────────── */
-    .project__brief {
-      grid-column: 2 / 12;
-      margin-top: 3rem;
-      border: 1px solid var(--ink);
-      padding: 2rem 2.25rem;
-    }
-    .project__brief-label {
-      display: block;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.9rem;
-    }
-    .project__brief-text { max-width: 78ch; }
-
-    /* ─── How I work ───────────────────────────────────────── */
-    .approach { padding-top: 6rem; }
-    .approach .wrap-text { grid-column: 2 / 12; max-width: 82ch; }
-    .step {
-      display: grid;
-      grid-template-columns: 3.5rem 1fr;
-      gap: var(--gutter);
-      padding-block: 2rem;
-      border-top: 1px solid var(--ink-soft);
-    }
-    .step:first-of-type { border-top: none; padding-top: 1rem; }
-    .step__num { font-family: var(--font-display); font-size: 1.25rem; }
-    .step__title { font-weight: 700; margin-bottom: 0.5rem; }
-
-    /* ─── Focus + motion ───────────────────────────────────── */
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid currentColor;
-      outline-offset: 3px;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; }
-    }
-
-    /* ─── Responsive ───────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      :root { --margin: 48px; }
-      .span-content, .hero__rule, .hero__cta, .hero__meta,
-      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
-      .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
-      .hero__tagline { grid-column: 1 / 10; }
-      .hero__meta { grid-template-columns: repeat(2, 1fr); }
-      .project__head, .media-block .media-inner, .caption-strip, .project__brief, .approach .wrap-text { grid-column: 1 / 13; }
-      .hero__meta-item { grid-column: auto; }
-    }
-
-    @media (max-width: 720px) {
-      :root { --margin: 24px; }
-      body { font-size: 1.125rem; }
-      .nav { padding-block: 1.4rem; }
-      .nav__links { gap: 2rem; }
-      .hero { padding-top: 3.5rem; }
-      .hero__tagline { grid-column: 1 / 13; }
-      .hero__meta { grid-template-columns: 1fr; row-gap: 1.5rem; margin-top: 3rem; }
-      .cs-section { padding-top: 4rem; }
-      .cs-figure { padding-top: 3rem; }
-      .insight__pivot { grid-template-columns: 1fr; }
-      .pivot__cell--dark { border-top: none; }
-      .decision { grid-template-columns: 2.25rem 1fr; padding-block: 1.75rem; }
-      .decision__tradeoff { grid-template-columns: 1fr; gap: 0.4rem; }
-      .footer__chat, .footer__contact, .footer__pages { grid-column: 1 / 13; }
-      .footer__inner { row-gap: 3.5rem; }
-      .footer__socials { margin-top: 2rem; }
-      .footer h3 { margin-bottom: 1.5rem; }
-      .project, .approach { padding-top: 4rem; }
-      .media-grid--asymmetric, .media-grid--2col, .media-grid--3col { grid-template-columns: 1fr; }
-      .caption-strip { grid-template-columns: 1fr; }
-      .project__brief { padding: 1.5rem; }
-      .step { grid-template-columns: 2.25rem 1fr; padding-block: 1.5rem; }
-    }
-  </style>
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    img.fade-on-load { animation: none; opacity: 1; }
+    .rail__nav a, .btn-outline { transition: none; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ─── NAV ──────────────────────────────────────────────── -->
-  <nav class="nav grid">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Jennifer Yaya Falanga</a>
-      <div class="nav__links">
-        <a href="index.html#work">Work</a>
-        <a href="archives.html">Archive</a>
-        <a href="index.html#about">About</a>
-      </div>
-    </div>
+  <nav class="top-nav">
+    <a href="#" class="top-nav__logo">Yaya Falanga</a>
+    <ul class="top-nav__links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
   </nav>
 
+  <div class="page">
 
-  <!-- ─── HERO ─────────────────────────────────────────────── -->
-  <header class="hero grid">
-    <div class="span-content">
-      <span class="eyebrow hero__eyebrow">AI Creative Direction</span>
-      <h1 class="hero__title">Directing AI.<br><em>Not just prompting it.</em></h1>
-    </div>
-    <hr class="rule hero__rule" />
-    <p class="hero__tagline">
-      Self-initiated campaigns built entirely with generative AI&mdash;Midjourney,
-      Sora, and Grok Imagine&mdash;art directed from brief to final frame. The work
-      spans invented brand identities, product photography, and campaign motion.
-    </p>
-    <div class="hero__meta">
-      <div class="hero__meta-item">
-        <span class="meta-label">Role</span>
-        <p class="meta-value">Creative direction, art direction, visual development, prompt engineering</p>
-      </div>
-      <div class="hero__meta-item">
-        <span class="meta-label">Tools</span>
-        <p class="meta-value">Midjourney &middot; Sora &middot; Grok Imagine &middot; GPT-4o</p>
-      </div>
-      <div class="hero__meta-item">
-        <span class="meta-label">Type</span>
-        <p class="meta-value">Self-initiated.</p>
-      </div>
-    </div>
-  </header>
+    <aside class="rail">
+      <span class="rail__eyebrow">AI Creative Direction</span>
+      <h1 class="rail__title">AI Creative</h1>
+      <ul class="rail__nav" id="railNav">
+        <li><a href="#intro" data-section="intro">Intro</a></li>
+        <li><a href="#conserva" data-section="conserva">Conserva</a></li>
+        <li><a href="#vesper" data-section="vesper">Vesper</a></li>
+        <li><a href="#thomas" data-section="thomas">Thomas</a></li>
+        <li><a href="#how-i-work" data-section="how-i-work">How I work</a></li>
+      </ul>
+    </aside>
 
+    <main class="content">
 
-  <!-- ─── PROJECT 01 — CONSERVA ────────────────────────────── -->
-  <section class="project grid">
-    <div class="project__head">
-      <span class="eyebrow cs-eyebrow">Project 01</span>
-      <h2 class="hero__title" style="font-size: clamp(2.25rem, 4vw, 3.25rem); margin-bottom: 1rem;">Conserva</h2>
-      <p class="project__tagline">Brutalist food photography for a brand that takes product seriously.</p>
-      <div class="project__tags">
-        <span class="tag">Stills</span>
-        <span class="tag">Product</span>
-        <span class="tag">Brand Identity</span>
-        <span class="tag">Sora</span>
-      </div>
-      <p class="project__desc">
-        An invented lifestyle brand built around a visual language of brutalist architecture and restrained product photography. The brief to myself: make food feel monumental. No soft light, no warmth, no nostalgia &mdash; concrete, shadow, and material honesty.
-      </p>
-      <p class="project__desc">
-        Each image was directed from a creative brief, not generated speculatively. Composition, palette, and surface treatment were locked before prompting. Iterations refined the direction; they didn't discover it.
-      </p>
-    </div>
-  </section>
+      <section class="cs-section" id="intro">
+        <h2 class="cs-h2">Directing AI. Not just prompting it.</h2>
+        <p class="cs-p">Self-initiated campaigns built entirely with generative AI — Midjourney, Sora, and Grok Imagine — art directed from brief to final frame. The work spans invented brand identities, product photography, and campaign motion.</p>
 
-  <div class="media-block grid">
-    <div class="media-inner">
-      <div class="media-grid media-grid--2col">
-        <div class="media-item media-item--portrait">
-          <img src="img/JF_WEB_ConservaCampaign3.png" alt="Conserva campaign — brutalist product still" loading="lazy" />
-        </div>
-        <div class="media-item media-item--portrait">
-          <img src="img/JF_WEB_ConservaDetail1.png" alt="Conserva campaign still" loading="lazy" />
-        </div>
-      </div>
-      <div class="media-grid media-grid--3col">
-        <div class="media-item media-item--wide">
-          <img src="img/JF_WEB_ConservaCampaign1.png" alt="Conserva campaign still" loading="lazy" />
-        </div>
-        <div class="media-item media-item--wide">
-          <img src="img/JF_WEB_ConservaCampaign2.png" alt="Conserva campaign still" loading="lazy" />
-        </div>
-        <div class="media-item media-item--wide">
-          <img src="img/JF_WEB_ConservaStill.png" alt="Conserva campaign — product detail" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid" style="padding-top: 0;">
-    <div class="caption-strip">
-      <div class="caption-cell">
-        <p class="caption-cell__label">Creative brief</p>
-        <p class="caption-cell__value">Product as architecture. Brutalist form language, no softness.</p>
-      </div>
-      <div class="caption-cell">
-        <p class="caption-cell__label">Visual references</p>
-        <p class="caption-cell__value">Peter Zumthor, Tadao Ando, early Comme des Gar&ccedil;ons lookbooks</p>
-      </div>
-      <div class="caption-cell">
-        <p class="caption-cell__label">Key decision</p>
-        <p class="caption-cell__value">Palette locked to concrete, deep shadow, single warm accent before any generation.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="project__brief">
-      <span class="project__brief-label">Brief</span>
-      <p class="project__brief-text">Three adjectives: bold, expressive, architectural. The assignment was a UI project. The actual question was whether a food platform could have an opinion and hold it. Not just on the discovery screen &mdash; all the way through. Most lifestyle food brands go expressive at the top and transactional three taps in. That inconsistency is a trust problem: a user who stops believing in the curation stops using the platform. Conserva was built to test whether restraint and expressiveness could be the same design move.</p>
-    </div>
-  </div>
-
-
-  <!-- ─── PROJECT 02 — VESPER ──────────────────────────────── -->
-  <section class="project grid">
-    <div class="project__head">
-      <span class="eyebrow cs-eyebrow">Project 02</span>
-      <h2 class="hero__title" style="font-size: clamp(2.25rem, 4vw, 3.25rem); margin-bottom: 1rem;">Patch Campaign, <em>Vesper</em></h2>
-      <p class="project__tagline">Portrait-forward skincare campaign that doesn't flinch.</p>
-      <div class="project__tags">
-        <span class="tag">Stills</span>
-        <span class="tag">Video / Motion</span>
-        <span class="tag">Portrait</span>
-        <span class="tag">ChatGPT Image 2.0</span>
-        <span class="tag">Grok Imagine</span>
-      </div>
-      <p class="project__desc">
-        Skincare brands tend to erase the problem before solving it. This campaign keeps the skin visible. The invented brand is built around the idea that wearing the patch is the confident act &mdash; not hiding it.
-      </p>
-      <p class="project__desc">
-        Portraits were directed for expression first, then product placement. Motion assets used Sora for short campaign loops &mdash; 3&ndash;6 second clips intended for social placements.
-      </p>
-    </div>
-  </section>
-
-  <div class="media-block grid">
-    <div class="media-inner">
-      <div class="media-grid media-grid--2col">
-        <div class="media-item media-item--portrait">
-          <img src="img/JF_WEB_VesperPortrait.png" alt="Vesper campaign — portrait with visible patch" loading="lazy" />
-        </div>
-        <div class="media-item media-item--portrait">
-          <iframe src="https://player.vimeo.com/video/1198615842?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Vesper Campaign"></iframe>
-        </div>
-      </div>
-      <div class="media-grid media-grid--3col">
-        <div class="media-item media-item--wide">
-          <img src="img/JF_WEB_VesperMobile.png" alt="Vesper campaign — close-up still" loading="lazy" />
-        </div>
-        <div class="media-item media-item--wide">
-          <img src="img/JF_WEB_VesperProduct.png" alt="Vesper campaign — product still" loading="lazy" />
-        </div>
-        <div class="media-item media-item--wide">
-          <img src="img/JF_WEB_VesperDetail.png" alt="Vesper campaign — detail still" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid" style="padding-top: 0;">
-    <div class="caption-strip">
-      <div class="caption-cell">
-        <p class="caption-cell__label">Creative brief</p>
-        <p class="caption-cell__value">Confidence, not correction. The patch is visible because it's the point.</p>
-      </div>
-      <div class="caption-cell">
-        <p class="caption-cell__label">Direction approach</p>
-        <p class="caption-cell__value">Expression locked per portrait before product placement was introduced in prompts.</p>
-      </div>
-      <div class="caption-cell">
-        <p class="caption-cell__label">Motion tools</p>
-        <p class="caption-cell__value">Sora for campaign loops. Stills finalized in Midjourney before video reference.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="project__brief">
-      <span class="project__brief-label">Brief</span>
-      <p class="project__brief-text">The brief was this: a pimple patch worn as part of a look, not hidden under one. The audience is women in their 30s and up &mdash; not teenagers, not the self-help crowd &mdash; women who have decided that skin texture is not a problem to be solved before leaving the house. Vesper had to feel like a brand that understood this without announcing it. The visual language had to hold across two contexts: staying in on a Thursday and going out on a Saturday. The star patch is the same object in both. The campaign had to prove that.</p>
-    </div>
-  </div>
-
-<!-- ─── PROJECT 03 — THOMAS ──────────────────────────────── -->
-  <section class="project grid">
-    <div class="project__head">
-      <span class="eyebrow cs-eyebrow">Project 03</span>
-      <h2 class="hero__title" style="font-size: clamp(2.25rem, 4vw, 3.25rem); margin-bottom: 1rem;">Thomas</h2>
-      <p class="project__tagline">Porcelain treated as architecture, not decoration.</p>
-      <div class="project__tags">
-        <span class="tag">Stills</span>
-        <span class="tag">Product</span>
-        <span class="tag">Brand Identity</span>
-        <span class="tag">ChatGPT Image 2.0</span>
-      </div>
-      <p class="project__desc">
-        An invented campaign for Thomas porcelain built on a single argument: objects placed with intention are already architecture. No white-box catalogue isolation &mdash; every piece sits on a surface it actually lives on, lit bright and composed like a floor plan.
-      </p>
-      <p class="project__desc">
-        The visual language refused styled excess. Disciplined colour, soft daylight, and a single object placed with the same intention a designer brings to a room. The campaign had to make the argument visually, without explaining it.
-      </p>
-    </div>
-  </section>
-
-  <div class="media-block grid">
-    <div class="media-inner">
-      <div class="media-grid media-grid--2col">
-        <div class="media-item media-item--portrait">
-          <img src="img/JF_WEB_Thomas1.png" alt="Thomas campaign — porcelain on a surface" loading="lazy" />
-        </div>
-        <div class="media-item media-item--portrait">
-          <img src="img/JF_WEB_Thomas3.png" alt="Thomas campaign — porcelain on a surface" loading="lazy" />
-        </div>
-      </div>
-      <div class="media-grid media-grid--3col">
-        <div class="media-item media-item--wide">
-          <img src="img/JF_WEB_Thomas2.png" alt="Thomas campaign still" loading="lazy" />
-        </div>
-        <div class="media-item media-item--wide">
-          <img src="img/JF_WEB_Thomas4.png" alt="Thomas campaign still" loading="lazy" />
-        </div>
-        <div class="media-item media-item--wide">
-          <img src="img/JF_WEB_Thomas5.png" alt="Thomas campaign still" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid" style="padding-top: 0;">
-    <div class="caption-strip">
-      <div class="caption-cell">
-        <p class="caption-cell__label">Creative brief</p>
-        <p class="caption-cell__value">Porcelain is structural, not decorative. The table treated as a floor plan.</p>
-      </div>
-      <div class="caption-cell">
-        <p class="caption-cell__label">Direction approach</p>
-        <p class="caption-cell__value">Objects placed on real surfaces, never isolated against white. Bright light, disciplined colour.</p>
-      </div>
-      <div class="caption-cell">
-        <p class="caption-cell__label">Key decision</p>
-        <p class="caption-cell__value">No styled excess. A single object placed with the intention a designer brings to a room.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="project__brief">
-      <span class="project__brief-label">Brief</span>
-      <p class="project__brief-text">The brief was this: Thomas porcelain is not decorative. It is structural. The problem with most tableware campaigns is that objects float &mdash; isolated against white, lit for the catalogue, removed from every surface they actually live on. Thomas had strong product and a design language worth taking seriously. The challenge was to show that a cup on a windowsill, a bowl on a shelf, a plate stacked on a counter is already a composition &mdash; already architecture. The campaign had to make that argument visually without explaining it. No styled excess, no editorial clutter. Just objects placed with the same intention a designer brings to a room. Bright light. Disciplined colour. The table treated as a floor plan.</p>
-    </div>
-  </div>
-
-
-
-
-
-  <!-- ─── HOW I WORK ───────────────────────────────────────── -->
-  <section class="approach grid">
-    <div class="wrap-text">
-      <span class="eyebrow cs-eyebrow">How I Work</span>
-      <div class="approach__steps">
-        <div class="step">
-          <span class="step__num">01</span>
+        <div class="meta-row">
           <div>
-            <p class="step__title">Brief before tool</p>
-            <p class="step__body">Every project starts with a written creative brief: mood, palette, reference era, what the image should refuse to do. The brief constrains the generation &mdash; it doesn't follow it.</p>
+            <div class="meta-block">
+              <div class="meta-label">Role</div>
+              <div class="meta-value">Creative direction, art direction, visual development, prompt engineering</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Tools</div>
+              <div class="meta-value">Midjourney · Sora · Grok Imagine · GPT-4o</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Type</div>
+              <div class="meta-value">Self-initiated.</div>
+            </div>
           </div>
         </div>
-        <div class="step">
-          <span class="step__num">02</span>
-          <div>
-            <p class="step__title">Visual language locked first</p>
-            <p class="step__body">Palette, surface treatment, and composition logic are locked before any prompting. This prevents the tool from deciding the aesthetic direction.</p>
+      </section>
+
+      <section class="cs-section" id="conserva">
+        <span class="cs-eyebrow">Project 01</span>
+        <h2 class="cs-h2">Conserva</h2>
+        <p class="cs-p" style="font-size: 1.05rem; margin-top: -8px;">Brutalist food photography for a brand that takes product seriously.</p>
+
+        <div class="project-tags">
+          <span class="project-tag">Stills</span>
+          <span class="project-tag">Product</span>
+          <span class="project-tag">Brand Identity</span>
+          <span class="project-tag">Sora</span>
+        </div>
+
+        <p class="cs-p">An invented lifestyle brand built around a visual language of brutalist architecture and restrained product photography. The brief to myself: make food feel monumental. No soft light, no warmth, no nostalgia — concrete, shadow, and material honesty.</p>
+        <p class="cs-p">Each image was directed from a creative brief, not generated speculatively. Composition, palette, and surface treatment were locked before prompting. Iterations refined the direction; they didn't discover it.</p>
+
+        <div class="media-grid media-grid--2col">
+          <div class="media-item media-item--portrait">
+            <img src="img/JF_WEB_ConservaCampaign3.png" alt="Conserva campaign — brutalist product still">
+          </div>
+          <div class="media-item media-item--portrait">
+            <img src="img/JF_WEB_ConservaDetail1.png" alt="Conserva campaign still">
           </div>
         </div>
-        <div class="step">
-          <span class="step__num">03</span>
-          <div>
-            <p class="step__title">Iteration as refinement, not discovery</p>
-            <p class="step__body">Each iteration narrows toward the brief. If an output surprises me productively, I write down why and update the brief &mdash; I don't chase the accident.</p>
+        <div class="media-grid media-grid--3col">
+          <div class="media-item media-item--wide">
+            <img src="img/JF_WEB_ConservaCampaign1.png" alt="Conserva campaign still">
+          </div>
+          <div class="media-item media-item--wide">
+            <img src="img/JF_WEB_ConservaCampaign2.png" alt="Conserva campaign still">
+          </div>
+          <div class="media-item media-item--wide">
+            <img src="img/JF_WEB_ConservaStill.png" alt="Conserva campaign — product detail">
           </div>
         </div>
-        <div class="step">
-          <span class="step__num">04</span>
-          <div>
-            <p class="step__title">Stills before motion</p>
-            <p class="step__body">For projects with both mediums, visual language is finalized in stills before any video generation. Motion inherits the direction &mdash; it doesn't establish it.</p>
+
+        <div class="caption-strip">
+          <div class="caption-cell">
+            <div class="caption-cell__label">Creative brief</div>
+            <div class="caption-cell__value">Product as architecture. Brutalist form language, no softness.</div>
+          </div>
+          <div class="caption-cell">
+            <div class="caption-cell__label">Visual references</div>
+            <div class="caption-cell__value">Peter Zumthor, Tadao Ando, early Comme des Garçons lookbooks</div>
+          </div>
+          <div class="caption-cell">
+            <div class="caption-cell__label">Key decision</div>
+            <div class="caption-cell__value">Palette locked to concrete, deep shadow, single warm accent before any generation.</div>
           </div>
         </div>
+
+        <div class="project-brief">
+          <span class="project-brief__label">Brief</span>
+          <p class="project-brief__text">Three adjectives: bold, expressive, architectural. The assignment was a UI project. The actual question was whether a food platform could have an opinion and hold it. Not just on the discovery screen — all the way through. Most lifestyle food brands go expressive at the top and transactional three taps in. That inconsistency is a trust problem: a user who stops believing in the curation stops using the platform. Conserva was built to test whether restraint and expressiveness could be the same design move.</p>
+        </div>
+      </section>
+
+      <section class="cs-section" id="vesper">
+        <span class="cs-eyebrow">Project 02</span>
+        <h2 class="cs-h2">Patch Campaign, Vesper</h2>
+        <p class="cs-p" style="font-size: 1.05rem; margin-top: -8px;">Portrait-forward skincare campaign that doesn't flinch.</p>
+
+        <div class="project-tags">
+          <span class="project-tag">Stills</span>
+          <span class="project-tag">Video / Motion</span>
+          <span class="project-tag">Portrait</span>
+          <span class="project-tag">ChatGPT Image 2.0</span>
+          <span class="project-tag">Grok Imagine</span>
+        </div>
+
+        <p class="cs-p">Skincare brands tend to erase the problem before solving it. This campaign keeps the skin visible. The invented brand is built around the idea that wearing the patch is the confident act — not hiding it.</p>
+        <p class="cs-p">Portraits were directed for expression first, then product placement. Motion assets used Sora for short campaign loops — 3–6 second clips intended for social placements.</p>
+
+        <div class="media-grid media-grid--2col">
+          <div class="media-item media-item--portrait">
+            <img src="img/JF_WEB_VesperPortrait.png" alt="Vesper campaign — portrait with visible patch">
+          </div>
+          <div class="media-item media-item--portrait">
+            <iframe src="https://player.vimeo.com/video/1198615842?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Vesper Campaign" style="border: none;"></iframe>
+          </div>
+        </div>
+        <div class="media-grid media-grid--3col">
+          <div class="media-item media-item--wide">
+            <img src="img/JF_WEB_VesperMobile.png" alt="Vesper campaign — close-up still">
+          </div>
+          <div class="media-item media-item--wide">
+            <img src="img/JF_WEB_VesperProduct.png" alt="Vesper campaign — product still">
+          </div>
+          <div class="media-item media-item--wide">
+            <img src="img/JF_WEB_VesperDetail.png" alt="Vesper campaign — detail still">
+          </div>
+        </div>
+
+        <div class="caption-strip">
+          <div class="caption-cell">
+            <div class="caption-cell__label">Creative brief</div>
+            <div class="caption-cell__value">Confidence, not correction. The patch is visible because it's the point.</div>
+          </div>
+          <div class="caption-cell">
+            <div class="caption-cell__label">Direction approach</div>
+            <div class="caption-cell__value">Expression locked per portrait before product placement was introduced in prompts.</div>
+          </div>
+          <div class="caption-cell">
+            <div class="caption-cell__label">Motion tools</div>
+            <div class="caption-cell__value">Sora for campaign loops. Stills finalized in Midjourney before video reference.</div>
+          </div>
+        </div>
+
+        <div class="project-brief">
+          <span class="project-brief__label">Brief</span>
+          <p class="project-brief__text">The brief was this: a pimple patch worn as part of a look, not hidden under one. The audience is women in their 30s and up — not teenagers, not the self-help crowd — women who have decided that skin texture is not a problem to be solved before leaving the house. Vesper had to feel like a brand that understood this without announcing it. The visual language had to hold across two contexts: staying in on a Thursday and going out on a Saturday. The star patch is the same object in both. The campaign had to prove that.</p>
+        </div>
+      </section>
+
+      <section class="cs-section" id="thomas">
+        <span class="cs-eyebrow">Project 03</span>
+        <h2 class="cs-h2">Thomas</h2>
+        <p class="cs-p" style="font-size: 1.05rem; margin-top: -8px;">Porcelain treated as architecture, not decoration.</p>
+
+        <div class="project-tags">
+          <span class="project-tag">Stills</span>
+          <span class="project-tag">Product</span>
+          <span class="project-tag">Brand Identity</span>
+          <span class="project-tag">ChatGPT Image 2.0</span>
+        </div>
+
+        <p class="cs-p">An invented campaign for Thomas porcelain built on a single argument: objects placed with intention are already architecture. No white-box catalogue isolation — every piece sits on a surface it actually lives on, lit bright and composed like a floor plan.</p>
+        <p class="cs-p">The visual language refused styled excess. Disciplined colour, soft daylight, and a single object placed with the same intention a designer brings to a room. The campaign had to make the argument visually, without explaining it.</p>
+
+        <div class="media-grid media-grid--2col">
+          <div class="media-item media-item--portrait">
+            <img src="img/JF_WEB_Thomas1.png" alt="Thomas campaign — porcelain on a surface">
+          </div>
+          <div class="media-item media-item--portrait">
+            <img src="img/JF_WEB_Thomas3.png" alt="Thomas campaign — porcelain on a surface">
+          </div>
+        </div>
+        <div class="media-grid media-grid--3col">
+          <div class="media-item media-item--wide">
+            <img src="img/JF_WEB_Thomas2.png" alt="Thomas campaign still">
+          </div>
+          <div class="media-item media-item--wide">
+            <img src="img/JF_WEB_Thomas4.png" alt="Thomas campaign still">
+          </div>
+          <div class="media-item media-item--wide">
+            <img src="img/JF_WEB_Thomas5.png" alt="Thomas campaign still">
+          </div>
+        </div>
+
+        <div class="caption-strip">
+          <div class="caption-cell">
+            <div class="caption-cell__label">Creative brief</div>
+            <div class="caption-cell__value">Porcelain is structural, not decorative. The table treated as a floor plan.</div>
+          </div>
+          <div class="caption-cell">
+            <div class="caption-cell__label">Direction approach</div>
+            <div class="caption-cell__value">Objects placed on real surfaces, never isolated against white. Bright light, disciplined colour.</div>
+          </div>
+          <div class="caption-cell">
+            <div class="caption-cell__label">Key decision</div>
+            <div class="caption-cell__value">No styled excess. A single object placed with the intention a designer brings to a room.</div>
+          </div>
+        </div>
+
+        <div class="project-brief">
+          <span class="project-brief__label">Brief</span>
+          <p class="project-brief__text">The brief was this: Thomas porcelain is not decorative. It is structural. The problem with most tableware campaigns is that objects float — isolated against white, lit for the catalogue, removed from every surface they actually live on. Thomas had strong product and a design language worth taking seriously. The challenge was to show that a cup on a windowsill, a bowl on a shelf, a plate stacked on a counter is already a composition — already architecture. The campaign had to make that argument visually without explaining it. No styled excess, no editorial clutter. Just objects placed with the same intention a designer brings to a room. Bright light. Disciplined colour. The table treated as a floor plan.</p>
+        </div>
+      </section>
+
+      <section class="cs-section" id="how-i-work">
+        <span class="cs-eyebrow">How I Work</span>
+        <h2 class="cs-h2">Brief before tool.</h2>
+        <p class="cs-p">Every project starts with a written creative brief: mood, palette, reference era, what the image should refuse to do. The brief constrains the generation — it doesn't follow it.</p>
+
+        <h2 class="cs-h2">Visual language locked first.</h2>
+        <p class="cs-p">Palette, surface treatment, and composition logic are locked before any prompting. This prevents the tool from deciding the aesthetic direction.</p>
+
+        <h2 class="cs-h2">Iteration as refinement, not discovery.</h2>
+        <p class="cs-p">Each iteration narrows toward the brief. If an output surprises me productively, I write down why and update the brief — I don't chase the accident.</p>
+
+        <h2 class="cs-h2">Stills before motion.</h2>
+        <p class="cs-p">For projects with both mediums, visual language is finalized in stills before any video generation. Motion inherits the direction — it doesn't establish it.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__intro">
+      <p class="footer__heading">I'd love to chat!</p>
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/in/jenniferyaya-falanga" target="_blank" rel="noopener" aria-label="LinkedIn — Jennifer Yaya Falanga" class="footer__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/jenniyayafalanga/" target="_blank" rel="noopener" aria-label="Instagram — Jennifer Yaya Falanga" class="footer__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
+          </svg>
+        </a>
       </div>
     </div>
-  </section>
 
-
-<!-- ─── FOOTER ───────────────────────────────────────────── -->
-  <footer class="footer grid">
-    <div class="footer__inner">
-
-      <div class="footer__chat">
-        <span class="footer__chat-line">I'd love to chat!</span>
-        <div class="footer__socials">
-          <a class="footer__social" href="https://www.linkedin.com/in/yaya-falanga"
-             target="_blank" rel="noopener" aria-label="LinkedIn — Yaya Falanga">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+    <div class="footer__contact">
+      <div class="footer__label">Contact</div>
+      <div class="footer__contact-row">
+        <div class="footer__contact-item">
+          <div class="footer__sublabel">Email</div>
+          <div class="footer__value">
+            <a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a>
+            <button class="copy-btn" type="button" aria-label="Copy email address"
+                    onclick="navigator.clipboard.writeText('yayafalanga@gmail.com'); this.setAttribute('aria-label','Copied');">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="5" y="5" width="9" height="9" rx="1"/>
+                <path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/>
               </svg>
-          </a>
-          <a class="footer__social" href="https://www.instagram.com/jenniyayafalanga/"
-             target="_blank" rel="noopener" aria-label="Instagram — Yaya Falanga">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
-              </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="footer__contact">
-        <h3>Contact</h3>
-        <div class="footer__fields">
-          <div>
-            <span class="footer__field-label">Email</span>
-            <span class="footer__field-value">
-              <a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a>
-              <button class="copy-btn" type="button" aria-label="Copy email address"
-                      onclick="navigator.clipboard.writeText('yayafalanga@gmail.com'); this.setAttribute('aria-label','Copied');">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-                  <rect x="5" y="5" width="9" height="9" rx="1"/>
-                  <path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/>
-                </svg>
-              </button>
-            </span>
+            </button>
           </div>
-          <div>
-            <span class="footer__field-label">Resume</span>
-            <a class="footer__field-value" href="YayaFalanga_CV_Product_Designer.pdf" download>
-              Download resume &darr;
-            </a>
+        </div>
+        <div class="footer__contact-item">
+          <div class="footer__sublabel footer__sublabel--muted">Resume</div>
+          <div class="footer__value">
+            <a href="#">Download resume ↓</a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="footer__pages">
-        <h3>Pages</h3>
-        <div class="footer__pages-links">
-          <a href="index.html#work">Work</a>
-          <a href="ai-creative.html">Fun</a>
-          <a href="index.html#about">About</a>
-        </div>
+    <div class="footer__pages">
+      <div class="footer__label">Pages</div>
+      <div class="footer__pages-row">
+        <a href="#">Work ↗</a>
+        <a href="#">Archive ↗</a>
+        <a href="#">About ↗</a>
       </div>
-
     </div>
   </footer>
+
+  <script>
+    // ── Section nav: last-crossed-heading active logic ──
+    (function () {
+      var sections = Array.from(document.querySelectorAll('.cs-section'));
+      var navLinks = Array.from(document.querySelectorAll('#railNav a'));
+      var triggerRatio = 0.33; // top third of viewport
+
+      function getTriggerY() {
+        return window.innerHeight * triggerRatio;
+      }
+
+      function updateActive() {
+        var triggerY = getTriggerY();
+        var current = sections[0];
+
+        for (var i = 0; i < sections.length; i++) {
+          var rect = sections[i].getBoundingClientRect();
+          if (rect.top <= triggerY) {
+            current = sections[i];
+          }
+        }
+
+        navLinks.forEach(function (link) {
+          var isActive = link.getAttribute('data-section') === current.id;
+          link.classList.toggle('is-active', isActive);
+        });
+      }
+
+      // Click: smooth-scroll so target heading lands at the trigger point
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var targetId = link.getAttribute('data-section');
+          var target = document.getElementById(targetId);
+          if (!target) return;
+
+          var targetY = target.getBoundingClientRect().top + window.pageYOffset - getTriggerY();
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        });
+      });
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('resize', updateActive);
+      updateActive();
+    })();
+  </script>
 
 </body>
 </html>

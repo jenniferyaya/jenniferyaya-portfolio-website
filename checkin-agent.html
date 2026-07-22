@@ -1,959 +1,765 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAN-SIMPLAN — Jennifer Yaya Falanga</title>
-  <meta name="description" content="The Check-In Agent: First-time investors panic-sell at the bottom. This is an AI agent that watches for the moment, and stays silent until it's earned the right to interrupt. — UX case study by Jennifer Yaya Falanga." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Check-In Agent — Yaya Falanga</title>
+<meta name="description" content="The Check-In Agent: an AI agent that watches for the panic-sell moment and stays silent until it's earned the right to interrupt, by Jennifer Yaya Falanga." />
 
-  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
+<!-- Adobe Fonts — Area Extended / Area Normal -->
+<link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
-  <style>
-    /* ============================================================
-       Yaya Falanga — Portfolio 2026 Redesign
-       Case study template. Self-contained styles; tokens to be
-       extracted to a shared stylesheet once all pages migrate.
-       ============================================================ */
+<style>
+  /* ══════════════════════════════════════════════
+     DESIGN TOKENS — new system, replaces maroon/Mr Eaves
+  ══════════════════════════════════════════════ */
+  :root {
+    --bg:        #FEFEFE;
+    --ink:       #320300;
+    --highlight: #CAA3A3; /* decorative only: dividers, chip backgrounds, dark-surface text — fails WCAG as text on --bg */
+    --muted:     #806767; /* AA-safe secondary/inactive text on --bg, 5.14:1 */
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    --font-display: "area-extended", "Helvetica Neue", Arial, sans-serif;
+    --font-body:    "area-normal", "Helvetica Neue", Arial, sans-serif;
 
-    /* ─── Design Tokens ────────────────────────────────────── */
-    :root {
-      --ink:        #5A0600;
-      --ink-soft:   #CAA3A3;
-      --bg:         #F9F8F6;
-      --bone:       #F9F8F6;
-      --placeholder:#DBDBDB;
+    --margin: 80px;
+    --col-gutter: 16px;
+  }
 
-      --font-display: "mr-eaves-modern", "Helvetica Neue", Arial, sans-serif;
-      --font-body:    "mr-eaves-sans", "Helvetica Neue", Arial, sans-serif;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      --margin: 80px;
-      --gutter: 16px;
+  html { scroll-behavior: smooth; }
 
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    background: #DADADA; /* placeholder fill matching mockup gray blocks */
+  }
+
+  img:hover { /* intentionally no change */ }
+
+  img.fade-on-load {
+    opacity: 0;
+    animation: fade-in 300ms ease forwards;
+  }
+
+  @keyframes fade-in { to { opacity: 1; } }
+
+  a { color: inherit; }
+
+  /* ── TOP NAV ─────────────────────────────────── */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px var(--margin);
+    border-bottom: 1px solid #ECECEC;
+  }
+  .top-nav__logo {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .top-nav__links {
+    display: flex;
+    gap: 48px;
+    list-style: none;
+  }
+  .top-nav__links a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  /* explicitly no hover state on top nav */
+  .top-nav__links a:hover {
+    color: var(--ink);
+  }
+  .top-nav__links a:focus-visible {
+    outline: revert;
+  }
+
+  /* ── PAGE LAYOUT ─────────────────────────────── */
+  /* True 12-column grid: 80px margins, 16px gutters between all 12 tracks.
+     Rail occupies columns 1–4, content occupies columns 5–12. */
+  .page {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--col-gutter);
+    padding: 64px var(--margin) 0;
+    align-items: start;
+  }
+
+  /* ── LEFT RAIL (section nav) ─────────────────── */
+  .rail {
+    grid-column: 1 / span 4;
+    position: sticky;
+    top: 64px;
+    align-self: start;
+  }
+  .rail__eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .rail__title {
+    font-family: var(--font-display);
+    font-size: 2.75rem;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .rail__nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .rail__nav a {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 200ms ease;
+    display: inline-block;
+    width: fit-content;
+  }
+  .rail__nav a.is-active {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .rail__nav a:focus-visible {
+    outline: revert;
+  }
+
+  /* ── CONTENT COLUMN ──────────────────────────── */
+  .content {
+    grid-column: 5 / span 8;
+    padding-bottom: 120px;
+  }
+
+  .cs-section {
+    scroll-margin-top: 33vh; /* aligns with top-third trigger point for smooth-scroll targeting */
+    padding-bottom: 96px;
+  }
+
+  .cs-figure {
+    margin-bottom: 48px;
+  }
+  .cs-figure img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .meta-row {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .meta-block + .meta-block { margin-top: 28px; }
+  .meta-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .meta-value {
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .meta-desc {
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  /* ── OUTLINED BUTTON ──────────────────────────── */
+  .btn-outline {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    padding: 14px 22px;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+  .btn-outline:hover,
+  .btn-outline:focus-visible {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* ── SECTION TEXT ─────────────────────────────── */
+  .cs-eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .cs-h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 100ch;
+    margin-bottom: 20px;
+  }
+  .cs-p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 20px;
+    max-width: 90ch;
+  }
+  .cs-p:last-child { margin-bottom: 0; }
+  .cs-p strong { font-weight: 600; }
+
+  .reframe-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--ink);
+    margin: 32px 0 48px;
+  }
+  .reframe-table__cell {
+    padding: 28px 32px;
+  }
+  .reframe-table__cell--instinct {
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .reframe-table__cell--reframe {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .reframe-table__label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+  .reframe-table__text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .pull-quote {
+    border-left: 2px solid var(--ink);
+    padding: 0.4rem 0 0.4rem 32px;
+    margin: 32px 0 48px;
+  }
+  .pull-quote p {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+
+  .cs-h3 {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 40px 0 16px;
+  }
+
+  .cs-list {
+    list-style: none;
+    margin: 0 0 32px;
+  }
+  .cs-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink);
+    padding: 14px 0;
+    border-bottom: 1px solid #ECECEC;
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+  }
+  .cs-list li::before {
+    content: '→';
+    color: var(--muted);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .cs-list li:last-child { border-bottom: none; }
+
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .image-pair img,
+  .image-full img {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    width: 100%;
+  }
+  .image-full img { aspect-ratio: 16/11; }
+
+  /* ── FOOTER ───────────────────────────────────── */
+  .footer {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 96px var(--margin) 56px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--col-gutter);
+    row-gap: 48px;
+  }
+
+  .footer__intro  { grid-column: 1 / span 4; }
+  .footer__contact { grid-column: 5 / span 5; }
+  .footer__pages   { grid-column: 10 / span 3; }
+
+  .footer__heading {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 28px;
+  }
+  .footer__social {
+    display: flex;
+    gap: 16px;
+  }
+  .footer__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+    text-decoration: none;
+  }
+  .footer__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer__label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin-bottom: 24px;
+  }
+
+  .footer__contact-row {
+    display: flex;
+    gap: 56px;
+  }
+  .footer__sublabel {
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--bg);
+    opacity: 0.55;
+    margin-bottom: 6px;
+  }
+  .footer__sublabel--muted {
+    opacity: 0.4;
+  }
+  .footer__value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer__value a {
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--bg);
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .copy-btn:hover {
+    opacity: 1;
+  }
+  .copy-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .footer__pages {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer__pages-row {
+    margin-top: auto;
+    display: flex;
+    gap: 28px;
+  }
+  .footer__pages-row a {
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  /* ══════════════════════════════════════════════
+     MOBILE
+  ══════════════════════════════════════════════ */
+  @media (max-width: 860px) {
+    :root { --margin: 24px; }
+
+    .top-nav { padding-left: var(--margin); padding-right: var(--margin); }
+    .top-nav__links { gap: 24px; }
+
+    .page {
+      grid-template-columns: 1fr;
+      padding-top: 40px;
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-body);
-      font-size: 1.1875rem;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
+    .rail {
+      grid-column: 1;
+      position: static;
+      margin-bottom: 40px;
     }
+    .rail__nav { display: none; } /* nav fully removed on mobile — no dropdown, no pills */
+    .rail__title { font-size: 2.1rem; }
 
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    ::selection { background: var(--ink); color: var(--bone); }
-
-    /* ─── Grid scaffold ────────────────────────────────────── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-      padding-inline: var(--margin);
-    }
-    .span-content { grid-column: 2 / 12; }
-
-    /* ─── Shared text styles ───────────────────────────────── */
-    .eyebrow {
-      font-family: var(--font-body);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .eyebrow--soft { color: var(--ink-soft); }
-
-    .text-link {
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
-      text-decoration-thickness: 1px;
-      transition: text-decoration-color var(--transition);
-    }
-    .text-link:hover { text-decoration-color: var(--ink-soft); }
-
-    hr.rule { border: none; border-top: 1px solid var(--ink-soft); }
-
-    /* ─── Navigation ───────────────────────────────────────── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--ink);
-      align-items: center;
-      padding-block: 2rem;
-    }
-    .nav__inner {
-      grid-column: 1 / 13;
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-    .nav__logo {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-    .nav__links {
-      display: flex;
-      gap: 4.5rem;
-      font-weight: 700;
-      font-size: 1.0625rem;
-    }
-    .nav__links a { transition: color var(--transition); }
-    .nav__links a:hover { color: var(--ink-soft); }
-
-    /* ─── Hero ─────────────────────────────────────────────── */
-    .hero { padding-block: 5.5rem 0; }
-
-    .hero__eyebrow { display: block; margin-bottom: 1.1rem; }
-
-    .hero__title {
-      font-family: var(--font-display);
-      font-size: clamp(2.75rem, 5.5vw, 4.5rem);
-      font-weight: 400;
-      line-height: 1.08;
-      margin-bottom: 2.25rem;
+    .content {
+      grid-column: 1;
     }
 
-    .hero__rule { grid-column: 2 / 12; }
-
-    .hero__tagline {
-      grid-column: 2 / 8;
-      margin-top: 2rem;
+    .meta-row {
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
 
-    .hero__cta {
-      grid-column: 2 / 12;
-      justify-self: start;
-      margin-top: 2rem;
-      display: inline-block;
-      border: 1px solid var(--ink);
-      padding: 0.85em 1.6em;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: background var(--transition), color var(--transition);
-    }
-    .hero__cta:hover { background: var(--ink); color: var(--bone); }
+    .reframe-table { grid-template-columns: 1fr; }
+    .image-pair { grid-template-columns: 1fr; }
 
-    .hero__meta {
-      grid-column: 2 / 12;
-      margin-top: 4rem;
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      column-gap: var(--gutter);
-      row-gap: 2rem;
-    }
-    .hero__meta-item { grid-column: span 3; }
-    .hero__meta-item:nth-child(3n+1):last-child,
-    .hero__meta-item:nth-child(4) { grid-column: span 3; }
-    .meta-label {
-      display: block;
-      color: var(--ink-soft);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.45rem;
-    }
-    .meta-value { font-size: 1.0625rem; max-width: 36ch; }
-
-    /* ─── Figures ──────────────────────────────────────────── */
-    .cs-figure { padding-block: 4.5rem 0; }
-    .cs-figure figure,
-    .cs-figure .fig-inner { grid-column: 2 / 12; }
-    .cs-figure img,
-    .cs-figure iframe {
-      width: 100%;
-      border: 1px solid var(--ink-soft);
-      background: var(--placeholder);
-    }
-    .cs-figure figcaption {
-      margin-top: 0.8rem;
-      font-size: 0.9375rem;
-      color: var(--ink);
-    }
-
-    /* ─── Case study sections ──────────────────────────────── */
-    .cs-section { padding-top: 5.5rem; }
-    .cs-section .wrap-text { grid-column: 2 / 12; max-width: 82ch; }
-
-    .cs-eyebrow {
-      display: block;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 1.1rem;
-    }
-
-    .cs-h2 {
-      font-family: var(--font-body);
-      font-size: 1.625rem;
-      font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 1.4rem;
-    }
-
-    .cs-p { margin-bottom: 1.4rem; }
-    .cs-p:last-child { margin-bottom: 0; }
-
-    .cs-link {
-      display: inline-block;
-      margin-top: 0.5rem;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 0.15em;
-      transition: color var(--transition), border-color var(--transition);
-    }
-    .cs-link:hover { color: var(--ink-soft); border-color: var(--ink-soft); }
-
-    /* ─── Insight pivot ────────────────────────────────────── */
-    .insight__pivot {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      margin-block: 2.25rem 1.5rem;
-    }
-    .pivot__cell {
-      border: 1px solid var(--ink);
-      padding: 1.4rem 1.6rem;
-    }
-    .pivot__cell--dark {
-      background: var(--ink);
-      color: var(--bone);
-      border-color: var(--ink);
-    }
-    .pivot__cell-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .pivot__cell--dark .pivot__cell-label { color: var(--ink-soft); }
-    .pivot__cell-text { font-size: 1.125rem; }
-
-    /* ─── Decisions ────────────────────────────────────────── */
-    .decisions__list { margin-top: 1rem; }
-    .decision {
-      display: grid;
-      grid-template-columns: 3.5rem 1fr;
-      gap: var(--gutter);
-      padding-block: 2.25rem;
-      border-top: 1px solid var(--ink-soft);
-    }
-    .decision:first-child { border-top: none; padding-top: 1rem; }
-    .decision__num {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-    }
-    .decision__title {
-      font-family: var(--font-body);
-      font-size: 1.1875rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-    }
-    .decision__body { margin-bottom: 1.1rem; }
-    .decision__tradeoff {
-      display: grid;
-      grid-template-columns: 6.5rem 1fr;
-      gap: var(--gutter);
-      font-size: 1.0625rem;
-    }
-    .decision__tradeoff-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      padding-top: 0.25em;
-    }
-
-    /* ─── Outcome ──────────────────────────────────────────── */
-    .outcome__lead {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      line-height: 1.3;
-      margin-bottom: 1.6rem;
-    }
-
-    /* ─── Next project ─────────────────────────────────────── */
-    .next-project {
-      display: block;
-      padding-block: 5.5rem 6.5rem;
-    }
-    .next-project .wrap-text { grid-column: 2 / 12; }
-    .next-project__label {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.8rem;
-    }
-    .next-project__title {
-      font-family: var(--font-display);
-      font-size: clamp(1.75rem, 3.4vw, 2.625rem);
-      line-height: 1.15;
-      transition: color var(--transition);
-    }
-    a.next-project:hover .next-project__title { color: var(--ink-soft); }
-
-    .rule-section { padding-top: 5.5rem; }
-    .rule-section hr { grid-column: 2 / 12; }
-
-    /* ─── Footer ───────────────────────────────────────────── */
     .footer {
-      background: var(--ink);
-      color: var(--bone);
-      padding-block: 4.5rem 3.5rem;
+      grid-template-columns: 1fr;
+      row-gap: 32px;
     }
-    .footer__inner {
-      grid-column: 1 / 13;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-      row-gap: 5rem;
+    .footer__intro,
+    .footer__contact,
+    .footer__pages {
+      grid-column: 1;
     }
-    .footer__chat {
-      grid-column: 1 / 6;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .footer__contact-row {
+      gap: 40px;
     }
-    .footer__chat-line {
-      font-size: 0.875rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .footer__social { display: inline-flex; }
-    .footer__socials { display: flex; gap: 1rem; align-self: flex-start; }
-    .footer__social svg { width: 20px; height: 20px; }
+  }
 
-    .footer__contact { grid-column: 7 / 11; }
-    .footer__pages   { grid-column: 11 / 13; }
-    .footer__contact, .footer__pages {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .footer h3 {
-      font-family: var(--font-body);
-      font-size: 0.9375rem;
-      font-weight: 700;
-      margin-bottom: 2.75rem;
-    }
-    .footer__fields { display: flex; gap: 3rem; flex-wrap: wrap; }
-    .footer__field-label {
-      display: block;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.4rem;
-    }
-    .footer__field-value {
-      font-size: 0.9375rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .footer a { transition: opacity var(--transition); }
-    .footer a.footer__field-value:hover,
-    .footer__pages a:hover,
-    .footer__social:hover { opacity: 0.7; }
-    .copy-btn {
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      display: inline-flex;
-      padding: 0;
-      transition: opacity var(--transition);
-    }
-    .copy-btn:hover { opacity: 0.7; }
-    .copy-btn svg { width: 14px; height: 14px; }
-    .footer__pages-links {
-      display: flex;
-      gap: 2rem;
-      align-items: baseline;
-      font-size: 0.9375rem;
-      font-weight: 700;
-    }
-
-
-    /* ─── Quotes ───────────────────────────────────────────── */
-    .cs-quote { margin-block: 2.25rem 1.75rem; }
-    .cs-quote__text {
-      font-family: var(--font-display);
-      font-size: clamp(1.375rem, 2.2vw, 1.75rem);
-      line-height: 1.3;
-    }
-    .cs-quote__cite {
-      display: block;
-      margin-top: 0.7rem;
-      font-style: normal;
-      font-size: 0.9375rem;
-      color: var(--ink-soft);
-    }
-
-    /* ─── AI collaboration grid ────────────────────────────── */
-    .ai-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--gutter);
-      margin-top: 2rem;
-    }
-    .ai-cell { border: 1px solid var(--ink-soft); padding: 1.4rem 1.5rem; }
-    .ai-cell__tool { font-weight: 700; margin-bottom: 0.2rem; }
-    .ai-cell__role {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.8rem;
-    }
-    .ai-cell__detail { font-size: 1.0625rem; }
-
-    /* ─── Axis grid ────────────────────────────────────────── */
-    .axis-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--gutter);
-      margin-top: 2rem;
-    }
-    .axis-cell { border: 1px solid var(--ink-soft); padding: 1.4rem 1.5rem; }
-    .axis-cell__label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.5rem;
-    }
-    .axis-cell__title {
-      font-family: var(--font-display);
-      font-size: 1.375rem;
-      margin-bottom: 0.5rem;
-    }
-    .axis-cell__body { font-size: 1.0625rem; }
-
-    /* ─── Tables ───────────────────────────────────────────── */
-    .feature__table, .tech-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.75rem;
-      font-size: 1.0625rem;
-    }
-    .feature__table th, .tech-table th {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-align: left;
-      padding: 0.7rem 1.25rem 0.7rem 0;
-      border-bottom: 1px solid var(--ink);
-    }
-    .feature__table td, .tech-table td {
-      padding: 0.8rem 1.25rem 0.8rem 0;
-      border-bottom: 1px solid var(--ink-soft);
-      vertical-align: top;
-    }
-
-    /* ─── Reflection list ──────────────────────────────────── */
-    .reflection__list { list-style: none; margin-top: 1rem; }
-    .reflection__list li {
-      display: flex;
-      gap: 0.7rem;
-      align-items: baseline;
-      padding-block: 0.35rem;
-    }
-    .reflection__list li::before { content: '\2192'; flex-shrink: 0; }
-
-    /* ─── Inline code ──────────────────────────────────────── */
-    code {
-      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-      font-size: 0.85em;
-      background: rgba(90, 6, 0, 0.07);
-      padding: 0.1em 0.35em;
-    }
-
-    /* ─── Multiple hero CTAs ───────────────────────────────── */
-    .hero__ctas {
-      grid-column: 2 / 12;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 2rem;
-    }
-    .hero__ctas .hero__cta { grid-column: auto; margin-top: 0; }
-
-    /* ─── Focus + motion ───────────────────────────────────── */
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid currentColor;
-      outline-offset: 3px;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; }
-    }
-
-    /* ─── Responsive ───────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      :root { --margin: 48px; }
-      .span-content, .hero__rule, .hero__cta, .hero__meta,
-      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
-      .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
-      .hero__tagline { grid-column: 1 / 10; }
-      .hero__meta { grid-template-columns: repeat(2, 1fr); }
-      .hero__meta-item { grid-column: auto; }
-    }
-
-    @media (max-width: 720px) {
-      :root { --margin: 24px; }
-      body { font-size: 1.125rem; }
-      .nav { padding-block: 1.4rem; }
-      .nav__links { gap: 2rem; }
-      .hero { padding-top: 3.5rem; }
-      .hero__tagline { grid-column: 1 / 13; }
-      .hero__meta { grid-template-columns: 1fr; row-gap: 1.5rem; margin-top: 3rem; }
-      .cs-section { padding-top: 4rem; }
-      .cs-figure { padding-top: 3rem; }
-      .insight__pivot { grid-template-columns: 1fr; }
-      .pivot__cell--dark { border-top: none; }
-      .decision { grid-template-columns: 2.25rem 1fr; padding-block: 1.75rem; }
-      .decision__tradeoff { grid-template-columns: 1fr; gap: 0.4rem; }
-      .footer__chat, .footer__contact, .footer__pages { grid-column: 1 / 13; }
-      .footer__inner { row-gap: 3.5rem; }
-      .footer__socials { margin-top: 2rem; }
-      .footer h3 { margin-bottom: 1.5rem; }
-      .ai-grid, .axis-grid { grid-template-columns: 1fr; }
-      .feature__table, .tech-table { font-size: 0.9375rem; }
-      .hero__ctas { grid-column: 1 / 13; }
-    }
-  </style>
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    img.fade-on-load { animation: none; opacity: 1; }
+    .rail__nav a, .btn-outline { transition: none; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ─── NAV ──────────────────────────────────────────────── -->
-  <nav class="nav grid">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Jennifer Yaya Falanga</a>
-      <div class="nav__links">
-        <a href="index.html#work">Work</a>
-        <a href="archives.html">Archive</a>
-        <a href="index.html#about">About</a>
-      </div>
-    </div>
+  <nav class="top-nav">
+    <a href="#" class="top-nav__logo">Yaya Falanga</a>
+    <ul class="top-nav__links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
   </nav>
 
+  <div class="page">
 
-  <!-- ─── HERO ─────────────────────────────────────────────── -->
-  <header class="hero grid">
-    <div class="span-content">
-      <span class="eyebrow hero__eyebrow">AI Agent · Fintech · AI Certification · 2026</span>
-      <h1 class="hero__title">The Check-In Agent</h1>
-    </div>
-    <hr class="rule hero__rule" />
-    <p class="hero__tagline">
-      An AI agent built for one moment: when a first-time investor is about to sell during a market downturn. The design challenge wasn't what the agent says. It was when it has earned the right to speak at all.
-    </p>
-    <a class="hero__cta"
-         href="https://checkin-agent.vercel.app/"
-         target="_blank" rel="noopener">
-        Try the working prototype
-      </a>
-    <div class="hero__meta">
-      <div class="hero__meta-item">
-          <span class="meta-label">Role</span>
-          <p class="meta-value">Sole designer and builder. Concept, behavioural research, trigger logic, system prompt, front-end prototype, and case study. End-to-end.</p>
+    <aside class="rail">
+      <span class="rail__eyebrow">AI Agent · Fintech · AI Certification · 2026</span>
+      <h1 class="rail__title">Check-In Agent</h1>
+      <ul class="rail__nav" id="railNav">
+        <li><a href="#context" data-section="context">Context</a></li>
+        <li><a href="#problem" data-section="problem">Problem</a></li>
+        <li><a href="#insight" data-section="insight">Key insight</a></li>
+        <li><a href="#strategy" data-section="strategy">Product strategy</a></li>
+        <li><a href="#decisions" data-section="decisions">Design decisions</a></li>
+        <li><a href="#outcome" data-section="outcome">Outcome</a></li>
+        <li><a href="#measurement" data-section="measurement">Measuring impact</a></li>
+        <li><a href="#reflection" data-section="reflection">Reflection</a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+
+      <section class="cs-section" id="context">
+        <figure class="cs-figure">
+          <img src="img/JF_WEB_CHECKINAGENTHero.png" alt="Check-In Agent UI — portfolio view with the check-in surface" class="fade-on-load">
+        </figure>
+
+        <div class="meta-row">
+          <div>
+            <div class="meta-block">
+              <div class="meta-label">Role</div>
+              <div class="meta-value">Sole designer and builder. Concept, behavioural research, trigger logic, system prompt, front-end prototype, and case study. End-to-end.</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Context</div>
+              <div class="meta-value">Final project for the AI Certification Course, 2026. Scoped as a portfolio piece aimed at AI-native Canadian fintech.</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Tools</div>
+              <div class="meta-value">Claude for structure and system prompt iteration. Perplexity for research. Anthropic API as the agent runtime. HTML, JS, and Vercel for the prototype.</div>
+            </div>
+          </div>
+          <div>
+            <p class="meta-desc">An AI agent built for one moment: when a first-time investor is about to sell during a market downturn. The design challenge wasn't what the agent says. It was when it has earned the right to speak at all.</p>
+            <a href="https://checkin-agent.vercel.app/" class="btn-outline" target="_blank" rel="noopener">Try the working prototype</a>
+          </div>
         </div>
-      <div class="hero__meta-item">
-          <span class="meta-label">Context</span>
-          <p class="meta-value">Final project for the AI Certification Course, 2026. Scoped as a portfolio piece aimed at AI-native Canadian fintech.</p>
+      </section>
+
+      <section class="cs-section" id="problem">
+        <span class="cs-eyebrow">The Problem</span>
+        <h2 class="cs-h2">First-time investors sell at the bottom. Most apps make it easier.</h2>
+        <p class="cs-p">A new investor, eight months in, first real account, opens the app during a downturn. Sees red. Closes it. Opens it again before lunch. Doesn't know if this is normal. The behaviour has a name: myopic loss aversion. Losses feel about twice as bad as equivalent gains feel good, and frequent checking sharpens the asymmetry until selling at the worst possible moment starts to feel like the responsible thing to do.</p>
+
+        <blockquote class="pull-quote">
+          <p>I know investing is a long game… but it's hard not to panic when you see red everywhere.</p>
+        </blockquote>
+        <p class="cs-p" style="margin-top: -32px; font-size: 0.85rem; color: var(--muted);">— Avelina, 26, first-time investor (research persona)</p>
+
+        <p class="cs-p">The usual app response is one of two things. Nothing, or a generic "are you sure?" modal. One ignores the moment. The other condescends to it. Neither earns trust when it actually matters.</p>
+        <p class="cs-p"><strong>Design challenge:</strong> How might an AI agent intervene at the panic-sell moment without taking the decision away from the user, without predicting the market, and without speaking when it hasn't earned the right to?</p>
+      </section>
+
+      <section class="cs-section" id="insight">
+        <span class="cs-eyebrow">Key Insight</span>
+        <h2 class="cs-h2">The interesting design problem isn't the intervention. It's the silence around it.</h2>
+        <p class="cs-p">Most AI products are racing to do more. More suggestions, more automation, more presence. Research into AI behavioural-bias failures kept surfacing the same pattern: systems that try harder to help often make things worse. They over-trigger, train people to ignore them, and quietly tip into advice. A finance agent that tries to "solve" panic by being more assertive is the failure mode, not the fix.</p>
+        <p class="cs-p">That reframed the project. The spine of the case study isn't what the agent says. It's when the agent doesn't speak, and why.</p>
+
+        <div class="reframe-table">
+          <div class="reframe-table__cell reframe-table__cell--instinct">
+            <div class="reframe-table__label">The Original Framing</div>
+            <div class="reframe-table__text">How do we stop users from panic-selling?</div>
+          </div>
+          <div class="reframe-table__cell reframe-table__cell--reframe">
+            <div class="reframe-table__label">The Reframe</div>
+            <div class="reframe-table__text">How do we design an agent that earns the right to interrupt, and steps aside the moment it has done its job?</div>
+          </div>
         </div>
-      <div class="hero__meta-item">
-          <span class="meta-label">Tools</span>
-          <p class="meta-value">Claude for structure and system prompt iteration. Perplexity for research. Anthropic API as the agent runtime. HTML, JS, and Vercel for the prototype.</p>
-        </div>
-    </div>
-  </header>
 
-  <div class="cs-figure grid">
-    <figure class="fig-inner">
-      <img
-        src="img/JF_WEB_CHECKINAGENTHero.png"
-        alt="CAN-SIMPLAN UI — proposal detail view showing domain scores, simulation flags, and planner actions"
-        loading="eager"
-      />
-    </figure>
-  </div>
+        <figure class="cs-figure">
+          <img src="img/JF_WEB_CHECKINAGENTFourstates.png" alt="State machine diagram: Dormant → Attentive → Ready → Engaged" class="fade-on-load">
+        </figure>
+        <p class="cs-p" style="margin-top: -32px; font-size: 0.85rem; color: var(--muted); text-align: center;">Four states. Only two are visible to the user.</p>
+      </section>
 
-
-  <!-- ═══════════════════════════════════════════════════════
-       ② THE PROBLEM
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">The Problem</span>
-      <h2 class="cs-h2">First-time investors sell at the bottom. Most apps make it easier.</h2>
-
-      <p class="cs-p">
-        A new investor, eight months in, first real account, opens the app during a downturn. Sees red. Closes it. Opens it again before lunch. Doesn't know if this is normal. The behaviour has a name: myopic loss aversion. Losses feel about twice as bad as equivalent gains feel good, and frequent checking sharpens the asymmetry until selling at the worst possible moment starts to feel like the responsible thing to do..
-      </p>
-
-      <div class="cs-quote">
-        <p class="cs-quote__text">I know investing is a long game…but it's hard not to panic when you see red everywhere.</p>
-        <cite class="cs-quote__cite">— Avelina, 26, first-time investor (research persona)</cite>
-      </div>
-
-      <p class="cs-p">
-        The usual app response is one of two things. Nothing, or a generic "are you sure?" modal. One ignores the moment. The other condescends to it. Neither earns trust when it actually matters.
-      </p>
-
-      <p class="cs-p">
-        <strong>Design challenge:</strong> How might an AI agent intervene at the panic-sell moment without taking the decision away from the user, without predicting the market, and without speaking when it hasn't earned the right to?
-      </p>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════
-       ③ KEY INSIGHT
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">Key Insight</span>
-      <h2 class="cs-h2">The interesting design problem isn't the intervention. It's the silence around it.</h2>
-
-      <p class="cs-p">
-        Most AI products are racing to do more. More suggestions, more automation, more presence. Research into AI behavioural-bias failures kept surfacing the same pattern: systems that try harder to help often make things worse. They over-trigger, train people to ignore them, and quietly tip into advice. A finance agent that tries to "solve" panic by being more assertive is the failure mode, not the fix.
-      </p>
-
-      <p class="cs-p">That reframed the project. The spine of the case study isn't what the agent says. It's when the agent doesn't speak, and why.
-      </p>
-
-      <!-- Before / After pivot -->
-      <div class="insight__pivot">
-        <div class="pivot__cell">
-          <p class="pivot__cell-label">The original framing</p>
-          <p class="pivot__cell-text">How do we stop users from panic-selling?</p>
-        </div>
-        <div class="pivot__cell pivot__cell--dark">
-          <p class="pivot__cell-label">The reframe</p>
-          <p class="pivot__cell-text">How do we design an agent that earns the right to interrupt, and steps aside the moment it has done its job?</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="cs-figure grid"><figure class="fig-inner">
-    <img
-      src="img/JF_WEB_CHECKINAGENTFourstates.png"
-      alt="State machine diagram: Dormant → Attentive → Ready → Engaged."
-      loading="lazy"
-    />
-    <figcaption>Four states. Only two are visible to the user.</figcaption>
-  </figure></div>
-
-  <!-- ═══════════════════════════════════════════════════════
-       ④ PRODUCT STRATEGY
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">Product Strategy</span>
-      <h2 class="cs-h2">The agent designs its own restraint.</h2>
-
-      <p class="cs-p">
-        The Check-In Agent is one feature inside a simulated Canadian investment app, scoped to one moment in one user's life: their first real downturn. The agent runs as a four-state machine. Two states are invisible by design.</p>
+      <section class="cs-section" id="strategy">
+        <span class="cs-eyebrow">Product Strategy</span>
+        <h2 class="cs-h2">The agent designs its own restraint.</h2>
+        <p class="cs-p">The Check-In Agent is one feature inside a simulated Canadian investment app, scoped to one moment in one user's life: their first real downturn. The agent runs as a four-state machine. Two states are invisible by design.</p>
         <p class="cs-p">In Dormant, nothing is wrong. In Attentive, the conditions for panic are present — portfolio in red, market down — and the agent is watching, but the user sees nothing. This was the key decision: surveillance without performance. An agent that signals it's watching changes the behaviour it's trying to read. In Ready, behavioural signals have crossed a threshold and an ambient indicator appears. In Engaged, the user has actually initiated a sell, and the agent surfaces a brief, optional check-in.</p>
+        <p class="cs-p">The whole design rests on one constraint: the agent never blocks. The path to execute the sale is always visible, always one tap away. The agent's job is not to stop the action. It is to make sure the person taking it knows what they are doing and why.</p>
 
-      <p class="cs-p">
-       The whole design rests on one constraint: the agent never blocks. The path to execute the sale is always visible, always one tap away. The agent's job is not to stop the action. It is to make sure the person taking it knows what they are doing and why.
-      </p>
+        <figure class="cs-figure">
+          <img src="img/JF_WEB_CHECKINAGENTFourmoments.png" alt="Walkthrough: quiet portfolio to accumulating signals to ambient surface to intervention to articulation to branching response to proceed-or-pause to decision log" class="fade-on-load">
+        </figure>
+        <p class="cs-p" style="margin-top: -32px; font-size: 0.85rem; color: var(--muted); text-align: center;">The four main moments, end to end.</p>
+      </section>
 
-    </div>
-  </section>
+      <section class="cs-section" id="decisions">
+        <span class="cs-eyebrow">Design Decisions</span>
+        <h2 class="cs-h2">Hierarchical signal stacking, not single triggers</h2>
+        <p class="cs-p">A single behavioural signal (dwell time on the portfolio, repeat app opens) is too noisy on its own. Acting on one of them produces false positives, trains the user to ignore the agent, and turns intervention into noise. The trigger model is hierarchical: an aborted sell flow is the strongest single signal of hesitation and can fire on its own. Everything else has to stack. Anxiety alone is not enough. Hesitation is.</p>
+        <p class="cs-p"><strong>Tradeoff:</strong> A user who panics without hesitating will not be checked in on. The agent accepts the false-negative risk because the false-positive cost is higher: an agent that cries wolf is an agent that gets dismissed before it ever matters.</p>
 
-  <div class="cs-figure grid"><figure class="fig-inner">
-    <img
-      src="img/JF_WEB_CHECKINAGENTFourmoments.png"
-      alt="Walkthrough: quiet portfolio → accumulating signals → ambient surface → intervention → articulation → branching response → proceed-or-pause → decision log."
-      loading="lazy"
-    />
-    <figcaption>The four main moments, end to end.</figcaption>
-  </figure></div>
+        <h2 class="cs-h2">Two gating conditions that no signal can override</h2>
+        <p class="cs-p">No behavioural signal fires unless the user's portfolio is in the red and the market is down today. Both gates must be open. This sits underneath the trigger logic as a non-negotiable filter, because a user selling on a normal day has a normal reason. The agent only ever shows up in the conversation it was built for.</p>
+        <p class="cs-p"><strong>Tradeoff:</strong> Real panic that happens against a flat-market backdrop will go unaddressed. The scope cut was deliberate. One scenario, designed properly, beats five scenarios designed at the surface.</p>
 
-  <!-- ═══════════════════════════════════════════════════════
-       ⑤ DESIGN DECISIONS
-  ═══════════════════════════════════════════════════════ -->
+        <h2 class="cs-h2">The agent asks the user to articulate. It does not articulate for them</h2>
+        <p class="cs-p">The check-in is three sentences. It names the user's actual numbers, states what selling now would lock in, and asks one question: what's prompting this? The agent doesn't guess at the user's emotional state. "You seem scared" is forbidden in the system prompt. "A lot of people find this part hard" is permitted. The user's answer is what does the work — speaking aloud the reason for selling is often enough to surface whether the reason is substantive, emotional, or absent.</p>
+        <p class="cs-p"><strong>Tradeoff:</strong> Some users will type "I just want to" and proceed. That's the correct outcome. The agent's job isn't to extract a better answer. It's to give the user one chance to hear their own.</p>
 
-  <section class="cs-section grid">
-    <div class="wrap-text">
+        <h2 class="cs-h2">Failure modes designed in, not bolted on</h2>
+        <p class="cs-p">The system prompt is mostly a list of refusals. If the user dismisses the check-in, the agent steps aside and logs silently — max two engagements per session, same message never twice. If the user asks for advice, the agent redirects without giving any. If the user names hardship, the agent acknowledges, confirms the sale is going through, and offers one verified resource. If the user pushes back on the agent's right to be there, the agent agrees: the check-in is optional, the sale is yours.</p>
+        <p class="cs-p"><strong>Tradeoff:</strong> The agent will sometimes step aside when staying might have helped. That's the design. An agent that doesn't accept dismissal is an agent that has stopped working for the user and started working on them.</p>
 
-      <span class="eyebrow cs-eyebrow">Design Decisions</span>
-      <h2 class="cs-h2">Four decisions that make restraint legible.</h2>
+        <figure class="cs-figure">
+          <img src="img/JF_WEB_CHECKINAGENT.png" alt="The check-in surface" class="fade-on-load">
+        </figure>
+        <p class="cs-p" style="margin-top: -32px; font-size: 0.85rem; color: var(--muted); text-align: center;">The check-in surface.</p>
 
-      <div class="decisions__list">
+        <figure class="cs-figure">
+          <img src="img/JF_WEB_CHECKINAGENTLog.png" alt="Check-in Agent decision log" class="fade-on-load">
+        </figure>
+        <p class="cs-p" style="margin-top: -32px; font-size: 0.85rem; color: var(--muted); text-align: center;">The decision log.</p>
+      </section>
 
-        <div class="decision">
-          <span class="decision__num">01</span>
-          <div>
-            <h3 class="decision__title">Hierarchical signal stacking, not single triggers</h3>
-            <p class="decision__body">
-              A single behavioural signal (dwell time on the portfolio, repeat app opens) is too noisy on its own. Acting on one of them produces false positives, trains the user to ignore the agent, and turns intervention into noise. The trigger model is hierarchical: an aborted sell flow is the strongest single signal of hesitation and can fire on its own. Everything else has to stack. Anxiety alone is not enough. Hesitation is.
-            </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                A user who panics without hesitating will not be checked in on. The agent accepts the false-negative risk because the false-positive cost is higher: an agent that cries wolf is an agent that gets dismissed before it ever matters.
-              </span>
-            </div>
-          </div>
-        </div>
+      <section class="cs-section" id="outcome">
+        <span class="cs-eyebrow">Outcome</span>
+        <h2 class="cs-h2">A working agent that exercises judgment about its own silence.</h2>
+        <p class="cs-p">A working prototype deployed at checkin-agent.vercel.app, simulating the portfolio, the signal accumulation, and the check-in surface. The agent itself runs on Claude via a system-prompted API endpoint. The trigger logic, voice principles, hard constraints, and failure modes are baked into a single system prompt that holds across the prototype's full scenario.</p>
+        <p class="cs-p">The restraint posture stayed clear of the advice and suitability zone that triggers CSA oversight — an alignment with Canadian regulatory guidance that was lucky in origin and intentional in the end. The most useful evidence the design works is what the agent does not do. It does not predict. It does not recommend. It does not block. It does not appear when it hasn't been earned.</p>
+        <p class="cs-p">The case study's positioning held: most AI products show what an AI does. This one shows when it doesn't speak, and why.</p>
+        <a href="https://checkin-agent.vercel.app/" class="btn-outline" target="_blank" rel="noopener">Try the prototype</a>
+      </section>
 
-        <div class="decision">
-          <span class="decision__num">02</span>
-          <div>
-            <h3 class="decision__title">Two gating conditions that no signal can override</h3>
-            <p class="decision__body">
-              No behavioural signal fires unless the user's portfolio is in the red and the market is down today. Both gates must be open. This sits underneath the trigger logic as a non-negotiable filter, because a user selling on a normal day has a normal reason. The agent only ever shows up in the conversation it was built for.
-            </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                Real panic that happens against a flat-market backdrop will go unaddressed. The scope cut was deliberate. One scenario, designed properly, beats five scenarios designed at the surface.
-              </span>
-            </div>
-          </div>
-        </div>
+      <section class="cs-section" id="measurement">
+        <span class="cs-eyebrow">Measuring Impact</span>
+        <h2 class="cs-h2">How I'd know the restraint is working.</h2>
+        <p class="cs-p">Restraint is hard to measure because success looks like absence. These are the signals I'd track to tell whether the silence is earned or just missing.</p>
+        <p class="cs-p"><strong>Interruption precision — is the agent only speaking when it should?</strong> The share of check-ins that land on a genuine loss-aversion moment versus a false trigger. A high false-positive rate means the thresholds are firing on noise, and every unearned interruption erodes the one thing the agent trades on: that when it appears, it matters.</p>
+        <p class="cs-p"><strong>Reflection-to-hold rate — does the pause change the decision?</strong> Of the users who see a check-in mid-panic-sell, how many hold versus proceed. The agent isn't trying to win — a user who articulates their reason and sells anyway is a correct outcome. But a check-in that never moves the decision either way is decoration, and this is how I'd tell the difference.</p>
+        <p class="cs-p"><strong>Trust retention — do people keep it on?</strong> The rate at which users dismiss, mute, or disable the agent after an interruption. Restraint that reads as nagging gets switched off. If retention holds after a check-in fires, the agent has stayed on the right side of the line between useful friction and interference.</p>
+      </section>
 
-        <div class="decision">
-          <span class="decision__num">03</span>
-          <div>
-            <h3 class="decision__title">The agent asks the user to articulate. It does not articulate for them</h3>
-            <p class="decision__body">
-              The check-in is three sentences. It names the user's actual numbers, states what selling now would lock in, and asks one question: what's prompting this? The agent doesn't guess at the user's emotional state. "You seem scared" is forbidden in the system prompt. "A lot of people find this part hard" is permitted. The user's answer is what does the work—speaking aloud the reason for selling is often enough to surface whether the reason is substantive, emotional, or absent.
-            </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                Some users will type "I just want to" and proceed. That's the correct outcome. The agent's job isn't to extract a better answer. It's to give the user one chance to hear their own.
-              </span>
-            </div>
-          </div>
-        </div>
+      <section class="cs-section" id="reflection">
+        <span class="cs-eyebrow">Reflection</span>
+        <h2 class="cs-h2">Two things I'd pressure-test before shipping.</h2>
+        <p class="cs-p"><strong>Get real behavioural data before locking the thresholds.</strong> Every signal threshold in the prototype is an educated guess informed by behavioural finance literature. Three minutes of dwell. Three app opens an hour. An aborted sell. Those numbers are defensible in a class presentation. They are not defensible in production. The trigger logic is only as good as the data calibrating it, and the only honest way to calibrate it is to watch what actual first-time investors do during an actual downturn. The architecture is right. The numbers need to be earned.</p>
+        <p class="cs-p"><strong>Bring compliance in at the design phase, not the review phase.</strong> The agent's restraint kept it on safe regulatory ground — the constraints in the system prompt happen to line up with CSA expectations around advice, suitability, and behavioural-design risks. That alignment was a hunch with research behind it, not a substitute for legal review. In a real deployment, a Canadian compliance lawyer belongs in the design conversation from the first session, not the last one. The check-in language, the failure modes, the hardship resource, the decision log — each one has a regulatory dimension that a designer can sense but cannot certify.</p>
+      </section>
 
-        <div class="decision">
-          <span class="decision__num">04</span>
-          <div>
-            <h3 class="decision__title">Failure modes designed in, not bolted on</h3>
-            <p class="decision__body">
-              The system prompt is mostly a list of refusals. If the user dismisses the check-in, the agent steps aside and logs silently—max two engagements per session, same message never twice. If the user asks for advice, the agent redirects without giving any. If the user names hardship, the agent acknowledges, confirms the sale is going through, and offers one verified resource. If the user pushes back on the agent's right to be there, the agent agrees: the check-in is optional, the sale is yours.
-            </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                The agent will sometimes step aside when staying might have helped. That's the design. An agent that doesn't accept dismissal is an agent that has stopped working for the user and started working on them.
-              </span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <div class="cs-figure grid"><figure class="fig-inner">
-    <img
-      src="img/JF_WEB_CHECKINAGENT.png"
-      alt="CAN-SIMPLAN transparency panel — scoring assumptions and data source attribution"
-      loading="lazy"
-    />
-    <figcaption>The check-in surface.</figcaption>
-  </figure></div>
-
-  <div class="cs-figure grid"><figure class="fig-inner">
-    <img
-      src="img/JF_WEB_CHECKINAGENTLog.png"
-      alt="Check-in Agent decision log"
-      loading="lazy"
-    />
-    <figcaption>The decision log.</figcaption>
-  </figure></div>
-
-  <!-- ═══════════════════════════════════════════════════════
-       ⑥ OUTCOME
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">Outcome</span>
-
-      <p class="outcome__lead">
-        A working agent that exercises judgment about its own silence, and a thesis about restraint that survived contact with the build.
-      </p>
-
-      <p class="cs-p">
-        A working prototype deployed at checkin-agent.vercel.app, simulating the portfolio, the signal accumulation, and the check-in surface. The agent itself runs on Claude via a system-prompted API endpoint. The trigger logic, voice principles, hard constraints, and failure modes are baked into a single system prompt that holds across the prototype's full scenario.
-      </p>
-
-      <p class="cs-p">
-        The restraint posture stayed clear of the advice and suitability zone that triggers CSA oversight — an alignment with Canadian regulatory guidance that was lucky in origin and intentional in the end. The most useful evidence the design works is what the agent does not do. It does not predict. It does not recommend. It does not block. It does not appear when it hasn't been earned.
-      </p>
-
-      <p class="cs-p">The case study's positioning held: most AI products show what an AI does. This one shows when it doesn't speak, and why.</p>
-      
-      <a class="hero__cta"
-         href="https://checkin-agent.vercel.app/"
-         target="_blank" rel="noopener">
-        Try the prototype
-      </a>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════
-       ⑦ Measurement
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">Measuring Impact</span>
-      <h2 class="cs-h2">How I'd know the restraint is working.</h2>
-      <p class="cs-p">Restraint is hard to measure because success looks like absence. These are the signals I'd track to tell whether the silence is earned or just missing.</p>
-      <p class="cs-p">
-        <b>Interruption precision — Is the agent only speaking when it should?</b> The share of check-ins that land on a genuine loss-aversion moment versus a false trigger. A high false-positive rate means the thresholds are firing on noise, and every unearned interruption erodes the one thing the agent trades on: that when it appears, it matters.
-      </p>
-      <p class="cs-p">
-        <b>Reflection-to-hold rate — Does the pause change the decision?</b> Of the users who see a check-in mid-panic-sell, how many hold versus proceed. The agent isn't trying to win — a user who articulates their reason and sells anyway is a correct outcome. But a check-in that never moves the decision either way is decoration, and this is how I'd tell the difference.
-      </p>
-      <p class="cs-p">
-        <b>Trust retention — Do people keep it on?</b> The rate at which users dismiss, mute, or disable the agent after an interruption. Restraint that reads as nagging gets switched off. If retention holds after a check-in fires, the agent has stayed on the right side of the line between useful friction and interference.
-      </p>
-
-    </div>
-  </section>
-  
-  <!-- ═══════════════════════════════════════════════════════
-       ⑦ What I'd Do Differently
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">What I'd Do Differently</span>
-      <h2 class="cs-h2">Two things I'd pressure-test before shipping.</h2>
-
-      <p class="cs-p">
-        <b>Get real behavioural data before locking the thresholds.</b> Every signal threshold in the prototype is an educated guess informed by behavioural finance literature. Three minutes of dwell. Three app opens an hour. An aborted sell. Those numbers are defensible in a class presentation. They are not defensible in production. The trigger logic is only as good as the data calibrating it, and the only honest way to calibrate it is to watch what actual first-time investors do during an actual downturn. The architecture is right. The numbers need to be earned.
-      </p>
-
-      <p class="cs-p">
-        <b>Bring compliance in at the design phase, not the review phase.</b> The agent's restraint kept it on safe regulatory ground, the constraints in the system prompt happen to line up with CSA expectations around advice, suitability, and behavioural-design risks. That alignment was a hunch with research behind it, not a substitute for legal review. In a real deployment, a Canadian compliance lawyer belongs in the design conversation from the first session, not the last one. The check-in language, the failure modes, the hardship resource, the decision log, each one has a regulatory dimension that a designer can sense but cannot certify.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- ─── NEXT PROJECT ──────────────────────────────── -->
-  
-  <!-- ─── NEXT PROJECT ─────────────────────────────────────── -->
-  <div class="rule-section grid">
-    <hr class="rule" />
+    </main>
   </div>
-  <a class="next-project grid" href="can-simplan.html">
-    <div class="wrap-text">
-      <p class="next-project__label">Next Project</p>
-      <p class="next-project__title">CAN-SIMPLAN: Designing accountability into AI</p>
+
+  <footer class="footer">
+    <div class="footer__intro">
+      <p class="footer__heading">I'd love to chat!</p>
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/in/jenniferyaya-falanga" target="_blank" rel="noopener" aria-label="LinkedIn — Jennifer Yaya Falanga" class="footer__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/jenniyayafalanga/" target="_blank" rel="noopener" aria-label="Instagram — Jennifer Yaya Falanga" class="footer__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
+          </svg>
+        </a>
+      </div>
     </div>
-  </a>
 
-
-<!-- ─── FOOTER ───────────────────────────────────────────── -->
-  <footer class="footer grid">
-    <div class="footer__inner">
-
-      <div class="footer__chat">
-        <span class="footer__chat-line">I'd love to chat!</span>
-        <div class="footer__socials">
-          <a class="footer__social" href="https://www.linkedin.com/in/jenniferyaya-falanga"
-             target="_blank" rel="noopener" aria-label="LinkedIn — Jennifer Yaya Falanga">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+    <div class="footer__contact">
+      <div class="footer__label">Contact</div>
+      <div class="footer__contact-row">
+        <div class="footer__contact-item">
+          <div class="footer__sublabel">Email</div>
+          <div class="footer__value">
+            <a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a>
+            <button class="copy-btn" type="button" aria-label="Copy email address"
+                    onclick="navigator.clipboard.writeText('yayafalanga@gmail.com'); this.setAttribute('aria-label','Copied');">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="5" y="5" width="9" height="9" rx="1"/>
+                <path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/>
               </svg>
-          </a>
-          <a class="footer__social" href="https://www.instagram.com/jenniyayafalanga/"
-             target="_blank" rel="noopener" aria-label="Instagram — Jennifer Yaya Falanga">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
-              </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="footer__contact">
-        <h3>Contact</h3>
-        <div class="footer__fields">
-          <div>
-            <span class="footer__field-label">Email</span>
-            <span class="footer__field-value">
-              <a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a>
-              <button class="copy-btn" type="button" aria-label="Copy email address"
-                      onclick="navigator.clipboard.writeText('yayafalanga@gmail.com'); this.setAttribute('aria-label','Copied');">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-                  <rect x="5" y="5" width="9" height="9" rx="1"/>
-                  <path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/>
-                </svg>
-              </button>
-            </span>
+            </button>
           </div>
-          <div>
-            <span class="footer__field-label">Resume</span>
-            <a class="footer__field-value" href="https://drive.google.com/file/d/1RpcT1iHkwst8W1ivjv8zWAUEW_JIQyfe/view?usp=drive_link" download>
-              Download resume &darr;
-            </a>
+        </div>
+        <div class="footer__contact-item">
+          <div class="footer__sublabel footer__sublabel--muted">Resume</div>
+          <div class="footer__value">
+            <a href="#">Download resume ↓</a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="footer__pages">
-        <h3>Pages</h3>
-        <div class="footer__pages-links">
-          <a href="index.html#work">Work</a>
-          <a href="archives.html">Archive</a>
-          <a href="index.html#about">About</a>
-        </div>
+    <div class="footer__pages">
+      <div class="footer__label">Pages</div>
+      <div class="footer__pages-row">
+        <a href="#">Work ↗</a>
+        <a href="#">Archive ↗</a>
+        <a href="#">About ↗</a>
       </div>
-
     </div>
   </footer>
 
+  <script>
+    // ── Section nav: last-crossed-heading active logic ──
+    (function () {
+      var sections = Array.from(document.querySelectorAll('.cs-section'));
+      var navLinks = Array.from(document.querySelectorAll('#railNav a'));
+      var triggerRatio = 0.33; // top third of viewport
+
+      function getTriggerY() {
+        return window.innerHeight * triggerRatio;
+      }
+
+      function updateActive() {
+        var triggerY = getTriggerY();
+        var current = sections[0];
+
+        for (var i = 0; i < sections.length; i++) {
+          var rect = sections[i].getBoundingClientRect();
+          if (rect.top <= triggerY) {
+            current = sections[i];
+          }
+        }
+
+        navLinks.forEach(function (link) {
+          var isActive = link.getAttribute('data-section') === current.id;
+          link.classList.toggle('is-active', isActive);
+        });
+      }
+
+      // Click: smooth-scroll so target heading lands at the trigger point
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var targetId = link.getAttribute('data-section');
+          var target = document.getElementById(targetId);
+          if (!target) return;
+
+          var targetY = target.getBoundingClientRect().top + window.pageYOffset - getTriggerY();
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        });
+      });
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('resize', updateActive);
+      updateActive();
+    })();
+  </script>
 
 </body>
 </html>

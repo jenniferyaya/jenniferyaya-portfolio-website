@@ -1,977 +1,768 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAN-SIMPLAN — Jennifer Yaya Falanga</title>
-  <meta name="description" content="CAN-SIMPLAN: Designing accountability into AI for municipal planners — UX case study by Jennifer Yaya Falanga." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CAN-SIMPLAN — Yaya Falanga</title>
+<meta name="description" content="CAN-SIMPLAN: designing accountability into AI for municipal planners, by Jennifer Yaya Falanga." />
 
-  <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
+<!-- Adobe Fonts — Area Extended / Area Normal -->
+<link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
-  <style>
-    /* ============================================================
-       Yaya Falanga — Portfolio 2026 Redesign
-       Case study template. Self-contained styles; tokens to be
-       extracted to a shared stylesheet once all pages migrate.
-       ============================================================ */
+<style>
+  /* ══════════════════════════════════════════════
+     DESIGN TOKENS — new system, replaces maroon/Mr Eaves
+  ══════════════════════════════════════════════ */
+  :root {
+    --bg:        #FEFEFE;
+    --ink:       #320300;
+    --highlight: #CAA3A3; /* decorative only: dividers, chip backgrounds, dark-surface text — fails WCAG as text on --bg */
+    --muted:     #806767; /* AA-safe secondary/inactive text on --bg, 5.14:1 */
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    --font-display: "area-extended", "Helvetica Neue", Arial, sans-serif;
+    --font-body:    "area-normal", "Helvetica Neue", Arial, sans-serif;
 
-    /* ─── Design Tokens ────────────────────────────────────── */
-    :root {
-      --ink:        #5A0600;
-      --ink-soft:   #CAA3A3;
-      --bg:         #F9F8F6;
-      --bone:       #F9F8F6;
-      --placeholder:#DBDBDB;
+    --margin: 80px;
+    --col-gutter: 16px;
+  }
 
-      --font-display: "mr-eaves-modern", "Helvetica Neue", Arial, sans-serif;
-      --font-body:    "mr-eaves-sans", "Helvetica Neue", Arial, sans-serif;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      --margin: 80px;
-      --gutter: 16px;
+  html { scroll-behavior: smooth; }
 
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    background: #DADADA; /* placeholder fill matching mockup gray blocks */
+  }
+
+  img:hover { /* intentionally no change */ }
+
+  img.fade-on-load {
+    opacity: 0;
+    animation: fade-in 300ms ease forwards;
+  }
+
+  @keyframes fade-in { to { opacity: 1; } }
+
+  a { color: inherit; }
+
+  /* ── TOP NAV ─────────────────────────────────── */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px var(--margin);
+    border-bottom: 1px solid #ECECEC;
+  }
+  .top-nav__logo {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .top-nav__links {
+    display: flex;
+    gap: 48px;
+    list-style: none;
+  }
+  .top-nav__links a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  /* explicitly no hover state on top nav */
+  .top-nav__links a:hover {
+    color: var(--ink);
+  }
+  .top-nav__links a:focus-visible {
+    outline: revert;
+  }
+
+  /* ── PAGE LAYOUT ─────────────────────────────── */
+  /* True 12-column grid: 80px margins, 16px gutters between all 12 tracks.
+     Rail occupies columns 1–4, content occupies columns 5–12. */
+  .page {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--col-gutter);
+    padding: 64px var(--margin) 0;
+    align-items: start;
+  }
+
+  /* ── LEFT RAIL (section nav) ─────────────────── */
+  .rail {
+    grid-column: 1 / span 4;
+    position: sticky;
+    top: 64px;
+    align-self: start;
+  }
+  .rail__eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .rail__title {
+    font-family: var(--font-display);
+    font-size: 2.75rem;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .rail__nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .rail__nav a {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 200ms ease;
+    display: inline-block;
+    width: fit-content;
+  }
+  .rail__nav a.is-active {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .rail__nav a:focus-visible {
+    outline: revert;
+  }
+
+  /* ── CONTENT COLUMN ──────────────────────────── */
+  .content {
+    grid-column: 5 / span 8;
+    padding-bottom: 120px;
+  }
+
+  .cs-section {
+    scroll-margin-top: 33vh; /* aligns with top-third trigger point for smooth-scroll targeting */
+    padding-bottom: 96px;
+  }
+
+  .cs-figure {
+    margin-bottom: 48px;
+  }
+  .cs-figure img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .meta-row {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .meta-block + .meta-block { margin-top: 28px; }
+  .meta-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .meta-value {
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .meta-desc {
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  /* ── OUTLINED BUTTON ──────────────────────────── */
+  .btn-outline {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    padding: 14px 22px;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+  .btn-outline:hover,
+  .btn-outline:focus-visible {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* ── SECTION TEXT ─────────────────────────────── */
+  .cs-eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .cs-h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 100ch;
+    margin-bottom: 20px;
+  }
+  .cs-p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 20px;
+    max-width: 90ch;
+  }
+  .cs-p:last-child { margin-bottom: 0; }
+  .cs-p strong { font-weight: 600; }
+
+  .reframe-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--ink);
+    margin: 32px 0 48px;
+  }
+  .reframe-table__cell {
+    padding: 28px 32px;
+  }
+  .reframe-table__cell--instinct {
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .reframe-table__cell--reframe {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .reframe-table__label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+  .reframe-table__text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .pull-quote {
+    border-left: 2px solid var(--ink);
+    padding: 0.4rem 0 0.4rem 32px;
+    margin: 32px 0 48px;
+  }
+  .pull-quote p {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+
+  .cs-h3 {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 40px 0 16px;
+  }
+
+  .cs-list {
+    list-style: none;
+    margin: 0 0 32px;
+  }
+  .cs-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink);
+    padding: 14px 0;
+    border-bottom: 1px solid #ECECEC;
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+  }
+  .cs-list li::before {
+    content: '→';
+    color: var(--muted);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .cs-list li:last-child { border-bottom: none; }
+
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .image-pair img,
+  .image-full img {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    width: 100%;
+  }
+  .image-full img { aspect-ratio: 16/11; }
+
+  /* ── FOOTER ───────────────────────────────────── */
+  .footer {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 96px var(--margin) 56px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--col-gutter);
+    row-gap: 48px;
+  }
+
+  .footer__intro  { grid-column: 1 / span 4; }
+  .footer__contact { grid-column: 5 / span 5; }
+  .footer__pages   { grid-column: 10 / span 3; }
+
+  .footer__heading {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 28px;
+  }
+  .footer__social {
+    display: flex;
+    gap: 16px;
+  }
+  .footer__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+    text-decoration: none;
+  }
+  .footer__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer__label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin-bottom: 24px;
+  }
+
+  .footer__contact-row {
+    display: flex;
+    gap: 56px;
+  }
+  .footer__sublabel {
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--bg);
+    opacity: 0.55;
+    margin-bottom: 6px;
+  }
+  .footer__sublabel--muted {
+    opacity: 0.4;
+  }
+  .footer__value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer__value a {
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--bg);
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .copy-btn:hover {
+    opacity: 1;
+  }
+  .copy-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .footer__pages {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer__pages-row {
+    margin-top: auto;
+    display: flex;
+    gap: 28px;
+  }
+  .footer__pages-row a {
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  /* ══════════════════════════════════════════════
+     MOBILE
+  ══════════════════════════════════════════════ */
+  @media (max-width: 860px) {
+    :root { --margin: 24px; }
+
+    .top-nav { padding-left: var(--margin); padding-right: var(--margin); }
+    .top-nav__links { gap: 24px; }
+
+    .page {
+      grid-template-columns: 1fr;
+      padding-top: 40px;
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-body);
-      font-size: 1.1875rem;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
+    .rail {
+      grid-column: 1;
+      position: static;
+      margin-bottom: 40px;
     }
+    .rail__nav { display: none; } /* nav fully removed on mobile — no dropdown, no pills */
+    .rail__title { font-size: 2.1rem; }
 
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    ::selection { background: var(--ink); color: var(--bone); }
-
-    /* ─── Grid scaffold ────────────────────────────────────── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-      padding-inline: var(--margin);
-    }
-    .span-content { grid-column: 2 / 12; }
-
-    /* ─── Shared text styles ───────────────────────────────── */
-    .eyebrow {
-      font-family: var(--font-body);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .eyebrow--soft { color: var(--ink-soft); }
-
-    .text-link {
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
-      text-decoration-thickness: 1px;
-      transition: text-decoration-color var(--transition);
-    }
-    .text-link:hover { text-decoration-color: var(--ink-soft); }
-
-    hr.rule { border: none; border-top: 1px solid var(--ink-soft); }
-
-    /* ─── Navigation ───────────────────────────────────────── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--ink);
-      align-items: center;
-      padding-block: 2rem;
-    }
-    .nav__inner {
-      grid-column: 1 / 13;
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-    .nav__logo {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-    .nav__links {
-      display: flex;
-      gap: 4.5rem;
-      font-weight: 700;
-      font-size: 1.0625rem;
-    }
-    .nav__links a { transition: color var(--transition); }
-    .nav__links a:hover { color: var(--ink-soft); }
-
-    /* ─── Hero ─────────────────────────────────────────────── */
-    .hero { padding-block: 5.5rem 0; }
-
-    .hero__eyebrow { display: block; margin-bottom: 1.1rem; }
-
-    .hero__title {
-      font-family: var(--font-display);
-      font-size: clamp(2.75rem, 5.5vw, 4.5rem);
-      font-weight: 400;
-      line-height: 1.08;
-      margin-bottom: 2.25rem;
+    .content {
+      grid-column: 1;
     }
 
-    .hero__rule { grid-column: 2 / 12; }
-
-    .hero__tagline {
-      grid-column: 2 / 8;
-      margin-top: 2rem;
+    .meta-row {
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
 
-    .hero__cta {
-      grid-column: 2 / 12;
-      justify-self: start;
-      margin-top: 2rem;
-      display: inline-block;
-      border: 1px solid var(--ink);
-      padding: 0.85em 1.6em;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: background var(--transition), color var(--transition);
-    }
-    .hero__cta:hover { background: var(--ink); color: var(--bone); }
+    .reframe-table { grid-template-columns: 1fr; }
+    .image-pair { grid-template-columns: 1fr; }
 
-    .hero__meta {
-      grid-column: 2 / 12;
-      margin-top: 4rem;
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      column-gap: var(--gutter);
-      row-gap: 2rem;
-    }
-    .hero__meta-item { grid-column: span 3; }
-    .hero__meta-item:nth-child(3n+1):last-child,
-    .hero__meta-item:nth-child(4) { grid-column: span 3; }
-    .meta-label {
-      display: block;
-      color: var(--ink-soft);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.45rem;
-    }
-    .meta-value { font-size: 1.0625rem; max-width: 36ch; }
-
-    /* ─── Figures ──────────────────────────────────────────── */
-    .cs-figure { padding-block: 4.5rem 0; }
-    .cs-figure figure,
-    .cs-figure .fig-inner { grid-column: 2 / 12; }
-    .cs-figure img,
-    .cs-figure iframe {
-      width: 100%;
-      border: 1px solid var(--ink-soft);
-      background: var(--placeholder);
-    }
-    .cs-figure figcaption {
-      margin-top: 0.8rem;
-      font-size: 0.9375rem;
-      color: var(--ink);
-    }
-
-    /* ─── Case study sections ──────────────────────────────── */
-    .cs-section { padding-top: 5.5rem; }
-    .cs-section .wrap-text { grid-column: 2 / 12; max-width: 82ch; }
-
-    .cs-eyebrow {
-      display: block;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 1.1rem;
-    }
-
-    .cs-h2 {
-      font-family: var(--font-body);
-      font-size: 1.625rem;
-      font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 1.4rem;
-    }
-
-    .cs-p { margin-bottom: 1.4rem; }
-    .cs-p:last-child { margin-bottom: 0; }
-
-    .cs-link {
-      display: inline-block;
-      margin-top: 0.5rem;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 0.15em;
-      transition: color var(--transition), border-color var(--transition);
-    }
-    .cs-link:hover { color: var(--ink-soft); border-color: var(--ink-soft); }
-
-    /* ─── Insight pivot ────────────────────────────────────── */
-    .insight__pivot {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      margin-block: 2.25rem 1.5rem;
-    }
-    .pivot__cell {
-      border: 1px solid var(--ink);
-      padding: 1.4rem 1.6rem;
-    }
-    .pivot__cell--dark {
-      background: var(--ink);
-      color: var(--bone);
-      border-color: var(--ink);
-    }
-    .pivot__cell-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .pivot__cell--dark .pivot__cell-label { color: var(--ink-soft); }
-    .pivot__cell-text { font-size: 1.125rem; }
-
-    /* ─── Decisions ────────────────────────────────────────── */
-    .decisions__list { margin-top: 1rem; }
-    .decision {
-      display: grid;
-      grid-template-columns: 3.5rem 1fr;
-      gap: var(--gutter);
-      padding-block: 2.25rem;
-      border-top: 1px solid var(--ink-soft);
-    }
-    .decision:first-child { border-top: none; padding-top: 1rem; }
-    .decision__num {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-    }
-    .decision__title {
-      font-family: var(--font-body);
-      font-size: 1.1875rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-    }
-    .decision__body { margin-bottom: 1.1rem; }
-    .decision__tradeoff {
-      display: grid;
-      grid-template-columns: 6.5rem 1fr;
-      gap: var(--gutter);
-      font-size: 1.0625rem;
-    }
-    .decision__tradeoff-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      padding-top: 0.25em;
-    }
-
-    /* ─── Outcome ──────────────────────────────────────────── */
-    .outcome__lead {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      line-height: 1.3;
-      margin-bottom: 1.6rem;
-    }
-
-    /* ─── Next project ─────────────────────────────────────── */
-    .next-project {
-      display: block;
-      padding-block: 5.5rem 6.5rem;
-    }
-    .next-project .wrap-text { grid-column: 2 / 12; }
-    .next-project__label {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.8rem;
-    }
-    .next-project__title {
-      font-family: var(--font-display);
-      font-size: clamp(1.75rem, 3.4vw, 2.625rem);
-      line-height: 1.15;
-      transition: color var(--transition);
-    }
-    a.next-project:hover .next-project__title { color: var(--ink-soft); }
-
-    .rule-section { padding-top: 5.5rem; }
-    .rule-section hr { grid-column: 2 / 12; }
-
-    /* ─── Footer ───────────────────────────────────────────── */
     .footer {
-      background: var(--ink);
-      color: var(--bone);
-      padding-block: 4.5rem 3.5rem;
+      grid-template-columns: 1fr;
+      row-gap: 32px;
     }
-    .footer__inner {
-      grid-column: 1 / 13;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: var(--gutter);
-      row-gap: 5rem;
+    .footer__intro,
+    .footer__contact,
+    .footer__pages {
+      grid-column: 1;
     }
-    .footer__chat {
-      grid-column: 1 / 6;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .footer__contact-row {
+      gap: 40px;
     }
-    .footer__chat-line {
-      font-size: 0.875rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .footer__social { display: inline-flex; }
-    .footer__socials { display: flex; gap: 1rem; align-self: flex-start; }
-    .footer__social svg { width: 20px; height: 20px; }
+  }
 
-    .footer__contact { grid-column: 7 / 11; }
-    .footer__pages   { grid-column: 11 / 13; }
-    .footer__contact, .footer__pages {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .footer h3 {
-      font-family: var(--font-body);
-      font-size: 0.9375rem;
-      font-weight: 700;
-      margin-bottom: 2.75rem;
-    }
-    .footer__fields { display: flex; gap: 3rem; flex-wrap: wrap; }
-    .footer__field-label {
-      display: block;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.4rem;
-    }
-    .footer__field-value {
-      font-size: 0.9375rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .footer a { transition: opacity var(--transition); }
-    .footer a.footer__field-value:hover,
-    .footer__pages a:hover,
-    .footer__social:hover { opacity: 0.7; }
-    .copy-btn {
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      display: inline-flex;
-      padding: 0;
-      transition: opacity var(--transition);
-    }
-    .copy-btn:hover { opacity: 0.7; }
-    .copy-btn svg { width: 14px; height: 14px; }
-    .footer__pages-links {
-      display: flex;
-      gap: 2rem;
-      align-items: baseline;
-      font-size: 0.9375rem;
-      font-weight: 700;
-    }
-
-
-    /* ─── Quotes ───────────────────────────────────────────── */
-    .cs-quote { margin-block: 2.25rem 1.75rem; }
-    .cs-quote__text {
-      font-family: var(--font-display);
-      font-size: clamp(1.375rem, 2.2vw, 1.75rem);
-      line-height: 1.3;
-    }
-    .cs-quote__cite {
-      display: block;
-      margin-top: 0.7rem;
-      font-style: normal;
-      font-size: 0.9375rem;
-      color: var(--ink-soft);
-    }
-
-    /* ─── AI collaboration grid ────────────────────────────── */
-    .ai-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--gutter);
-      margin-top: 2rem;
-    }
-    .ai-cell { border: 1px solid var(--ink-soft); padding: 1.4rem 1.5rem; }
-    .ai-cell__tool { font-weight: 700; margin-bottom: 0.2rem; }
-    .ai-cell__role {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.8rem;
-    }
-    .ai-cell__detail { font-size: 1.0625rem; }
-
-    /* ─── Axis grid ────────────────────────────────────────── */
-    .axis-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--gutter);
-      margin-top: 2rem;
-    }
-    .axis-cell { border: 1px solid var(--ink-soft); padding: 1.4rem 1.5rem; }
-    .axis-cell__label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 0.5rem;
-    }
-    .axis-cell__title {
-      font-family: var(--font-display);
-      font-size: 1.375rem;
-      margin-bottom: 0.5rem;
-    }
-    .axis-cell__body { font-size: 1.0625rem; }
-
-    /* ─── Tables ───────────────────────────────────────────── */
-    .feature__table, .tech-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.75rem;
-      font-size: 1.0625rem;
-    }
-    .feature__table th, .tech-table th {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-align: left;
-      padding: 0.7rem 1.25rem 0.7rem 0;
-      border-bottom: 1px solid var(--ink);
-    }
-    .feature__table td, .tech-table td {
-      padding: 0.8rem 1.25rem 0.8rem 0;
-      border-bottom: 1px solid var(--ink-soft);
-      vertical-align: top;
-    }
-
-    /* ─── Reflection list ──────────────────────────────────── */
-    .reflection__list { list-style: none; margin-top: 1rem; }
-    .reflection__list li {
-      display: flex;
-      gap: 0.7rem;
-      align-items: baseline;
-      padding-block: 0.35rem;
-    }
-    .reflection__list li::before { content: '\2192'; flex-shrink: 0; }
-
-    /* ─── Inline code ──────────────────────────────────────── */
-    code {
-      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-      font-size: 0.85em;
-      background: rgba(90, 6, 0, 0.07);
-      padding: 0.1em 0.35em;
-    }
-
-    /* ─── Multiple hero CTAs ───────────────────────────────── */
-    .hero__ctas {
-      grid-column: 2 / 12;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 2rem;
-    }
-    .hero__ctas .hero__cta { grid-column: auto; margin-top: 0; }
-
-    /* ─── Focus + motion ───────────────────────────────────── */
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid currentColor;
-      outline-offset: 3px;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; }
-    }
-
-    /* ─── Responsive ───────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      :root { --margin: 48px; }
-      .span-content, .hero__rule, .hero__cta, .hero__meta,
-      .cs-section .wrap-text, .cs-figure figure, .cs-figure .fig-inner,
-      .next-project .wrap-text, .rule-section hr { grid-column: 1 / 13; }
-      .hero__tagline { grid-column: 1 / 10; }
-      .hero__meta { grid-template-columns: repeat(2, 1fr); }
-      .hero__meta-item { grid-column: auto; }
-    }
-
-    @media (max-width: 720px) {
-      :root { --margin: 24px; }
-      body { font-size: 1.125rem; }
-      .nav { padding-block: 1.4rem; }
-      .nav__links { gap: 2rem; }
-      .hero { padding-top: 3.5rem; }
-      .hero__tagline { grid-column: 1 / 13; }
-      .hero__meta { grid-template-columns: 1fr; row-gap: 1.5rem; margin-top: 3rem; }
-      .cs-section { padding-top: 4rem; }
-      .cs-figure { padding-top: 3rem; }
-      .insight__pivot { grid-template-columns: 1fr; }
-      .pivot__cell--dark { border-top: none; }
-      .decision { grid-template-columns: 2.25rem 1fr; padding-block: 1.75rem; }
-      .decision__tradeoff { grid-template-columns: 1fr; gap: 0.4rem; }
-      .footer__chat, .footer__contact, .footer__pages { grid-column: 1 / 13; }
-      .footer__inner { row-gap: 3.5rem; }
-      .footer__socials { margin-top: 2rem; }
-      .footer h3 { margin-bottom: 1.5rem; }
-      .ai-grid, .axis-grid { grid-template-columns: 1fr; }
-      .feature__table, .tech-table { font-size: 0.9375rem; }
-      .hero__ctas { grid-column: 1 / 13; }
-    }
-  </style>
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    img.fade-on-load { animation: none; opacity: 1; }
+    .rail__nav a, .btn-outline { transition: none; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ─── NAV ──────────────────────────────────────────────── -->
-  <nav class="nav grid">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Jennifer Yaya Falanga</a>
-      <div class="nav__links">
-        <a href="index.html#work">Work</a>
-        <a href="archives.html">Archive</a>
-        <a href="index.html#about">About</a>
-      </div>
-    </div>
+  <nav class="top-nav">
+    <a href="index.html" class="top-nav__logo">Jennifer Yaya Falanga</a>
+    <ul class="top-nav__links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
   </nav>
 
+  <div class="page">
 
-  <!-- ─── HERO ─────────────────────────────────────────────── -->
-  <header class="hero grid">
-    <div class="span-content">
-      <span class="eyebrow hero__eyebrow">UX Design · AI Tool · Design Sprint · 2026</span>
-      <h1 class="hero__title">CAN-SIMPLAN</h1>
-    </div>
-    <hr class="rule hero__rule" />
-    <p class="hero__tagline">
-      Accuracy isn't enough. A planner has to be able to stand up in a council meeting and explain why. CAN-SIMPLAN is the design that makes that possible. An AI-assisted zoning tool where every output is traceable, every decision is defensible, and the human stays accountable throughout.
-    </p>
-    <a class="hero__cta"
-         href="https://www.figma.com/proto/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=1-2&starting-point-node-id=1%3A2&t=zJe3LDu5HQo78ESO-1"
-         target="_blank" rel="noopener">
-        Explore interactive prototype
-      </a>
-    <div class="hero__meta">
-      <div class="hero__meta-item">
-          <span class="meta-label">Role</span>
-          <p class="meta-value">Sole UX designer. End-to-end interface: proposal intake, simulation output, rationale recording, audit trail. Selected as winning project among the cohort.</p>
-        </div>
-      <div class="hero__meta-item">
-          <span class="meta-label">Context</span>
-          <p class="meta-value">Four-day cross-disciplinary sprint, four-person team.</p>
-        </div>
-      <div class="hero__meta-item">
-          <span class="meta-label">Tools</span>
-          <p class="meta-value">Figma. Interactive prototype, end-to-end.</p>
-        </div>
-    </div>
-  </header>
+    <aside class="rail">
+      <span class="rail__eyebrow">UX Design · Civic Sprint · 2026</span>
+      <h1 class="rail__title">CAN-SIMPLAN</h1>
+      <ul class="rail__nav" id="railNav">
+        <li><a href="#context" data-section="context">Context</a></li>
+        <li><a href="#problem" data-section="problem">Problem</a></li>
+        <li><a href="#role" data-section="role">Role</a></li>
+        <li><a href="#insight" data-section="insight">Key insight</a></li>
+        <li><a href="#solution" data-section="solution">Solution</a></li>
+        <li><a href="#decisions" data-section="decisions">Design decisions</a></li>
+        <li><a href="#reflection" data-section="reflection">Reflection</a></li>
+        <li><a href="#next-steps" data-section="next-steps">Next steps</a></li>
+      </ul>
+    </aside>
 
-  <div class="cs-figure grid">
-    <figure class="fig-inner">
-      <img
-        src="img/JF_WEB_CANSIMPLANHero.png"
-        alt="CAN-SIMPLAN UI — proposal detail view showing domain scores, simulation flags, and planner actions"
-        loading="eager"
-      />
-    </figure>
+    <main class="content">
+
+      <section class="cs-section" id="context">
+        <figure class="cs-figure">
+          <img src="img/JF_WEB_CANSIMPLANHero.png" alt="CAN-SIMPLAN UI — proposal detail view showing domain scores, simulation flags, and planner actions" class="fade-on-load">
+        </figure>
+
+        <div class="meta-row">
+          <div>
+            <div class="meta-block">
+              <div class="meta-label">Role</div>
+              <div class="meta-value">UX Designer</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Duration</div>
+              <div class="meta-value">4 days</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Tools</div>
+              <div class="meta-value">Figma, Google Slides, Claude AI.</div>
+            </div>
+          </div>
+          <div>
+            <p class="meta-desc">CAN-SIMPLAN is an AI pre-screening tool for municipal development proposals. I designed the end-to-end interface, login to audit trail, so that every output a planner sees is something they can explain, trace, and stand behind.</p>
+            <a href="https://www.figma.com/proto/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=1-2&starting-point-node-id=1%3A2&t=zJe3LDu5HQo78ESO-1" class="btn-outline" target="_blank" rel="noopener">Explore interactive prototype</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" id="problem">
+        <span class="cs-eyebrow">The Problem</span>
+        <h2 class="cs-h2">Planners are accountable. The AI isn't.</h2>
+        <p class="cs-p">Municipal planners make consequential decisions — zoning approvals, housing density, displacement risk — increasingly informed by AI outputs they can't fully interrogate. When those decisions fail politically or legally, the model doesn't answer for it. The planner does.</p>
+        <p class="cs-p">Most tools are designed for speed. None were designed for defensibility.</p>
+
+        <blockquote class="pull-quote">
+          <p>"The model might be accurate, but accuracy isn't enough. I need transparency."</p>
+        </blockquote>
+
+        <h3 class="cs-h3">The Design Challenge</h3>
+        <p class="cs-p">How might we structure AI outputs so planners can defend every decision under legal, political, and public scrutiny?</p>
+      </section>
+
+      <section class="cs-section" id="role">
+        <span class="cs-eyebrow">My Role</span>
+        <h2 class="cs-h2">Sole UX designer on a cross-functional team.</h2>
+        <p class="cs-p">I worked closely with three software engineers and a data scientist to translate simulation model logic into interfaces planners could read, interrogate, and act on.</p>
+        <ul class="cs-list">
+          <li>Persona development and problem framing</li>
+          <li>Information architecture and interaction design</li>
+          <li>Transparency, flagging, and audit trail patterns</li>
+          <li>High-fidelity interface design (Figma)</li>
+          <li>Stakeholder presentation design and content</li>
+        </ul>
+        <div class="cs-figure">
+          <img src="img/JF_WEB_CANSIMPLANDashboard.png" alt="CAN-SIMPLAN dashboard showing proposal queue, model confidence trend, and review velocity" class="fade-on-load">
+        </div>
+      </section>
+
+      <section class="cs-section" id="insight">
+        <span class="cs-eyebrow">Key Insight</span>
+        <h2 class="cs-h2">Planners don't need faster models. They need outputs they can defend.</h2>
+        <p class="cs-p">This reframed the entire project. The design question was no longer about efficiency — it was about accountability. Every interface decision followed from that shift.</p>
+        <div class="cs-figure">
+          <img src="img/JF_WEB_CANSIMPLANPersona.jpg" alt="Daniel Moreau persona — Senior Municipal Planner, goals and pain points" class="fade-on-load">
+        </div>
+      </section>
+
+      <section class="cs-section" id="solution">
+        <span class="cs-eyebrow">The Solution</span>
+        <h2 class="cs-h2">CAN-SIMPLAN is not a decision-maker. It's a structured oversight layer.</h2>
+        <ul class="cs-list">
+          <li>Runs multi-domain simulation scoring</li>
+          <li>Surfaces confidence levels and flagged risks</li>
+          <li>Requires planner engagement before approval</li>
+          <li>Generates council-ready, audit-backed outputs</li>
+        </ul>
+        <h3 class="cs-h3">Core principle: defensible over fast</h3>
+
+        <figure class="cs-figure">
+          <img src="img/JF_WEB_CANSIMPLANProposalDetail.jpg" alt="CAN-SIMPLAN proposal detail view: domain scorecards, simulation flags, and planner action panel" class="fade-on-load">
+        </figure>
+
+        <figure class="cs-figure">
+          <img src="img/JF_WEB_CANSIMPLANTransparency.jpg" alt="CAN-SIMPLAN transparency panel: scoring assumptions and data source attribution" class="fade-on-load">
+        </figure>
+      </section>
+
+      <section class="cs-section" id="decisions">
+        <span class="cs-eyebrow">Design Decisions</span>
+        <h2 class="cs-h2">Blocking flags</h2>
+        <p class="cs-p">Flags require written rationale before the workflow proceeds. In a governance context, the interface has to enforce engagement, not rely on professional diligence.</p>
+
+        <h2 class="cs-h2">Visible confidence</h2>
+        <p class="cs-p">Model confidence, version, and last-run timestamp surface in the proposal header, not buried in a technical panel. Planners need to know how much to trust an output before they engage with it. Surfacing uncertainty is not a weakness — it's honesty.</p>
+
+        <h2 class="cs-h2">Plain-language translation</h2>
+        <p class="cs-p">Every technical flag includes a plain-language explanation written for planners, not data scientists. The planner's job is judgment. The interface's job is translation. The flag descriptions do the interpretation work so cognitive load stays where it belongs.</p>
+
+        <h2 class="cs-h2">Embedded audit trail</h2>
+        <p class="cs-p">All overrides are logged, timestamped, and immutable within the proposal view, not in a separate admin panel. Placing the audit trail inside the primary workflow signals that documentation is part of the job, not a bureaucratic add-on. If it's buried, accountability is secondary.</p>
+
+        <figure class="cs-figure">
+          <img src="img/JF_WEB_CANSIMPLANAuditTrail.jpg" alt="CAN-SIMPLAN audit trail and planner decision panel" class="fade-on-load">
+        </figure>
+      </section>
+
+      <section class="cs-section" id="reflection">
+        <span class="cs-eyebrow">Reflection</span>
+        <h2 class="cs-h2">Designing for governance changes the constraints entirely.</h2>
+        <p class="cs-p">Usability is not the primary constraint here — accountability is. That distinction reshaped how I thought about friction, structure, and trust.</p>
+        <ul class="cs-list">
+          <li>Friction can be protective. Blocking flags aren't bad UX — they're the right UX for a governance context.</li>
+          <li>Structure builds trust. When a system enforces documentation, it signals to every stakeholder that the process is serious.</li>
+          <li>Auditability is a UX problem. If the audit trail is buried or hard to read, it doesn't function as accountability — it's just data.</li>
+        </ul>
+        <p class="cs-p">Working cross-functionally also pushed me to get comfortable at the boundary between technical model logic and human decision workflows, translating in both directions.</p>
+
+        <h3 class="cs-h3">What if accountability were a system feature?</h3>
+        <p class="cs-p">That question outlasts this project. Most AI tools treat accountability as something bolted on after the fact — a compliance log, a disclaimer, a human sign-off screen that exists to satisfy legal rather than to build trust. CAN-SIMPLAN treats it as a design constraint from the first wireframe: the audit trail isn't a record of what the interface allowed to happen elsewhere, it's built into the same view where the decision gets made. If more AI-assisted tools — not just civic ones, but hiring platforms, lending systems, clinical decision support — treated the requirement to explain a decision as a feature to design for rather than a report to generate afterward, the tools themselves would look different. Fewer dashboards optimized purely for throughput; more interfaces that slow a person down at exactly the moment their judgment matters most.</p>
+
+        <h3 class="cs-h3">What I'd do differently</h3>
+        <p class="cs-p">Four days is enough to prove a reframe, not enough to stress-test it. If I had more time, I'd want evidence that the blocking flags actually change planner behaviour rather than just adding a click they learn to move past quickly — that's a real risk with any interface that relies on friction to enforce rigor. I'd also want to sit with a planner while they used the transparency panel on a proposal they disagreed with, not just approved. The best test of a defensibility tool isn't whether it explains an easy decision; it's whether it holds up when someone pushes back on a hard one.</p>
+      </section>
+
+      <section class="cs-section" id="next-steps">
+        <span class="cs-eyebrow">Next Steps</span>
+        <h2 class="cs-h2">Given more time and access to users, I'd prioritise:</h2>
+        <ul class="cs-list">
+          <li>Usability testing with senior planners on the flag engagement and override flows</li>
+          <li>WCAG 2.1 AA accessibility audit — high-stakes civic tools must be universally accessible</li>
+          <li>Mobile workflow for field visits and on-site proposal review</li>
+          <li>Design of the post-approval feedback loop, where real outcomes recalibrate the model over time</li>
+        </ul>
+      </section>
+
+    </main>
   </div>
 
-
-  <!-- ═══════════════════════════════════════════════════════
-       ② THE PROBLEM
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">The Problem</span>
-      <h2 class="cs-h2">Municipal planners don't need faster AI. They need AI they can defend.</h2>
-
-      <p class="cs-p">
-        Many tools promise efficiency: summaries, risk flags, recommendations. But when outputs arrive without clear reasoning, they introduce a new risk. In a governance context, a decision must be traceable because it must hold up under questioning.
-      </p>
-
-      <div class="cs-quote">
-        <p class="cs-quote__text">The model might be accurate but accuracy isn't enough. I need to be able to stand up in a council meeting and explain why.</p>
-        <cite class="cs-quote__cite">— Municipal planner, research insight</cite>
+  <footer class="footer">
+    <div class="footer__intro">
+      <p class="footer__heading">I'd love to chat!</p>
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/in/jenniferyaya-falanga" target="_blank" rel="noopener" aria-label="LinkedIn — Jennifer Yaya Falanga" class="footer__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/jenniyayafalanga/" target="_blank" rel="noopener" aria-label="Instagram — Jennifer Yaya Falanga" class="footer__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
+          </svg>
+        </a>
       </div>
-
-      <p class="cs-p">
-        <strong>Design challenge:</strong> How might we design an AI planning tool where every output a planner acts on is something they can explain and stand behind?
-      </p>
-
     </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════════════════
-       ③ KEY INSIGHT
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">Key Insight</span>
-      <h2 class="cs-h2">The AI isn't the problem. The opacity is.</h2>
-
-      <p class="cs-p">
-        Early research conversations revealed a consistent pattern:
-        the barrier to AI adoption wasn’t skepticism about model accuracy, it was the inability to explain any individual output to a colleague, a councillor, or a community member asking difficult questions.
-      </p>
-
-      <p class="cs-p">The design problem wasn't speed. It was legibility, to keep a human hand visible at every step.
-      </p>
-
-      <!-- Before / After pivot -->
-      <div class="insight__pivot">
-        <div class="pivot__cell">
-          <p class="pivot__cell-label">The original framing</p>
-          <p class="pivot__cell-text">How do we speed up the proposal review process with AI?</p>
-        </div>
-        <div class="pivot__cell pivot__cell--dark">
-          <p class="pivot__cell-label">The reframe</p>
-          <p class="pivot__cell-text">How might we design AI-assisted decisions that a planner can clearly explain, trace, and defend?</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="cs-figure grid"><figure class="fig-inner">
-    <img
-      src="img/JF_WEB_CANSIMPLANSystemOverview.jpg"
-      alt="CAN-SIMPLAN system overview: four transparent stages from intake to decision"
-      loading="lazy"
-    />
-    <figcaption>System overview: Four transparent stages, each passing through a human checkpoint before the workflow can advance.</figcaption>
-  </figure></div>
-
-  <!-- ═══════════════════════════════════════════════════════
-       ④ PRODUCT STRATEGY
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">Product Strategy</span>
-      <h2 class="cs-h2">CAN-SIMPLAN is not a decision-maker. It's a structured oversight layer.</h2>
-
-      <p class="cs-p">
-        CAN-SIMPLAN is designed around one principle: the AI surfaces analysis but
-        the planner makes the call.</p>
-        <p class="cs-p">Every interface decision was tested against that constraint.
-      </p>
-
-      <p class="cs-p">
-       I owned the end-to-end interface, from login through audit trail, as the sole UX designer on a four-day multidisciplinary sprint team.
-      </p>
-
-    </div>
-  </section>
-
-  <div class="cs-figure grid"><figure class="fig-inner">
-    <img
-      src="img/JF_WEB_CANSIMPLANDashboard.png"
-      alt="CAN-SIMPLAN proposal dashboard — queue, model confidence trend, and review velocity"
-      loading="lazy"
-    />
-    <figcaption>The Proposal Dashboard: What needs attention before the planner opens a single case.</figcaption>
-  </figure></div>
-
-  <div class="cs-figure grid"><figure class="fig-inner">
-    <img
-      src="img/JF_WEB_CANSIMPLANProposalDetail.jpg"
-      alt="CAN-SIMPLAN proposal detail — domain scorecards, simulation flags, planner action panel"
-      loading="lazy"
-    />
-    <figcaption>Proposal Detail: Domain scores, simulation flags, and planner actions in one scrollable workspace.</figcaption>
-  </figure></div>
-
-  <!-- ═══════════════════════════════════════════════════════
-       ⑤ DESIGN DECISIONS
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">Design Decisions</span>
-      <h2 class="cs-h2">Four patterns that make accountability tangible.</h2>
-
-      <div class="decisions__list">
-
-        <div class="decision">
-          <span class="decision__num">01</span>
-          <div>
-            <h3 class="decision__title">Blocking flags enforce engagement</h3>
-            <p class="decision__body">
-              When a concern is raised, the workflow pauses, and the planner must record a rationale before proceeding. This introduces friction by design because it turns a passive step into an explicit decision. The argument against was based on behavioural reality: optional fields get skipped, especially under time pressure, which is precisely when the rationale matters most. That friction was the point.
-            </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                Planners who feel certain about a call still have to articulate why, even when it feels obvious. Obvious decisions are easy to defend. The tool is shaping habits around the ones that aren't.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="decision">
-          <span class="decision__num">02</span>
-          <div>
-            <h3 class="decision__title">Confidence appears before interpretation</h3>
-            <p class="decision__body">
-              Model confidence, version, and timestamp are visible at the top of each proposal. A planner asked to defend a decision needs to know what the system knew, and when. Surfacing that upfront is the difference between a traceable decision and an opaque one.
-            </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                Uncertainty is made visible rather than implied.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="decision">
-          <span class="decision__num">03</span>
-          <div>
-            <h3 class="decision__title">Plain language over technical precision</h3>
-            <p class="decision__body">
-              Each simulation flag includes a plain-language explanation written for planners, not data scientists. The planner’s role is judgment. The interface’s role is translation.
-            </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                Some nuance is reduced, but detailed information remains accessible one level deeper. The interface prioritizes clarity at the point of decision.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="decision">
-          <span class="decision__num">04</span>
-          <div>
-            <h3 class="decision__title">The audit trail stays in the workflow.</h3>
-            <p class="decision__body">
-              Every action is logged directly within the proposal view rather than hidden in an administrative panel.
-            </p>
-            <div class="decision__tradeoff">
-              <span class="decision__tradeoff-label">Tradeoff</span>
-              <span class="decision__tradeoff-text">
-                This adds density, but keeps accountability tied to the moment of decision rather than separating it into a secondary layer.
-              </span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <a class="cs-link"
-         href="https://www.figma.com/design/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=0-1&t=bj60QhFHEndpqrT4-1"
-         target="_blank" rel="noopener">
-        View Figma designs
-      </a>
-
-    </div>
-  </section>
-
-  <div class="cs-figure grid"><figure class="fig-inner">
-    <img
-      src="img/JF_WEB_CANSIMPLANTransparency.jpg"
-      alt="CAN-SIMPLAN transparency panel — scoring assumptions and data source attribution"
-      loading="lazy"
-    />
-    <figcaption>Transparency Panel: Every scoring assumption and data source — visible, attributed, traceable.</figcaption>
-  </figure></div>
-
-  <div class="cs-figure grid"><figure class="fig-inner">
-    <img
-      src="img/JF_WEB_CANSIMPLANAuditTrail.jpg"
-      alt="CAN-SIMPLAN audit trail and planner decision panel"
-      loading="lazy"
-    />
-    <figcaption>Audit Trail: A sequential, immutable log of every planner action alongside a decision panel requiring written rationale before submission.</figcaption>
-  </figure></div>
-
-  <!-- ═══════════════════════════════════════════════════════
-       ⑥ OUTCOME
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">Outcome</span>
-
-      <p class="outcome__lead">
-        A decision-support tool that strengthens a planner’s ability to explain what they decide.
-      </p>
-
-      <p class="cs-p">
-        Eight-screen prototype covering the full proposal lifecycle, completed in four days, selected as winning project. The thesis held: in civic AI tools, legibility is a precondition for use, not an enhancement.
-      </p>
-
-      <p class="cs-p">
-        The project reinforced a consistent pattern: in civic contexts, adoption depends less on performance than on whether the system can be understood. When reasoning is visible, trust becomes possible.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- Prototype embed -->
-  <div class="cs-figure grid" id="prototype"><figure class="fig-inner">
-    <iframe
-      style="border: 1px solid var(--ink-soft); display: block; min-height: 640px;"
-      width="100%" height="700"
-      src="https://embed.figma.com/proto/KjVF7Vbj8pQoaWIfBMVxQB/CAN-SIMPLAN?node-id=1-2&starting-point-node-id=1%3A2&embed-host=share"
-      allowfullscreen
-      title="CAN-SIMPLAN — interactive prototype"
-    ></iframe>
-    <figcaption>Interactive prototype: proposal queue, detail view, flag override, and audit trail flows.</figcaption>
-  </figure></div>
-
-  
-<!-- ═══════════════════════════════════════════════════════
-       ⑦ Measurement
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">Measuring Impact</span>
-      <h2 class="cs-h2">How I'd know the accountability is real.</h2>
-
-      <p class="cs-p">The tool's whole claim is that it makes AI planning decisions defensible. That's only true if planners actually engage with the oversight instead of clicking past it. These are the signals I'd track.</p>
-      <p class="cs-p">
-        <b>Flag engagement rate — Is the oversight real or performative?</b> How often planners genuinely resolve a blocking flag, read the reasoning, act on it, versus dismiss it as fast as the interface allows. Blocking flags that get muscle-memoried into oblivion aren't accountability. They're a speed bump everyone learns to ignore.
-      </p>
-      <p class="cs-p">
-        <b>Audit trail completeness — Can a decision be defended after the fact?</b> The share of finalized plans with a full, legible record of what the AI recommended, its confidence, and where a human overrode it. The trail only matters if it holds up when a council member, a journalist, or a court asks how the plan was reached. Gaps are where defensibility fails.
-      </p>
-      <p class="cs-p">
-        <b>Override-with-reasoning rate — Are humans deciding, or deferring?</b> When planners override the AI, how often they document why. A high rate signals people are treating the AI as an input to interrogate, not an authority to rubber-stamp. Silent acceptance of every recommendation is the failure mode the tool exists to prevent.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════
-       ⑦ What I'd Do Differently
-  ═══════════════════════════════════════════════════════ -->
-
-  <section class="cs-section grid">
-    <div class="wrap-text">
-
-      <span class="eyebrow cs-eyebrow">What I'd Do Differently</span>
-      <h2 class="cs-h2">Two things I'd pressure-test before shipping.</h2>
-
-      <p class="cs-p">
-        <b>Test the rationale-recording step at realistic volume.</b> In a sprint prototype, mandatory rationale was evaluated against a single proposal. A planner reviewing twenty proposals in a week may experience it very differently, either as a meaningful pause or as rote overhead. I’d run a longitudinal study before committing mandatory checkpoints everywhere. The design likely needs tiered friction: mandatory for high-concern flags, optional for low.
-      </p>
-
-      <p class="cs-p">
-        <b>Involve a planning legal team earlier.</b> The audit trail was designed with legibility for planners in mind. Whether that format satisfies the evidentiary and procedural requirements for an actual appeal or council challenge is a different question, that requires legal review, not just UX testing. In a real development cycle, that input belongs in the design phase, not as a downstream compliance check.
-      </p>
-
-    </div>
-  </section>
-
-  
-  <!-- ─── NEXT PROJECT ─────────────────────────────────────── -->
-  <div class="rule-section grid">
-    <hr class="rule" />
-  </div>
-  <a class="next-project grid" href="workmap.html">
-    <div class="wrap-text">
-      <p class="next-project__label">Next Project</p>
-      <p class="next-project__title">WorkMap: Mapping AI's impact in the workplace task-by-task</p>
-    </div>
-  </a>
-
-
-<!-- ─── FOOTER ───────────────────────────────────────────── -->
-  <footer class="footer grid">
-    <div class="footer__inner">
-
-      <div class="footer__chat">
-        <span class="footer__chat-line">I'd love to chat!</span>
-        <div class="footer__socials">
-          <a class="footer__social" href="https://www.linkedin.com/in/jenniferyaya-falanga"
-             target="_blank" rel="noopener" aria-label="LinkedIn — Jennifer Yaya Falanga">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+    <div class="footer__contact">
+      <div class="footer__label">Contact</div>
+      <div class="footer__contact-row">
+        <div class="footer__contact-item">
+          <div class="footer__sublabel">Email</div>
+          <div class="footer__value">
+            <a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a>
+            <button class="copy-btn" type="button" aria-label="Copy email address"
+                    onclick="navigator.clipboard.writeText('yayafalanga@gmail.com'); this.setAttribute('aria-label','Copied');">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="5" y="5" width="9" height="9" rx="1"/>
+                <path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/>
               </svg>
-          </a>
-          <a class="footer__social" href="https://www.instagram.com/jenniyayafalanga/"
-             target="_blank" rel="noopener" aria-label="Instagram — Jennifer Yaya Falanga">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
-              </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="footer__contact">
-        <h3>Contact</h3>
-        <div class="footer__fields">
-          <div>
-            <span class="footer__field-label">Email</span>
-            <span class="footer__field-value">
-              <a href="mailto:yayafalanga@gmail.com">yayafalanga@gmail.com</a>
-              <button class="copy-btn" type="button" aria-label="Copy email address"
-                      onclick="navigator.clipboard.writeText('yayafalanga@gmail.com'); this.setAttribute('aria-label','Copied');">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-                  <rect x="5" y="5" width="9" height="9" rx="1"/>
-                  <path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/>
-                </svg>
-              </button>
-            </span>
+            </button>
           </div>
-          <div>
-            <span class="footer__field-label">Resume</span>
-            <a class="footer__field-value" href="https://drive.google.com/file/d/1RpcT1iHkwst8W1ivjv8zWAUEW_JIQyfe/view?usp=drive_link" download>
-              Download resume &darr;
-            </a>
+        </div>
+        <div class="footer__contact-item">
+          <div class="footer__sublabel footer__sublabel--muted">Resume</div>
+          <div class="footer__value">
+            <a href="#">Download resume ↓</a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="footer__pages">
-        <h3>Pages</h3>
-        <div class="footer__pages-links">
-          <a href="index.html#work">Work</a>
-          <a href="archives.html">Archive</a>
-          <a href="index.html#about">About</a>
-        </div>
+    <div class="footer__pages">
+      <div class="footer__label">Pages</div>
+      <div class="footer__pages-row">
+        <a href="#">Work ↗</a>
+        <a href="#">Archive ↗</a>
+        <a href="#">About ↗</a>
       </div>
-
     </div>
   </footer>
+
+  <script>
+    // ── Section nav: last-crossed-heading active logic ──
+    (function () {
+      var sections = Array.from(document.querySelectorAll('.cs-section'));
+      var navLinks = Array.from(document.querySelectorAll('#railNav a'));
+      var triggerRatio = 0.33; // top third of viewport
+
+      function getTriggerY() {
+        return window.innerHeight * triggerRatio;
+      }
+
+      function updateActive() {
+        var triggerY = getTriggerY();
+        var current = sections[0];
+
+        for (var i = 0; i < sections.length; i++) {
+          var rect = sections[i].getBoundingClientRect();
+          if (rect.top <= triggerY) {
+            current = sections[i];
+          }
+        }
+
+        navLinks.forEach(function (link) {
+          var isActive = link.getAttribute('data-section') === current.id;
+          link.classList.toggle('is-active', isActive);
+        });
+      }
+
+      // Click: smooth-scroll so target heading lands at the trigger point
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var targetId = link.getAttribute('data-section');
+          var target = document.getElementById(targetId);
+          if (!target) return;
+
+          var targetY = target.getBoundingClientRect().top + window.pageYOffset - getTriggerY();
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        });
+      });
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('resize', updateActive);
+      updateActive();
+    })();
+  </script>
 
 </body>
 </html>

@@ -9,26 +9,29 @@
   <link rel="stylesheet" href="https://use.typekit.net/rwl3qku.css">
 
   <style>
-    /* ============================================================
-       Yaya Falanga — Portfolio 2026 Redesign
-       Homepage. Self-contained styles; tokens to be extracted to
-       a shared stylesheet once remaining pages are redesigned.
-       ============================================================ */
+    /* ══════════════════════════════════════════════
+       Yaya Falanga — Portfolio
+       Homepage. DESIGN TOKENS — new system, replaces
+       maroon/Mr Eaves. Self-contained styles; tokens
+       to be extracted to a shared stylesheet once
+       remaining pages are redesigned.
+       ══════════════════════════════════════════════ */
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ─── Design Tokens ────────────────────────────────────── */
     :root {
       /* Colour */
-      --ink:        #5A0600;   /* Primary text + fills (footer, buttons) */
-      --ink-soft:   #CAA3A3;   /* Secondary text + secondary lines */
-      --bg:         #F9F8F6;   /* Page background */
-      --bone:       #F9F8F6;   /* Light text on ink fills */
-      --placeholder:#DBDBDB;   /* Image placeholder grey */
+      --bg:        #FEFEFE;   /* Page background */
+      --ink:       #320300;   /* Primary text + fills (footer, buttons) */
+      --highlight: #CAA3A3;   /* Decorative only: dividers, chip backgrounds, dark-surface text — fails WCAG as text on --bg */
+      --muted:     #806767;   /* AA-safe secondary/inactive text on --bg, 5.14:1 */
+      --bone:      #FEFEFE;   /* Light text on ink fills */
+      --placeholder:#DBDBDB;  /* Image placeholder grey */
 
       /* Type */
-      --font-display: "mr-eaves-modern", "Helvetica Neue", Arial, sans-serif;
-      --font-body:    "mr-eaves-sans", "Helvetica Neue", Arial, sans-serif;
+      --font-display: "area-extended", "Helvetica Neue", Arial, sans-serif;
+      --font-body:    "area-normal", "Helvetica Neue", Arial, sans-serif;
 
       /* Grid — 12 col / 80px margins / 16px gutter */
       --margin: 80px;
@@ -43,8 +46,8 @@
       background: var(--bg);
       color: var(--ink);
       font-family: var(--font-body);
-      font-size: 1.1875rem;       /* 19px — Mr Eaves runs small */
-      line-height: 1.55;
+      font-size: 1rem;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -72,7 +75,7 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
-    .eyebrow--soft { color: var(--ink-soft); }
+    .eyebrow--soft { color: var(--muted); }
 
     .text-link {
       text-decoration: underline;
@@ -80,11 +83,11 @@
       text-decoration-thickness: 1px;
       transition: text-decoration-color var(--transition);
     }
-    .text-link:hover { text-decoration-color: var(--ink-soft); }
+    .text-link:hover { text-decoration-color: var(--highlight); }
 
     hr.rule {
       border: none;
-      border-top: 1px solid var(--ink-soft);
+      border-top: 1px solid var(--highlight);
     }
 
     /* ─── Navigation ───────────────────────────────────────── */
@@ -104,28 +107,28 @@
     }
     .nav__logo {
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: 0.95rem;
       font-weight: 700;
     }
     .nav__links {
       display: flex;
       gap: 4.5rem;
       font-weight: 700;
-      font-size: 1.0625rem;
+      font-size: 0.85rem;
     }
     .nav__links a {
       transition: color var(--transition);
     }
-    .nav__links a:hover { color: var(--ink-soft); }
+    .nav__links a:hover { color: var(--muted); }
 
     /* ─── Hero ─────────────────────────────────────────────── */
     .hero { padding-block: 7rem 0; }
 
-    .hero__eyebrow { display: block; margin-bottom: 1.75rem; }
+    .hero__eyebrow { display: block; margin-bottom: .25rem; }
 
     .hero__title {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      font-size: clamp(3rem, 2.5vw, 5.5rem);
       font-weight: 400;
       line-height: 1.08;
       letter-spacing: 0.005em;
@@ -138,7 +141,7 @@
     .hero__intro {
       grid-column: 2 / 7;
       margin-top: 2.5rem;
-      font-size: 1.1875rem;
+      font-size: 1rem;
     }
 
     /* ─── Selected Work ────────────────────────────────────── */
@@ -146,53 +149,57 @@
 
     .work__label { display: block; margin-bottom: 2.5rem; }
 
-    .card {
+    .work__grid {
       grid-column: 2 / 12;
       display: grid;
-      grid-template-columns: repeat(10, 1fr);
+      grid-template-columns: 1fr 1fr;
       column-gap: var(--gutter);
-      align-items: start;
-      padding-block: 1.5rem 6rem;
+      row-gap: 3.5rem;
+      padding-bottom: 6rem;
     }
 
-    .card__text { grid-column: 1 / 6; }
-    .card__media { grid-column: 6 / 11; }
+    .card {
+      display: block;
+      position: relative;
+    }
+
+    .card__media {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.1rem;
+    }
+
+    .card__media img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: var(--placeholder); /* placeholder grey until image exists */
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover .card__media img { transform: scale(1.035); }
 
     .card__tags {
       display: block;
-      margin-bottom: 0.6rem;
-      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--muted);
     }
 
     .card__title {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 0.9rem;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+      transition: color var(--transition);
     }
+    .card:hover .card__title { color: var(--muted); }
 
     .card__body {
-      max-width: 52ch;
-      margin-bottom: 1.75rem;
-    }
-
-    .card__link {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 0.15em;
-      transition: color var(--transition), border-color var(--transition);
-    }
-    .card__link:hover { color: var(--ink-soft); border-color: var(--ink-soft); }
-
-    .card__media img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      background: var(--placeholder); /* placeholder grey until image exists */
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 82ch;
     }
 
     /* ─── About ────────────────────────────────────────────── */
@@ -263,7 +270,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--ink-soft);
+      color: var(--highlight);
       margin-bottom: 0.4rem;
     }
 
@@ -315,7 +322,7 @@
       :root { --margin: 48px; }
       .span-content, .hero__rule, .about__rule { grid-column: 1 / 13; }
       .hero__intro { grid-column: 1 / 9; }
-      .card { grid-column: 1 / 13; }
+      .work__grid { grid-column: 1 / 13; }
       .about__label { grid-column: 1 / 13; margin-bottom: 2rem; }
       .about__body { grid-column: 1 / 13; }
     }
@@ -329,9 +336,7 @@
       .hero__title { margin-bottom: 2.5rem; }
       .hero__intro { grid-column: 1 / 13; }
       .work { padding-top: 5rem; }
-      .card { grid-template-columns: 1fr; padding-bottom: 4.5rem; }
-      .card__text, .card__media { grid-column: 1 / -1; }
-      .card__media { margin-top: 2rem; }
+      .work__grid { grid-template-columns: 1fr; row-gap: 2.75rem; padding-bottom: 4.5rem; }
       .footer__chat, .footer__contact, .footer__pages { grid-column: 1 / 13; }
       .footer__inner { row-gap: 3.5rem; }
       .footer__socials { margin-top: 2rem; }
@@ -347,7 +352,6 @@
       <a href="index.html" class="nav__logo">Jennifer Yaya Falanga</a>
       <div class="nav__links">
         <a href="#work">Work</a>
-        <a href="archives.html">Archive</a>
         <a href="#about">About</a>
       </div>
     </div>
@@ -357,7 +361,7 @@
   <!-- ─── HERO ─────────────────────────────────────────────── -->
   <header class="hero grid">
     <div class="span-content">
-      <span class="eyebrow hero__eyebrow">UX &amp; Product Designer</span>
+      <span class="eyebrow hero__eyebrow">UX Designer</span>
       <h1 class="hero__title">Designing products that earn trust.</h1>
     </div>
     <hr class="rule hero__rule" />
@@ -376,135 +380,70 @@
       <span class="eyebrow work__label">Selected Work</span>
     </div>
 
-    <!-- Check-In Agent -->
-    <article class="card">
-      <div class="card__text">
-        <span class="eyebrow eyebrow--soft card__tags">AI Agent &middot; Fintech &middot; Behavioural Design</span>
-        <h2 class="card__title">The Check-In Agent</h2>
-        <p class="card__body">
-          First-time investors panic-sell at the bottom. This is an AI agent
-          that watches for the moment, and stays silent until it's earned the
-          right to interrupt.
-        </p>
-        <a class="card__link" href="checkin-agent.html">View Case Study</a>
-      </div>
-      <div class="card__media">
-        <a href="checkin-agent.html">
-          <img src="img/JF_WEB_CHECKINAGENTHero.png"
-               alt="The Check-In Agent — behavioural fintech agent interface" />
-        </a>
-      </div>
-    </article>
-
-    <!-- CAN-SIMPLAN -->
-    <article class="card">
-      <div class="card__text">
-        <span class="eyebrow eyebrow--soft card__tags">AI Tool &middot; UX Design &middot; Design Sprint</span>
+    <div class="work__grid">
+      
+      <!-- CAN-SIMPLAN -->
+      <a class="card" href="can-simplan.html">
+        <div class="card__media">
+          <img src="img/JF_WEB_CANSIMPLANHero.png" alt="CAN-SIMPLAN — civic AI planning tool interface">
+        </div>
+        <span class="eyebrow eyebrow--soft card__tags">AI Tool · UX Design · Design Sprint</span>
         <h2 class="card__title">CAN-SIMPLAN</h2>
-        <p class="card__body">
-          In civic AI tools, accuracy isn't enough, the planner has to be able
-          to explain the decision. This is the design that makes that possible.
-        </p>
-        <a class="card__link" href="can-simplan.html">View Case Study</a>
-      </div>
-      <div class="card__media">
-        <a href="can-simplan.html">
-          <img src="img/JF_WEB_CANSIMPLANHero.png"
-               alt="CAN-SIMPLAN — civic AI planning tool interface" />
-        </a>
-      </div>
-    </article>
+        <p class="card__body">In civic AI tools, accuracy isn't enough — the planner has to be able to explain the decision.</p>
+      </a>
 
-    <!-- WorkMap -->
-    <article class="card">
-      <div class="card__text">
-        <span class="eyebrow eyebrow--soft card__tags">Product Design &amp; Development &middot; React &middot; AI Tool</span>
-        <h2 class="card__title">WorkMap</h2>
-        <p class="card__body">
-          Most AI coverage lands at the wrong altitude. WorkMap maps AI's
-          impact task by task&mdash;built and shipped end-to-end in React.
-        </p>
-        <a class="card__link" href="workmap.html">View Case Study</a>
-      </div>
-      <div class="card__media">
-        <a href="workmap.html">
-          <img src="img/JF_WEB_WORKMAPHero.png"
-               alt="WorkMap — role-based AI exposure mapping tool" />
-        </a>
-      </div>
-    </article>
+      <!-- Check-In Agent -->
+      <a class="card" href="checkin-agent.html">
+        <div class="card__media">
+          <img src="img/JF_WEB_CHECKINAGENTHero.png" alt="The Check-In Agent — behavioural fintech agent interface">
+        </div>
+        <span class="eyebrow eyebrow--soft card__tags">AI Agent · Fintech · Behavioural Design</span>
+        <h2 class="card__title">The Check-In Agent</h2>
+        <p class="card__body">First-time investors panic-sell at the bottom. This agent watches for the moment, and stays silent until it's earned the right to interrupt.</p>
+      </a>
 
-        <!-- Clara -->
-    <article class="card">
-      <div class="card__text">
-        <span class="eyebrow eyebrow--soft card__tags">UI/UX Design &middot; iOS App Concept</span>
+      <!-- Clara -->
+      <a class="card" href="clara-app.html">
+        <div class="card__media">
+          <img src="img/JF_WEB_Clara_Hero.gif" alt="Clara — shared trip planning app with visible task ownership">
+        </div>
+        <span class="eyebrow eyebrow--soft card__tags">UI/UX Design · iOS App Concept</span>
         <h2 class="card__title">Clara</h2>
-        <p class="card__body">An unassigned task is just the original problem with a due date. Clara makes ownership impossible to miss in shared trip planning.
-        </p>
-        <a class="card__link" href="clara-app.html">View Case Study</a>
-      </div>
-      <div class="card__media">
-        <a href="clara-app.html">
-          <img src="img/JF_WEB_Clara_Hero.gif"
-               alt="Clara — shared trip planning app with visible task ownership" />
-        </a>
-      </div>
-    </article>
+        <p class="card__body">An unassigned task is just the original problem with a due date. Clara makes ownership impossible to miss.</p>
+      </a>
 
-        <!-- Conserva -->
-    <article class="card">
-      <div class="card__text">
-        <span class="eyebrow eyebrow--soft card__tags">UI Design &middot; Brand System</span>
+      <!-- Conserva -->
+      <a class="card" href="conserva.html">
+        <div class="card__media">
+          <img src="img/JF_WEB_ConservaHero.png" alt="Conserva — premium food platform built system-first">
+        </div>
+        <span class="eyebrow eyebrow--soft card__tags">UI Design · Brand System</span>
         <h2 class="card__title">Conserva</h2>
-        <p class="card__body">On a premium food platform, inconsistency reads as carelessness. Conserva was built system-first, tokens before components, so the brand holds at every touchpoint.
-        </p>
-        <a class="card__link" href="conserva.html">View Case Study</a>
-      </div>
-      <div class="card__media">
-        <a href="conserva.html">
-          <img src="img/JF_WEB_ConservaHero.png"
-               alt="Conserva — premium food platform built system-first" />
-        </a>
-      </div>
+        <p class="card__body">On a premium food platform, inconsistency reads as carelessness. Built system-first, tokens before components.</p>
+      </a>
 
-    </article>
-
-        <!-- Aurafact -->
-    <article class="card">
-      <div class="card__text">
+      <!-- Aurafact -->
+      <a class="card" href="aurafact.html">
+        <div class="card__media">
+          <img src="img/JF_WEB_AurafactHero.png" alt="Aurafact — spatial archive of environmental sound">
+        </div>
         <span class="eyebrow eyebrow--soft card__tags">Product Design &amp; Development</span>
         <h2 class="card__title">Aurafact</h2>
-        <p class="card__body">
-          Environmental sound is a primary historical artifact, it just isn't kept. Aurafact is a spatial archive designed to change that.
-        </p>
-        <a class="card__link" href="aurafact.html">View Case Study</a>
-      </div>
-      <div class="card__media">
-        <a href="aurafact.html">
-          <img src="img/JF_WEB_AurafactHero.png"
-               alt="Aurafact — spatial archive of environmental sound" />
-        </a>
-      </div>
-    </article>
+        <p class="card__body">Environmental sound is a primary historical artifact — it just isn't kept. A spatial archive designed to change that.</p>
+      </a>
 
-        <!-- Gen AI -->
-    <article class="card">
-      <div class="card__text">
-        <span class="eyebrow eyebrow--soft card__tags">AI Creative Direction &middot; Stills &amp; Motion</span>
+
+      <!-- Gen AI -->
+      <a class="card" href="ai-creative.html">
+        <div class="card__media">
+          <img src="img/JF_WEB_GenerativeCampaignHero.png" alt="Generative AI campaigns — stills and motion art directed by Yaya Falanga">
+        </div>
+        <span class="eyebrow eyebrow--soft card__tags">AI Creative Direction · Stills &amp; Motion</span>
         <h2 class="card__title">Generative AI</h2>
-        <p class="card__body">
-          Self-initiated campaigns from brutalist lifestyle product photography and a portrait-forward skincare launch art directed from brief to final frame using Midjourney, Sora, and Grok Imagine.
-        </p>
-        <a class="card__link" href="ai-creative.html">View Case Study</a>
-      </div>
-      <div class="card__media">
-        <a href="ai-creative.html">
-          <img src="img/JF_WEB_GenerativeCampaignHero.png"
-               alt="Generative AI campaigns — stills and motion art directed by Yaya Falanga" />
-        </a>
-      </div>
-    </article>
+        <p class="card__body">Self-initiated campaigns art directed from brief to final frame using Midjourney, Sora, and Grok Imagine.</p>
+      </a>
 
+    </div>
   </main>
 
 
