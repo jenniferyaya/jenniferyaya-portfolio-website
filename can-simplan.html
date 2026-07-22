@@ -60,32 +60,32 @@
   /* ── TOP NAV ─────────────────────────────────── */
   .top-nav {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    padding: 28px var(--margin);
+    padding: 2rem var(--margin);
     border-bottom: 1px solid #ECECEC;
   }
   .top-nav__logo {
-    font-family: var(--font-body);
-    font-size: 1.05rem;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--ink);
     text-decoration: none;
   }
   .top-nav__links {
     display: flex;
-    gap: 48px;
+    gap: 4.5rem;
     list-style: none;
+    font-size: 0.85rem;
   }
   .top-nav__links a {
     font-family: var(--font-body);
-    font-size: 0.95rem;
     color: var(--ink);
     text-decoration: none;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  /* explicitly no hover state on top nav */
   .top-nav__links a:hover {
-    color: var(--ink);
+    color: var(--muted);
   }
   .top-nav__links a:focus-visible {
     outline: revert;
