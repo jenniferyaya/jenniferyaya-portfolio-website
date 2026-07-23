@@ -60,9 +60,9 @@
   /* ── TOP NAV ─────────────────────────────────── */
   .top-nav {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
-    padding: 2rem var(--margin);
+    padding: 28px var(--margin);
     border-bottom: 1px solid #ECECEC;
   }
   .top-nav__logo {
@@ -74,18 +74,18 @@
   }
   .top-nav__links {
     display: flex;
-    gap: 4.5rem;
+    gap: 48px;
     list-style: none;
-    font-size: 0.85rem;
   }
   .top-nav__links a {
     font-family: var(--font-body);
+    font-size: 0.85rem;
     color: var(--ink);
     text-decoration: none;
-    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  /* explicitly no hover state on top nav */
   .top-nav__links a:hover {
-    color: var(--muted);
+    color: var(--ink);
   }
   .top-nav__links a:focus-visible {
     outline: revert;
